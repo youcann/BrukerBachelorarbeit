@@ -1,4 +1,5 @@
-*.aux
-*.log
-*.pdf
-*.synctex.gz
+main.toc
+main.aux
+main.log
+main.pdf
+main.synctex.gz
