@@ -1,5 +1,11 @@
-main.toc
-main.aux
-main.log
-main.pdf
-main.synctex.gz
+*.toc
+*.aux
+*.log
+*.pdf
+*.synctex.gz
+*.bib.bak
+*.bib.sav
+*.run.xml
+*.blg
+*.bcf
+*.bbl

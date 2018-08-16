@@ -1,7 +1,15 @@
 \documentclass[11pt,a4paper,ngerman,oneside]{scrbook}
 \usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
 
-\title{Simulation von Störungen im Signalpfad eines MR-Tomographen}
+\usepackage{mathtools}
+\usepackage{gensymb}
+
+\usepackage[autostyle]{csquotes}
+\usepackage[backend=biber,style=alphabetic,sortlocale=de_DE,natbib=true,url=true, doi=true,eprint=false,isbn=true]{biblatex}
+\addbibresource{jabref.bib}
+
+\title{Simulation von Störungen im Signalpfad eines MRT}
 \author{Marvin Noll}
 \date{August 2018}
 
@@ -13,5 +21,7 @@
 \input{sections/0abstract.tex}
 \input{sections/1einleitung.tex}
 \input{sections/2grundlagen.tex}
+
+\printbibliography
 
 \end{document}
