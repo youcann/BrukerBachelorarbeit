@@ -1,0 +1,45 @@
+\chapter{Unsortiert}
+
+\section{MRiLab auf GPU-Rechner}
+
+\begin{table}[H]
+	\centering
+	\caption{Spezifikationen des verwendeten Rechners}
+	\begin{tabular}{ll}
+		\toprule
+		\multicolumn{2}{c}{\textbf{Hardware}} \\
+		CPU & Intel Xeon E5-1650v4 (3.6 GHz) \\
+		GPU & Nvidia GeForce GTX Titan X \\
+		RAM & 2x8 GB \\
+		\midrule
+		\multicolumn{2}{c}{\textbf{Software}} \\
+		OS & Microsoft Windows 10 Pro for Workstations \\
+		MATLAB & R2018a \\
+		GPU Driver & Nvidia 398.82 \\
+		CUDA & 7.0 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Andere getestete Konfigurationen:
+\begin{enumerate}
+	\item \textbf{Ubuntu 18.04, CUDA 9.2}: CUDA 9.2 unterstützt offiziell nur Ubuntu 16.04 und 17.10. Die Installation von CUDA war dennoch erfolgreich. \todo{https://devtalk.nvidia.com/default/topic/983777/cuda-setup-and-installation/can-t-locate-installutils-pm-in-inc/}
+	Die CUDA Libraries werden aber von \texttt{DoScanAtGPU} in MRiLab nicht gefunden (Es wird versucht libcudart.so.7 statt allgemein libcudart.so zu laden).
+	
+	\item\label{en:versuch2} \textbf{Ubuntu 18.04, CUDA 7.0}: CUDA 7.0 unterstützt offiziell nur Ubuntu 14.04, 14.10 und 12.04. Die Installation ist dennoch ohne Probleme möglich. Die CUDA Libraries werden von MRiLab gefunden und ein Scan kann gestartet werden. Gegen Ende der Simulation stürzt MATLAB jedoch aufgrund eines Laufzeitfehlers in \texttt{DoScanAtGPU} ab.
+	
+	\item \textbf{Ubuntu 16.04, CUDA 7.0}: Fehlerbild wie unter Punkt \ref{en:versuch2}.
+	
+	\item \textbf{Ubuntu 14.04, CUDA 7.0}: MATLAB bzw. MRiLAB aufgrund eines Bugs nicht benutzbar ("dlopen: cannot load any more object with static TLS")
+	
+	
+\end{enumerate}
+
+
+
+
+
+
+
+
+

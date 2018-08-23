@@ -18,22 +18,93 @@ Die Entwicklung der Magnetresonanzbildgebung wurde erst durch die Entdeckung der
 
 1938 konnte die Kernspinresonanz erstmals von \textsc{Isidor Isaac Rabi} durch eine Erweiterung des Stern-Gerlach-Versuchs nachgewiesen werden: Dazu wird die Anordnung des Stern-Gerlach-Versuchs um ein weiteres inhomogenes Magnetfeld dahinter ergänzt. Dieses ist umgekehrt gepolt und ansonsten identisch dem ersten Feld. Das erste Feld wirkt daher de-fokussierend auf die Atome, das zweite re-fokussierend. Wird ein homogenes Wechsel-Magnetfeld zwischen den beiden inhomogenen Feldern erzeugt, sinkt die gemessene Detektorintensität hinter der Anordnung bei einer bestimmten Frequenz. Bei dieser Frequenz $\omega_0$ wird die Resonanzbedingungen zwischen zwei Übergängen erreicht. $\omega_0$ heißt daher Resonanzfrequenz. Damit ist es möglich, die benötigte Energie zu bestimmen, um ein atomares, magnetisches Moment anzuregen. Für seine Arbeiten erhielt Rabi 1944 den Nobelpreis für Physik. \cite{Rabi1938}
 
-Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker \textsc{Felix Bloch} und der US-Amerikaner \textsc{Edward Mills Purcell}.
+Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker \textsc{Felix Bloch} und der US-Amerikaner \textsc{Edward Mills Purcell}: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander die NMR in Flüssigkeiten bzw. Feststoffen. Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
 
-\subsubsection{Quantenmechanische Erklärung}
+\subsubsection{Quantenmechanische Theorie}
+
+\begin{equation}
+	\omega_0=\gamma B_0
+\end{equation}
+mit:
+\begin{with}
+\omega_0 & Kreisfrequenz (in \SI{}{\hertz}) \\
+\end{with}
+
+\subsubsection{Blochgleichungen}
+Die Blochgleichungen gelten in Flüssigkeiten und eigeschränkt auch in Festkörpern. In vektorieller Schreibweise lauten sie:
+\begin{equation}
+	\frac{d\vec{M}}{dt}=\gamma\vec{M}\times\vec{H_a}-\vec{e_x}\frac{M_x}{T_2}-\vec{e_y}\frac{M_y}{T_2}-\vec{e_z}\frac{M_z-M_0}{T_1}
+\end{equation}
+mit:
+\begin{with*}
+	\vec{M} & Magnetisierung \\
+	T_1,T_2 & Relaxationszeiten \\
+\end{with*}
+
+\todoin{Unterschied Laborsystem, rotierendes Bezugssystem}
+
+
+\subsubsection{Relaxation}
+
+\subsection{NMR Eigenschaften von Materie}
 
 
 
 
-\subsection{Aufbau eines MR-Tomographen und Bildentstehung}
-Bild, Magnet, Kühlung, Gradienten
+
+
+\subsection{Aufbau eines MR-Tomographen}
+\missingfigure{Gesamtsystem}
+
+\subsubsection{Statisches Magnetfeld}
+Das statische Magnetfeld, auch $B_0$-Feld genannt, wird durch einen Magneten erzeugt. Dieser muss über eine ausreichend dimensionierte Öffnung verfügen, so dass der zu untersuchende Körper und andere Spulensysteme des Tomographen darin Platz finden. Mit Feldstärken im Bereich von \SI{0.3}{\tesla} (bei klinischen MRI Systemen) bis hin zu \SI{15}{\tesla} im Bereich der präklinschen MRIs ist das $B_0$-Feld verglichen mit dem Erdmagnetfeld\footnote{etwa \SI{50}{\micro\tesla} \cite{Enc1994}} oder einem Kühlschrankmagneten\footnote{etwa \SI{0.1}{\tesla} \cite{LHC2018}} ein sehr starkes Magnetfeld.
+Erzeugt wird das $B_0$-Feld entweder mit einem Permanentmagneten oder einem Elektromagneten. 
+
+Auch wenn sich \textit{Permanentmagnet}systeme durch ihren einfachen Aufbau und einen kostengünstigen, wartungsfreien Betrieb auszeichnen, sind sie wenig stark verbreitet. Die mit Permanentmagneten erzielbare Feldstärke von etwa einem Tesla ist für Forderung nach hohen Signal-Rausch-Verhältnissen oft zu gering.
+
+Gewöhnliche Elektromagnete, auch \textit{resistive Elektromagnete} genannt, haben den Nachteil des hohen Stromverbrauchs und der starken Eigenerwärmung. Von Vorteil ist, dass Systeme dieser Bauart bei Nicht-benutzen abgeschaltet werden können. Für sehr hohe Feldstärken sind sie nicht geeignet.
+
+Am weitesten verbreitet sind \textit{supraleitende Elektromagnete}. Nur damit lassen sich wirtschaftlich hohe Feldstärken erreichen. Diese bestehen aus einer supraleitenden Spulenanordnung, welche in einem, mit flüssigem Helium gefülltem, Tank betrieben wird. Da aufgrund der Supraleitung der Spulenwiderstand verschwindet, kann nach einmaligem Aufbau des Spulenstroms die Stromversorgung getrennt werden. Das als Kryostat bezeichnete Kühlsystem verliert durch den sog. \textit{boil-off} kontinuierlich Helium, welches daher regelmäßig wieder aufgefüllt werden muss. Ein Abschalten der Engergie- und Kosten-intensiven Kühlung ist nicht möglich. Eine Erwärmung der ganzen Spule, oder Teile davon über die Sprungtemperatur des Spulenmaterials führt zum sog. \textit{Quench}: Die Supraleitung bricht zusammen, das Material wird resistiv und durch die damit verbundene starke Wärmeentwicklung verdampft das gesamte Helium schlagartig. Daher ist es nötig, dass das Kryostat über einen Kamin zur Ableitung des Heliums verfügt. Wenn auch für den Menschen ungiftig, können größere Mengen Helium den Luftsauerstoff verdrängen. Daher muss die Sauerstoffkonzentration in den Aufstellungsräumen überwacht werden.
+
+\todoin{Zylinder vs platten}
+
+\paragraph{Shimming}\mbox{}\\
+An das statische Magnetfeld werden hohe Anforderungen bezüglich der Feldhomogenität gestellt.
+Durch Metalle im Tomographen (Rohre, Schrauben, Befestigungen, etc.) und am Aufstellungsort (z.B. Stahlträger/Metallständerwände), Streufelder anderer Magnete und in die Nähe des Tomographen gebrachte Metalle kommt es zu Inhomogenitäten.
+Um diese auszugleichen, wird Shimming (von eng. \textit{shim}, Keil) betrieben. Unterschieden werden passives und aktives Shimming \cite{Lipton2008}:
+\begin{itemize}
+	\item \textbf{passives Shimming:} Durch gezieltes Einbringen von ferromagnetichen Metallen\footnote{z.B. Eisen oder Nickel} werden Inhomogenitäten statisch korrigiert. Damit können lediglich intrinsische Effekte des MRT-Systems und des Gebäudes ausgeglichen werden.
+	\item \textbf{aktives Shimming:} Durch zusätzliche Spulen\footnote{meist in resistiver Ausführung} werden (schwache) Korrektur-Felder erzeugt. Der Vorteil hierbei ist, dass dynamisch korrigiert werden kann: Kurz vor einer MRT Aufnahme kann das aktive Shimming genutzt werden, um Inhomogenitäten  durch die Probe zu mindern.  
+\end{itemize}
+
+\subsubsection{Gradientenspulen}
+Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken statischen Feld schwächere, zeitlich variable Felder überlagern. Im Gegensatz zum $B_0$-Feld, sind diese Felder \textit{in}homogen. Ihre Feldstärke variiert linear mit dem Ort. Diese lineare Feldänderung wird als Gradient bezeichnet und ist meist in x, y und z-Richtung ausgeprägt. Da diese Felder schnell umgeschaltet werden müssen, können sie nicht als supraleitende Spulen ausgeprägt werden, sondern sind resistiver Art. Das schnelle Umschalten erfordert leistungsstarke elektrische Verstärker.
+
+
+\subsubsection{RF Sende- und Empfangsspulen}
+Das Hochfrequenzsignal wird über die RF Spulen eingestrahlt. Entweder über die gleiche Spule, oder über separate Empfangsspulen wird das entstehende MR-Signal empfangen.
+
+\subsubsection{Abschirmung}
+\todoin{Magnetfeld?}
+Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notwendig, damit das MRT Gerät keine Störstrahlung nach Außen emittiert und damit keine externen Störsignale die Bildaufnahme stören können.
+Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist. \cite{Weibler1993} Problematisch ist die ausreichende Abschirmung der Eingangtür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
+
+
+\subsection{Bildentstehung im MR-Tomographen}
+\todoin{Frequenzkodierung, Phasenkodierung}
 
 \subsection{MRT Pulssequenzen}
-\begin{enumerate}
-	\item Spin-Echo
-	\item Gradienten-Echo
-	\item EPI
-\end{enumerate}
+Die zeitliche Abfolge der Gradientenfelder (Schichtwahl, Phasenkodierung und Frequenzkodierung) und der Hochfrequenz-Anregungssignale wird als MRT Pulssequenz bezeichnet.
+Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
+\begin{itemize}
+	\item \textbf{SE}: Spinecho-Sequenz
+	\item \textbf{IR}: Inversion-Recovery-Sequenz
+	\item \textbf{GRE}: Gradientenecho-Sequenz
+\end{itemize}
+
+\subsubsection{Spinecho-Sequenz}
+\subsubsection{Inversion-Recovery-Sequenz}
+\subsubsection{Gradientenecho-Sequenz}
 
 
 \subsection{MRT Artefakte}
@@ -49,8 +120,6 @@ Im Wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werde
 
 \subsection{Besonderheiten präklinischer MRT Systeme}
 Größe, Handhabungssysteme
-
-\subsection{Vergleich mit anderen Modalitäten}
 
 
 

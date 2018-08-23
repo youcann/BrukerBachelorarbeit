@@ -1,13 +1,46 @@
 \documentclass[11pt,a4paper,ngerman,oneside]{scrbook}
+
+%German
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
+%Floats (for [H])
+\usepackage{float}
+
+%Math stuff
 \usepackage{mathtools}
 \usepackage{gensymb}
 
+%equation variable descriptions
+%simple:
+%\renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
+%aligned:
+\newenvironment{with}
+{\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}:{}$} l}}
+	{\end{tabular}\par\vspace{\belowdisplayskip}}
+%aligned multiline
+\usepackage{array,tabularx}
+\newenvironment{with*}
+{\par\vspace{\abovedisplayskip}\noindent
+	\tabularx{\columnwidth}{>{$}l<{$} @{${}:{}$} >{\raggedright\arraybackslash}X}}
+{\endtabularx\par\vspace{\belowdisplayskip}}
+
+%SI units
+\usepackage{siunitx}
+
+%tables
+\usepackage{booktabs}
+
+
+%Bibliography using Biber
 \usepackage[autostyle]{csquotes}
 \usepackage[backend=biber,style=alphabetic,sortlocale=de_DE,natbib=true,url=true, doi=true,eprint=false,isbn=true]{biblatex}
 \addbibresource{jabref.bib}
+
+%TODO notes
+%\usepackage[disable]{todonotes}
+\usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+\newcommand{\todoin}[2][]{\todo[inline,#1]{#2}}
 
 \title{Simulation von Störungen im Signalpfad eines MRT}
 \author{Marvin Noll}
@@ -21,6 +54,7 @@
 \input{sections/0abstract.tex}
 \input{sections/1einleitung.tex}
 \input{sections/2grundlagen.tex}
+\input{sections/99_misc.tex}
 
 \printbibliography
 
