@@ -9,3 +9,6 @@
 *.blg
 *.bcf
 *.bbl
+*.lof
+*.lot
+*.out

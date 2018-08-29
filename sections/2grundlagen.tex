@@ -14,11 +14,13 @@ Die folgenden Abschnitte beschreiben den NMR-Effekt und die weiteren Techniken, 
 Die Entwicklung der Magnetresonanzbildgebung wurde erst durch die Entdeckung der Kernspinresonanz möglich. Der physikalische Effekt wird auch außerhalb englischsprachiger Länder meist \textit{nuclear magnetic resonance}, kurz NMR, genannt.
 
 \subsubsection{Geschichte}
-1922 zeigten \textsc{Stern} und \textsc{Gerlach} im, nach ihnen benannten, Stern-Gerlach-Experiment die Quantelung von (Eigen-) Drehimpulsen: Silberatome werden aus einem Ofen heraus durch ein inhomogenes Magnetfeld auf eine Glasplatte beschleunigt. Klassisch wäre durch die Ablenkung des Magnetfeldes eine kontinuierliche Intensitäts-Verteilung um $0\degree$ auf der Platte zu erwarten. Stattdessen entstehen durch die quantisierten Spins, zwei diskrete Punkte. \cite{Gerlach1922}
+1922 zeigten \textsc{Stern} und \textsc{Gerlach} im, nach ihnen benannten, Stern-Gerlach-Experiment die Quantelung von (Eigen-) Drehimpulsen: Silberatome werden aus einem Ofen heraus durch ein inhomogenes Magnetfeld auf eine Glasplatte beschleunigt. Klassisch wäre durch die Ablenkung des Magnetfeldes eine kontinuierliche Intensitäts-Verteilung um $0\degree$ auf der Platte zu erwarten. Stattdessen entstehen durch die quantisierten Spins zwei diskrete Punkte. \cite{Gerlach1922}
 
 1938 konnte die Kernspinresonanz erstmals von \textsc{Isidor Isaac Rabi} durch eine Erweiterung des Stern-Gerlach-Versuchs nachgewiesen werden: Dazu wird die Anordnung des Stern-Gerlach-Versuchs um ein weiteres inhomogenes Magnetfeld dahinter ergänzt. Dieses ist umgekehrt gepolt und ansonsten identisch dem ersten Feld. Das erste Feld wirkt daher de-fokussierend auf die Atome, das zweite re-fokussierend. Wird ein homogenes Wechsel-Magnetfeld zwischen den beiden inhomogenen Feldern erzeugt, sinkt die gemessene Detektorintensität hinter der Anordnung bei einer bestimmten Frequenz. Bei dieser Frequenz $\omega_0$ wird die Resonanzbedingungen zwischen zwei Übergängen erreicht. $\omega_0$ heißt daher Resonanzfrequenz. Damit ist es möglich, die benötigte Energie zu bestimmen, um ein atomares, magnetisches Moment anzuregen. Für seine Arbeiten erhielt Rabi 1944 den Nobelpreis für Physik. \cite{Rabi1938}
 
 Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker \textsc{Felix Bloch} und der US-Amerikaner \textsc{Edward Mills Purcell}: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander die NMR in Flüssigkeiten bzw. Feststoffen. Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
+
+\todoin[]{Lautabur etc.}
 
 \subsubsection{Quantenmechanische Theorie}
 
@@ -31,7 +33,7 @@ mit:
 \end{with}
 
 \subsubsection{Blochgleichungen}
-Die Blochgleichungen gelten in Flüssigkeiten und eigeschränkt auch in Festkörpern. In vektorieller Schreibweise lauten sie:
+Die Blochgleichungen gelten in Flüssigkeiten und eingeschränkt auch in Festkörpern. In vektorieller Schreibweise lauten sie:
 \begin{equation}
 	\frac{d\vec{M}}{dt}=\gamma\vec{M}\times\vec{H_a}-\vec{e_x}\frac{M_x}{T_2}-\vec{e_y}\frac{M_y}{T_2}-\vec{e_z}\frac{M_z-M_0}{T_1}
 \end{equation}
@@ -45,11 +47,38 @@ mit:
 
 
 \subsubsection{Relaxation}
+\todoin[]{T1, T2, pD gewichtung}
 
 \subsection{NMR Eigenschaften von Materie}
+Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden und, dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
 
+\begin{table}[H]
+	\centering
+	\caption[NMR Eigenschaften ausgewählter Gewebe]{NMR Eigenschaften von einigen ausgewählten Gewebearten bei einer Feldstärke von \SI{1.5}{\tesla} (in Anlehnung an \cite[S.~16]{Weishaupt2014} und \cite[S.~17]{Reiser2008})}
+	\label{tab:gewebe}
+	\begin{tabular}{llll}
+		\toprule
+		\textbf{Gewebe} & \textbf{Protonendichte (in \%)} & \textbf{T1 (in ms)} & \textbf{T2 (in ms)} \\
+		\midrule
+		Zerebrospinalflüssigkeit & 100 & \textgreater4000 & 2000 \\
+		weiße Hirnsubstanz & 70 & 780 & 90 \\
+		graue Hirnsubstanz & 85 & 920 & 100 \\
+		Fettgewebe & 100 & 260 & 80 \\
+		Leber & - & 500 & 43 \\
+		Niere & - & 650 & 58 \\
+		Metastase & 85 & 1800 & 85 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
+\autoref{fig:metastase} zeigt ein T1 gewichtetes, axiales Schnittbild durch eine von Darmkrebs verursachte Metastasierung in der Leber. Das umliegende gesunde Gewebe kann deutlich von den Metastasen abgegrenzt werden.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/metastase.png}
+	\caption[Lebermetastase]{Lebermetastase. Axialer Schnitt, T1 gewichtete spoiled-gradient Aufnahme mit Fettunterdrückung, kein Kontrastmittel \cite[S.~872]{Reiser2008}}
+	\label{fig:metastase}
+\end{figure}
 
 
 
@@ -85,7 +114,11 @@ Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken sta
 Das Hochfrequenzsignal wird über die RF Spulen eingestrahlt. Entweder über die gleiche Spule, oder über separate Empfangsspulen wird das entstehende MR-Signal empfangen.
 
 \subsubsection{Abschirmung}
-\todoin{Magnetfeld?}
+Zum Schutz des MRT vor externer Störstrahlung und zum Schutz der Umgebung (Menschen und andere Geräte) sind Abschirmungen nötig:
+Das Magnet für das statische Magnetfeld erzeugt nicht nur das nutzbare $B_0$-Feld, sondern auch magnetische Streufelder. Diese können passiv, z.B, durch Stahlplatten, oder aktiv durch zusätzliche Spulen abgeschirmt werden.
+
+Von den Gradientenspulen erzeugte Streufelder, welche durch Wirbelströme entstehen, können auf ähnliche Art und Weise unterdrückt werden.
+
 Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notwendig, damit das MRT Gerät keine Störstrahlung nach Außen emittiert und damit keine externen Störsignale die Bildaufnahme stören können.
 Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist. \cite{Weibler1993} Problematisch ist die ausreichende Abschirmung der Eingangtür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
 
@@ -110,11 +143,41 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 \subsection{MRT Artefakte}
 Zahlreiche Effekte können zu Artefakten in MRT Aufnahmen führen. Welche Artefakte dominieren und ob die Bildqualität wesentlich verschlechtert wird, hängt stark von der Anwendung ab.
 
-Im Wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomografen.
+Im Wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomographen.
 
 \subsubsection{Gewebeartefakte}
+Häufige Ursache für Bildartefakte ist die \textit{chemische Verschiebung} ("chemical shift"). Da die Larmorfrequenz eines Kerns von der lokalen magnetischen Feldstärke am Ort des Kerns $B_{lokal}$ und nicht der mittleren Feldstärke über der Probe ($B$) abhängt, kann es durch molekulare Abschirmeffekte zu einer Änderung der Feldstärke $\Delta B$ kommen. Die lokal auf den Kern wirkende Feldstärke ist dann:
+\begin{equation}
+	B_{lokal}=B+\Delta B
+\end{equation}
+Empirische Untersuchungen zeigten, dass die Feldabweichung $\Delta B$ proportional zum angelegten Feld ist. Damit ergibt sich $B_{lokal}$ mit dem Abschirmfaktor $\sigma$ zu:
+\begin{equation}
+	B_{lokal}=B-\sigma B = (1-\sigma)B
+\end{equation}
+Die Lamorfrequenz ist dann:
+\begin{equation}
+	\omega = \gamma (1-\sigma)B
+\end{equation}
+
+$\sigma$ ist hauptsächlich durch die Verteilung von Elektronen um den Kern und damit von dem molekularen Umfeld abhängig.
+
+Die chemische Verschiebung ist damit nach \cite[S.~24]{Reiser2008} definiert als:
+\begin{equation}
+\label{eq:chemShift}
+	\delta := \frac{\omega-\omega_R}{\omega_0} \cdot 10^6 ~\text{ppm} \approx (\sigma_R-\sigma) \cdot 10^6~\text{ppm}
+\end{equation}
+mit:
+\begin{with}
+	\omega & Lamorfrequenz des betrachteten Kerns\\
+	\omega_R & Lamorfrequenz einer Referenzsubstanz\\
+	\omega_0 & $\omega_0:=\gamma B_0$ \\
+	\sigma_R, \sigma & Abschirmfaktoren des betrachteten Kerns un der Referenz \\
+\end{with}
+
+Die chemische Verschiebung wird, wie in \autoref{eq:chemShift}, üblicherweise in "parts per million" (ppm) angegeben.
 
 \subsubsection{Bewegungsartefakte}
+Durch Bewegung des untersuchten Lebewesens, sei es durch die willkürliche Muskulatur, oder das Herz bzw. die Atmung, kann es zu Verschiebungen, Verwaschungen oder ähnlichen Bildfehlern in einer Schicht kommen. Außerdem ist es möglich, dass mehrere Schichtbilder nicht zusammen passen.
 
 \subsubsection{Technische Artefakte}
 

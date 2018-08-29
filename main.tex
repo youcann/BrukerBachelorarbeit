@@ -1,8 +1,12 @@
-\documentclass[11pt,a4paper,ngerman,oneside]{scrbook}
+\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc]{scrbook}
 
 %German
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\addto\captionsngerman{
+	\renewcommand{\contentsname}
+	{Inhalt}
+}
 
 %Floats (for [H])
 \usepackage{float}
@@ -40,7 +44,15 @@
 %TODO notes
 %\usepackage[disable]{todonotes}
 \usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
+%a new command for inserting todos inline
 \newcommand{\todoin}[2][]{\todo[inline,#1]{#2}}
+
+%Autoref
+\usepackage{hyperref}
+
+%font
+%a current Times clone
+\usepackage{newtxmath}
 
 \title{Simulation von Störungen im Signalpfad eines MRT}
 \author{Marvin Noll}
@@ -49,9 +61,13 @@
 \begin{document}
 
 \maketitle
-\tableofcontents
 
 \input{sections/0abstract.tex}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
 \input{sections/1einleitung.tex}
 \input{sections/2grundlagen.tex}
 \input{sections/99_misc.tex}
