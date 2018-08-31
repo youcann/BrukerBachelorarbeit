@@ -54,11 +54,23 @@
 %a current Times clone
 \usepackage{newtxmath}
 
+%code listings
+%minted needs:
+%texlive-latex-extra, python-pygments
+%pdflatex has to be run with "-shell-escape"
+\usepackage{minted}
+\usemintedstyle{borland}
+\usepackage{xcolor}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\providecommand*{\listingautorefname}{Listing}
+
+
 \title{Simulation von Störungen im Signalpfad eines MRT}
 \author{Marvin Noll}
 \date{August 2018}
 
 \begin{document}
+\shorthandoff{"} %"A, "S, ... normal
 
 \maketitle
 
