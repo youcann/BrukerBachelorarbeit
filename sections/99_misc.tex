@@ -94,6 +94,57 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\caption{Funktion \texttt{DoPostScan.m} übergibt "handles" Struct (mit Name "Simuh") an \texttt{DoAddNoise.m}}
 	\label{lst:doPostscansimuh}
 \end{listing}
+
+\section{Berechnung Empfängerbandbreite}
+
+Die Lamorfrequenzen an den Rändern des Probenraums sind:
+\begin{subequations}
+	\begin{align}
+		f_{min}=\frac{\gamma}{2\pi} (B_0+G x_{min}) \\
+		f_{max}=\frac{\gamma}{2\pi} (B_0+G x_{max})
+	\end{align}
+\end{subequations}
+mit:
+\begin{with}
+	\frac{\gamma}{2\pi} =\SI{42.577478}{\mega\hertz\per\tesla}& Gyromagnetisches Verhältnis für \ce{^{1}H}-Kerne \\
+	B_0 \text{~(in \SI{}{\tesla})} & Feldstärke statisches Magnetfeld \\
+	G \text{~(in \SI{}{\tesla\per\meter})} & Gradientenstärke \\
+\end{with}
+
+Die notwendige Empfängerbandbreite $\Delta f$ ergibt sich daraus zu:
+\begin{equation}
+	\Delta f = f_{max}-f_{min} = \frac{\gamma}{2\pi} G (x_{max}-x_{min})
+\end{equation}
+Da die Länge $x_{max}-x_{min}$ der Größe des $FOV$ in der betrachteten Richtung entspricht, kann $\Delta f$ berechnet werden mit:
+\begin{equation}
+\label{eq:deltaF}
+\Delta f(G, FOV) = G \cdot FOV
+\end{equation}
+
+Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärke und das FOV werden einige Empfängerbandbreiten berechnet (\autoref{tab:empfBandbreite}).
+
+\begin{table}[H]
+	\centering
+	\caption{Notwendige Empfängerbandbreiten in Abhängigkeit des Field of View (FOV) und der Gradientenstärke}
+	\label{tab:empfBandbreite}
+	\begin{tabular}{llll}
+		\toprule
+		  & \multicolumn{3}{c}{\textbf{G (in \SI{}{\milli\tesla\per\meter})}} \\ \cmidrule{2-4}
+		  \textbf{FOV (in \SI{}{\mm})}& 200 & 500 & 1000 \\
+		  20 & \SI{0.170}{\mega\hertz} & \SI{0.425}{\mega\hertz} & \SI{0.851}{\mega\hertz} \\
+		  50 & \SI{0.426}{\mega\hertz} & \SI{1.06}{\mega\hertz} & \SI{2.13}{\mega\hertz} \\
+		  150 & \SI{1.277}{\mega\hertz} & \SI{3.19}{\mega\hertz} & \SI{6.39}{\mega\hertz} \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+
+\section{Vergleich RF-ADC mit traditioneller analogen Abwärtsmischung}
+
+
+
+
+
    
 
 
