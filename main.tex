@@ -1,12 +1,15 @@
-\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc]{scrbook}
+\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half]{scrbook}
 
 %German
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage[ngerman]{translator}
 \addto\captionsngerman{
 	\renewcommand{\contentsname}
 	{Inhalt}
 }
+
+\usepackage[expansion=true,protrusion=true,tracking=true]{microtype}
 
 %Floats (for [H])
 \usepackage{float}
@@ -67,25 +70,63 @@
 %chemical formulas
 \usepackage{mhchem}
 
+%enable header lines
+\pagestyle{headings}
+
+%toc in toc
+\usepackage{tocbibind}
+
+%Glossar
+\usepackage[nonumberlist]{glossaries}
+% Definition eines eigenen Glossarstils
+\newglossarystyle{meinglossar}{%
+	\renewenvironment{theglossary}{\begin{labeling}{xxxxxxxxxx}}{\end{labeling}}%
+	\renewcommand*{\glossaryentryfield}[5]{%
+		\item[\glstarget{##1}{##2}]% Eintragsname:
+		\ifthenelse{\equal{##4}{\relax}}{}{\space (##4)}% (Symbol)
+		\space ##3% Beschreibung
+		%\dotfill ##5% ...Seitenzahl
+	}
+}
+\makeglossaries
+\setglossarystyle{meinglossar}
+\loadglsentries{glossentries.tex}
+
 
 \title{Simulation von Störungen im Signalpfad eines MRT}
 \author{Marvin Noll}
 \date{August 2018}
+\publishers{Betreut von: \\ Dipl. Ing. Jürgen Lill {\small (Bruker BioSpin GmbH)}, \\ Prof. Dr. Mark Weber {\small (Institut für Prozessdatenverarbeitung und Elektronik am KIT)}}
 
 \begin{document}
 \shorthandoff{"} %"A, "S, ... normal
 
+
 \maketitle
 
 \input{sections/0abstract.tex}
+\thispagestyle{empty}
 
+\pagenumbering{Roman}
+\setcounter{page}{0}
 \tableofcontents
+
+\printglossary
 \listoffigures
 \listoftables
+\cleardoublepage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 \input{sections/1einleitung.tex}
 \input{sections/2grundlagen.tex}
+\input{sections/3Aufgabenstellung.tex}
+\input{sections/4Material_und_Methoden.tex}
+\input{sections/5Ergebnisse.tex}
+\input{sections/6Diskussion_und_Ausblick.tex}
 \input{sections/99_misc.tex}
+\appendix
+\input{sections/7Anhang.tex}
 
 \printbibliography
 
