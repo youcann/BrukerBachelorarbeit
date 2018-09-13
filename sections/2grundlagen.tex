@@ -49,12 +49,12 @@ mit:
 \subsubsection{Relaxation}
 \todoin[]{T1, T2, pD gewichtung}
 
-\subsection{NMR Eigenschaften von Materie}
+\subsection{Kernspin detektierbare Eigenschaften von Gewebe}
 Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden und, dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
 
 \begin{table}[H]
 	\centering
-	\caption[NMR Eigenschaften ausgewählter Gewebe]{NMR Eigenschaften von einigen ausgewählten Gewebearten bei einer Feldstärke von \SI{1.5}{\tesla} (in Anlehnung an \cite[S.~16]{Weishaupt2014} und \cite[S.~17]{Reiser2008})}
+	\caption[MRT relevante Eigenschaften ausgewählter Gewebe]{MRT relevante Eigenschaften von einigen ausgewählten Gewebearten bei einer Feldstärke von \SI{1.5}{\tesla} (in Anlehnung an \cite[S.~16]{Weishaupt2014} und \cite[S.~17]{Reiser2008})}
 	\label{tab:gewebe}
 	\begin{tabular}{llll}
 		\toprule
@@ -76,7 +76,7 @@ Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifiz
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/metastase.png}
-	\caption[Lebermetastase]{Lebermetastase. Axialer Schnitt, T1 gewichtete spoiled-gradient Aufnahme mit Fettunterdrückung, kein Kontrastmittel \cite[S.~872]{Reiser2008}}
+	\caption[Lebermetastase]{Lebermetastase. Axialer Schnitt, T1 gewichtete spoiled gradient Aufnahme mit Fettunterdrückung, kein Kontrastmittel \cite[S.~872]{Reiser2008}}
 	\label{fig:metastase}
 \end{figure}
 
@@ -197,13 +197,29 @@ Größe, Handhabungssysteme
 \section{Stochastische Prozesse}
 
 \subsection{Definition und Kenngrößen}
+Ein stochastischer Prozess $x(t,\xi)$ besteht aus einem Zufallsexperiment und einer Zuordnung von Musterfunktionen zu den Elementarereignissen $\xi_\nu$ des Zufallsexperiments \cite[S.~243]{Leon2015}. Der Prozess $x(t,\xi)$ ist eine Funktion von zwei Variablen. Für einen festen Zeitpunkt $t=t_0$ kann $x(t=t_0,\xi)=x_{t_0}(\xi)$ als Zufallsvariable aufgefasst werden. Hingegen wird aus dem Prozess eine gewöhnliche, Zeit-abhängige Funktion, wenn $\xi=\xi_\nu$ konstant gehalten wird. Da in diesem Fall $x(t,\xi=\xi_\nu)=x_{\xi_\nu}(t)$ keinen Zufallscharakter mehr aufweist, ist $x_{\xi_\nu}(t)$ eine deterministische Musterfunktion.
+
+
 
 \subsection{Rauschprozesse}
 In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nicht-\-deterministische Störung eines elektrischen Signals.
 
-\section{Phasenrauschen und Jitter}
+\section{Phasenrauschen}
 
-\subsection{Definition}
+\begin{definition}[Phasenrauschen]
+	Phasenrauschen beschreibt eine kurzzeitige Abweichungen der Phase von der Nenn-Phase im Frequenzbereich. \cite{IEEErandom}
+\end{definition}
+
+
+\section{Jitter}
+
+\begin{definition}[Jitter]
+	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Events. \cite{Kundert2012}
+\end{definition}
+
+
+
+\section{Jitterberechnung aus Phasenrauschspektrum}
 
 \subsection{Phasenrauschen eines Oszillators}
 \todoin[]{Vergleich gut/schlecht}
@@ -211,6 +227,21 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 \subsection{Qualitätskriterien eines Oszillators}
 
 \todoin[]{Allan Dev.}
+
+\begin{equation}
+	\sigma_y^2(\tau)=\frac{1}{2} \Big\langle(\bar{y}_{n+1}-\bar{y}_{n})^2\Big\rangle
+\end{equation}
+mit:
+\begin{with*}
+	\tau & Beobachtungsintervall \\
+	y=\frac{\nu(t)-\nu_n}{\nu_n} & fraktionelle Frequenz \\
+\end{with*}
+
+Die zeitliche Entwicklung der Frequenz $\nu(t)$ ergibt sich aus der momentanen Phase $\Phi(t)$ zu 
+\begin{equation}
+	\nu(t)=\frac{1}{2\pi} \frac{d\Phi(t)}{dt}
+\end{equation}
+
 
 \subsection{Messverfahren}
 
