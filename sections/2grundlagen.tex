@@ -221,12 +221,31 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 
 \section{Jitterberechnung aus Phasenrauschspektrum}
 
-\subsection{Phasenrauschen eines Oszillators}
-\todoin[]{Vergleich gut/schlecht}
+\section{Analytisches Modell}
+Ein idealer (Sinus-) Oszillator mit nomineller Frequenz $\nu_0$ und Amplitude $x_0$ kann beschrieben werden durch
+\begin{equation}
+\label{eq:oscIdeal}
+	x(t)=x_0 \: \sin(2\pi \nu_0 t).
+\end{equation}
+Das Ausgangssignal eines realen Oszillators weicht durch Amplitudenrauschen ($\epsilon(t)$) und Phasenrauschen ($\phi(t)$) vom idealen Verlauf in \autoref{eq:oscIdeal} ab:
+\begin{equation}
+	x(t)=[x_0 + \epsilon(t)] \: \sin(2\pi \nu_0 t + \phi(t))
+\end{equation}
 
-\subsection{Qualitätskriterien eines Oszillators}
+Für die weiteren Betrachtungen wird angenommen, dass das Amplitudenrauschen $\epsilon(t)$ vernachlässigt werden kann. Dann ist der einzige verbleibende nicht-deterministische Einfluss auf den Oszillator das Phasenrauschen $\phi(t)$. $\phi(t)$ ist dabei als stochastischer Prozess $\phi(t,\xi)=\phi_\xi(t)$ aufzufassen. Da Ergodizität vorausgesetzt werden kann, wird der Index $\xi$ weggelassen, da jede Musterfunktion den Prozess in Hinsicht auf seine stochastischen Parameter ausreichend beschreibt.
 
-\todoin[]{Allan Dev.}
+Die Momentanfrequenz $\nu(t)$ ergibt sich aus der Ableitung der Phase der Sinusfunktion $\Psi(t)=2\pi \nu_0 t + \phi(t)$ zu
+\begin{equation}
+	\nu(t)=\frac{1}{2\pi} \frac{d\Psi(t)}{dt} = \nu_0 + \frac{1}{2\pi} \frac{d\phi(t)}{dt} = \nu_0 + \Delta\nu(t).
+\end{equation}
+
+Die normalisierte Momentanfrequenz $y(t)$, in Englischen auch "instantaneous fractional frequency" genannt, ist definiert als
+\begin{equation}
+	y(t):=\frac{\nu(t)-\nu_0}{\nu_0} = \frac{\Delta\nu(t)}{\nu_0}.
+\end{equation}
+
+
+\section{Phasenrauschgrößen}
 
 \begin{equation}
 	\sigma_y^2(\tau)=\frac{1}{2} \Big\langle(\bar{y}_{n+1}-\bar{y}_{n})^2\Big\rangle
