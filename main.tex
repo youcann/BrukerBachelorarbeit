@@ -1,4 +1,10 @@
 \documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half]{scrbook}
+%install:
+%sudo apt install texlive texstudio texlive-lang-german texlive-math-extra texlive-latex-extra texlive-science texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-generic-extra python3-pygments biber
+%configure:
+%biber command: "biber %"
+%for glossary, command order: pdfatex,makeglossaries,pdflatex
+%for minted: run pdflatex with "-shell-escape"
 
 %German
 \usepackage[utf8]{inputenc}
@@ -17,7 +23,6 @@
 %Math stuff
 \usepackage{mathtools}
 \usepackage{gensymb}
-
 %equation variable descriptions
 %simple:
 %\renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
