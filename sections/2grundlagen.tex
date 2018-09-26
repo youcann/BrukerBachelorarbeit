@@ -217,6 +217,27 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Events. \cite{Kundert2012}
 \end{definition}
 
+\subsection{Jittermetriken}
+
+\begin{subequations}
+	\label{eq:jitterDef}
+	\begin{align}
+	J_{ee}(i)&:=\sqrt{Var\{\delta t_i\}} \\
+	J_k(i)&:=\sqrt{Var\{t_{i+k}-t_i\}} \\
+	J_{cc}(i)&:=\sqrt{Var\{T_{i+1}-T_i\}}, \quad \text{mit: } T_\alpha=t_{\alpha+1}-t_\alpha
+	\end{align}
+\end{subequations}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Edge-To-Edge-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_edgeToEdge.tikz}}
+	\\[4ex]
+	\subcaptionbox{$k$-cycle-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_kCycle.tikz}}
+	\\[4ex]
+	\subcaptionbox{Cycle-To-Cycle-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_cycleToCycle.tikz}}
+	\caption{Visualisierung der Jitter-Definitionen in \autoref{eq:jitterDef}}
+\end{figure}
+
 
 
 \section{Jitterberechnung aus Phasenrauschspektrum}
