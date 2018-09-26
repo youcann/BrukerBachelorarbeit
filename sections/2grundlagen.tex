@@ -138,8 +138,69 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 \todoin{Abbildung, k-Raum Diagramm, Anwendung}
 
 \subsubsection{Spinecho-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/SE.tikz}}
+	\caption[SpinEcho Sequenz]{SE}
+	\label{fig:SE}
+\end{figure}
+
 \subsubsection{Inversion-Recovery-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/IRE.tikz}}
+	\caption[SpinEcho Sequenz]{IR}
+	\label{fig:IR}
+\end{figure}
+
 \subsubsection{Gradientenecho-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/GRE.tikz}}
+	\caption[Inversion Recovery Sequenz]{GRE}
+	\label{fig:GRE}
+\end{figure}
+
+\subsubsection{Echoplanar-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/EPI.tikz}}
+	\caption[Echoplanar Sequenz]{EPI}
+	\label{fig:EPI}
+\end{figure}
+
+\subsubsection{k-Raum Trajektorien}
+Die k-Raum Trajektorie in einer zuvor selektierten Schicht ist eine zweidimensionale Parameterkurve mit der Zeit als Parameter:
+\begin{equation}
+	\vec{s_k}(t)=\begin{pmatrix}k_x(t) \\ k_y(t)\end{pmatrix}
+\end{equation}
+
+Die Länge einer Trajektorie $l$ zwischen der Zeit $t_0$ und $t_1$ ergibt sich aus dem Wegintegral
+\begin{equation}
+	l=\Delta s = \int_{t_0}^{t_1} \vec{s_k}(t) ds.
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{kartesisch}{\includegraphics[width=0.3\textwidth]{img/kTrajcart.tikz}}
+	\hfill
+	\subcaptionbox{radial}{\includegraphics[width=0.3\textwidth]{img/kTrajRad.tikz}}
+	\hfill
+	\subcaptionbox{Spiral}{\includegraphics[width=0.3\textwidth]{img/kTrajSpiral.tikz}}
+	\caption{Auswahl an typischen Trajektorien zur Aufnahme des k-Raums bei "traditionellen" Sequenzen}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/kTrajEPI.tikz}}
+	\caption[Echoplanar Sequenz]{EPI}
+	\label{fig:EPI}
+\end{figure}
+
 
 
 
@@ -214,7 +275,7 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 \section{Jitter}
 
 \begin{definition}[Jitter]
-	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Events. \cite{Kundert2012}
+	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Ereignisses. \cite{Kundert2012}
 \end{definition}
 
 \subsection{Jittermetriken}
