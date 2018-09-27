@@ -2,10 +2,14 @@
 \begin{tikzpicture}[scale=1]
 
 \draw[step=1,gray,thin] (0,0) grid (5,5);
+\draw[gray,-latex] (0,0) -- (0,5.5);
+\draw[gray,-latex] (0,0) -- (5.5,0);
+\node[anchor=south] (kx) at (5.5,0) {$k_x$};
+\node[anchor=west] (ky) at (0,5.5) {$k_y$};
 
 \begin{scope}[shift={(2.5,2.5)}]
-    \draw [domain=0:18,variable=\t,smooth,samples=75,->,very thick]
-        plot ({\t r}: {0.008*\t*\t});
+    \draw [domain=0:13.6,variable=\t,smooth,samples=75,->,very thick]
+        plot ({\t r}: {0.18*\t});
   \end{scope}
 
 \end{tikzpicture}
