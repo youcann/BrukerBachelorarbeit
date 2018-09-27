@@ -31,13 +31,13 @@
 \node[] (tp) at (10,-1.8) {Tiefpass};
 
 \node[draw,fill=white,minimum height=2cm,minimum width=3cm,align=center] (SA) at (16,-3) {Spectrum\\Analyzer};
-\node[draw,fill=white,minimum height=2cm,minimum width=3cm,align=center] (PLL) at (10,-9) {PLL};
+\node[draw=gray,fill=white,minimum height=2cm,minimum width=3cm,align=center,text=gray] (PLL) at (10,-9) {PLL};
 
 \draw[-latex] (mixer) -- (TP);
 \draw[-latex] (TP) -- (SA);
-\draw[-latex] (13,-3) |- (PLL.east);
-\draw[fill] (13,-3) circle (0.1);
-\draw[-latex] (PLL.west) -| (ref.south);
+\draw[-latex,gray] (13,-3) |- (PLL.east);
+\draw[fill=gray,draw=none] (13,-3) circle (0.1);
+\draw[-latex,gray] (PLL.west) -| (ref.south);
 
 
 
