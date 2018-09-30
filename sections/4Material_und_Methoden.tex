@@ -57,7 +57,23 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 
 \subsection{Interpolation im Frequenzbereich}
 
-\subsection{FIR Filter}
+\subsection{FIR/IIR Filter}
+
+\paragraph{Vorbemerkung:}\mbox{}\\
+MATLAB verwendet in den Filterdesign-Tools der "Signal Processing Toolbox" normierte Frequenzen:
+\begin{subequations}
+	\begin{align}
+	f_{norm} = \text{"normalized frequency"} &= \frac{2f}{f_S} \\
+	\omega_{norm} = \text{"radian frequency"} &= \frac{2\pi f}{f_S}
+	\end{align}
+\end{subequations}
+Für Frequenzen im sinnvollen Bereich $f\in [0,f_S/2]$ ergibt sich damit der Wertebereich von
+$f_{norm}$ und $\omega_{norm}/\pi$ zu $\mathbb{W}=[0,1]$.
+
+Übliche (digitale) Filter, wie Tiefpässe, Hochpässe und Bandpässe/Bandsperren haben in der Regel einfach zu formulierende Designziele: Ein steiler Übergang von den Passbändern zu den Stoppbändern und eine jeweils kleine Welligkeit in den Bändern.
+Für das Design solcher Filter bietet die \textit{Signal Processing Toolbox} in MATLAB einige Werkzeuge, wie z.B. den \textit{FilterDesigner} an.
+
+Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen werden. Stattdessen eignet sich die Funktion \texttt{cfirpm()}, um die Filterkoeffizienten für einen FIR-Filter mit beliebigem Amplitudengang zu ermitteln. Ein IIR-Filter kann mit Hilfe der modifizierten Yule-Walker-Gleichungen und eines Least-Square-Fits durch die Funktion \texttt{yulewalk()} generiert werden.
 
 \section{Phasenrauschfunktion für MRiLab}
 

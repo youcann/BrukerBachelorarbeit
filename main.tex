@@ -8,14 +8,12 @@
 
 %German
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[english,ngerman]{babel}
 \usepackage[ngerman]{translator}
 \addto\captionsngerman{
 	\renewcommand{\contentsname}
 	{Inhalt}
 }
-
-\usepackage[expansion=true,protrusion=true,tracking=true]{microtype}
 
 %Floats (for [H])
 \usepackage{float}
@@ -23,9 +21,8 @@
 %Math stuff
 \usepackage{mathtools}
 \usepackage{gensymb}
+
 %equation variable descriptions
-%simple:
-%\renewcommand*\descriptionlabel[1]{\hspace\leftmargin$#1$}
 %aligned:
 \newenvironment{with}
 {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}:{}$} l}}
@@ -40,14 +37,8 @@
 %SI units
 \usepackage{siunitx}
 
-%tables
+%nice tables
 \usepackage{booktabs}
-
-
-%Bibliography using Biber
-\usepackage[autostyle]{csquotes}
-\usepackage[backend=biber,style=alphabetic,sortlocale=de_DE,natbib=true,url=true, doi=true,eprint=false,isbn=true]{biblatex}
-\addbibresource{jabref.bib}
 
 %TODO notes
 %\usepackage[disable]{todonotes}
@@ -79,7 +70,16 @@
 \pagestyle{headings}
 
 %toc in toc
-\usepackage{tocbibind}
+%\usepackage{tocbibind}
+
+%no colon after "Abbildung 1.4"
+\usepackage{caption}
+\captionsetup{labelsep=space}
+
+%Bibliography using Biber
+\usepackage[autostyle]{csquotes}
+\usepackage[backend=biber,style=ieee,sortlocale=de_DE,natbib=true,url=true, doi=true,eprint=false,isbn=true]{biblatex}
+\addbibresource{jabref.bib}
 
 %Glossar
 \usepackage[nonumberlist]{glossaries}
@@ -96,43 +96,74 @@
 \makeglossaries
 \setglossarystyle{meinglossar}
 \loadglsentries{glossentries.tex}
+\glstoctrue
 
+%%%%%%%% KIT Physik Vorlage %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[absolute,overlay]{textpos}          
+\usepackage{tikz}                               
+\usepackage{ifthen}                             
+\usepackage[fit,breakall]{truncate}
 
-\title{Simulation von Störungen im Signalpfad eines MRT}
-\author{Marvin Noll}
-\date{August 2018}
-\publishers{Betreut von: \\ Dipl. Ing. Jürgen Lill {\small (Bruker BioSpin GmbH)}, \\ Prof. Dr. Mark Weber {\small (Institut für Prozessdatenverarbeitung und Elektronik am KIT)}}
+\newcommand{\thesisauthor}{Marvin-Dennis Noll}
+\newcommand{\thesistopic}{Simulation von Störungen im Signalpfad eines Magnetresonanztomografen}
+\newcommand{\thesisentopic}{nix}
+\newcommand{\thesislongtopic}{}
+\newcommand{\thesisinstitute}{Institut für Prozessdatenverarbeitung\\ und Elektronik}
+\newcommand{\thesisreviewerone}{Prof. Dr. Marc Weber}
+\newcommand{\thesisreviewertwo}{Dipl. Ing. Jürgen Lill}
+\newcommand{\thesisadvisorone}{} % to use: enter names and uncomment in titlepg
+\newcommand{\thesisadvisortwo}{}
+\newcommand{\thesistimestart}{15.08.2018} % on titlepage
+\newcommand{\thesistimeend}{30.10.2018} % on titlepage
+\newcommand{\thesistimehandin}{31.10.2018} % on second page 'preamble'
+\newcommand{\thesispagehead}{Bachelorarbeit: \thesisentopic} % page heading 
+\newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2}%
+	\fontshape{#3} \selectfont}
+\usepackage{vmargin}
+\setpapersize{A4}
+\setmarginsrb{3cm}{1cm}{3cm}{1cm}   % {leftmargin}{topmargin}{rightmargin}...
+{6mm}{7mm}{5mm}{15mm}    			% {bottommargin}{headheight}{headsep}...
+									% {footheight}{footskip}
+\setlength{\marginparwidth}{1.5cm}
+%old:
+%\title{}
+%\author{}
+%\date{}
+%\publishers{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{definition}{Definition}[section]
 
 \begin{document}
 \shorthandoff{"} %"A, "S, ... normal
 
-
-\maketitle
-
+\frontmatter
+\input{titlepage.tex}
+\input{pre.tex}
+%chapter uses pagestyle plain -> \thispagestyle{empty} in pre.tex after chapter
 \input{sections/0abstract.tex}
 \thispagestyle{empty}
-
-\pagenumbering{Roman}
+\pagenumbering{roman}
 \setcounter{page}{0}
 \tableofcontents
-
-\printglossary
-\listoffigures
-\listoftables
 \cleardoublepage
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+\mainmatter
 \input{sections/1einleitung.tex}
 \input{sections/2grundlagen.tex}
-\input{sections/3Aufgabenstellung.tex}
 \input{sections/4Material_und_Methoden.tex}
 \input{sections/5Ergebnisse.tex}
 \input{sections/6Diskussion_und_Ausblick.tex}
-\input{sections/99_misc.tex}
+
 \appendix
 \input{sections/7Anhang.tex}
-
+\pagenumbering{Roman}
+\setcounter{page}{0}
+\printglossary
+\listoffigures
+\listoftables
 \printbibliography
 
 \end{document}

@@ -12,3 +12,14 @@
 *.lof
 *.lot
 *.out
+_minted*
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.sbl
+*.slg
+*.sym
