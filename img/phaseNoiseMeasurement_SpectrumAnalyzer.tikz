@@ -1,0 +1,14 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[scale=1]
+
+\node[draw,circle,minimum height=2cm] (dut) at (0,0) {};
+\begin{scope}[shift={(0,0)},scale=0.2]
+ \draw[color=black, samples=100,domain=-3.14:3.14,very thick]   plot (\x,{sin(\x r)});
+  \end{scope}
+\node[] (DUT) at (0,1.2) {DUT};
+
+\node[draw,align=center,minimum height=2cm,minimum width=3cm] (SA) at (6,0) {Spectrum\\Analyzer};
+
+\draw[-latex] (dut) -- (SA);
+
+\end{tikzpicture}

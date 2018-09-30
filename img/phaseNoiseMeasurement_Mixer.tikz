@@ -1,0 +1,54 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[scale=1]
+
+
+\node[draw,circle,minimum height=2cm] (dut) at (0,0) {};
+\begin{scope}[shift={(0,0)},scale=0.2]
+ \draw[color=black, samples=100,domain=-3.14:3.14,very thick]   plot (\x,{sin(\x r)});
+  \end{scope}
+\node[] (DUT) at (0,1.2) {DUT};
+
+\begin{scope}[shift={(0,-6)}]
+\node[draw,circle,minimum height=2cm] (ref) at (0,0) {};
+\begin{scope}[shift={(0,0)},scale=0.2]
+ \draw[color=black, samples=100,domain=-3.14:3.14,very thick]   plot (\x,{sin(\x r)});
+  \end{scope}
+\node[] (REF) at (0,1.2) {REF};
+\end{scope}
+
+
+\node[draw,fill=white,circle,minimum height=2cm] (mixer) at (5,-3) {};
+\begin{scope}[shift={(5,-3)}]
+\draw[very thick] (45:1) -- (45:-1);
+\draw[very thick] (-45:1) -- (-45:-1);
+\node[] (MIX) at (-1,1.2) {Mischer};
+\end{scope}
+\draw[-latex] (dut) -| (mixer);
+\draw[-latex] (ref) -| (mixer);
+
+\node[draw,fill=white,minimum height=2cm,minimum width=3cm] (TP) at (10,-3) {};
+\draw[very thick] (9,-2.5) -- (10,-2.5) -- (11,-3.5);
+\node[] (tp) at (10,-1.8) {Tiefpass};
+
+\node[draw,fill=white,minimum height=2cm,minimum width=3cm,align=center] (SA) at (16,-3) {Spectrum\\Analyzer};
+\node[draw=gray,fill=white,minimum height=2cm,minimum width=3cm,align=center,text=gray] (PLL) at (10,-9) {PLL};
+
+\draw[-latex] (mixer) -- (TP);
+\draw[-latex] (TP) -- (SA);
+\draw[-latex,gray] (13,-3) |- (PLL.east);
+\draw[fill=gray,draw=none] (13,-3) circle (0.1);
+\draw[-latex,gray] (PLL.west) -| (ref.south);
+
+
+
+
+
+
+
+
+
+
+%\node[draw,align=center,minimum height=2cm,minimum width=3cm] (SA) at (6,0) {Spectrum\\Analyzer};
+%\draw[-latex] (dut) -- (SA);
+
+\end{tikzpicture}

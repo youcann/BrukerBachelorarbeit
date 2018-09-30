@@ -55,6 +55,15 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 
 \subsection{Grundsätzliche Vorgehensweise}
 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{14cm}{!}{\includegraphics[]{img/rauschSimu.tikz}}
+	\caption[Simulation]{Simu}
+	\label{fig:aaa}
+\end{figure}
+
+
 \subsection{Interpolation im Frequenzbereich}
 
 \subsection{FIR/IIR Filter}
@@ -68,12 +77,24 @@ MATLAB verwendet in den Filterdesign-Tools der "Signal Processing Toolbox" normi
 	\end{align}
 \end{subequations}
 Für Frequenzen im sinnvollen Bereich $f\in [0,f_S/2]$ ergibt sich damit der Wertebereich von
-$f_{norm}$ und $\omega_{norm}/\pi$ zu $\mathbb{W}=[0,1]$.
+$f_{norm}$ und $\omega_{norm}/\pi$ zu $\mathbb{W}_{f_{norm}}=\mathbb{W}_{\omega_{norm}/\pi}=[0,1]$.
 
 Übliche (digitale) Filter, wie Tiefpässe, Hochpässe und Bandpässe/Bandsperren haben in der Regel einfach zu formulierende Designziele: Ein steiler Übergang von den Passbändern zu den Stoppbändern und eine jeweils kleine Welligkeit in den Bändern.
 Für das Design solcher Filter bietet die \textit{Signal Processing Toolbox} in MATLAB einige Werkzeuge, wie z.B. den \textit{FilterDesigner} an.
 
-Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen werden. Stattdessen eignet sich die Funktion \texttt{cfirpm()}, um die Filterkoeffizienten für einen FIR-Filter mit beliebigem Amplitudengang zu ermitteln. Ein IIR-Filter kann mit Hilfe der modifizierten Yule-Walker-Gleichungen und eines Least-Square-Fits durch die Funktion \texttt{yulewalk()} generiert werden.
+Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen werden. Stattdessen eignet sich beispielsweise die Funktion \texttt{fir2()}, um die Filterkoeffizienten für einen FIR-Filter mit beliebigem Amplitudengang zu ermitteln\footnote{\texttt{cfirpm()} und \texttt{firpm()} sind weitere Möglichkeiten, einen FIR-Filter mit der "equiripple"- bzw. "Parks-McClellan"-Methode zu erzeugen.}. Ein IIR-Filter kann mit Hilfe der modifizierten Yule-Walker-Gleichungen und eines Least-Square-Fits durch die Funktion \texttt{yulewalk()} generiert werden.
+
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{FIR-Filter, Ordnung $n=1000$}{\includegraphics[width=0.45\textwidth,height=0.5\textwidth]{plots/fir.tikz}}
+	\hfill
+	\subcaptionbox{IIR-Filter, Ordnung $n=70$}{\includegraphics[width=0.45\textwidth,height=0.5\textwidth]{plots/iir.tikz}}
+	\caption{Caption}
+\end{figure}
+
+
+
 
 \section{Phasenrauschfunktion für MRiLab}
 

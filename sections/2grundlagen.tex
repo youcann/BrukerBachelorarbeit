@@ -124,7 +124,29 @@ Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukle
 
 
 \subsection{Bildentstehung im MR-Tomographen}
-\todoin{Frequenzkodierung, Phasenkodierung}
+
+\subsubsection{Selektive Anregung/Schichtwahl}
+Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des HF-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
+
+Die Amplitudenfunktion $B_T(t)$ mit der das HF-Signal moduliert wird, wird so gewählt, dass eine möglichst scharf begrenzte Schicht in z-Richtung selektiert wird.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/rfForm.tikz}}
+	\caption[form]{HF puls}
+	\label{fig:rfForm}
+\end{figure}
+
+Daher wird meist
+\begin{equation}
+	B_T(t)=C \frac{sin(x)}{x}
+\end{equation}
+als Amplitudenfunktion gewählt, da...
+
+
+\subsubsection{Phasenkodierung}
+
+\subsubsection{Frequenzkodierung}
 
 \subsection{MRT Pulssequenzen}
 Die zeitliche Abfolge der Gradientenfelder (Schichtwahl, Phasenkodierung und Frequenzkodierung) und der Hochfrequenz-Anregungssignale wird als MRT Pulssequenz bezeichnet.
@@ -135,13 +157,70 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 	\item \textbf{GRE}: Gradientenecho-Sequenz
 \end{itemize}
 
-\todoin{Abbildung, k-Raum Diagramm, Anwendung}
 
 \subsubsection{Spinecho-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/SE.tikz}}
+	\caption[SpinEcho Sequenz]{SE}
+	\label{fig:SE}
+\end{figure}
+
 \subsubsection{Inversion-Recovery-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/IRE.tikz}}
+	\caption[SpinEcho Sequenz]{IR}
+	\label{fig:IR}
+\end{figure}
+
 \subsubsection{Gradientenecho-Sequenz}
 
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/GRE.tikz}}
+	\caption[Inversion Recovery Sequenz]{GRE}
+	\label{fig:GRE}
+\end{figure}
 
+\subsubsection{Echoplanar-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[]{img/EPI.tikz}}
+	\caption[Echoplanar Sequenz]{EPI}
+	\label{fig:EPI}
+\end{figure}
+
+\subsubsection{k-Raum Trajektorien}
+Die k-Raum Trajektorie in einer zuvor selektierten Schicht ist eine zweidimensionale Parameterkurve mit der Zeit als Parameter:
+\begin{equation}
+	\vec{s_k}(t)=\begin{pmatrix}k_x(t) \\ k_y(t)\end{pmatrix}
+\end{equation}
+
+Die Länge einer Trajektorie $l$ zwischen der Zeit $t_0$ und $t_1$ ergibt sich aus dem Wegintegral
+\begin{equation}
+	l=\Delta s = \int_{t_0}^{t_1} \vec{s_k}(t) ds.
+\end{equation}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{kartesisch}{\includegraphics[width=0.3\textwidth]{img/kTrajcart.tikz}}
+	\hfill
+	\subcaptionbox{radial}{\includegraphics[width=0.3\textwidth]{img/kTrajRad.tikz}}
+	\hfill
+	\subcaptionbox{Spiral}{\includegraphics[width=0.3\textwidth]{img/kTrajSpiral.tikz}}
+	\caption{Auswahl an typischen Trajektorien zur Aufnahme des k-Raums bei "traditionellen" Sequenzen}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.3\textwidth]{img/kTrajEPI.tikz}}
+	\caption[Echoplanar Sequenz]{EPI}
+	\label{fig:EPI}
+\end{figure}
 
 
 \subsection{MRT Artefakte}
@@ -187,7 +266,7 @@ Durch Bewegung des untersuchten Lebewesens, sei es durch die willkürliche Musku
 \subsubsection{Technische Artefakte}
 
 \subsection{Besonderheiten präklinischer MRT Systeme}
-Größe, Handhabungssysteme
+MRTs für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Am häufigsten werden Mäuse und Ratten, seltener auch größere Nagetiere als Modellorganismen eingesetzt. Durch ihre kleinere Abmessungen...
 
 \section{(Digitale) Signalverarbeitung}
 
@@ -214,8 +293,29 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 \section{Jitter}
 
 \begin{definition}[Jitter]
-	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Events. \cite{Kundert2012}
+	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Ereignisses. \cite{Kundert2012}
 \end{definition}
+
+\subsection{Jittermetriken}
+
+\begin{subequations}
+	\label{eq:jitterDef}
+	\begin{align}
+	J_{ee}(i)&:=\sqrt{Var\{\delta t_i\}} \\
+	J_k(i)&:=\sqrt{Var\{t_{i+k}-t_i\}} \\
+	J_{cc}(i)&:=\sqrt{Var\{T_{i+1}-T_i\}}, \quad \text{mit: } T_\alpha=t_{\alpha+1}-t_\alpha
+	\end{align}
+\end{subequations}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Edge-To-Edge-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_edgeToEdge.tikz}}
+	\\[4ex]
+	\subcaptionbox{$k$-cycle-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_kCycle.tikz}}
+	\\[4ex]
+	\subcaptionbox{Cycle-To-Cycle-Jitter}{\includegraphics[width=0.55\textwidth]{img/Jitter_cycleToCycle.tikz}}
+	\caption{Visualisierung der Jitter-Definitionen in \autoref{eq:jitterDef}}
+\end{figure}
 
 
 
@@ -266,7 +366,31 @@ Die zeitliche Entwicklung der Frequenz $\nu(t)$ ergibt sich aus der momentanen P
 
 \subsubsection{Im Zeitbereich: Oszilloskop}
 
-\subsubsection{Im Frequenzbereich: Spektrumanalyzer}
+\subsubsection{Im Frequenzbereich}
+Das Phasenrauschen eines Prüflings (DUT - device under test) kann im Frequenzbereich mit unterschiedlichen Verfahren ausgemessen werden: Die einfachste Vorgehensweise ist das Messen des Spektrums um die Trägerfrequenz mit einem Spektrumanalyzer (siehe \autoref{fig:phaseNoiseSA}).
+Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalyzers begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrausches nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalyzer über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{0.35\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_SpectrumAnalyzer.tikz}}
+	\caption[ph]{Spectrum Analyzer}
+	\label{fig:phaseNoiseSA}
+\end{figure}
+
+Ist eine Referenzquelle mit einer Frequenz gleich der Trägerfrequenz des Prüflings verfügbar, kann diese genutzt werden, um das Ausgangssignal des Prüflings auf $f=\SI{0}{\hertz}$ herunter zu mischen. Die spektralen Anteile bei der Summenfrequenz $f=f_{REF}+f_{DUT}$ werden durch einen Tiefpass abgetrennt. Das Träger-freie Phasenrauschsignal kann dann mit dem Spektrumanalyzer gemessen werden.
+Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL verwendet werden, um die Frequenz der Referenzquelle der Trägerfrequenz des Prüflings nachzuführen (\autoref{fig:phaseNoiseMixer}).
+
+\begin{figure}[H]
+	\centering
+	\resizebox{0.8\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_Mixer.tikz}}
+	\caption[ph]{Mixer}
+	\label{fig:phaseNoiseMixer}
+\end{figure}
+
+
+
+
+
 
 
 
