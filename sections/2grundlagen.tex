@@ -266,7 +266,19 @@ Durch Bewegung des untersuchten Lebewesens, sei es durch die willkürliche Musku
 \subsubsection{Technische Artefakte}
 
 \subsection{Besonderheiten präklinischer MRT Systeme}
-MRTs für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Am häufigsten werden Mäuse und Ratten, seltener auch größere Nagetiere als Modellorganismen eingesetzt. Durch ihre kleinere Abmessungen...
+MRTs für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Da Mäuse, Ratten und andere Nagetiere häufig als Modellorganismen in der Forschung eingesetzt werden, ist das Marktvolumen präklinischer Bildgebungssysteme für diese Tiere am größten. \cite{GBanimalStat} Die Magnetöffnung eines präklinischen MRTs ist daher kleiner als die eines vergleichbaren Gerätes in der Humanmedizin. Während jedoch bei klinischen Tomographen der Durchmesser der Magnetöffnung in etwa den maximalen Patientenabmaßen entspricht, ist die Bohrung eines präklinischen MRTs etwas größer als die Breite der zu untersuchenden Tiere: Da bei den meisten präklinischen MRTs das Gradientensystem und die Empfangsspulen wechselbar ausgeführt sind, muss für diese zusätzlicher Platz in der Bohrung vorgesehen werden. Zur Maximierung der Bildqualität wird der Abstand von Tier zu den Spulensystemen möglichst klein gewählt.
+
+Die Feldstärke des statischen Magnetfeldes ist bei präklinischen MRTs in der Regel höher als bei klinischen: Durch die, im Vergleich zum Menschen, kleineren geometrischen Abmessungen der Tierorgane werden für die präklinische Bildgebung kleinere Voxelgrößen gefordert. Diese führen zu kleineren Signalstärke pro Voxel und damit bei gleichbleibendem Rauschen zu einem reduzierten SNR.
+
+Das relative SNR kann aus der Protonendichte $\rho$, der Stärke des Spinmoments $\mu$, dem Durchmesser der Empfangsspule $d$, dem Voxelvolumen $V_{vox}$ und der Aufnahmezeit $T_{aq}$ abgeschätzt werden \cite[S.~161]{Kiessling2017}:
+\begin{equation}
+\label{eq:SNR}
+	SNR \sim \rho \cdot \mu \cdot B_0 \cdot d^{-1} \cdot V_{vox} \cdot \sqrt{T_{aq}}
+\end{equation}
+Aus \autoref{eq:SNR} wird ersichtlich, dass bei gleichbleibenden Eigenschaften des Gewebes ($\rho$ und $\mu$) $B_0$ groß gewählt werden muss, wenn $V_vox$ klein ist.
+Dadurch, dass $B_0$ linear und $T_{aq}$ mit $\sqrt{T_{aq}}$ in die Gleichung eingeht, muss zur Erhaltung eines gegebenen SNRs bei Halbierung der Voxelgröße entweder die Aufnahmezeit vervierfacht werden\footnote{Die Aufnahmezeit ist nach oben durch die maximale Anästhesiezeit der Tiere begrenzt. Für Mäuse beträgt diese etwa eine bis drei Stunden \cite{Kiessling2017}}, oder ein MRT mit doppelter Feldstärke $B_0$ verwendet werden.
+
+Neben den für die Bildqualität entscheidenden Faktoren sind in der präklinischen Bildgebung zusätzlich Handhabungssysteme zur Betäubung, zur konsistenten Positionierung und zum Wärmeerhalt der anästhesierten Tiere im Gerät nötig.
 
 \section{(Digitale) Signalverarbeitung}
 

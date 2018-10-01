@@ -1,0 +1,66 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[scale=0.8]
+
+
+\draw[-latex] (4,6) -- (4,4);
+\draw[-latex] (4,2) -- (4,1);
+\draw[-latex] (4,7) -- (4,8);
+\draw[-latex] (5,0) -- (8.5,0);
+\draw[-latex] (5,9) -- (8.5,9);
+\draw[-latex] (11.5,9) -- (13,9) -- (13,5)  -- (14,5);
+\draw[-latex] (11.5,0) -- (13,0) -- (13,4)  -- (14,4);
+\draw[-latex] (0,4.5) |- (3,9);
+\draw[-latex] (0,4.5) |- (3,0);
+\node[fill,circle,inner sep=2] (circ1) at (0,4.5) {};
+\draw[-latex] (-2,4.5) -- (circ1);
+\draw[-latex,double=white, thick] (16,4.5) -- (18,4.5);
+
+
+%Mischer1
+\begin{scope}[shift={(4,9)}]
+\filldraw[fill=white,draw=black] (0,0) circle (1);
+\draw[very thick] (45:1) -- (45:-1);
+\draw[very thick] (-45:1) -- (-45:-1);
+\end{scope}
+
+%Mischer2
+\begin{scope}[shift={(4,0)}]
+\filldraw[fill=white,draw=black] (0,0) circle (1);
+\draw[very thick] (45:1) -- (45:-1);
+\draw[very thick] (-45:1) -- (-45:-1);
+\end{scope}
+
+%LO
+\begin{scope}[shift={(4,6)},scale=1]
+\filldraw[fill=white,draw=black] (0,0) circle (1);
+ \draw[color=black, samples=100,domain=-0.2*3.14:0.2*3.14,very thick]   plot (\x,{0.2*sin(5*\x r)});
+\end{scope}
+
+%phaseShifter
+\begin{scope}[shift={(4,3)},scale=1]
+\filldraw[fill=white,draw=black] (-1,-1) rectangle (1,1);
+\node[] (phaseShifter) at (0,0) {90deg};
+\end{scope}
+
+%TP1
+\begin{scope}[shift={(10,9)},scale=1]
+\filldraw[fill=white,draw=black] (-1.5,-1) rectangle (1.5,1);
+\node[] (phaseShifter) at (0,0) {TP};
+\end{scope}
+
+%TP2
+\begin{scope}[shift={(10,0)},scale=1]
+\filldraw[fill=white,draw=black] (-1.5,-1) rectangle (1.5,1);
+\node[] (phaseShifter) at (0,0) {TP};
+\end{scope}
+
+%Re/Im to cmplx
+\draw (14,3) rectangle (16,6);
+
+
+
+
+
+
+
+\end{tikzpicture}
