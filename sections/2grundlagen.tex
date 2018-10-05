@@ -157,41 +157,59 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 	\item \textbf{GRE}: Gradientenecho-Sequenz
 \end{itemize}
 
+Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel für spezielle Aufnahme-Modi, wie die Diffusionsbildgebung nötig sind oder die Aufnahmezeit stark verkürzen. Zwei Beispiele für die "schnellen" Sequenzen sind \textit{Turbo-Spinecho} und \textit{Echo Planar Imaging}.
+
 
 \subsubsection{Spinecho-Sequenz}
+Bei der Spinecho-Sequenz, abgekürzt mit \textit{SE}, erfolgt zunächst eine Anregung der Schicht mit einem 90\degree-RF-Puls, der die Spins in die XY-Ebene klappt. Durch statische Feldinhomogenitäten im Gewebe zerfällt die Magnetisierung nicht mit T2, sondern mit T2*. Da die Spins auseinanderlaufen, wird dieser Prozess als Dephasierung bezeichnet. Nach der Hälfte der Echozeit ($TE/2$) wird ein 180\degree-RF-Puls eingestrahlt. Dieser klappt das Spin-Ensemble um 180\degree. Die Spins laufen daraufhin nach der Zeit $2(TE/2) = TE$ wieder zusammen; es kommt zur Rephasierung. Das dabei entstehende Empfangssignal wird \textit{Echo} genannt (\autoref{fig:SE}).
+
+Nach der Repetitionszeit $TR$ wird die Sequenz wiederholt. Durch Variation des Phasenkodiergradienten $G_{ph}$ wird bei jeder Wiederholung eine andere Zeile des k-Raums ausgewählt, die dann mit dem Frequenzkodiergradienten $G_f$ Pixelweise ausgelesen wird.
+
+Die SE-Sequenz hat den Vorteil, dass statische Feldinhomogenitäten vollständig ausgeglichen werden. Durch die einstellbaren Zeiten $TE$ und $TR$ kann eine T1, T2 oder PD gewichtete Aufnahme erzeugt werden.
+Der sehr guten Bildqualität steht die lange Aufnahmezeit gegenüber.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/SE.tikz}}
-	\caption[SpinEcho Sequenz]{SE}
+	\caption[Spinecho-Sequenz]{Zeitverlauf der Signale im MRT bei einer Spinecho-Sequenz}
 	\label{fig:SE}
 \end{figure}
 
 \subsubsection{Inversion-Recovery-Sequenz}
+Eine Variation der Spinecho-Sequenz ist die Inversion-Recovery-Sequenz, kurz IR-Sequenz. Dabei wird vor dem 90\degree-RF-Anregungspuls ein 180\degree-RF-Puls eingestrahlt. Die Zeit zwischen dem 180\degree-RF-Puls (dem sog. Inversionspuls) und dem Anregungspuls wird als Inversionszeit $TI$ (time of inversion) bezeichnet. Durch die einstellbare Inversionszeit kann das Signal einiger Gewebetypen unterdrückt werden oder es können stark T1 gewichtete Bilder erzeugt werden (\autoref{fig:IR}).
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/IRE.tikz}}
-	\caption[SpinEcho Sequenz]{IR}
+	\caption[Inversion-Recovery-Sequenz]{Zeitverlauf der Signale im MRT bei einer Inversion-Recovery-Sequenz}
 	\label{fig:IR}
 \end{figure}
 
 \subsubsection{Gradientenecho-Sequenz}
+Bei der Gradientenecho-Sequenz (GRE) wird kein 180\degree-RF-Puls zur Erzeugung eines Echos, sondern ein Polaritätswechsel des Frequenzkodiergradientens genutzt. Dadurch, dass der 180\degree-Puls eingespart werden kann, sind viel kürzere Repetitionszeiten $TR$ möglich. Da bei einer kleinen Repetitionszeit auch nur wenig Zeit für eine vollständige T1-Relaxation zur Verfügung steht, werden häufig Anregungswinkel von $\alpha<90\degree$ verwendet (\autoref{fig:GRE}).
+
+Durch die kleinen TR Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der T1 Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
+
+Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht zu erhalten und diese für mehrere Echos zu nutzen. Die entsprechenden Pulssequenzen und ihre Weiterentwicklungen heißen \textit{GRASS} bzw. \textit{FIESTA} bei GE oder \textit{FISP} bzw. \textit{TrueFISP} bei Siemens.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/GRE.tikz}}
-	\caption[Inversion Recovery Sequenz]{GRE}
+	\caption[Gradientenecho-Sequenz]{Zeitverlauf der Signale im MRT bei einer (klassischen) Gradientenecho-Sequenz ohne Spoiling}
 	\label{fig:GRE}
 \end{figure}
 
+\subsubsection{Turbo-Spinecho-Sequenz}
+Eine modifizierte, schnellere Variante der Spinecho-Sequenz ist die Turbo-Spinecho-Sequenz. Je nach Hersteller des Tomographens wird sie auch als FSE (Fast Spin Echo, z.B. von GE verwendet) oder RARE (Rapid Acquisition with Refocused Echoes, z.B. von Bruker verwendet) bezeichnet.
+
 \subsubsection{Echoplanar-Sequenz}
+Echoplanar-Sequenzen, abgekürzt EPI (von Echo planar imaging), ermöglichen sehr kurze Aufnahmezeiten, da der gesamte k-Raum nach nur einem RF-Anregungspuls gefüllt wird. Heute verbreitet ist die sog. blipped EPI-Sequenz. Bei dieser wird der Phasenkodiergradient im Gegensatz zu der 1977 von Mansfield vorgestellten EPI Variante nicht konstant eingeschaltet, sondern mit kleinen Impulsen (eng. blips) geschaltet (vgl. \cite[S.~299]{Bushong2014}).
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/EPI.tikz}}
-	\caption[Echoplanar Sequenz]{EPI}
-	\label{fig:EPI}
+	\caption[Echoplanar Sequenz]{Zeitverlauf der Signale im MRT bei einer (blipped) EPI-Sequenz}
+	\label{fig:EPIseq}
 \end{figure}
 
 \subsubsection{k-Raum Trajektorien}
@@ -384,7 +402,7 @@ Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch
 
 \begin{figure}[H]
 	\centering
-	\resizebox{0.35\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_SpectrumAnalyzer.tikz}}
+	\resizebox{0.28\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_SpectrumAnalyzer.tikz}}
 	\caption[ph]{Spectrum Analyzer}
 	\label{fig:phaseNoiseSA}
 \end{figure}
@@ -394,7 +412,7 @@ Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL 
 
 \begin{figure}[H]
 	\centering
-	\resizebox{0.8\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_Mixer.tikz}}
+	\resizebox{0.6\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_Mixer.tikz}}
 	\caption[ph]{Mixer}
 	\label{fig:phaseNoiseMixer}
 \end{figure}
