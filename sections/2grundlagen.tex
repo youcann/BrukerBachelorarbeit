@@ -2,37 +2,91 @@
 In diesem Kapitel werden einige Grundlagen erläutert, die für den weiteren Verlauf der Arbeit relevant sind.
 
 \section{(Präklinische-) Magnetresonanztomographie}
-Magnetresonanztomographie (abgekürzt MRT\footnote{Auch \textit{MRI} (englisch magnetic resonance imaging)}) bezeichnet ein bildgebendes Verfahren, dass den physikalischen Effekt der Kernspinresonanz (NMR nach englisch nuclear magnetic resonance) nutzt.
+Magnetresonanztomographie (abgekürzt MRT\footnote{Auch \textit{MRI} (eng. magnetic resonance imaging)}) bezeichnet ein bildgebendes Verfahren, dass den physikalischen Effekt der Kernspinresonanz (NMR nach englisch nuclear magnetic resonance) nutzt.
 
-Als \textit{Tomografie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben}-Verfahren ermöglicht es MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) überlagerungsfrei.
+Als \textit{Tomografie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben}-Verfahren ermöglicht es MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) überlagerungsfrei.
 
 Im Gegensatz zur \textit{Computertomographie} (CT), einem weiteren sehr verbreitetem Tomographieverfahren, kommt bei einer MRT Untersuchung keine ionisierende Strahlung zum Einsatz.
 
 Die folgenden Abschnitte beschreiben den NMR-Effekt und die weiteren Techniken, die zur Bildentstehung in einem MRT Gerät nötig sind. Im letzten Abschnitt wird auf die Besonderheiten der präklinischen Bildgebung eingegangen.
 
-\subsection{Der NMR-Effekt}
+\subsection{Vom NMR-Effekt zur MRT}
 Die Entwicklung der Magnetresonanzbildgebung wurde erst durch die Entdeckung der Kernspinresonanz möglich. Der physikalische Effekt wird auch außerhalb englischsprachiger Länder meist \textit{nuclear magnetic resonance}, kurz NMR, genannt.
 
-\subsubsection{Geschichte}
 1922 zeigten \textsc{Stern} und \textsc{Gerlach} im, nach ihnen benannten, Stern-Gerlach-Experiment die Quantelung von (Eigen-) Drehimpulsen: Silberatome werden aus einem Ofen heraus durch ein inhomogenes Magnetfeld auf eine Glasplatte beschleunigt. Klassisch wäre durch die Ablenkung des Magnetfeldes eine kontinuierliche Intensitäts-Verteilung um $0\degree$ auf der Platte zu erwarten. Stattdessen entstehen durch die quantisierten Spins zwei diskrete Punkte. \cite{Gerlach1922}
 
 1938 konnte die Kernspinresonanz erstmals von \textsc{Isidor Isaac Rabi} durch eine Erweiterung des Stern-Gerlach-Versuchs nachgewiesen werden: Dazu wird die Anordnung des Stern-Gerlach-Versuchs um ein weiteres inhomogenes Magnetfeld dahinter ergänzt. Dieses ist umgekehrt gepolt und ansonsten identisch dem ersten Feld. Das erste Feld wirkt daher de-fokussierend auf die Atome, das zweite re-fokussierend. Wird ein homogenes Wechsel-Magnetfeld zwischen den beiden inhomogenen Feldern erzeugt, sinkt die gemessene Detektorintensität hinter der Anordnung bei einer bestimmten Frequenz. Bei dieser Frequenz $\omega_0$ wird die Resonanzbedingungen zwischen zwei Übergängen erreicht. $\omega_0$ heißt daher Resonanzfrequenz. Damit ist es möglich, die benötigte Energie zu bestimmen, um ein atomares, magnetisches Moment anzuregen. Für seine Arbeiten erhielt Rabi 1944 den Nobelpreis für Physik. \cite{Rabi1938}
 
-Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker \textsc{Felix Bloch} und der US-Amerikaner \textsc{Edward Mills Purcell}: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander die NMR in Flüssigkeiten bzw. Feststoffen. Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
+Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker \textsc{Felix Bloch} und der US-Amerikaner \textsc{Edward Mills Purcell}: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander den NMR-Effekt in Flüssigkeiten bzw. Feststoffen. Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
 
-\todoin[]{Lautabur etc.}
+\textsc{Paul Lauterbur} (1909-2007) gelang 1973 die erste Aufnahme eines MR-Bildes: Ein dünnes, Wasser gefülltes Röhrchen ist in einem \SI{1.4}{\tesla} starken Magnetfeld platziert. Durch Anlegen von, jeweils um \SI{45}{\degree} weiter rotierten, Feldgradienten wurden Projektionen des Transversalmagnetfeldes der Probe erzeugt. Aus diesen konnten dann mit der, aus der Computertomographie bekannten, Methode der Rückprojektion das Originalbild gewonnen werden \cite{LAUTERBUR1973}.
 
-\subsubsection{Quantenmechanische Theorie}
+Sowohl das Team um \textsc{Richard R. Ernst}, als auch \textsc{Peter Mansfield} (1933-2017) verbesserten die, zu der Zeit noch als \textit{Zeugmatography} oder \textit{NMR Imaging} bekannte, Technik durch die Verwendung von eingestrahlten RF-Pulsen und Ausnutzung der, zur damaligen Zeit noch recht neuen, schnellen Fourier Transformation (FFT) zur Rekonstruktion \cite{Kumar1975}, \cite{Mansfield1977}.
 
+Als die erste medizinische MRT-Aufnahme gilt die Darstellung in \autoref{fig:mansfieldFinger}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{img/ext/mansfieldFinger.png}
+	\caption[Erste MRT Aufnahme von Mansfield]{Erste veröffentlichte MRT Aufnahme (um 1976), Finger mit sichtbarem Knochen, Farbskala kodiert die Signalstärke \cite{Mansfield1977a}}
+	\label{fig:mansfieldFinger}
+\end{figure}
+
+In \cite{Damadian1971} zeigte der Mediziner \textsc{Raymond Damadian} mit Hilfe von NMR Spektren, dass sich gesundes Gewebe und Tumorgewebe in den Relaxationszeiten T1 und T2 unterscheiden: Krebszellen weisen typisch höhere T1 und T2 Zeiten auf, als das umliegende Gewebe \cite{Damadian1971}. Damit war abzusehen, dass die MRT einen hohen Nutzen in Forschung und Diagnostik haben wird. Danadian meldete 1977 den ersten Ganzkörper-MR-Tomographen zum Patent an.
+
+Paul Lauterbur und Peter Mansfield erhielten 2003 den Nobelpreis für Physiologie oder Medizin.
+
+
+\subsection{Quantenmechanische Theorie}
+Atomkerne weisen ein ähnlich wie Elektronen einen Spin auf. Das Spindrehmoment $\vec{S}$ ergibt sich mit dem Spinoperator $\vec{I}$ und dem reduzierten Planckschen Wirkungsquantum $\hbar$ zu:
 \begin{equation}
-	\omega_0=\gamma B_0
+	\vec{S}=\hbar \vec{I}
 \end{equation}
-mit:
-\begin{with}
-\omega_0 & Kreisfrequenz (in \SI{}{\hertz}) \\
-\end{with}
 
-\subsubsection{Blochgleichungen}
+Das magnetische Dipolmoment $\vec{\mu}$ eines Atomkerns ergibt sich aus $\vec{S}$ und dem gyromagnetischem Verhältnis $\gamma$, dass von der Art des Atomkern abhängig ist, zu:
+\begin{equation}
+	\vec{\mu}=\gamma \vec{S} = \gamma \hbar \vec{I}
+\end{equation}
+
+In einem statischen Magnetfeld $\vec{B}=(0,0,B_0)$ ergibt sich in einem makroskopischen Volumen eine Magnetisierung $\vec{M}$:
+\begin{equation}
+	\vec{M} = \sum \vec{\mu} = (0,0,M_z), \quad \vec{\mu}=(0,0,\mu_z)
+\end{equation}
+
+Mit dem angelegten $B$-Feld ergibt sich die potentielle Energie des magnetischen Dipolmoments zu:
+\begin{equation}
+	E=-\vec{\mu} \cdot \vec{B} = -\mu_z B_0 = -\gamma S_z B_0 = -\gamma \hbar B_0 |\vec{I}|
+\end{equation}
+
+Durch die Quantelung von $\vec{I}$ auf $\vec{I}=(0,0,\pm I_z)$ ergeben sich:
+\begin{subequations}
+	\begin{align}
+	E_1 & = -\gamma \hbar B_0 \frac{1}{2} \\
+	E_2 & = +\gamma \hbar B_0 \frac{1}{2}
+	\end{align}
+\end{subequations}
+
+Damit sind die zwei möglichen Energiezustände $E_1$ und $E_2$ durch
+\begin{equation}
+	\Delta E = |E_1 - E_2| = \gamma \hbar B_0
+\end{equation}
+getrennt \cite[S.~ 56]{Nishimura1996}.
+
+Im thermischen Gleichgewicht weisen $\vec{B}$ und $\vec{M}$ in die selbe Richtung. Ändert sich die Richtung den angelegten Magnetfeldes $\vec{B}$, so tritt Präzession von $\vec{M}$ auf. Aus der Differentialgleichung
+\begin{equation}
+	\frac{d\vec{M}}{dt}=\vec{M} \times \gamma \vec{B}
+\end{equation}
+folgt als Lösung eine Präzession mit einer Kreisfrequenz von
+\begin{equation}
+	\omega_0=\gamma |\vec{B}|
+\end{equation}
+bzw. einer Frequenz $f_0$ von
+\begin{equation}
+	f_0=\frac{\gamma}{2\pi} |\vec{B}|
+\end{equation}
+
+
+\subsection{Blochgleichungen}
 Die Blochgleichungen gelten in Flüssigkeiten und eingeschränkt auch in Festkörpern. In vektorieller Schreibweise lauten sie:
 \begin{equation}
 	\frac{d\vec{M}}{dt}=\gamma\vec{M}\times\vec{H_a}-\vec{e_x}\frac{M_x}{T_2}-\vec{e_y}\frac{M_y}{T_2}-\vec{e_z}\frac{M_z-M_0}{T_1}
@@ -46,11 +100,9 @@ mit:
 \todoin{Unterschied Laborsystem, rotierendes Bezugssystem}
 
 
-\subsubsection{Relaxation}
-\todoin[]{T1, T2, pD gewichtung}
 
 \subsection{Kernspin detektierbare Eigenschaften von Gewebe}
-Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden und, dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
+Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden ulischnd, dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
 
 \begin{table}[H]
 	\centering
@@ -80,11 +132,13 @@ Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifiz
 	\label{fig:metastase}
 \end{figure}
 
+Wie sich die Gewichtung bei einer MRT Aufnahme einstellen lässt, ist in \autoref{sec:gewichtung} gezeigt.
+
 
 
 \subsection{Aufbau eines MR-Tomographen}
 \missingfigure{Gesamtsystem}
-
+lisch
 \subsubsection{Statisches Magnetfeld}
 Das statische Magnetfeld, auch $B_0$-Feld genannt, wird durch einen Magneten erzeugt. Dieser muss über eine ausreichend dimensionierte Öffnung verfügen, so dass der zu untersuchende Körper und andere Spulensysteme des Tomographen darin Platz finden. Mit Feldstärken im Bereich von \SI{0.3}{\tesla} (bei klinischen MRI Systemen) bis hin zu \SI{15}{\tesla} im Bereich der präklinschen MRIs ist das $B_0$-Feld verglichen mit dem Erdmagnetfeld\footnote{etwa \SI{50}{\micro\tesla} \cite{Enc1994}} oder einem Kühlschrankmagneten\footnote{etwa \SI{0.1}{\tesla} \cite{LHC2018}} ein sehr starkes Magnetfeld.
 Erzeugt wird das $B_0$-Feld entweder mit einem Permanentmagneten oder einem Elektromagneten. 
@@ -142,7 +196,7 @@ Daher wird meist
 	B_T(t)=C \frac{sin(x)}{x}
 \end{equation}
 als Amplitudenfunktion gewählt, da...
-
+lisch
 
 \subsubsection{Phasenkodierung}
 
@@ -239,6 +293,55 @@ Die Länge einer Trajektorie $l$ zwischen der Zeit $t_0$ und $t_1$ ergibt sich a
 	\caption[Echoplanar Sequenz]{EPI}
 	\label{fig:EPI}
 \end{figure}
+
+\subsection{Bildgewichtungen bei Spinecho-Sequenzen}
+\label{sec:gewichtung}
+In diesem Abschnitt sei exemplarisch anhand der Spinecho-Sequenz gezeigt, wie durch Variation der Aufnahmeparameter eine T1-, T2-, bzw. PD-Gewichtung erzielt werden kann.
+
+Nach \cite{Bushberg2011} gilt bei einem Schichtbild, dass mit einer Spinecho-Sequenz aufgenommen wird, für die Pixelintensität:
+\begin{equation}
+\label{eq:SEintensity}
+	I \sim \rho \left(1-e^{-\frac{TR}{T1}}\right) e^{\frac{TE}{T2}}
+\end{equation}
+
+In \autoref{eq:SEintensity} sind die Parameter $\rho$, $T1$ und $T2$ vom Gewebe in dem betrachteten Pixel abhängig. Die Echozeit $TE$ und die Repetitionszeit $TR$ sind freie Parameter der Pulssequenz.
+
+Für die Verhältnisse $\frac{TR}{T1}$ und $\frac{TE}{T2}$ können vier Fälle unterschieden werden:
+
+\begin{enumerate}
+	\item \textbf{$TR/T1\ll1$ und $TE/T2\ll1$}: T1-Gewichtung
+	\item \textbf{$TR/T1\gg1$ und $TE/T2\gg1$}: T2-Gewichtung
+	\item \textbf{$TR/T1\gg1$ und $TE/T2\ll1$}: PD-Gewichtung
+	\item (\textbf{$TR/T1\ll1$ und $TE/T2\gg1$}: Einfluss von sowohl T1 und T2, praktisch keine Bedeutung)
+\end{enumerate}
+Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die Fälle 1), 2) und 3) ist in \autoref{fig:Bildgewichtungen} dargestellt. Aus der Abbildung kann zum Beispiel abgelesen werden, dass sich mit einer T1-Gewichtung ein besserer Bildkontrast zwischen grauer und weißer Hirnmasse erreichen lässt, als mit einer PD gewichteten Aufnahme.
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{T1-Gewichtung}{\includegraphics[width=0.8\textwidth]{img/ext/T1W.png}}
+	\\
+	\subcaptionbox{T2-Gewichtung}{\includegraphics[width=0.8\textwidth]{img/ext/T2W.png}}
+	\\
+	\subcaptionbox{PD-Gewichtung}{\includegraphics[width=0.8\textwidth]{img/ext/PDW.png}}
+	\caption[Bildgewichtung bei Spinecho-Sequenzen]{Wahl der Echozeit $TE$ und Repetitionszeit $TR$ zur Beeinflussung der Bildgewichtung bei Spinecho-Sequenzen (Fat: Fett, Gray: graue Hirnmasse, White: weiße Hirnmasse, CSF: Cerebrospinal fluid (Gehirn-Rückenmarks-Flüssigkeit)) \cite[S.~424ff]{Bushberg2011}}
+	\label{fig:Bildgewichtungen}
+\end{figure}
+
+\autoref{fig:BildgewichtungenBsp} zeigt drei Schnittbilder identischer Lage durch ein menschliches Gehirn. Durch die Wahl der in den Bildunterschriften angegebenen Echo- und Repetitionszeiten ergibt sich jeweils eine T1-, T2-, bzw. PD-Gewichtung. 
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{T1 gewichtete Aufname ($TR=\SI{500}{\milli\second}$, $TE=\SI{8}{\milli\second}$)}{\includegraphics[width=0.3\textwidth]{img/ext/T1Wi.png}}
+	\hfill
+	\subcaptionbox{T2 gewichtete Aufnahme ($TR=\SI{3000}{\milli\second}$, $TE=\SI{100}{\milli\second}$)}{\includegraphics[width=0.3\textwidth]{img/ext/T2Wi.png}}
+	\hfill
+	\subcaptionbox{PD gewichtete Aufnahme ($TR=\SI{2400}{\milli\second}$, $TE=\SI{30}{\milli\second}$)}{\includegraphics[width=0.3\textwidth]{img/ext/PDWi.png}}
+	\caption[Beispiele für unterschiedlich gewichtete Spinecho-Aufnahmen]{Beispiele für verschiedene Gewichtungen eines Schnittbildes durch ein menschliches Gehirn \cite[S.~424ff]{Bushberg2011}}
+	\label{fig:BildgewichtungenBsp}
+\end{figure}
+
+
+
 
 
 \subsection{MRT Artefakte}
@@ -416,6 +519,75 @@ Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL 
 	\caption[ph]{Mixer}
 	\label{fig:phaseNoiseMixer}
 \end{figure}
+
+
+
+\section{Bildqualitätsmetriken}
+Mit einem MRT erzeugte Schnittbilder der Transversalmagnetisierung von einem Körper sollen helfen eine Fragestellung in der Diagnostik oder Forschung zu beantworten. Neben der Unterscheidung in morphologische und funktionelle Bildgebung muss auch unterschieden werden, welche Strukturgrößen aufgelöst werden sollen, wie groß der Kontrast benachbarter Gewebetypen sein muss, wie groß das Signal-zu-Rausch-Verhältnis sein darf usw. Außerdem ist für Studien, die über einen längeren Zeitraum durchgeführt werden, die Wiederholgenauigkeit wichtig.
+
+Unabhängig vom Themenfeld der medizinischen (MR)-Bildgebung existieren in der digitalen Bildverarbeitung einige Qualitätsmetriken, mit denen die Qualität eines Bildes geschätzt werden kann, oder die Ähnlichkeit eines Bildes zu einem Referenzbild bewertet werden kann \cite{Wang2006}.
+
+\subsubsection{Qualitätsmetriken ohne Referenz}
+Metriken dieses Typs werden auch NR-Metriken (von eng. no reference) genannt. Dabei wird versucht einem Ausgangsbild eines Bildverarbeitungssystems eine Qualitätskennzahl zuzuordnen, ohne, dass das Originalbild vorliegt. Für Menschen ist diese Art der Bildbewertung recht einfach: Durch Vorwissen ist bekannt, dass "gute" Bilder einen hohen Kontrast aufweisen, scharf sind, etc. Aber auch der Inhalt kann in die Bewertung einbezogen werden. So würde ein Mensch ein Bild mit geringer Schärfentiefe nur dann als gut bewerten, wenn die relevanten Bildelemente im Fokus liegen. Für eine automatische Bewertung durch einen Algorithmus muss also auch Vorwissen (eine Heuristik) in Form einer Datenbank mit "guten" Bildern vorliegen, wenn eine Inhalts-bezogene Bewertung erreicht werden soll.
+
+Einige Artefakte in Bildern, die durch das Bildaufnahmesystem oder die Verarbeitung eingebracht werden, lassen sich jedoch auch ohne Vorwissen über Analysen im Frequenzbereich oder statistische Methoden detektieren und bewerten \cite[S.~86]{Wang2006}.
+
+\subsubsection{Qualitätsmetriken mit Referenz}
+Bildqualitätsmetriken mit Referenz, auch als FR-Metriken (von eng. full reference) bezeichnet, setzen ein vorhandenes, ideales Originalbild voraus. Diese Metriken fordern in der Regel kein Vorwissen über den Bildinhalt, oder die Klasse von Bildern, die bewertet werden sollen. Statt einer absoluten Qualitätskennzahl wird ein Ähnlichkeitsmaß zwischen untersuchtem Bild und Referenzbild bestimmt \cite[S.~43]{Wang2006}.
+
+Eine einfache Möglichkeit für eine FR-Metrik ist die (zweidimensionale) \textit{mittlere quadratische Abweichung}, auch MSE (für eng. \textit{mean squared error}) genannt. Definiert ist der MSE zwischen einem $N \times M$ großen Bild $X$ und einem ebenso großen Referenzbild $R$ als \cite{Tan2013}:
+
+\begin{equation}
+	MSE_R(X)=\frac{1}{M N} \sum_{n=1}^{N} \sum_{m=1}^{M} [X(n,m) - R(n,m)]^2
+\end{equation}
+
+Aus dem MSE und dem Dynamikbereich beider Bilder $L$ (für ein 8-bit Bild ergibt sich $L=255-0=255$) kann das \textit{peak signal-to-noise ratio\footnote{Eine deutsche Bezeichnung ist nicht üblich.}} (PSNR) berechnet werden. Das PSNR ist definiert als \cite{Bondzulic2016}:
+\begin{equation}
+	PSNR_R(X)= 10\: log_{10}\left(\frac{L^2}{MSE_R(X)}\right) = 20\: log_{10}(L) - 10\: log_{10}(MSE_R(X))
+\end{equation}
+
+Eine komplexere Metrik ist die \textit{Strukturelle Ähnlichkeit}, \textit{SSIM} (von eng. \textit{structural similarity}). Sie wurde 2004 in \cite{Wang2004} als Verbesserung der Metriken MSE bzw. PSNR vorgeschlagen. Die SSIM zwischen $X$ und dem Referenzbild $R$ ist definiert als:
+\begin{equation}
+	SSIM_R'(X)=[l(X,R)]^\alpha\cdot[c(X,R)]^\beta\cdot[s(X,R)]^\gamma
+\end{equation}
+mit:
+\begin{with}
+	l(X,R) & Luminanz-Ähnlichkeit\\
+	c(X,R) & Kontrast-Ähnlichkeit\\
+	s(X,R) & Struktur-Ähnlichkeit\\
+	\alpha,\beta,\gamma & Gewichtungsfaktoren \\
+\end{with}
+
+Die Luminanz-, Kontrast- und Strukturähnlichkeiten sind dabei wie folgt definiert:
+
+\begin{subequations}
+	\begin{align}
+	l(X,R) & = \frac{2\mu_X\mu_R+c_1}{\mu_X^2+\mu_R^2+c_1}\\
+	c(X,R) & = \frac{2\sigma_X\sigma_R+c_2}{\sigma_X^2+\sigma_R^2+c_2}\\
+	s(X,R) & = \frac{\sigma_{XR}+c_3}{\sigma_X\sigma_R+c_3}
+	\end{align}
+\end{subequations}
+mit:
+\begin{with}
+	\mu_X,\mu_R & Mittelwerte von $X$ bzw. $R$\\
+	\sigma_X,\sigma_R & Standardabweichungen von $X$ bzw. $R$\\
+	\sigma_{XR} & Kovarianz von $X$ und $R$\\
+	c_1=(k_1L)^2 & "Stabilisierungsvariable"\\
+	c_2=(k_2L)^2 & "Stabilisierungsvariable"\\
+	L & Dynamikumfang der Bilder (255 bei zwei 8-bit Bildern)
+\end{with}
+$k_1$ und $k_2$ sind wählbare Parameter mit $k_1,k_2 \ll 1$\footnote{Standardwerte in der SSIM Implementierung \texttt{ssim()} der MATLAB Image Processing Toolbox sind: $k_1=0.01$ und $k_2=0.03$}.
+
+In der Regel wird $c_3=c_2/2$ gewählt und $\alpha=\beta=\gamma=1$ gesetzt. Damit ergibt sich:
+\begin{equation}
+	SSIM_R(X) = \frac{\left(1\mu_X\mu_R+c_1\right)\left(2\sigma_{XR}+c_2\right)}{\left(\mu_X^2+\mu_R^2+c_1\right)\left(\sigma_X^2+\sigma_R^2+c_2\right)}
+\end{equation}
+
+Im Gegensatz zu MSE und PSNR, die absolute Abweichungen bewerten, ist die Schätzung bei SSIM mehr an der Wahrnehmung des Menschen orientiert. Eine Degradation des Bildes wird mit einer Änderung an Strukturinformationen gleichgesetzt. Neben der reinen Strukturmetrik fließen zusätzlich Bewertungen der Phänomene "Helligkeitsmaskierung" und "Kontrastmaskierung" in die SSIM Metrik ein. Diese Begriffe aus der Wahrnehmungspsychologie beschreiben eine Abnahme der Auffälligkeit von Strukturänderungen in hellen Bildbereichen bzw. Bereichen mit starken Kontrasten \cite{Wang2004}.
+
+
+
+
 
 
 
