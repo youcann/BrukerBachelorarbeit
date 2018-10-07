@@ -225,19 +225,23 @@ Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifiz
 Wie sich die Gewichtung bei einer MRT Aufnahme einstellen lässt, ist in \autoref{sec:gewichtung} gezeigt.
 
 \subsection{Aufbau eines MR-Tomographen}
-\missingfigure{Gesamtsystem}
-lisch
+
+\begin{figure}[H]
+	\centering
+	\resizebox{\textwidth}{!}{\includegraphics[]{img/biospec.tikz}}
+	\caption[Aufbau MR-Tomographen]{Aufbau MRT (ohne Stromversorgung, Steuerungssysteme, Kühlsysteme und Bedienpanel)}
+	\label{fig:biospecAnot}
+\end{figure}
+
 \subsubsection{Statisches Magnetfeld}
 Das statische Magnetfeld, auch $B_0$-Feld genannt, wird durch einen Magneten erzeugt. Dieser muss über eine ausreichend dimensionierte Öffnung verfügen, so dass der zu untersuchende Körper und andere Spulensysteme des Tomographen darin Platz finden. Mit Feldstärken im Bereich von \SI{0.3}{\tesla} (bei klinischen MRI Systemen) bis hin zu \SI{15}{\tesla} im Bereich der präklinschen MRIs ist das $B_0$-Feld verglichen mit dem Erdmagnetfeld\footnote{etwa \SI{50}{\micro\tesla} \cite{Enc1994}} oder einem Kühlschrankmagneten\footnote{etwa \SI{0.1}{\tesla} \cite{LHC2018}} ein sehr starkes Magnetfeld.
 Erzeugt wird das $B_0$-Feld entweder mit einem Permanentmagneten oder einem Elektromagneten. 
 
 Auch wenn sich \textit{Permanentmagnet}systeme durch ihren einfachen Aufbau und einen kostengünstigen, wartungsfreien Betrieb auszeichnen, sind sie wenig stark verbreitet. Die mit Permanentmagneten erzielbare Feldstärke von etwa einem Tesla ist für Forderung nach hohen Signal-Rausch-Verhältnissen oft zu gering.
 
-Gewöhnliche Elektromagnete, auch \textit{resistive Elektromagnete} genannt, haben den Nachteil des hohen Stromverbrauchs und der starken Eigenerwärmung. Von Vorteil ist, dass Systeme dieser Bauart bei Nicht-benutzen abgeschaltet werden können. Für sehr hohe Feldstärken sind sie nicht geeignet.
+Gewöhnliche Elektromagnete, auch \textit{resistive Elektromagnete} genannt, haben den Nachteil des hohen Stromverbrauchs und der starken Eigenerwärmung. Von Vorteil ist, dass Systeme dieser Bauart bei Nichtbenutzung abgeschaltet werden können. Für sehr hohe Feldstärken sind sie nicht geeignet.
 
 Am weitesten verbreitet sind \textit{supraleitende Elektromagnete}. Nur damit lassen sich wirtschaftlich hohe Feldstärken erreichen. Diese bestehen aus einer supraleitenden Spulenanordnung, welche in einem, mit flüssigem Helium gefülltem, Tank betrieben wird. Da aufgrund der Supraleitung der Spulenwiderstand verschwindet, kann nach einmaligem Aufbau des Spulenstroms die Stromversorgung getrennt werden. Das als Kryostat bezeichnete Kühlsystem verliert durch den sog. \textit{boil-off} kontinuierlich Helium, welches daher regelmäßig wieder aufgefüllt werden muss. Ein Abschalten der Engergie- und Kosten-intensiven Kühlung ist nicht möglich. Eine Erwärmung der ganzen Spule, oder Teile davon über die Sprungtemperatur des Spulenmaterials führt zum sog. \textit{Quench}: Die Supraleitung bricht zusammen, das Material wird resistiv und durch die damit verbundene starke Wärmeentwicklung verdampft das gesamte Helium schlagartig. Daher ist es nötig, dass das Kryostat über einen Kamin zur Ableitung des Heliums verfügt. Wenn auch für den Menschen ungiftig, können größere Mengen Helium den Luftsauerstoff verdrängen. Daher muss die Sauerstoffkonzentration in den Aufstellungsräumen überwacht werden.
-
-\todoin{Zylinder vs platten}
 
 \paragraph{Shimming}\mbox{}\\
 An das statische Magnetfeld werden hohe Anforderungen bezüglich der Feldhomogenität gestellt.
@@ -249,8 +253,7 @@ Um diese auszugleichen, wird Shimming (von eng. \textit{shim}, Keil) betrieben. 
 \end{itemize}
 
 \subsubsection{Gradientenspulen}
-Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken statischen Feld schwächere, zeitlich variable Felder überlagern. Im Gegensatz zum $B_0$-Feld, sind diese Felder \textit{in}homogen. Ihre Feldstärke variiert linear mit dem Ort. Diese lineare Feldänderung wird als Gradient bezeichnet und ist meist in x, y und z-Richtung ausgeprägt. Da diese Felder schnell umgeschaltet werden müssen, können sie nicht als supraleitende Spulen ausgeprägt werden, sondern sind resistiver Art. Das schnelle Umschalten erfordert leistungsstarke elektrische Verstärker.
-
+Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken statischen Feld schwächere, zeitlich variable Felder überlagern. Im Gegensatz zum $B_0$-Feld, sind diese Felder \textit{in}homogen. Ihre Feldstärke variiert linear mit dem Ort. Diese lineare Feldänderung wird als Gradient bezeichnet und ist meist in x, y oder z-Richtung ausgeprägt. Da diese Felder schnell umgeschaltet werden müssen, können sie nicht als supraleitende Spulen ausgeprägt werden, sondern sind resistiver Art. Das schnelle Umschalten erfordert leistungsstarke elektrische Verstärker.
 
 \subsubsection{RF Sende- und Empfangsspulen}
 Das Hochfrequenzsignal wird über die RF Spulen eingestrahlt. Entweder über die gleiche Spule, oder über separate Empfangsspulen wird das entstehende MR-Signal empfangen.
@@ -264,13 +267,12 @@ Von den Gradientenspulen erzeugte Streufelder, welche durch Wirbelströme entste
 Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notwendig, damit das MRT Gerät keine Störstrahlung nach Außen emittiert und damit keine externen Störsignale die Bildaufnahme stören können.
 Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist. \cite{Weibler1993} Problematisch ist die ausreichende Abschirmung der Eingangtür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
 
-
 \subsection{Bildentstehung im MR-Tomographen}
 
 \subsubsection{Selektive Anregung/Schichtwahl}
 Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des HF-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
 
-Die Amplitudenfunktion $B_T(t)$ mit der das HF-Signal moduliert wird, wird so gewählt, dass eine möglichst scharf begrenzte Schicht in z-Richtung selektiert wird.
+Die Amplitudenfunktion $B_T(t)$ mit der das HF-Signal moduliert wird, ist so gewählt, dass eine möglichst scharf begrenzte Schicht in z-Richtung selektiert wird (\autoref{fig:rfForm}).
 
 \begin{figure}[H]
 	\centering
@@ -283,8 +285,7 @@ Daher wird meist
 \begin{equation}
 	B_T(t)=C \frac{sin(x)}{x}
 \end{equation}
-als Amplitudenfunktion gewählt, da...
-lisch
+als Amplitudenfunktion gewählt (siehe \autoref{fig:rfForm}), da die Fourier-Transformierte der (zeitlich unendlich langen) sinc-Funktion ein Rechteck-Puls ist. Da sich ein unendlich langer sinc-Puls nicht realisieren lässt, sind perfekt scharfe Schichtselektionen und beliebig dünne Schichten nicht möglich.
 
 \subsubsection{Phasenkodierung}
 
