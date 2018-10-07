@@ -74,35 +74,125 @@ getrennt \cite[S.~ 56]{Nishimura1996}.
 
 Im thermischen Gleichgewicht weisen $\vec{B}$ und $\vec{M}$ in die selbe Richtung. Ändert sich die Richtung den angelegten Magnetfeldes $\vec{B}$, so tritt Präzession von $\vec{M}$ auf. Aus der Differentialgleichung
 \begin{equation}
+\label{eq:Mdgl}
 	\frac{d\vec{M}}{dt}=\vec{M} \times \gamma \vec{B}
 \end{equation}
-folgt als Lösung eine Präzession mit einer Kreisfrequenz von
+folgt als Lösung eine Präzession mit einer Kreisfrequenz (auch \textit{Larmorfrequenz} genannt) von
 \begin{equation}
 	\omega_0=\gamma |\vec{B}|
 \end{equation}
 bzw. einer Frequenz $f_0$ von
 \begin{equation}
-	f_0=\frac{\gamma}{2\pi} |\vec{B}|
+	f_0=\frac{\gamma}{2\pi} |\vec{B}| = \frac{\gamma}{2\pi} B_z
 \end{equation}
 
+In der MRT werden fast ausschließlich Wasserstoffprotonen für die Visualisierung genutzt. In der MR-Spektroskopie werden neben den \ce{^{1}H}-Kernen noch andere Atomkerne, wie zum Beispiel \ce{^{31}P} oder \ce{^{13}C} genutzt \cite{Andrade2014}. Für die hier erwähnten Atomkerne sind die gyromagnetischen Verhältnisse (geteilt durch $2\pi$) in \autoref{tab:gyroV} angegeben.
+
+\begin{table}[H]
+	\centering
+	\caption[Auswahl gyromagnetischer Verhältnisse]{Gyromagnetische Verhältnisse einiger Atomkerne \cite{Seidel2015},\cite{Weast1984}}
+	\label{tab:gyroV}
+	\begin{tabular}{lS}
+		\toprule
+		\textbf{Kern} & \textbf{$\gamma/2\pi$ (in \SI{}{\mega\hertz\per\tesla})} \\
+		\midrule
+		\ce{^{1}H} & 42.57056 \\
+		\ce{^{31}P} & 17.235 \\
+		\ce{^{13}C} & 10.705 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Wird mit einem Mikrowellensender ein RF-Puls der Energie $E=\gamma \hbar B_0$ so eingestrahlt, dass ein Magnetfeld $B_1$ senkrecht zu $B_0$ entsteht, resultiert daraus
+\begin{equation}
+	\vec{B}=\vec{B_0}+\vec{B_1}
+\end{equation}
+wodurch $\vec{M}$ aus dem thermischen Gleichgewicht abgelenkt wird. $\vec{M}$ präzediert daraufhin, wie in \autoref{eq:Mdgl} beschrieben. Je nach Dauer des RF-Pulses kann damit ein beliebiger Winkel $\alpha$ zwischen $\vec{M}$ und $\vec{M}$ im thermischen Gleichgewicht ($\vec{M_{eq}}$) eingestellt werden.
+RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. \textit{180\degree-Pulse} sind ebenso häufig, zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen, anzutreffen. Anregungspulse für Gradientenecho-Sequenzen werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
+
+Nach einer Anregung mit einem RF-Puls setzen zwei, voneinander unabhängige Relaxationsphänomene ein \cite{Nishimura1996}:
+\begin{itemize}
+	\item \textbf{Longitudinale Relaxation:} Mit einer Zeitkonstanten $T1$ wird die Magnetisierung $\vec{M}$ zum thermischen Gleichgewicht $M_{eq}$ zurückkehren. Die Differentialgleichung für die Relaxation der $M_z$-Komponente ist:
+	\begin{equation}
+		\frac{dM_z}{dt}=-\frac{M_z-M_{z,eq}}{T1}
+	\end{equation}
+	mit der Lösung:
+	\begin{equation}
+		M_z=M_{z,eq}+\left(M_z(0)-M_{z,eq}\right) e^{-t/T1}
+	\end{equation}
+	Unter der Annahme eines 90\degree Anregungspulses bei $t=0$ wird $M_z(0)=0$ und damit:
+	\begin{equation}
+		M_z=M_{z,eq}\left(1-e^{-t/T1}\right)
+	\end{equation}
+	\item \textbf{Transversale Relaxation:} Mit einer Zeitkonstanten $T2$ baut sich die transversale Magnetisierung durch Feldinhomogenitäten ab: Durch ein endlich schmales Spektrum der Resonanzfrequenzen in einem makroskopischen Volumen verliert das Spin-Ensemble nach der Anregung seine Phasenkohärenz. Die Relaxation kann durch die Differentialgleichung
+	\begin{equation}
+		\frac{dM_{xy}}{dt}=-\frac{M_{xy}}{T2}
+	\end{equation}
+	mit der bekannten Lösung
+	\begin{equation}
+		M_{xy}=M_{z,eq} e^{-t/T2}
+	\end{equation}
+	beschrieben werden. Dabei wird angenommen, dass eine 90\degree-Anregung stattgefunden hat, die $M_{z,equ}$ vollständig von der $z$-Achse in die $xy$-Ebene geklappt hat.
+\end{itemize}
+
+Präzession und die beiden Relaxationsphänomene können in den \textit{Blochgleichungen} zusammengefasst dargestellt werden.
 
 \subsection{Blochgleichungen}
-Die Blochgleichungen gelten in Flüssigkeiten und eingeschränkt auch in Festkörpern. In vektorieller Schreibweise lauten sie:
+Die Blochgleichungen (1946 von Felix Bloch in \cite{Bloch1946} vorgestellt) gelten in Flüssigkeiten und eingeschränkt auch in Festkörpern. 
+Ohne Relaxation lauten sie (zusammengefasst in vektorieller Schreibweise):
 \begin{equation}
-	\frac{d\vec{M}}{dt}=\gamma\vec{M}\times\vec{H_a}-\vec{e_x}\frac{M_x}{T_2}-\vec{e_y}\frac{M_y}{T_2}-\vec{e_z}\frac{M_z-M_0}{T_1}
+\label{eq:bloch1}
+	\frac{\vec{M}}{dt} = \gamma \vec{M(t)} \times \vec{B}
 \end{equation}
 mit:
 \begin{with*}
 	\vec{M} & Magnetisierung \\
-	T_1,T_2 & Relaxationszeiten \\
+	\vec{B} & externes Magnetfeld (magnetische Flussdichte) \\
+	\gamma & gyromagnetisches Verhältnis \\
 \end{with*}
 
-\todoin{Unterschied Laborsystem, rotierendes Bezugssystem}
+Unter Beachtung der Relaxation mit den Zeitkonstanten $T1$ und $T2$ ergibt sich:
+\begin{subequations}
+	\label{eq:bloch2}
+	\begin{align}
+	\frac{dM_x(t)}{dt} & = \gamma \left(\vec{M}(t) \times \vec{B}\right) - \frac{M_x(t)}{T2} \\
+	\frac{dM_y(t)}{dt} & = \gamma \left(\vec{M}(t) \times \vec{B}\right) - \frac{M_y(t)}{T2} \\
+	\frac{dM_z(t)}{dt} & = \gamma \left(\vec{M}(t) \times \vec{B}\right) - \frac{M_z(t)-M_{z,eq}}{T1}
+	\end{align}
+\end{subequations}
+Oder zusammengefasst in vektorieller Schreibweise \cite[S.~61]{Nishimura1996}:
+\begin{equation}
+\label{eq:bloch3}
+	\frac{d\vec{M}(t)}{dt} = \gamma \left(\vec{M}(t) \times \vec{B}\right) - \frac{M_x \vec{e_x} + M_y \vec{e_y}}{T2} - \frac{(M_z-M_{z,eq})\vec{e_z}}{T1}
+\end{equation}
+
+Gleichungen \ref{eq:bloch1}, \ref{eq:bloch2} und \ref{eq:bloch3} beschreiben die Spins in einem ruhenden Koordinatensystem (auch "Laborsystem" genannt).
+In der Praxis wird das MR Empfangssignal meist mit einem Quadraturmischer mit einer Kreisfrequenz $\omega_T \approx \omega_0$ herunter gemischt. Dies entspricht einer Koordinatentransformation vom ruhenden System $(x,y,z)$ in ein rotierendes Koordinatensystem $(x',y',z')$.
+Es ergeben sich die Blochgleichungen im rotierenden System \cite[S.~313]{Doessel2016}:
+\begin{subequations}
+	\label{eq:blochRot}
+	\begin{align}
+	\frac{dM'_x}{dt} & = -\frac{1}{T2}M'_x+(\omega_0-\omega_T)M'_y-\omega_F sin(\Psi)M'_z \\
+	\frac{dM'_y}{dt} & = -(\omega_0-\omega_T)M'_x-\frac{1}{T2}M'_y+\omega_F cos(\Psi)M'_z \\
+	\frac{dM'_z}{dt} & = \omega_F sin(\Psi)M'_x - \omega_F cos(\Psi)M'_y - \frac{1}{T1} (M'_z-M'_{z,eq})
+	\end{align}
+\end{subequations}
+mit:
+\begin{with*}
+	\omega_0 & lokale Larmorfrequenz\\
+	\omega_F = \gamma B_T& Anregungsfrequenz\\
+	B_T & Amplitude des anregenden Transversalfeldes $B_1$\\
+	\omega_T & Frequenz des Quadraturmischers\\
+	\Psi & Phasendifferenz zwischen $B_1$-Feld und Mischer \\
+\end{with*}
 
 
 
-\subsection{Kernspin detektierbare Eigenschaften von Gewebe}
-Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden ulischnd, dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
+
+
+
+\subsection{Mit NMR/MRT detektierbare Eigenschaften von Gewebe}
+Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden, so dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
 
 \begin{table}[H]
 	\centering
@@ -133,8 +223,6 @@ Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifiz
 \end{figure}
 
 Wie sich die Gewichtung bei einer MRT Aufnahme einstellen lässt, ist in \autoref{sec:gewichtung} gezeigt.
-
-
 
 \subsection{Aufbau eines MR-Tomographen}
 \missingfigure{Gesamtsystem}
