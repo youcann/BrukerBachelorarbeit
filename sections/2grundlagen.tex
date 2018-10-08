@@ -621,6 +621,8 @@ Metriken dieses Typs werden auch NR-Metriken (von eng. no reference) genannt. Da
 
 Einige Artefakte in Bildern, die durch das Bildaufnahmesystem oder die Verarbeitung eingebracht werden, lassen sich jedoch auch ohne Vorwissen über Analysen im Frequenzbereich oder statistische Methoden detektieren und bewerten \cite[S.~86]{Wang2006}.
 
+Beispiele für NR-Metriken sind der \textit{Naturalness Image Quality Evaluator (NIQE) no-reference image quality score}\cite{Mittal2013} oder die Weiterentwicklung \textit{Perception based Image Quality Evaluator (PIQE) no-reference image quality score}\cite{Venkatanath2015}.
+
 \subsubsection{Qualitätsmetriken mit Referenz}
 Bildqualitätsmetriken mit Referenz, auch als FR-Metriken (von eng. full reference) bezeichnet, setzen ein vorhandenes, ideales Originalbild voraus. Diese Metriken fordern in der Regel kein Vorwissen über den Bildinhalt, oder die Klasse von Bildern, die bewertet werden sollen. Statt einer absoluten Qualitätskennzahl wird ein Ähnlichkeitsmaß zwischen untersuchtem Bild und Referenzbild bestimmt \cite[S.~43]{Wang2006}.
 
@@ -674,6 +676,62 @@ In der Regel wird $c_3=c_2/2$ gewählt und $\alpha=\beta=\gamma=1$ gesetzt. Dami
 
 Im Gegensatz zu MSE und PSNR, die absolute Abweichungen bewerten, ist die Schätzung bei SSIM mehr an der Wahrnehmung des Menschen orientiert. Eine Degradation des Bildes wird mit einer Änderung an Strukturinformationen gleichgesetzt. Neben der reinen Strukturmetrik fließen zusätzlich Bewertungen der Phänomene "Helligkeitsmaskierung" und "Kontrastmaskierung" in die SSIM Metrik ein. Diese Begriffe aus der Wahrnehmungspsychologie beschreiben eine Abnahme der Auffälligkeit von Strukturänderungen in hellen Bildbereichen bzw. Bereichen mit starken Kontrasten \cite{Wang2004}.
 
+Abwandlungen und Erweiterungen der SSIM sind neben der \textit{M-SSIM}, bei der lediglich eine Mittelung/Glättung vorgenommen wird, zum Beispiel:
+
+\begin{itemize}
+	\item \textbf{CW-SSIM\cite{Gao2011}:} Bei der \textit{Complex Wavelet Structural Similarity} wird die SSIM dahingehend verbessert, dass sich einige Bildstörungen, die nur die Phase der komplexen Wavelet-Koeffizienten eines Bilder, nicht aber die Struktur ändern, weniger stark auf die Metrik auswirken.
+	\item \textbf{MS-SSIM\cite{Wang2003}:} Die \textit{Multi Scale Structural Similarity} versucht der menschlichen Wahrnehmung noch näher zu kommen durch die Nutzung von unterschiedlich feinen Abtastungen der zu vergleichenden Bilder.
+	\item \textbf{IW-SSIM\cite{Wang2011}:} \textit{Information Content Weighted Structural Similarity Measure} ist eine SSIM Variante, in der zusätzlich Konzepte aus der Informationstheorie für die Erzeugung von Gewichtungsfaktoren genutzt werden.
+\end{itemize}
+
+Für die in \autoref{fig:metrikenTest} gezeigten Bilder sind die oben erläuterten Metriken in \autoref{tab:metriken} aufgeführt.
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Originalbild}{\includegraphics[width=0.45\textwidth]{img/metrics/brukerNorm.png}}
+	\\[4ex]
+	\subcaptionbox{Weichzeichnung mit einem 15x15 Gauß-Filter}{\includegraphics[width=0.45\textwidth]{img/metrics/brukerBlur15.png}}
+	\hfill
+	\subcaptionbox{weißes Rauschen mit $\sigma=10$}{\includegraphics[width=0.45\textwidth]{img/metrics/brukerNoise.png}}
+	\\[4ex]
+	\subcaptionbox{Verschiebung um $\vec{d}(x,y)=(-10,-10)$}{\includegraphics[width=0.45\textwidth]{img/metrics/brukerShift10.png}}
+	\hfill
+	\subcaptionbox{Verschiebung um $\vec{d}(x,y)=(-20,-20)$}{\includegraphics[width=0.45\textwidth]{img/metrics/brukerShift20.png}}
+	\caption[Testbilder für Bildqualitätsmetriken]{Testbilder für den Vergleich einiger Bildqualitätsmetriken}
+	\label{fig:metrikenTest}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\caption[Vergleich Bildqualitätsmetriken]{Vergleich einiger Bildqualitätsmetriken mit den Testbildern in \autoref{fig:metrikenTest}}
+	\label{tab:metriken}
+	\begin{tabular}{lSSSSS}
+		\toprule
+		\textbf{Metrik} & \textbf{(b)} & \textbf{(c)} & \textbf{(d)} & \textbf{(e)} & \textbf{(a), Referenz} \\
+		\midrule
+		SSIM    & 0.825 & 0.0331 & 0.871 & 0.831 & 1 \\
+		CW-SSIM & 0.999 & 0.981  & 0.987 & 0.951 & 1 \\
+		M-SSIM  & 0.836 & 0.048  & 0.882 & 0.839 & 1 \\
+		MS-SSIM & 0.958 & 0.401  & 0.815 & 0.721 & 1 \\
+		IW-SSIM & 0.617 & 0.435  & 0.078 & 0.067 & 1 \\
+		& & & & & \\
+		MSE     & 397     & 1971     & 3506    & 6205    & 0 \\
+		PSNR    & -25.98  & -32.95   & -35.45  & -37.93  &  \\
+		NIQE    & 11.52   & 23.80    & 12.48   & 12.55   & 12.58 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+Exemplarisch sind die verschiedenen SSIM Qualitätsmetriken in \autoref{fig:vergleichSSIM} dargestellt.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/metrics/ssimComp.eps}
+	\caption[Vergleich verschiedener SSIM Varianten]{Vergleich verschiedener SSIM Varianten, Daten aus \autoref{tab:metriken}}
+	\label{fig:vergleichSSIM}
+\end{figure}
+
+Für die Qualitätsbewertung in der medizinischen Bildgebung sind SSIM und die Derivate MS-SSIM, CW-SSIM, etc. etabliert und zeigen in der Regel eine höhere Robustheit als MSE oder PSNR \cite{Punga2014},\cite{VenkatNarayanaRao2013}.
 
 
 

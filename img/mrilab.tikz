@@ -1,10 +1,9 @@
 \usetikzlibrary{arrows.meta}
 \begin{tikzpicture}[scale=1]
 
-\draw[step=1,gray,thin] (0,0) grid (5,5);
-\draw[very thick,>->] (2.5,4.5) -- (2.5,0.5);
-\draw[very thick,>->] (0.5,2.5) -- (4.5,2.5);
-\draw[very thick,<-<] (2.5+1.4142,2.5+1.4142) -- (2.5-1.4142,2.5-1.4142);
-\draw[very thick,>->] (2.5-1.4142,2.5+1.4142) -- (2.5+1.4142,2.5-1.4142);
-\draw[gray!50,dashed] (2.5,2.5) circle (2);
+\filldraw[fill=white, draw=black] (0,0) -- (0,6) -- (14,6) -- (14,0) -- (10,0) -- (10,4) -- (6,4) -- (6,0) -- cycle;
+\node[draw=black,minimum height=1cm,minimum width=2cm] (solver) at (0,0) {Bloch Solver};
 \end{tikzpicture}
+
+\draw[color=blue] plot[id=sin] function{sin(x)} 
+        node[right] {$f(x) = \sin x$};
