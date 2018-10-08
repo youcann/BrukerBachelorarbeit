@@ -1,0 +1,19 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[scale=1]
+
+\draw[fill=gray!20] (0,6) rectangle (10,7);
+\draw[fill=gray!50] (0,7) rectangle (10,8);
+\draw[fill=gray!80] (0,8) rectangle (10,9);
+\node[anchor=east] (Bph1) at (0,6.5) {\tiny$G_{y,1}$};
+\node[anchor=east] (Bph2) at (0,7.5) {\tiny$G_{y,2}$};
+\node[anchor=east] (Bph3) at (0,8.5) {\tiny$G_{y,3}$};
+
+\draw[step=1,gray,thin] (0,0) grid (10,10);
+\draw[black,-latex,] (0,5) -- (12,5);
+\draw[black,-latex,] (5,0) -- (5,12);
+\node[anchor=south] (kx) at (11.5,5) {$k_x$};
+\node[anchor=west] (ky) at (5,11.5) {$k_y$};
+
+
+
+\end{tikzpicture}

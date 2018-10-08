@@ -38,6 +38,7 @@ Paul Lauterbur und Peter Mansfield erhielten 2003 den Nobelpreis für Physiologi
 
 
 \subsection{Quantenmechanische Theorie}
+\label{sec:nmrTheory}
 Atomkerne weisen ein ähnlich wie Elektronen einen Spin auf. Das Spindrehmoment $\vec{S}$ ergibt sich mit dem Spinoperator $\vec{I}$ und dem reduzierten Planckschen Wirkungsquantum $\hbar$ zu:
 \begin{equation}
 	\vec{S}=\hbar \vec{I}
@@ -187,12 +188,16 @@ mit:
 \end{with*}
 
 
-
-
-
-
 \subsection{Mit NMR/MRT detektierbare Eigenschaften von Gewebe}
 Als bildgebendes Verfahren ist es das Ziel eines Tomographen Gewebe zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR Eigenschaften hinreichend unterscheiden, so dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1 gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1 Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
+
+Mit einem MR-Tomographen werden üblicherweise die folgenden Größen visualisiert:
+\begin{itemize}
+	\item \textbf{Relaxationszeiten T1 und T2:} Die in \autoref{sec:nmrTheory} erläuterten Relaxationszeiten können durch eine passend gewählte Gewichtung (ortsaufgelöst) gemessen werden
+	\item \textbf{Protonendichte PD:} Manchmal auch mit $\rho$ bezeichnet. Eine relative Größe, die darauf schließen lässt, wie viele (mobile) (Wasserstoff-) Protonen ein Gewebevoxel enthält. Die Protonendichte ist zum Beispiel in Knochen viel geringer als in Blut. Sie lässt sich ebenfalls durch eine geeignete Gewichtung messen.  
+\end{itemize}
+
+Die chemische Verschiebung kann ebenfalls ortsaufgelöst gemessen werden. Dies wird als \textit{Chemical Shift Imaging (CSI)} bezeichnet \cite{Keevil2006}.
 
 \begin{table}[H]
 	\centering
@@ -268,6 +273,7 @@ Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notw
 Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist. \cite{Weibler1993} Problematisch ist die ausreichende Abschirmung der Eingangtür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
 
 \subsection{Bildentstehung im MR-Tomographen}
+Zur Rekonstruktion eines Körpers in einem MRT müssen die Signale, welche die Empfangsspulen erreichen so beschaffen sein, dass daraus auf ihren Ursprungsort geschlossen werden kann. Für diese Kodierung werden die Gradientenspulen eingesetzt. Zunächst wird parallel zur $xy$-Ebene eine Schicht im Körper ausgewählt. Dann werden die Pixel in diesem Schichtbild so kodiert, dass ihre Position in $x$- und $y$-Richtung bestimmt ist.
 
 \subsubsection{Selektive Anregung/Schichtwahl}
 Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des HF-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
@@ -277,7 +283,7 @@ Die Amplitudenfunktion $B_T(t)$ mit der das HF-Signal moduliert wird, ist so gew
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/rfForm.tikz}}
-	\caption[form]{HF puls}
+	\caption[Form des RF-Anregungspulses]{Typische Form des RF-Anregungspulses (nach \cite[S.~326]{Doessel2016})}
 	\label{fig:rfForm}
 \end{figure}
 
@@ -288,8 +294,63 @@ Daher wird meist
 als Amplitudenfunktion gewählt (siehe \autoref{fig:rfForm}), da die Fourier-Transformierte der (zeitlich unendlich langen) sinc-Funktion ein Rechteck-Puls ist. Da sich ein unendlich langer sinc-Puls nicht realisieren lässt, sind perfekt scharfe Schichtselektionen und beliebig dünne Schichten nicht möglich.
 
 \subsubsection{Phasenkodierung}
+Zur Lokalisierung in der $xy$-Ebene wird zunächst ein Phasenkodiergradient (z.B. $\vec{G_y}$ in $y$-Richtung) angelegt. Dieser wird nur kurz für eine konstante Zeit $T_y$, aber mit variabler Amplitude $G_y$ eingeschaltet. Dadurch wird die Präzessionsfrequenz für alle Spins entlang der $y$-Achse kurzzeitig geändert. Nach Abschalten von $\vec{G_y}$ präzedieren alle Spins wieder mit $\omega_0$, aber mit unterschiedlicher Phase. Die nun vorhandene örtliche lineare Zunahme der Phase entspricht einer Ortsfrequenz. Je nach Amplitude des Phasenkodiergradienten wird eine andere Ortsfrequenz in $y$-Richtung eingestellt. Je nachdem, ob die gerade eingestellte Amplitude (und damit Ortsfrequenz) zu einer in $y$-Richtung vorhandenen Ortsfrequenz passt, entsteht ein mehr oder weniger großes MR-Empfangssignal \cite{Bushong2014}, \cite{Edelstein1980}.
 
 \subsubsection{Frequenzkodierung}
+Durch den Phasenkodiergradient werden Ortsfrequenzen in $y$-Richtung kodiert. Um ein vollständiges, zweidimensionales Schichtbild zu erhalten, ist noch eine Kodierung in $x$-Richtung nötig. Dazu wird der Frequenzkodiergradient $\vec{G_x}$ (manchmal auch "read out"-Gradient genannt) verwendet. Dieser Gradient wird während des gesamten Auslesevorgangs angelegt. Statt wie bei dem Phasenkodiergradienten nur eine bestimmte Ortsfrequenz pro Auslesevorgang (und damit pro eingestellter Amplitude von $\vec{G_y}$) zu messen, werden während dem Auslesen durch den dauerhaft eingeschalteten $\vec{G_x}$-Gradienten alle Ortsfrequenzen in $x$-Richtung gemessen \cite{Bushong2014}.
+
+\subsubsection{Der k-Raum}
+Für den Phasenkodiergradienten und den Frequenzkodiergradienten können die Abkürzungen
+\begin{subequations}
+	\label{eq:kSpaceEq}
+	\begin{align}
+	k_x & = \gamma G_x t \\
+	k_y & = \gamma G_y T_y 
+	\end{align}
+\end{subequations}
+eingeführt werden, da für die Ortsfrequenzen nicht relevant ist, ob sie durch eine Phasen- oder Frequenzkodierung gemessen werden. Die von den Variablen $k_x$ und $k_y$ aufgespannte Ebene wird als \textit{k-Raum} bezeichnet (\autoref{fig:kSpace}).
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.4\textwidth]{img/kSpace.tikz}}
+	\caption[k-Raum]{k-Raum, drei verschiedene Amplituden $G_y$ des Phasenkodiergradienten sind dargestellt, die jeweils eine andere Zeile des k-Raums selektieren}
+	\label{fig:kSpace}
+\end{figure} 
+
+Die verschiedenen MRT-Pulssequenzen fahren mit den Gradientenspulen Trajektorien in k-Raum ab, um diesen abzutasten.
+
+\subsubsection{k-Raum Trajektorien}
+Die k-Raum Trajektorie in einer zuvor selektierten Schicht ist eine zweidimensionale Parameterkurve mit der Zeit als Parameter:
+\begin{equation}
+\vec{s_k}(t)=\begin{pmatrix}k_x(t) \\ k_y(t)\end{pmatrix}
+\end{equation}
+
+Die Länge einer Trajektorie $l$ zwischen der Zeit $t_0$ und $t_1$ ergibt sich aus dem Wegintegral
+\begin{equation}
+l=\Delta s = \int_{t_0}^{t_1} \vec{s_k}(t) ds.
+\end{equation}
+
+Eine kartesische oder radiale Abtastung (siehe \autoref{fig:kart} bzw. \autoref{fig:rad}) führt zu relativ kurzen Trajektorienlängen $l$, da die Akquisition für jeden "Pfeil" neu startet.
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{kartesisch\label{fig:kart}}{\includegraphics[width=0.3\textwidth]{img/kTrajcart.tikz}}
+	\hfill
+	\subcaptionbox{radial\label{fig:rad}}{\includegraphics[width=0.3\textwidth]{img/kTrajRad.tikz}}
+	\hfill
+	\subcaptionbox{Spiral}{\includegraphics[width=0.3\textwidth]{img/kTrajSpiral.tikz}}
+	\caption{Auswahl an typischen Trajektorien zur Aufnahme des k-Raums bei "traditionellen" Sequenzen}
+	\label{fig:trajClassic}
+\end{figure}
+
+Schnelle Pulssequenzen, wie die Echo-Planar-Sequenz weisen große Trajektorienlängen $l$ auf (\autoref{fig:trajEPI}).
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.3\textwidth]{img/kTrajEPI.tikz}}
+	\caption[Echoplanar Sequenz]{EPI Trajektorie}
+	\label{fig:trajEPI}
+\end{figure} 
 
 \subsection{MRT Pulssequenzen}
 Die zeitliche Abfolge der Gradientenfelder (Schichtwahl, Phasenkodierung und Frequenzkodierung) und der Hochfrequenz-Anregungssignale wird als MRT Pulssequenz bezeichnet.
@@ -355,33 +416,7 @@ Echoplanar-Sequenzen, abgekürzt EPI (von Echo planar imaging), ermöglichen seh
 	\label{fig:EPIseq}
 \end{figure}
 
-\subsubsection{k-Raum Trajektorien}
-Die k-Raum Trajektorie in einer zuvor selektierten Schicht ist eine zweidimensionale Parameterkurve mit der Zeit als Parameter:
-\begin{equation}
-	\vec{s_k}(t)=\begin{pmatrix}k_x(t) \\ k_y(t)\end{pmatrix}
-\end{equation}
 
-Die Länge einer Trajektorie $l$ zwischen der Zeit $t_0$ und $t_1$ ergibt sich aus dem Wegintegral
-\begin{equation}
-	l=\Delta s = \int_{t_0}^{t_1} \vec{s_k}(t) ds.
-\end{equation}
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{kartesisch}{\includegraphics[width=0.3\textwidth]{img/kTrajcart.tikz}}
-	\hfill
-	\subcaptionbox{radial}{\includegraphics[width=0.3\textwidth]{img/kTrajRad.tikz}}
-	\hfill
-	\subcaptionbox{Spiral}{\includegraphics[width=0.3\textwidth]{img/kTrajSpiral.tikz}}
-	\caption{Auswahl an typischen Trajektorien zur Aufnahme des k-Raums bei "traditionellen" Sequenzen}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\resizebox{!}{!}{\includegraphics[width=0.3\textwidth]{img/kTrajEPI.tikz}}
-	\caption[Echoplanar Sequenz]{EPI}
-	\label{fig:EPI}
-\end{figure}
 
 \subsection{Bildgewichtungen bei Spinecho-Sequenzen}
 \label{sec:gewichtung}
@@ -671,7 +706,7 @@ $k_1$ und $k_2$ sind wählbare Parameter mit $k_1,k_2 \ll 1$\footnote{Standardwe
 
 In der Regel wird $c_3=c_2/2$ gewählt und $\alpha=\beta=\gamma=1$ gesetzt. Damit ergibt sich:
 \begin{equation}
-	SSIM_R(X) = \frac{\left(1\mu_X\mu_R+c_1\right)\left(2\sigma_{XR}+c_2\right)}{\left(\mu_X^2+\mu_R^2+c_1\right)\left(\sigma_X^2+\sigma_R^2+c_2\right)}
+	SSIM_R(X) = \frac{\left(2\mu_X\mu_R+c_1\right)\left(2\sigma_{XR}+c_2\right)}{\left(\mu_X^2+\mu_R^2+c_1\right)\left(\sigma_X^2+\sigma_R^2+c_2\right)}
 \end{equation}
 
 Im Gegensatz zu MSE und PSNR, die absolute Abweichungen bewerten, ist die Schätzung bei SSIM mehr an der Wahrnehmung des Menschen orientiert. Eine Degradation des Bildes wird mit einer Änderung an Strukturinformationen gleichgesetzt. Neben der reinen Strukturmetrik fließen zusätzlich Bewertungen der Phänomene "Helligkeitsmaskierung" und "Kontrastmaskierung" in die SSIM Metrik ein. Diese Begriffe aus der Wahrnehmungspsychologie beschreiben eine Abnahme der Auffälligkeit von Strukturänderungen in hellen Bildbereichen bzw. Bereichen mit starken Kontrasten \cite{Wang2004}.
