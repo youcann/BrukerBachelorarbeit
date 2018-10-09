@@ -7,14 +7,56 @@ MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (si
 \subsection{Analyse Bildrekonstruktionsalgorithmus}
 
 \section{Bestimmung notwendiger Simulationsparameter}
+MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind:
 
-\subsection{Berechnung Empfängerbandbreite}
+\begin{itemize}
+	\item \textbf{FOVFreq}: Größe des FOV in Richtung des Frequenzkodiergradienten (in \SI{}{\m})
+	\item \textbf{FOVPhase}: Größe des FOV in Richtung des Phasenkodiergradienten (in \SI{}{\m})
+	\item \textbf{ResFreq}: Auflösung in Richtung des Frequenzkodiergradienten \\(in $\#Pixel/FOVFreq=\SI{}{\per\m}$)
+	\item \textbf{ResPhase}: Auflösung in Richtung des Phasenkodiergradienten \\(in $\#Pixel/FOVPhase=\SI{}{\per\m}$)
+	\item \textbf{SliceThick}: Schichtdicke (in \SI{}{\m})
+	\item \textbf{SliceNum}: Anzahl der (symmetrisch um die gewählte Schicht) aufzunehmenden Schichten
+	\item \textbf{ScanPlane}: Orientierung der $xy$-Ebene (Axial, Sagittal, Coronal)
+	\item \textbf{TR,TE}: Repetitionszeit und Echozeit (in \SI{}{\s})
+	\item \textbf{TEPerTR}: Anzahl der aufzunehmenden Echos (aus verschiedenen Schichten, nur für Multiecho)
+	\item \textbf{Bandwidth}: Bandbreite des Empfängers (entspricht dem inversen der Abtastrate $T_A$) (in \SI{}{\hertz})
+	\item \textbf{NEX}: Anzahl der aufeinander folgenden Aufnahmen zur Rauschunterdrückung durch Mittelung
+	\item \textbf{MaxSlewRate}: Maximale Slewrate für alle Gradientenspulen (in \SI{}{\tesla\per\m\per\s})
+	\item \textbf{MaxGrad}: Maximale Stärke der Gradienten (in \SI{}{\tesla\per\m})
+	\item \textbf{B0}: Feldstärke des statischen Magnetfeldes (in \SI{}{\tesla})
+	\item \textbf{E1Level, B1Level} Stärke des RF-Feldes (Einheiten unbekannt)
+\end{itemize}
 
-Die Lamorfrequenzen an den Rändern des Probenraums sind:
+Da Bruker präklinische MRTs in unterschiedlichen Größen und Konfigurationen anbietet, sind einige typische Werte(-bereiche) in \autoref{tab:brukerMRIparam}.
+
+\begin{table}[H]
+	\centering
+	\caption[Bruker MRT Simulationsparameter]{Einige für die MRT Simulation in MRiLab relevante Parameter für Bruker MRTs}
+	\label{tab:brukerMRIparam}
+	\begin{tabularx}{\textwidth}{lX}
+		\toprule
+		\textbf{Parameter} & \textbf{Werte(-bereich)}\\
+		\midrule
+		FOVFreq    & typ. \SI{50}{\mm}, bis zu \SI{150}{\mm}\\
+		FOVPhase   & typ. \SI{50}{\mm}, bis zu \SI{150}{\mm}\\
+		ResFreq    & 128, 256 (64, 32 bei schnellen Sequenzen; 512, 1024, 2048 bei hochauflösenden Messungen)\\
+		ResPhase   & etwa gleich wie ResFreq, tendenziell etwas weniger (z.B. $Res \times Freq=128\times256$)\\
+		SliceThick & typ. \SI{0.5}{\mm}...\SI{1}{\mm} (min: \SI{0.2}{\mm}, max: einige wenige \SI{}{\mm})\\
+		B0         & \SI{1}{\tesla}, \SI{3}{\tesla}, \SI{4.7}{\tesla}, \SI{7}{\tesla}, \SI{9.4}{\tesla}, \SI{11.7}{\tesla}, \SI{15.2}{\tesla} \\
+		B1         & ca. \SI{10}{\micro\tesla}\\
+		MaxGrad    & typ. \SI{200}{\milli\tesla\per\m}...\SI{1000}{\milli\tesla\per\m}\\
+		MaxSlewRate& typ. \SI{500}{\tesla\per\m\per\s}...\SI{10000}{\tesla\per\m\per\s}\\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+Die notwendige Bandbreite des Empfängers kann aus den bekannten Daten berechnet werden:
+
+Unter der Annahme, dass der Probenraum quadratisch ist und die Gradientenstärken $G$ in $x$- und $y$-Richtung gleich sind, sind die Lamorfrequenzen an den Rändern des Probenraums in Frequenz- und Phasenkodierrichtung gleich:
 \begin{subequations}
 	\begin{align}
-	f_{min}=\frac{\gamma}{2\pi} (B_0+G x_{min}) \\
-	f_{max}=\frac{\gamma}{2\pi} (B_0+G x_{max})
+	f_{min}=\frac{\gamma}{2\pi} (B_0+G\; x_{min}) \\
+	f_{max}=\frac{\gamma}{2\pi} (B_0+G\; x_{max})
 	\end{align}
 \end{subequations}
 mit:
@@ -99,4 +141,26 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 \section{Phasenrauschfunktion für MRiLab}
 
 \section{Erstellung MRT Phantom}
+Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale MRT-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
+
+Für die kontinuierliche Qualitätsüberwachung in Kliniken und radiologischen Praxen bieten Händler für MRT-Zubehör verschiedene MRT-Phantome an. Diese bestehen meist aus flüssigkeitsgefüllten Kunststoffstrukturen, häufig PMMA. Im Inneren verfügen diese Phantome über verschiedene Einsätze, um bestimmte Eigenschaften eines MR-Tomographens zu bewerten. So lässt sich beispielsweise über ein regelmäßiges Gitter eine Aussage über geometrische Verzerrungen und durch eine Keilplatte eine Aussage über die Schichtdicke machen. Durch abgedichtete Einsätze können Flüssigkeiten mit abweichenden NMR-Eigenschaften als die Hauptflüssigkeit eingebracht werden. Eine Auswahl von kommerziell erhältlichen Phantomen ist in \autoref{tab:phantomsOverview} zusammengestellt.
+
+Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese Phantome jedoch entweder deutlich zu groß, oder bieten ein schlechtes Preis/Leistungsverhältnis. In der Vergangenheit wurde von der internen Konstruktionsabteilung bei Bruker BioSpin ein Phantom mit \SI{63}{\mm} Außendurchmesser designt und von der Mechanikwerkstatt am Standort Rheinstetten gefertigt. Dieses bietet die nötigen Merkmale und wird deshalb im weiteren Verlauf dieser Arbeit verwendet.
+
+Das Bruker 63mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu Erzeugen, sind nachfolgend aufgezeigt.
+
+\subsection{Erstellung eines 3D-CAD Modells}
+
+\subsection{Konvertierung in eine 3D-Voxel-Matrix}
+
+\subsection{Zusammenführen in eine .mat-Datei}
+
+
+
+
+
+
+
+
+
 

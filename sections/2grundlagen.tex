@@ -308,7 +308,7 @@ Für den Phasenkodiergradienten und den Frequenzkodiergradienten können die Abk
 	k_y & = \gamma G_y T_y 
 	\end{align}
 \end{subequations}
-eingeführt werden, da für die Ortsfrequenzen nicht relevant ist, ob sie durch eine Phasen- oder Frequenzkodierung gemessen werden. Die von den Variablen $k_x$ und $k_y$ aufgespannte Ebene wird als \textit{k-Raum} bezeichnet (\autoref{fig:kSpace}).
+eingeführt werden\cite[S.~333]{Doessel2016}, da für die Ortsfrequenzen nicht relevant ist, ob sie durch eine Phasen- oder Frequenzkodierung gemessen werden. Die von den Variablen $k_x$ und $k_y$ aufgespannte Ebene wird als \textit{k-Raum} bezeichnet (\autoref{fig:kSpace}).
 
 \begin{figure}[H]
 	\centering
@@ -365,9 +365,10 @@ Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel fü
 
 
 \subsubsection{Spinecho-Sequenz}
-Bei der Spinecho-Sequenz, abgekürzt mit \textit{SE}, erfolgt zunächst eine Anregung der Schicht mit einem 90\degree-RF-Puls, der die Spins in die XY-Ebene klappt. Durch statische Feldinhomogenitäten im Gewebe zerfällt die Magnetisierung nicht mit T2, sondern mit T2*. Da die Spins auseinanderlaufen, wird dieser Prozess als Dephasierung bezeichnet. Nach der Hälfte der Echozeit ($TE/2$) wird ein 180\degree-RF-Puls eingestrahlt. Dieser klappt das Spin-Ensemble um 180\degree. Die Spins laufen daraufhin nach der Zeit $2(TE/2) = TE$ wieder zusammen; es kommt zur Rephasierung. Das dabei entstehende Empfangssignal wird \textit{Echo} genannt (\autoref{fig:SE}).
+Bei der Spinecho-Sequenz, abgekürzt mit \textit{SE}, erfolgt zunächst eine Anregung der Schicht mit einem 90\degree-RF-Puls, der die Spins in die XY-Ebene klappt. Durch statische Feldinhomogenitäten zerfällt die Magnetisierung nicht mit T2, sondern mit T2*. Da die Spins auseinanderlaufen, wird dieser Prozess als Dephasierung bezeichnet. Nach der Hälfte der Echozeit ($TE/2$) wird ein 180\degree-RF-Puls eingestrahlt. Dieser klappt das Spin-Ensemble um 180\degree. Die Spins laufen daraufhin nach der Zeit $2(TE/2) = TE$ wieder zusammen; es kommt zur Rephasierung. Das dabei entstehende Empfangssignal wird \textit{Echo} genannt (\autoref{fig:SE}).
 
-Nach der Repetitionszeit $TR$ wird die Sequenz wiederholt. Durch Variation des Phasenkodiergradienten $G_{ph}$ wird bei jeder Wiederholung eine andere Zeile des k-Raums ausgewählt, die dann mit dem Frequenzkodiergradienten $G_f$ Pixelweise ausgelesen wird.
+Nach der Repetitionszeit $TR$ wird die Sequenz wiederholt. Durch Variation des Phasenkodiergradienten $G_{ph}$ wird bei jeder Wiederholung eine andere Zeile des k-Raums ausgewählt, die dann mit dem Frequenzkodiergradienten $G_f$ pixelweise ausgelesen wird.
+
 
 Die SE-Sequenz hat den Vorteil, dass statische Feldinhomogenitäten vollständig ausgeglichen werden. Durch die einstellbaren Zeiten $TE$ und $TR$ kann eine T1, T2 oder PD gewichtete Aufnahme erzeugt werden.
 Der sehr guten Bildqualität steht die lange Aufnahmezeit gegenüber.
@@ -389,8 +390,15 @@ Eine Variation der Spinecho-Sequenz ist die Inversion-Recovery-Sequenz, kurz IR-
 	\label{fig:IR}
 \end{figure}
 
+Besonders in der klinischen Diagnostik relevant sind die, auf der IR-Sequenz basierenden Pulssequenzen \textit{STIR (Short TI Inversion Recovery)} und \textit{FLAIR (Fluid Attenuated Inversion Recovery)}.
+STIR nutzt kurze Inversionszeiten, um Fettgewebe in der Aufnahme auszublenden. Da die Selektion über die $T1$-Zeit erfolgt, werden auch andere Gewebe mit Fett-ähnlichen $T1$-Zeiten abgeschwächt\cite{Bydder1985}.
+FLAIR Sequenzen werden zur Unterdrückung von Flüssigkeiten, wie zum Beispiel der Zerebrospinalflüssigkeit eingesetzt. Je nachdem, ob das resultierende Bild $T1$ oder $T2$ gewichtet ist, wird zwischen \textit{T1-FLAIR} (vgl. \cite{Melhem1997}) und \textit{T2-FLAIR} (vgl. \cite{Hajnal1992}) unterschieden\cite{Bakshi2001}.
+
 \subsubsection{Gradientenecho-Sequenz}
-Bei der Gradientenecho-Sequenz (GRE) wird kein 180\degree-RF-Puls zur Erzeugung eines Echos, sondern ein Polaritätswechsel des Frequenzkodiergradientens genutzt. Dadurch, dass der 180\degree-Puls eingespart werden kann, sind viel kürzere Repetitionszeiten $TR$ möglich. Da bei einer kleinen Repetitionszeit auch nur wenig Zeit für eine vollständige T1-Relaxation zur Verfügung steht, werden häufig Anregungswinkel von $\alpha<90\degree$ verwendet (\autoref{fig:GRE}).
+Bei der Gradientenecho-Sequenz (GRE) wird kein 180\degree-RF-Puls zur Erzeugung eines Echos, sondern ein Polaritätswechsel des Frequenzkodiergradientens genutzt. Dadurch, dass der 180\degree-Puls eingespart werden kann, sind viel kürzere Repetitionszeiten $TR$ möglich. Da bei einer kleinen Repetitionszeit auch nur wenig Zeit für eine vollständige $T1$-Relaxation zur Verfügung steht, werden häufig Anregungswinkel von $\alpha<90\degree$ verwendet (\autoref{fig:GRE}).
+
+Durch die kleinen $TR$-Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der $T1$ Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
+
 
 Durch die kleinen TR Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der T1 Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
 
@@ -508,7 +516,16 @@ Die chemische Verschiebung wird, wie in \autoref{eq:chemShift} gezeigt, übliche
 \subsubsection{Bewegungsartefakte}
 Durch Bewegung des untersuchten Lebewesens, sei es durch die willkürliche Muskulatur, oder das Herz bzw. die Atmung, kann es zu Verschiebungen, Verwaschungen oder ähnlichen Bildfehlern in einer Schicht kommen. Außerdem ist es möglich, dass es durch Bewegungen zu Versätzen zwischen aufeinander folgenden Schichten kommt.                       
 
-\subsubsection{Technische Artefakte}
+\subsubsection{Suszeptibilitätsartefakte}
+Zu den Suszeptibilitätsartefakte zählen Effekte, die ihre Ursache in Störungen der Magnetfeldhomogenität\footnote{Störungen dieser Art können intrinsisch vorhanden sein, oder durch ferromagnetische Materialien verursacht werden, die durch den zu untersuchenden Körper in das Magnetfeld gebracht werden.}, der RF-Signalkette oder der Rekonstruktion haben.
+
+Durch das Einbringen von ferromagnetischem Material in den Tomograph werden die Feldlinien lokal verzerrt, was einer Änderung der Larmorfrequenzen entspricht. Dadurch entstehen Verzerrungen im Bild oder es erscheinen dunkle Bereiche durch einen Signalverlust in den betreffenden Gebieten.
+
+\subsubsection{Phase Wrapping}
+Phase Wrapping, auch als "foldover" oder phase wrap-around bezeichnet führt dazu, dass Strukturen, die außerhalb des gewählten Bildausschnitts liegen in das Bild hinein gefaltet werden. Der Effekt tritt vor allem durch Aliasing in der Phasenkodierrichtung auf. Eine absolut eingestellte Phase ist nur innerhalb von $2\pi=360\degree$ eindeutig. So kann nicht unterschieden werden, ob eine Phase von z.B. $370\degree$ oder $10\degree$ vorliegt. Die Struktur des rechten Rands mit $\phi=370\degree$ wird daher am Ort von $\phi=10\degree$ abgebildet. Dagegen kann das FOV so vergrößert werden, dass die Orte, die ins Bild gefaltet würden außerhalb vom Körper liegen und daher kein Signal liefern. Auch bietet es sich manchmal an, Frequenzkodier- und Phasenkodierrichtung zu tauschen, da der Effekt in Frequenzkodierrichtung nicht auftaucht, da dort durch Überabtastung kein Aliasing entsteht \cite{Pusey1988}, \cite{Heiland2008}.
+
+\subsubsection{Geisterbilder bei EPI-Sequenzen}
+Durch die Zickzack-Trajektorien bei EPI Sequenzen ist es notwendig, jede zweite akquirierte Zeile zu spiegeln, bevor sie in den k-Raum eingetragen wird. Dabei kann es zu Ausrichtungsfehlern kommen, die sich als Geister im rekonstruierten Bild bemerkbar machen\cite{Ianni2018}.
 
 \subsection{Besonderheiten präklinischer MRT Systeme}
 MRTs für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Da Mäuse, Ratten und andere Nagetiere häufig als Modellorganismen in der Forschung eingesetzt werden, ist das Marktvolumen präklinischer Bildgebungssysteme für diese Tiere am größten. \cite{GBanimalStat} Die Magnetöffnung eines präklinischen MRTs ist daher kleiner als die eines vergleichbaren Gerätes in der Humanmedizin. Während jedoch bei klinischen Tomographen der Durchmesser der Magnetöffnung in etwa den maximalen Patientenabmaßen entspricht, ist die Bohrung eines präklinischen MRTs etwas größer als die Breite der zu untersuchenden Tiere: Da bei den meisten präklinischen MRTs das Gradientensystem und die Empfangsspulen wechselbar ausgeführt sind, muss für diese zusätzlicher Platz in der Bohrung vorgesehen werden. Zur Maximierung der Bildqualität wird der Abstand von Tier zu den Spulensystemen möglichst klein gewählt.
@@ -766,7 +783,7 @@ Exemplarisch sind die verschiedenen SSIM Qualitätsmetriken in \autoref{fig:verg
 	\label{fig:vergleichSSIM}
 \end{figure}
 
-Für die Qualitätsbewertung in der medizinischen Bildgebung sind SSIM und die Derivate MS-SSIM, CW-SSIM, etc. etabliert und zeigen in der Regel eine höhere Robustheit als MSE oder PSNR \cite{Punga2014},\cite{VenkatNarayanaRao2013}.
+Für die Qualitätsbewertung in der medizinischen Bildgebung sind SSIM und die Derivate MS-SSIM, CW-SSIM, etc. etabliert (\cite{Punga2014}, \cite{VenkatNarayanaRao2013}) und zeigen in der Regel eine höhere Robustheit gegen Translationen als MSE oder PSNR.
 
 
 
