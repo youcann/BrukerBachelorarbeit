@@ -60,7 +60,7 @@ Mit GUIDE wird ein Textfeld "phaseNoiseLevel" in das Hauptfenster eingebaut.
 Auf den Wert in dem Textfeld soll aus \texttt{DoAddNoise.m} zugegriffen werden. \texttt{DoAddNoise.m} wird über \texttt{DoPostScan.m} von \texttt{SimuPanel.m} aufgerufen. Der handles Struct wird im Original MRiLab DoPostScan.m übergeben. Es muss daher lediglich der Parameterliste von \texttt{DoAddNoise.m} hinzugefügt werden.
 
 \begin{listing}[H]
-	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble]
 	{Matlab}
 	function DoAddNoise(handles)
 	% Add noise in K-space data
@@ -79,7 +79,7 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 
 
 \begin{listing}[H]
-	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble]
 	{Matlab}
 	function DoPostScan(Simuh)
 	
@@ -96,6 +96,36 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\caption{Funktion \texttt{DoPostScan.m} übergibt "handles" Struct (mit Name "Simuh") an \texttt{DoAddNoise.m}}
 	\label{lst:doPostscansimuh}
 \end{listing}
+
+\section{MRiLab Parameter}
+
+\begin{table}[H]
+	\caption{Für die Simulation relevante Parameter in MRiLab}
+	\centering
+	\begin{tabularx}{\textwidth}{l X l}
+		\toprule
+		\textbf{Name} & \textbf{Beschreibung} & \textbf{Einheit} \\
+		\midrule
+		FOVFreq & Größe des FOV in Richtung des Frequenzkodiergradienten & in \SI{}{\m}\\
+		FOVPhase & Größe des FOV in Richtung des Phasenkodiergradienten & in \SI{}{\m}\\
+		ResFreq & Auflösung in Richtung des Frequenzkodiergradienten & $\#Pixel/FOVFreq=\SI{}{\per\m}$\\
+		ResPhase & Auflösung in Richtung des Phasenkodiergradienten & $\#Pixel/FOVPhase=\SI{}{\per\m}$\\
+		SliceThick & Schichtdicke & \SI{}{\m}\\
+		SliceNum & Anzahl der (symmetrisch um die gewählte Schicht) aufzunehmenden Schichten & \\
+		ScanPlane & Orientierung der $xy$-Ebene (Axial, Sagittal, Coronal) & \\
+		TR,TE & Repetitionszeit und Echozeit & \SI{}{\s}\\
+		TEPerTR & Anzahl der aufzunehmenden Echos (aus verschiedenen Schichten, nur für Multiecho) & \\
+		Bandwidth & Bandbreite des Empfängers (entspricht dem inversen der Abtastrate $T_A$) & \SI{}{\hertz}\\
+		NEX & Anzahl der aufeinander folgenden Aufnahmen zur Rauschunterdrückung durch Mittelung & \\
+		MaxSlewRate & Maximale Slewrate für alle Gradientenspulen & \SI{}{\tesla\per\m\per\s}\\
+		MaxGrad & Maximale Stärke der Gradienten & \SI{}{\tesla\per\m}\\
+		B0 & Feldstärke des statischen Magnetfeldes & \SI{}{\tesla}\\
+		E1Level, B1Level & Stärke des RF-Feldes & (unbekannt)\\
+		\bottomrule
+	\end{tabularx}
+	\label{tab:mriLabParam}
+\end{table}
+
 
 \section{Kommerzielle MRT-Phantome}
 
@@ -119,4 +149,162 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 		\bottomrule
 		\end{tabularx}
 		\label{tab:phantomsOverview}
-		\end{table}
+\end{table}
+		
+\section{Fehlerbehebung in \texttt{stl-to-voxel}}
+\label{sec:stlToVoxFix}
+Untersuchungen zeigen, dass sich die Formatierung der von SolidWorks exportierten STL-Dateien (\autoref{lst:STLsw}) leicht von der im STL-Standard (\autoref{lst:STLspec}) unterscheidet: Zwischen den Koordinaten der Eckpunkten (Vertices) sind  zwei bzw. drei, statt ein Leerzeichen gesetzt. Dadurch scheitert der (Positions-basierte) Lesevorgang der Koordinaten in \texttt{stl\_reader.py}.
+
+\begin{listing}[H]
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble,showspaces]
+	{C}
+	solid cube_corner
+	facet normal 0.0 -1.0 0.0
+	outer loop
+	vertex 0.0 0.0 0.0
+	vertex 1.0 0.0 0.0
+	vertex 0.0 0.0 1.0
+	endloop
+	endfacet
+	...
+	\end{minted}
+	\caption{Auszug aus einer Standard-konformen STL-Datei}
+	\label{lst:STLspec}
+\end{listing}
+
+\begin{listing}[H]
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble,showspaces]
+	{C}
+	solid vcg
+	facet normal  7.071068e-01  7.071068e-01  0.000000e+00
+	outer loop
+	vertex   1.351310e+01  1.431762e+02  1.100000e+02
+	vertex   4.539159e+01  1.112977e+02  1.100000e+02
+	vertex   1.351310e+01  1.431762e+02  1.050000e+02
+	endloop
+	endfacet
+	...
+	\end{minted}
+	\caption{Auszug aus einer mit SolidWorks generierten STL-Datei}
+	\label{lst:STLsw}
+\end{listing}
+
+Zur Fehlerbehebung wird ein Filter eingesetzt, der leere Zeichenketten ausfiltert (\autoref{lst:stlToVoxFix}).
+
+\begin{listing}[H]
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble,escapeinside=||]
+	{Python}
+	...
+	words = line.strip().split(' ')
+	|\colorbox{green!20}{words=list(filter(None,words))}| 
+	assert words[0] == 'vertex'
+	verticies.append((float(words[1]),
+	float(words[2]),
+	float(words[3])))
+	...
+	\end{minted}
+	\caption{Modifikation der Datei \texttt{stl\_reader.py} zur Fehlerbehebung beim Lesen von "SolidWorks STL-Dateien"}
+	\label{lst:stlToVoxFix}
+\end{listing}
+
+\section{MATLAB Skript zum Erzeugen einer MRiLab Phantomdatei}
+
+\begin{longlisting}
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble,breaklines]
+	{Matlab}
+	%this path contains subfolders with all materials in the phantom
+	%each subfolder contains N png files and a property .txt file
+	baseFolder='/home/ubuntu/matlabProjects/simulation/srcMyPhantom/out4';
+	
+	%desired file name for the phantom:
+	phantomName='bioSpinMri60mm2';
+	
+	%get all subfolders in the base path
+	files = dir(baseFolder);
+	dirFlags = [files.isdir];
+	subFolders = files(dirFlags);
+	subFolders(1:2)=[]; %remove '.' and '..' TODO: OS dependent?
+	
+	%get diemensions of first image in first sub folder and preallocate voxel matrices
+	currFolder=fullfile(subFolders(1).folder,subFolders(1).name);
+	pngFolderInfo=dir(fullfile(currFolder, '*.png'));
+	pngPaths=fullfile({pngFolderInfo.folder},{pngFolderInfo.name});
+	A=imread(cell2mat(pngPaths(1)));
+	pngDimensions=size(A);
+	Rho=zeros(pngDimensions(1),pngDimensions(2),length(pngPaths),'uint8');
+	T1=zeros(pngDimensions(1),pngDimensions(2),length(pngPaths),'uint8');
+	T2=zeros(pngDimensions(1),pngDimensions(2),length(pngPaths),'uint8');
+	T2star=zeros(pngDimensions(1),pngDimensions(2),length(pngPaths),'uint8');
+	
+	%for loop over all sub folder containing all materials
+	for k=1:length(subFolders) 
+	currFolder=fullfile(subFolders(k).folder,subFolders(k).name);
+	
+	%get property scaling factors h_* for current material
+	properties=importdata(fullfile(currFolder,'properties.txt'));
+	keys=(properties.textdata);
+	if(~(strcmp(keys{1},'Rho') && strcmp(keys{2},'T1') && strcmp(keys{3},'T2') && strcmp(keys{4},'T2*')))
+	error('error in properties.txt')
+	end
+	h_Rho=properties.data(1);
+	h_T1=properties.data(2);
+	h_T2=properties.data(3);
+	h_T2star=properties.data(4);
+	
+	%get png files in the current folder
+	pngFolderInfo=dir(fullfile(currFolder, '*.png'));
+	pngPaths=fullfile({pngFolderInfo.folder},{pngFolderInfo.name});
+	if(isempty(pngPaths))
+	error(['No .png files found in input folder "', pathToInputFolder,'"']); 
+	end
+	
+	%loop over all the png images
+	for l=1:length(pngPaths)
+	disp([num2str(l),'/',num2str(length(pngPaths))]);
+	Rho(:,:,l)=Rho(:,:,l)+h_Rho*(imread(cell2mat(pngPaths(l)))/255);
+	T1(:,:,l)=T1(:,:,l)+h_T1*(imread(cell2mat(pngPaths(l)))/255);
+	T2(:,:,l)=T2(:,:,l)+h_T2*(imread(cell2mat(pngPaths(l)))/255);
+	T2star(:,:,l)=T2star(:,:,l)+h_T2star*(imread(cell2mat(pngPaths(l)))/255);
+	end
+	end
+	
+	%create MRiLab VObj
+	
+	stackSize=size(Rho);
+	
+	%MRIlab Phantom has to be a 1x1 struct named 'VObj' in file 'VObjSomething'
+	VObj=struct;
+	
+	VObj.Gyro = 2.675380303797068e+08; %water
+	VObj.ChemShift = 0; %assume no chemical shift
+	
+	VObj.XDim=stackSize(1);
+	VObj.YDim=stackSize(2);
+	VObj.ZDim=stackSize(3);
+	
+	VObj.XDimRes=0.001; %assume voxel sizes of 1mm
+	VObj.YDimRes=0.001;
+	VObj.ZDimRes=0.001;
+	
+	VObj.Type='Water';
+	VObj.TypeNum=1;
+	
+	VObj.Rho=Rho;
+	VObj.T1=T1;
+	VObj.T2=T2;
+	VObj.T2Star=T2star;
+	
+	%no data for Econ, MassDen available -> fill with Rho
+	VObj.ECon(:,:,:,1)=Rho;
+	VObj.ECon(:,:,:,2)=Rho;
+	VObj.ECon(:,:,:,3)=Rho;
+	VObj.MassDen=Rho;
+	
+	name=['VObj',phantomName];
+	save(name,'VObj')
+	
+	disp(['phantom saved: ',name])
+	\end{minted}
+	\caption{Skript zur Kombination aller Einzelteile zu einem MRiLab Phantom}
+	\label{lst:combinePhantomStacksIntoVoxelMatrix}
+\end{longlisting}

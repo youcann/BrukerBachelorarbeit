@@ -1,33 +1,20 @@
-\chapter{Material und Methoden}
+\chapter{Methodik}
+In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignung als Simulationsumgebung untersucht wird, wie das MR-Signal mit Phasenrauschen gestört wird und wie Testsimulationen durchgeführt werden.
 
 \section{MRiLab}
-
 MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). 
 
-\subsection{Analyse Bildrekonstruktionsalgorithmus}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/mrilabScreenshot.png}
+	\caption[MRiLab Startbildschirm]{Startbildschirm von \textit{MRiLab} mit einem geladenen Gehirn Phantom und dem Simulationsergebnis einer Spinecho-Sequenz (unten rechts)}
+	\label{fig:mrilabscreenshot}
+\end{figure}
 
-\section{Bestimmung notwendiger Simulationsparameter}
-MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind:
+\subsection{Bestimmung notwendiger Simulationsparameter}
+MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind mit der in MRiLab verwendeten Terminologie in \autoref{tab:mriLabParam} aufgeführt.
 
-\begin{itemize}
-	\item \textbf{FOVFreq}: Größe des FOV in Richtung des Frequenzkodiergradienten (in \SI{}{\m})
-	\item \textbf{FOVPhase}: Größe des FOV in Richtung des Phasenkodiergradienten (in \SI{}{\m})
-	\item \textbf{ResFreq}: Auflösung in Richtung des Frequenzkodiergradienten \\(in $\#Pixel/FOVFreq=\SI{}{\per\m}$)
-	\item \textbf{ResPhase}: Auflösung in Richtung des Phasenkodiergradienten \\(in $\#Pixel/FOVPhase=\SI{}{\per\m}$)
-	\item \textbf{SliceThick}: Schichtdicke (in \SI{}{\m})
-	\item \textbf{SliceNum}: Anzahl der (symmetrisch um die gewählte Schicht) aufzunehmenden Schichten
-	\item \textbf{ScanPlane}: Orientierung der $xy$-Ebene (Axial, Sagittal, Coronal)
-	\item \textbf{TR,TE}: Repetitionszeit und Echozeit (in \SI{}{\s})
-	\item \textbf{TEPerTR}: Anzahl der aufzunehmenden Echos (aus verschiedenen Schichten, nur für Multiecho)
-	\item \textbf{Bandwidth}: Bandbreite des Empfängers (entspricht dem inversen der Abtastrate $T_A$) (in \SI{}{\hertz})
-	\item \textbf{NEX}: Anzahl der aufeinander folgenden Aufnahmen zur Rauschunterdrückung durch Mittelung
-	\item \textbf{MaxSlewRate}: Maximale Slewrate für alle Gradientenspulen (in \SI{}{\tesla\per\m\per\s})
-	\item \textbf{MaxGrad}: Maximale Stärke der Gradienten (in \SI{}{\tesla\per\m})
-	\item \textbf{B0}: Feldstärke des statischen Magnetfeldes (in \SI{}{\tesla})
-	\item \textbf{E1Level, B1Level} Stärke des RF-Feldes (Einheiten unbekannt)
-\end{itemize}
-
-Da Bruker präklinische MRTs in unterschiedlichen Größen und Konfigurationen anbietet, sind einige typische Werte(-bereiche) in \autoref{tab:brukerMRIparam}.
+In Abstimmung mit der Applikationsentwicklung für die MRT können einige Werte bzw. Wertebereiche, wie sie typisch für die aktuelle Produktpalette der Bruker MRTs sind, angegeben werden (siehe \autoref{tab:brukerMRIparam}). 
 
 \begin{table}[H]
 	\centering
@@ -93,6 +80,8 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 	\end{tabular}
 \end{table}
 
+\subsection{Analyse k-Raum Trajektorien und}
+
 \section{Generierung von farbigem Phasenrauschen}
 
 \subsection{Grundsätzliche Vorgehensweise}
@@ -126,7 +115,6 @@ Für das Design solcher Filter bietet die \textit{Signal Processing Toolbox} in 
 
 Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen werden. Stattdessen eignet sich beispielsweise die Funktion \texttt{fir2()}, um die Filterkoeffizienten für einen FIR-Filter mit beliebigem Amplitudengang zu ermitteln\footnote{\texttt{cfirpm()} und \texttt{firpm()} sind weitere Möglichkeiten, einen FIR-Filter mit der "equiripple"- bzw. "Parks-McClellan"-Methode zu erzeugen.}. Ein IIR-Filter kann mit Hilfe der modifizierten Yule-Walker-Gleichungen und eines Least-Square-Fits durch die Funktion \texttt{yulewalk()} generiert werden.
 
-
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{FIR-Filter, Ordnung $n=1000$}{\includegraphics[width=0.45\textwidth,height=0.5\textwidth]{plots/fir.tikz}}
@@ -136,8 +124,6 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 \end{figure}
 
 
-
-
 \section{Phasenrauschfunktion für MRiLab}
 
 \section{Erstellung MRT Phantom}
@@ -145,15 +131,88 @@ Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum 
 
 Für die kontinuierliche Qualitätsüberwachung in Kliniken und radiologischen Praxen bieten Händler für MRT-Zubehör verschiedene MRT-Phantome an. Diese bestehen meist aus flüssigkeitsgefüllten Kunststoffstrukturen, häufig PMMA. Im Inneren verfügen diese Phantome über verschiedene Einsätze, um bestimmte Eigenschaften eines MR-Tomographens zu bewerten. So lässt sich beispielsweise über ein regelmäßiges Gitter eine Aussage über geometrische Verzerrungen und durch eine Keilplatte eine Aussage über die Schichtdicke machen. Durch abgedichtete Einsätze können Flüssigkeiten mit abweichenden NMR-Eigenschaften als die Hauptflüssigkeit eingebracht werden. Eine Auswahl von kommerziell erhältlichen Phantomen ist in \autoref{tab:phantomsOverview} zusammengestellt.
 
-Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese Phantome jedoch entweder deutlich zu groß, oder bieten ein schlechtes Preis/Leistungsverhältnis. In der Vergangenheit wurde von der internen Konstruktionsabteilung bei Bruker BioSpin ein Phantom mit \SI{63}{\mm} Außendurchmesser designt und von der Mechanikwerkstatt am Standort Rheinstetten gefertigt. Dieses bietet die nötigen Merkmale und wird deshalb im weiteren Verlauf dieser Arbeit verwendet.
+Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese Phantome jedoch entweder deutlich zu groß, oder bieten ein schlechtes Preis/Leistungsverhältnis. In der Vergangenheit wurde daher von der internen Konstruktionsabteilung bei Bruker BioSpin ein Phantom mit \SI{63}{\mm} Außendurchmesser entwickelt und von der Mechanikwerkstatt am Standort Rheinstetten gefertigt (siehe \autoref{fig:63mmPhantom}). Es besteht aus mehreren PMMA-Kunststoffelementen in einem PMMA-Hohlzylinder. Das große Hohlvolumen des Zylinders und die Hohlvolumina der kleinen Hohlzylinder-Einsätze können unabhängig voneinander mit Flüssigkeiten gefüllt werden. Meist werden verschieden stark konzentrierte Salzlösungen verwendet, deren NMR-Eigenschaften bekannt sind. Dadurch bietet dieses Phantom alle nötigen Merkmale und wird deshalb im weiteren Verlauf dieser Arbeit verwendet.
 
-Das Bruker 63mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu Erzeugen, sind nachfolgend aufgezeigt.
+ Da der Fertigungsaufwand für einen solchen Kunststoffkörper aus mehr als 20 Einzelteilen sehr hoch ist, lohnt sich die Auslieferung solcher Phantome zum Kunden der MR-Tomographen nicht. Für eine Demonstration der Gerätefunktionalitäten nach der Montage vor Ort und für die Evaluierung grundlegender Qualitätsanforderungen an den Tomograph wird das "50ml-Phantom" (siehe \autoref{fig:50mlPhantom}) eingesetzt. Es besteht aus einem \SI{50}{\milli\liter} Zentrifugenröhrchen (vgl. Datenblatt des Herstellers in \cite{corningCentriStar}) gefüllt mit einem Kupfer(II)-sulfat enthaltenden Gel. Darin eingebettet ist ein 2x4-LEGO Stein aus ABS. Durch die engen Fertigungstoleranzen, bekannten Maße und den günstigen Preis eignen sich LEGO-Steine gut als Referenzelemente.
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{"50ml-Phantom" (SNR und Auflösung)\label{fig:50mlPhantom}}{\includegraphics[width=0.45\textwidth]{img/phantoms/legoPhantom_scale.png}}
+	\hfill
+	\subcaptionbox{"63mm-Phantom" (Auflösung, Schichtdicke, SNR)\label{fig:63mmPhantom}}{\includegraphics[width=0.45\textwidth]{img/phantoms/bkr60_scale.png}}
+	\caption{Zwei bei Bruker BioSpin MRI eingesetzte MRT Phantome (Rendering)}
+\end{figure}
+
+Das Bruker 63mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu erzeugen, sind nachfolgend aufgezeigt.
 
 \subsection{Erstellung eines 3D-CAD Modells}
+Zunächst werden aus den zweidimensionalen Einzelteilzeichnungen 3D-Modelle erstellt. Da (mechanische) CAD-Modelle und Baugruppen verschiedener Softwarepakete in der Regel nicht kompatibel sind, werden die Modelle mit dem bei Bruker BioSpin verwendeten \textit{Siemens PLM Solid Edge} erstellt, um eine spätere Wiederverwendung in der Abteilung zu ermöglichen. Die Einzelteile werden anschließend, basierend auf der 2D-Übersichtszeichnung, zu einer Baugruppe zusammengesetzt. Das dabei entstehende Phantom-Modell ist noch Luft-gefüllt. Da in einer realen Messung die größten MR-Signale aus der Flüssigkeitsfüllung resultieren, kann die Füllung für die Simulation nicht vernachlässigt werden. Da Solid Edge keinen Assistent zur Füllung von Hohlräumen anbietet, muss die Füllung zunächst durch einen Vollzylinder angenähert werden. Von diesem werden dann durch eine Bool'sche Operation die inneren PMMA-Strukturen und die Flüssigkeiten der kleinen Hohlzylinder abgezogen. Es zeigt sich, dass in Solid Edge ST10 nicht gelingt eine Subtraktion von mehr als etwa sechs Einzelteilen durchzuführen.
+
+Zur Lösung dieses Problems wird die Baugruppe mit allen Einzelteilen in \textit{SolidWorks 2014} (von der Dassault Systèmes SolidWorks Corp.) importiert. Da beim Import lediglich die Geometrien geladen werden und die einzelnen Features verloren gehen, wird der "Recognize Features"-Assistent eingesetzt, um aus dem importieren Körpern wieder ein vollständiges CAD-Modell zu erhalten. Vor Anwenden der Subtraktionsoperation auf den Flüssigkeitskörper müssen am Modell kleinere Änderungen vorgenommen werden, um sog. "zero-thickness geometries"\footnote{Die deutsche Bezeichnung "Geometrie der Dicke Null" ist nicht gebräuchlich} zu vermeiden. Zero thickness (auch  "non-manifold") Geometrien entstehen, wenn Kanten oder Eckpunkte einer Geometrie nicht richtig mit angrenzenden Geometrien verbunden werden können. Per Definition muss jede Kante genau zwei angrenzende Flächen haben. Wird diese Bedingung verletzt, kann es zu Problemen mit der Repräsentation der 3D-Geometrie im Modellierungskern der CAD-Software kommen.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.33\textwidth]{img/zeroThickness.tikz}}
+	\caption[Zero Thickness]{Zwei Möglichkeiten für die Entstehung von "zero thickness geometries": An den markierten Punkten hätte eine Kante, die in die Zeichenebene hineinläuft, mehr als zwei benachbarte Flächen ((1): 4 Kanten, (2): 3 Kanten)}
+	\label{fig:zeroThick}
+\end{figure}
+
+Für die Positionierung der geraden Einsätze im Phantom relativ zu den dünnen Stäben kann daher keine Tangential-Beziehung verwendet werden. Durch Einfügen eines kleinen Abstandes wird die Entstehung von zero thickness geometry vermieden.
+
+Nach der Behebung der zero thickness Probleme können alle Einsätze vom Flüssigkeitszylinder subtrahiert werden. Die Einzelteile und die Baugruppe werden im proprietären SolidWorks Format .SLDPRT bzw. .SLDASM und zusätzlich in den Hersteller-neutralen CAD-Austauschformat .IGES und .STEP abgespeichert.
 
 \subsection{Konvertierung in eine 3D-Voxel-Matrix}
+Die CAD-Dateiformate IGES und STEP enthalten jeweils eine Beschreibung der CAD-Daten in Form von Geometrieprimitiven und Features. Damit ist ein verlustfreier Ex- und Import zwischen verschiedenen Anwendungen möglich. Für die Konvertierung in eine Voxeldarstellung sind diese Formate jedoch ungeeignet, weil die Geometrien vor einer Rasterung zunächst aus der analytischen Darstellung in eine numerische gebracht werden müssen. Eine Möglichkeit ist der Export in eine .STL Datei. In (ASCII) STL Dateien wird eine Geometrie durch eine Vielzahl von, im Raum orientierter, Dreiecke angenähert (siehe \autoref{lst:STLspec}).
+
+Eine Speicherung in STL ist daher in der Regel verlustbehaftet. Neben der genauen Geometriebeschreibung gehen beim Export aus SolidWorks in STL alle Informationen zu Features, Material etc. verloren. Daher wird das Phantom nicht als komplette Baugruppe exportiert, sondern es wird jedes Einzelteil separat exportiert. Um die Einzelteile in der STL Darstellung gegeneinander ausrichten zu können und Skalierungsproblemen beim Voxelisierungsprozess zu vermeiden, wird eine, das gesamte Phantom umspannende Referenzgeometrie eingeführt. Diese kann später ausgeblendet werden.
+
+Die STL Dateien der Einzelteile müssen nun in eine Voxeldarstellung gebracht werden. Dazu wird das Python Skript \textit{stl-to-voxel} \cite{stlToVox} verwendet. Beim Versuch, eine mit SolidWorks exportierte STL zu verarbeiten, bricht das Skript jedoch mit einer Fehlermeldung ab. Die Fehlerursache und eine mögliche Fehlerbehebung sind in \autoref{sec:stlToVoxFix} beschrieben.
+
+Stl-to-voxel kann nun eingesetzt werden, um \textbf{eine} STL Datei in einen Stack aus png Bildern zu zerlegen, die dann gestapelt die gesuchte Voxeldarstellung ergeben.
+Der Aufruf von stl-to-voxel erfolgt beispielsweise mit:
+\begin{listing}[H]
+	\begin{minted}[bgcolor=white,fontsize=\footnotesize,autogobble,escapeinside=||]
+	{bash}
+	python3 ./stltovoxel.py ./inputSTLs/stlFile.stl ./outputFolder/filename.png 256
+	\end{minted}
+\end{listing}
+
+Im Beispiel entspricht die 256 der gewünschten Auflösung $N$ des png-Stacks. Da nur eine Auflösung angegeben werden kann, entstehen immer $N$ $(N\times N)$ große png Bilder. Die png-Bilder haben eine Samplingtiefe/Bittiefe von $1$-Bit. Daher gilt für jeden Pixelwert:
+\begin{equation}
+	I = I(x,y) , \quad I(x,y) \in \{0, 255\}
+\end{equation}
+Ein Stapel aus unkomprimierten 1-Bit-Bitmaps hätte damit die Größe
+\begin{equation}
+	L=\SI{1}{\Bit} \cdot (N \times N) N = N^3 \,\SI{}{\Bit} = \frac{N^3}{8} \SI{}{\Byte}
+\end{equation}.
+Mit $N=256$ ergibt sich $L\approx \SI{2}{\mega\Byte}$ und mit $N=512$ ergibt sich eine Größe von $L\approx \SI{17}{\mega\Byte}$. Da png eine Komprimierung benutzt, sind die Berechnungen mit unkomprimierten Bitmaps eine obere Abschätzung\footnote{Erste Versuche ergeben für $N=512$ eine Größe von $L<\SI{300}{\kilo\Byte}$}.
+
+Der Vorgang wird für alle $M$ Einzelteile wiederholt.
 
 \subsection{Zusammenführen in eine .mat-Datei}
+Die Voxelrepräsentation des Phantoms besteht jetzt aus $M$ Ordnern für jedes Einzelteil, die jeweils $N$ $(N \times N)$ große png Bilder enthalten. Diese müssen nun zu einer MATLAB Matrix kombiniert werden.
+
+Zunächst werden die png Stacks jedes Einzelteils zu einer Matrix zusammengesetzt. Dazu werden die Bilder sequenziell in eine 2D-Matrix eingelesen. Die 2D-Matrizen werden dann aneinander gefügt, bis eine quadratische 3D-Matrix entstanden ist. Diese Einzelteilmatrizen werden dann in einer Matrix vereint.
+
+Die Kombination der Einzelteile in einer Matrix kann zum Beispiel über eine Addition (der jeweils gleich großen Einzelmatrizen) erfolgen. Eine solche Operation wäre im Allgemeinen nicht umkehrbar. Da es sich aber bei den Einzelteilmatrizen um disjunkte Mengen handelt, können sie problemlos addiert werden.
+
+Da Gewebe nicht nur eine, für die MRT relevante, Eigenschaft aufweist, ist eine Matrix zur vollständigen Beschreibung nicht ausreichend. MRiLab verwendet daher vier Eigenschafts-Matrizen $A_e$: Je eine für die Protonendichte (PD) und die Relaxationszeiten (T1, T2 und T2*).
+
+Vor der Addition der Einzelteile zu einer dieser Matrizen wird daher jedes Einzelteil mit einer, für sein Material charakteristischen Konstante skaliert. Die Skalierungsfaktoren werden in Textdateien zusammen mit den png-Stacks in den Einzelteilordnern abgespeichert. Damit ergibt sich für eine Eigenschaftsmatrix:
+\begin{equation}
+\label{eq:sumMatrix}
+	A_e=\sum_{i=1}^{M} k_{i,e} \underbrace{\sum_{n=0}^{N} I_n(x,y)}_\text{Einzelteilmatrix}
+\end{equation}
+mit:
+\begin{with*}
+	A_E & Matrix der Eigenschaft $e$, mit $e \in \{PD,\, T1,\, T2,\, T2\text{*}\}$ \\
+	M & Anzahl der Einzelteile \\
+	N & Auflösung der png Bilder und Anzahl der png Bilder \\
+	I_n(x,y) & n-tes png Bild \\
+\end{with*}
+
+Der durch \autoref{eq:sumMatrix} beschriebene Algorithmus ist als MATLAB Skript in \autoref{lst:combinePhantomStacksIntoVoxelMatrix} zu finden.
+
 
 
 

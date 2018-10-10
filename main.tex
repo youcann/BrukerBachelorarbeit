@@ -37,6 +37,8 @@
 
 %SI units
 \usepackage{siunitx}
+\DeclareSIUnit{\Bit}{Bit}
+\DeclareSIUnit{\Byte}{Byte}
 
 %nice tables
 \usepackage{booktabs}
@@ -145,6 +147,8 @@
 \usepackage[export]{adjustbox}
 \usepackage{textcomp}
 
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
 \newtheorem{definition}{Definition}[section]
 
 \begin{document}
@@ -166,7 +170,7 @@
 \mainmatter
 \input{sections/1einleitung.tex}
 %\input{sections/2grundlagen.tex}
-\input{sections/4Material_und_Methoden.tex}
+%\input{sections/4Material_und_Methoden.tex}
 %\input{sections/5Ergebnisse.tex}
 %\input{sections/6Diskussion_und_Ausblick.tex}
 
