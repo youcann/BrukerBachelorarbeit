@@ -1,1 +1,12 @@
 \chapter{Zusammenfassung und Ausblick}
+In dieser Arbeit wurde die Eignung von MRiLab, einer auf MATLAB basierenden Software, für die Simulation von präklinischen MR-Tomographen untersucht.
+
+Um bekannte Eingangsdaten für die Simulation zu erhalten, die auch in Zukunft Gültigkeit behalten und durch reale Messungen verifizierbar sind, wurde ein bereits vorhandenes MRT-Phantom als \gls{cad}-Modell nachgebildet und so konvertiert, dass es für die Simulation nutzbar ist.
+
+Mit diesem Phantom wurden anschließend MRT-Simulationen mit verschiedenen Pulssequenzen durchgeführt. Damit konnte die grundlegende Funktion von MRiLab gezeigt werden. Durch Hinzufügen von Phasenrauschen mit unterschiedlicher spektraler Leistungsdichte auf das MR-Empfangssignal vor bzw. nach Eintrag in den k-Raum, konnte der Einfluss dieses Phasenrauschens auf die Bildqualität rein visuell beobachtet werden.
+
+Zur quantitativen Bewertung der Ergebnisse wurden Bildqualitätsmetriken, wie die \gls{ssim} oder der \gls{mse} verwendet.
+
+Bevor weiterführende Arbeiten zur Bewertung der durchgeführt werden, scheint es sinnvoll, die Anforderungen auf Seite der Applikation genauer zu spezifizieren. Der Kundennutzen eines Tomographen liegt in der "möglichst guten" Abbildung von Körpern. Problematisch dabei ist, dass weder bei den Kunden, noch in der Applikationsentwicklung bei \textit{Bruker BioSpin MRI} eine Metrik zur Bewertung der Bildqualität existiert. In einer NEMA-Publikation (\cite{nemaSNR}) ist ein reproduzierbares Verfahren standardisiert, um das \gls{snr} eines MRT zu messen. Für die vollständige Qualitätsbewertung von MRTs existieren keine Standards. Vorschläge für Messverfahren und einzusetzende Phantome gibt es jedoch, wie z.B. in \cite{aapm1990}.
+
+Hilfreich für die weitere Optimierung der Signalkette wäre daher eine Bildqualitätsmetrik, die auf die Anforderungen der \gls{mrt} zugeschnitten ist und deren Modell trainierbar ist. Mit Hilfe von Referenzbildern aus der Anwendungsentwicklung sollte ein Maß entstehen, das unterschiedliche Arten von Bilddegradationen danach gewichtet, wie sie sich auf die Aussagekraft des MRT-Bildes auswirken. So ist ein SNR-Verlust meist eher tolerierbar, als das Auftreten von Geisterbildern, die anatomische Strukturen vortäuschen können. 
