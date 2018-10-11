@@ -2,7 +2,9 @@
 In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignung als Simulationsumgebung untersucht wird, wie das MR-Signal mit Phasenrauschen gestört wird und wie Testsimulationen durchgeführt werden.
 
 \section{MRiLab}
-MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). 
+MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). Aufwendige Rechnungen in MRiLab (wie das Lösen der Blochgleichungen für die einzelnen Voxel) sind gut parallelisierbar. Je nachdem, ob eine geeignete Grafikkarte für CUDA vorhanden ist, wird diese genutzt, oder die Berechnungen werden mit dem regulären Prozessor und IPP durchgeführt.
+
+\autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirn-Phantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung, können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
 
 \begin{figure}[H]
 	\centering
@@ -67,7 +69,7 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 
 \begin{table}[H]
 	\centering
-	\caption{Notwendige Empfängerbandbreiten in Abhängigkeit des Field of View (FOV) und der Gradientenstärke}
+	\caption[Berechnung Empfängerbandbreite]{Notwendige Empfängerbandbreiten in Abhängigkeit des Field of View (FOV) und der Gradientenstärke}
 	\label{tab:empfBandbreite}
 	\begin{tabular}{llll}
 		\toprule
@@ -80,11 +82,30 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 	\end{tabular}
 \end{table}
 
-\subsection{Analyse k-Raum Trajektorien und}
-
 \section{Generierung von farbigem Phasenrauschen}
+Das Spektrum des Phasenrauschens eines realen Oszillators ist nicht konstant (weiß). Sondern die spektrale Leistungsdichte strebt für sehr kleine Werte der Offsetfrequenz $f_{offset}=f-f_c$ gegen die des Trägers:
+\begin{equation}
+P(f_{offset} -> 0) = P_c
+\end{equation}
+Für große Frequenzen geht die Phasenrauschleistung gegen null. Es bleibt ein konstanter "noise floor" $N_0$:
+\begin{equation}
+	P(f_{offset} -> \infty) = N_0.
+\end{equation}
 
 \subsection{Grundsätzliche Vorgehensweise}
+Zur Simulation mehrerer Realisierungen $\xi_i$ des Phasenrauschprozesses müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Schätzung des Leistungsdichtespektrums mit einem Periodogramm }{\includegraphics[width=0.45\textwidth,height=0.35\textwidth]{plots/randnSpect.tikz}}
+	\hfill
+	\subcaptionbox{Schätzung der Wahrscheinlichkeitsdichtefunktion mit einem Histogramm}{\includegraphics[width=0.45\textwidth,height=0.363\textwidth]{plots/randnHist.tikz}}
+	\caption[MATLAB randn]{Simulation von 1000 Zufallszahlen mit \texttt{X=randn(1,1000)} in MATLAB}
+	\label{fig:randn}
+\end{figure}
+
+
+
 
 
 \begin{figure}[H]
@@ -121,6 +142,7 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 	\hfill
 	\subcaptionbox{IIR-Filter, Ordnung $n=70$}{\includegraphics[width=0.45\textwidth,height=0.5\textwidth]{plots/iir.tikz}}
 	\caption{Caption}
+	\label{firIirPhasenoise}
 \end{figure}
 
 

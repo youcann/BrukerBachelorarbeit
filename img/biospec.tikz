@@ -17,4 +17,7 @@
 \node[anchor=south east,align=left] (stat) at (-4,-3) {Tier-Handhabungssystem};
 
 
+\node[anchor=south,align=left] (scale) at (7.5,-4) {1 m};
+\draw[ultra thick] (6,-4) -- ++(3,0);
+
 \end{tikzpicture}

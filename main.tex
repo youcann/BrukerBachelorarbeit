@@ -15,13 +15,14 @@
 	{Inhalt}
 }
 
-
 %Floats (for [H])
 \usepackage{float}
 
 %Math stuff
 \usepackage{mathtools}
 \usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{mathrsfs}
 
 %equation variable descriptions
 %aligned:
@@ -79,9 +80,9 @@
 \usepackage{caption}
 \captionsetup{labelsep=space}
 
-%Bibliography using Biber
+%Bibliography using Biber (biblatex DOES NOT use bibtex styles (.bst))
 \usepackage[autostyle]{csquotes}
-\usepackage[backend=biber,style=ieee,sortlocale=de_DE,natbib=true,url=true, doi=true,eprint=false,isbn=true]{biblatex}
+\usepackage[backend=biber,style=numeric,natbib=true,sorting=nty,sortlocale=de_DE,maxnames=3,isbn=true,url=true,doi=true]{biblatex}
 \addbibresource{jabref.bib}
 
 %Glossar
@@ -137,18 +138,17 @@
 %\publishers{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%tikz stuff
 \usepackage{tikz}
 \usepackage{tikzscale}
 \usepackage{pgfplots}
 \usetikzlibrary{arrows.meta}
 \pgfplotsset{compat=1.5.1}
-\usepackage[list=true]{subcaption}
-
+\usepackage[list=false]{subcaption}
 \usepackage[export]{adjustbox}
-\usepackage{textcomp}
 
+%custom environments
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
-
 \newtheorem{definition}{Definition}[section]
 
 \begin{document}
@@ -168,14 +168,14 @@
 \setcounter{page}{1}
 
 \mainmatter
-\input{sections/1einleitung.tex}
-\input{sections/2grundlagen.tex}
-%\input{sections/4Material_und_Methoden.tex}
+%\input{sections/1einleitung.tex}
+%\input{sections/2grundlagen.tex}
+\input{sections/4Material_und_Methoden.tex}
 %\input{sections/5Ergebnisse.tex}
-\input{sections/6Diskussion_und_Ausblick.tex}
+%\input{sections/6Diskussion_und_Ausblick.tex}
 
 \appendix
-%\input{sections/7Anhang.tex}
+\input{sections/7Anhang.tex}
 \pagenumbering{Roman}
 \setcounter{page}{0}
 \printglossary

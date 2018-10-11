@@ -1,0 +1,39 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+ymin=-1,
+ymax=1,
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot[ycomb, color=black, mark=o, mark options={solid, black}] table[row sep=crcr] {%
+-16	2.77662052158154e-16\\
+-14	5.98605661943812e-17\\
+-12	-1.11379224994943e-16\\
+-10	-2.8905665702705e-16\\
+-8	-3.36315095008858e-18\\
+-6	1.62546747448683e-17\\
+-4	1.87919649941652e-16\\
+-2	5.98605661943812e-17\\
+0	-1.17854900364558e-16\\
+2	5.98605661943812e-17\\
+4	1.87919649941652e-16\\
+6	1.62546747448683e-17\\
+8	-3.36315095008858e-18\\
+10	-2.8905665702705e-16\\
+12	-1.11379224994943e-16\\
+14	5.98605661943812e-17\\
+};
+\addplot[forget plot, color=white!15!black] table[row sep=crcr] {%
+-inf	0\\
+inf	0\\
+};
+
+\end{axis}
+\end{tikzpicture}%
