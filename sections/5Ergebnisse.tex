@@ -13,7 +13,7 @@ Als Referenz dient die Simulation in \autoref{fig:inputPhantom}. Die Aufnahme de
 \end{figure}
 
 \subsection{Gradientenecho-Sequenz}
-Zunächst wird das MR-Signal, dass durch die Simulation einer Gradientenecho-Pulssequenz gewonnen wird, mit einem weißen, Gauß-verteilten Phasenrauschen versehen:
+Zunächst wird das MR-Signal, das durch die Simulation einer Gradientenecho-Pulssequenz gewonnen wird, mit einem weißen, Gauß-verteilten Phasenrauschen versehen:
 \begin{equation}
 	\label{eq:greWhite}
 	\Delta \Phi(t)=\Delta \Phi[n]=X_{\xi}[n], \quad X \sim N(0,1)
@@ -36,15 +36,15 @@ Wird das weiße Rauschen aus \autoref{eq:greWhite} integriert, entsteht $1/f$-Ra
 	\Delta \Phi(t)=\Delta \Phi[n]= \sum_{i=0}^{n} X_{\xi}[i], \quad X \sim N(0,1)
 \end{equation} 
 
-\autoref{fig:greoneOverf} zeigt das dazugehörige rekonstruierte Bild zusammen mit dem Verlauf von $\Delta \Phi(t)$.
+\autoref{fig:greRESULT} zeigt das dazugehörige rekonstruierte Bild zusammen mit dem Verlauf von $\Delta \Phi(t)$.
 
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.25\width} {0.15\height}},clip]{img/results/oneOverF_weak.png}}
 	\hfill
 	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/oneOverF_weak.tikz}}
-	\label{fig:greoneOverf}
-	\caption{$1/f$-Phasenrauschen bei einer GRE-Sequenz}	
+	\caption{$1/f$-Phasenrauschen bei einer GRE-Sequenz}
+	\label{fig:greRESULT}	
 \end{figure}
 
 \subsection{Echo-Planar-Sequenz}
@@ -71,7 +71,7 @@ Die Phasenrausch-Simulationen aus \autoref{eq:greWhite} und \autoref{eq:brown} w
 	\label{fig:epiOneoverF}	
 \end{figure}
 
-\autoref{fig:epiSine} zeigt eine Sinus-förmige Modulation der Phase des MR-Signals. Die Modulation ist gegeben durch:
+\autoref{fig:epiSine} zeigt eine sinusförmige Modulation der Phase des MR-Signals. Die Modulation ist gegeben durch:
 \begin{equation}
 	\Delta \Phi(t)=\Delta \Phi[n]= \beta sin(2 \pi \nu_m t), \quad t=(0,\frac{1}{f_{receiver}},\frac{2}{f_{receiver}},...,\frac{N-1}{f_{receiver}})
 \end{equation}

@@ -82,7 +82,7 @@
 
 %Bibliography using Biber (biblatex DOES NOT use bibtex styles (.bst))
 \usepackage[autostyle]{csquotes}
-\usepackage[backend=biber,style=numeric,natbib=true,sorting=nty,sortlocale=de_DE,maxnames=3,isbn=true,url=true,doi=true]{biblatex}
+\usepackage[backend=biber,bibstyle=nature,citestyle=nature,natbib=true,sorting=nty,sortlocale=de_DE,maxnames=3,isbn=true,url=true,doi=true]{biblatex}
 \addbibresource{jabref.bib}
 
 %Glossar
@@ -168,11 +168,11 @@
 \setcounter{page}{1}
 
 \mainmatter
-%\input{sections/1einleitung.tex}
-%\input{sections/2grundlagen.tex}
+\input{sections/1einleitung.tex}
+\input{sections/2grundlagen.tex}
 \input{sections/4Material_und_Methoden.tex}
-%\input{sections/5Ergebnisse.tex}
-%\input{sections/6Diskussion_und_Ausblick.tex}
+\input{sections/5Ergebnisse.tex}
+\input{sections/6Diskussion_und_Ausblick.tex}
 
 \appendix
 \input{sections/7Anhang.tex}

@@ -4,7 +4,7 @@ In diesem Kapitel werden einige Grundlagen erläutert, die für den weiteren Ver
 \section{(Präklinische-) Magnetresonanztomographie}
 Magnetresonanztomographie (abgekürzt MRT\footnote{Auch \textit{MRI} (eng. magnetic resonance imaging)}) bezeichnet ein bildgebendes Verfahren, dass den physikalischen Effekt der Kernspinresonanz (englisch: nuclear magnetic resonance (NMR)) nutzt.
 
-Als \textit{Tomografie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben}-Verfahren ermöglicht es die MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) überlagerungsfrei.
+Als \textit{Tomografie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben}-Verfahren ermöglicht es die MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) über\-lagerungs\-frei.
 
 Im Gegensatz zur \textit{Computertomographie} (CT), einem weiteren sehr verbreitetem Tomographieverfahren, kommt bei einer MRT Untersuchung keine ionisierende Strahlung zum Einsatz.
 
@@ -109,7 +109,7 @@ Wird mit einem Mikrowellensender ein RF-Puls der Energie $E=\gamma \hbar B_0$ so
 	\vec{B}=\vec{B_0}+\vec{B_1}
 \end{equation}
 wodurch $\vec{M}$ aus dem thermischen Gleichgewicht abgelenkt wird. $\vec{M}$ präzediert daraufhin, wie in \autoref{eq:Mdgl} beschrieben. Je nach Dauer des RF-Pulses kann damit ein beliebiger Winkel $\alpha$ zwischen $\vec{M}$ und $\vec{M}$ im thermischen Gleichgewicht ($\vec{M_{eq}}$) eingestellt werden.
-RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. \textit{180\degree-Pulse} sind ebenso häufig, zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE} und \autoref{sec:IR}), anzutreffen. Anregungspulse für Gradientenecho-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
+RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. \textit{180\degree-Pulse} sind ebenso häufig, zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE}), anzutreffen. Anregungspulse für Gradientenecho-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
 
 Nach einer Anregung mit einem RF-Puls setzen zwei, voneinander unabhängige Relaxationsphänomene ein \cite{Nishimura1996}:
 \begin{itemize}
@@ -266,7 +266,7 @@ Das Hochfrequenzsignal wird über die RF Spulen eingestrahlt. Entweder über die
 
 \subsubsection{Abschirmung}
 Zum Schutz des MRT vor externer Störstrahlung und zum Schutz der Umgebung (Menschen und andere Geräte) sind Abschirmungen nötig:
-Der Magnet für das statische Magnetfeld erzeugt nicht nur das nutzbare $B_0$-Feld, sondern auch magnetische Streufelder. Diese können passiv, z.B, durch Stahlplatten, oder aktiv durch zusätzliche Spulen abgeschirmt werden.
+Der Magnet für das statische Magnetfeld erzeugt nicht nur das nutzbare $B_0$-Feld, sondern auch magnetische Streufelder. Diese können passiv, z.B. durch Stahlplatten, oder aktiv durch zusätzliche Spulen abgeschirmt werden.
 
 Von den Gradientenspulen erzeugte Streufelder, welche durch Wirbelströme entstehen, können auf ähnliche Art und Weise unterdrückt werden.
 
@@ -274,7 +274,7 @@ Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notw
 Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist. \cite{Weibler1993} Problematisch ist die ausreichende Abschirmung der Eingangstür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
 
 \subsection{Bildentstehung im MR-Tomographen}
-Zur Rekonstruktion eines Körpers in einem MRT müssen die Signale, welche die Empfangsspulen erreichen so beschaffen sein, dass daraus auf ihren Ursprungsort geschlossen werden kann. Für diese Kodierung werden die Gradientenspulen eingesetzt. Zunächst wird parallel zur $xy$-Ebene eine Schicht im Körper ausgewählt. Dann werden die Pixel in diesem Schichtbild so kodiert, dass ihre Position in $x$- und $y$-Richtung bestimmt ist.
+Zur Rekonstruktion eines Körpers in einem MRT müssen die Signale, welche die Empfangsspulen erreichen, so beschaffen sein, dass daraus auf ihren Ursprungsort geschlossen werden kann. Für diese Kodierung werden die Gradientenspulen eingesetzt. Zunächst wird parallel zur $xy$-Ebene eine Schicht im Körper ausgewählt. Dann werden die Pixel in diesem Schichtbild so kodiert, dass ihre Position in $x$- und $y$-Richtung bestimmt ist.
 
 \subsubsection{Selektive Anregung/Schichtwahl}
 Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des HF-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
@@ -362,7 +362,7 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 	\item \textbf{GRE}: Gradientenecho-Sequenz
 \end{itemize}
 
-Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel für spezielle Aufnahme-Modi, wie die Diffusionsbildgebung nötig sind oder die Aufnahmezeit stark verkürzen. Zwei Beispiele für die "schnellen" Sequenzen sind \textit{Turbo-Spinecho} und \textit{Echo Planar Imaging}.
+Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel für spezielle Aufnahme-Modi, wie die Diffusionsbildgebung, nötig sind oder die Aufnahmezeit stark verkürzen. Zwei Beispiele für die "schnellen" Sequenzen sind \textit{Turbo-Spinecho} und \textit{Echo Planar Imaging}.
 
 
 \subsubsection{Spinecho-Sequenz}
@@ -393,7 +393,7 @@ Eine Variation der Spinecho-Sequenz ist die Inversion-Recovery-Sequenz, kurz IR-
 	\label{fig:IR}
 \end{figure}
 
-Besonders in der klinischen Diagnostik relevant sind die, auf der IR-Sequenz basierenden Pulssequenzen \textit{STIR (Short TI Inversion Recovery)} und \textit{FLAIR (Fluid Attenuated Inversion Recovery)}.
+Besonders in der klinischen Diagnostik relevant sind die, auf der IR-Sequenz basierenden, Pulssequenzen \textit{STIR (Short TI Inversion Recovery)} und \textit{FLAIR (Fluid Attenuated Inversion Recovery)}.
 STIR nutzt kurze Inversionszeiten, um Fettgewebe in der Aufnahme auszublenden. Da die Selektion über die $T1$-Zeit erfolgt, werden auch andere Gewebe mit Fett-ähnlichen $T1$-Zeiten abgeschwächt\cite{Bydder1985}.
 FLAIR Sequenzen werden zur Unterdrückung von Flüssigkeiten, wie zum Beispiel der Zerebrospinalflüssigkeit eingesetzt. Je nachdem, ob das resultierende Bild $T1$ oder $T2$ gewichtet ist, wird zwischen \textit{T1-FLAIR} (vgl. \cite{Melhem1997}) und \textit{T2-FLAIR} (vgl. \cite{Hajnal1992}) unterschieden\cite{Bakshi2001}.
 
@@ -434,7 +434,7 @@ Echoplanar-Sequenzen, abgekürzt EPI (von Echo planar imaging), ermöglichen seh
 \label{sec:gewichtung}
 In diesem Abschnitt sei exemplarisch anhand der Spinecho-Sequenz gezeigt, wie durch Variation der Aufnahmeparameter eine T1-, T2-, bzw. PD-Gewichtung erzielt werden kann.
 
-Nach \cite{Bushberg2011} gilt bei einem Schichtbild, dass mit einer Spinecho-Sequenz aufgenommen wird, für die Pixelintensität (mit $\rho=PD$):
+Nach \cite{Bushberg2011} gilt bei einem Schichtbild, das mit einer Spinecho-Sequenz aufgenommen wird, für die Pixelintensität (mit $\rho=PD$):
 \begin{equation}
 \label{eq:SEintensity}
 	I \sim \rho \left(1-e^{-\frac{TR}{T1}}\right) e^{\frac{TE}{T2}}
@@ -494,7 +494,7 @@ Empirische Untersuchungen zeigten, dass die Feldabweichung $\Delta B$ proportion
 \begin{equation}
 	B_{lokal}=B-\sigma B = (1-\sigma)B
 \end{equation}
-Die Lamorfrequenz ist dann:
+Die Larmorfrequenz ist dann:
 \begin{equation}
 	\omega = \gamma (1-\sigma)B
 \end{equation}
@@ -508,8 +508,8 @@ Die chemische Verschiebung ist damit nach \cite[S.~24]{Reiser2008} definiert als
 \end{equation}
 mit:
 \begin{with}
-	\omega   & Lamorfrequenz des betrachteten Kerns\\
-	\omega_R & Lamorfrequenz einer Referenzsubstanz\\
+	\omega   & Larmorfrequenz des betrachteten Kerns\\
+	\omega_R & Larmorfrequenz einer Referenzsubstanz\\
 	\omega_0 & $=\gamma B_0$ \\
 	\sigma   & Abschirmfaktor des betrachteten Kerns \\
 	\sigma_R & Abschirmfaktor der Referenz
@@ -526,7 +526,7 @@ Zu den Suszeptibilitätsartefakte zählen Effekte, die ihre Ursache in Störunge
 Durch das Einbringen von ferromagnetischem Material in den Tomograph werden die Feldlinien lokal verzerrt, was einer Änderung der Larmorfrequenzen entspricht. Dadurch entstehen Verzerrungen im Bild oder es erscheinen dunkle Bereiche durch einen Signalverlust in den betreffenden Gebieten.
 
 \subsubsection{Phase Wrapping}
-Phase Wrapping, auch als "foldover" oder phase wrap-around bezeichnet führt dazu, dass Strukturen, die außerhalb des gewählten Bildausschnitts liegen in das Bild hinein gefaltet werden. Der Effekt tritt vor allem durch Aliasing in der Phasenkodierrichtung auf. Eine absolut eingestellte Phase ist nur innerhalb von $2\pi=360\degree$ eindeutig. So kann nicht unterschieden werden, ob eine Phase von z.B. $370\degree$ oder $10\degree$ vorliegt. Die Struktur des rechten Rands mit $\phi=370\degree$ wird daher am Ort von $\phi=10\degree$ abgebildet. Dagegen kann das FOV so vergrößert werden, dass die Orte, die ins Bild gefaltet würden außerhalb vom Körper liegen und daher kein Signal liefern. Auch bietet es sich manchmal an, Frequenzkodier- und Phasenkodierrichtung zu tauschen, da der Effekt in Frequenzkodierrichtung nicht auftaucht, da dort durch Überabtastung kein Aliasing entsteht \cite{Pusey1988}, \cite{Heiland2008}.
+Phase Wrapping, auch als "foldover" oder phase wrap-around bezeichnet führt dazu, dass Strukturen, die außerhalb des gewählten Bildausschnitts liegen, in das Bild hinein gefaltet werden. Der Effekt tritt vor allem durch Aliasing in der Phasenkodierrichtung auf. Eine absolut eingestellte Phase ist nur innerhalb von $2\pi=360\degree$ eindeutig. So kann nicht unterschieden werden, ob eine Phase von z.B. $370\degree$ oder $10\degree$ vorliegt. Die Struktur des rechten Rands mit $\phi=370\degree$ wird daher am Ort von $\phi=10\degree$ abgebildet. Dagegen kann das FOV so vergrößert werden, dass die Orte, die ins Bild gefaltet würden außerhalb vom Körper liegen und daher kein Signal liefern. Auch bietet es sich manchmal an, Frequenzkodier- und Phasenkodierrichtung zu tauschen, da der Effekt in Frequenzkodierrichtung nicht auftaucht, weil dort durch Überabtastung kein Aliasing entsteht \cite{Pusey1988}, \cite{Heiland2008}.
 
 \subsubsection{Geisterbilder bei EPI-Sequenzen}
 Durch die Zickzack-Trajektorien bei EPI Sequenzen ist es notwendig, jede zweite akquirierte Zeile zu spiegeln, bevor sie in den k-Raum eingetragen wird. Dabei kann es zu Ausrichtungsfehlern kommen, die sich als Geister im rekonstruierten Bild bemerkbar machen\cite{Ianni2018}.
@@ -558,7 +558,7 @@ Für quasi-kontinuierliche Simulationen bei denen sehr hohe Abtastraten verwende
 definiert.
 
 Für eine Darstellung im Frequenzbereich wird die \textit{diskrete Fouriertransformation (DFT)} verwendet. Statt DFT wird häufig der Begriff FFT (Fast Fourier Transform) verwendet. Die FFT ist dabei lediglich eine schnelle Implementierung der DFT.
-Das Spektrum hat die Frequenzauflösung $df=f_s/N$ ,die gleiche Länge wie $x[t]$ $N$ und berechnet sich aus 
+Das Spektrum hat die Frequenzauflösung $df=f_s/N$, die gleiche Länge wie $x[t]$ ($N$) und berechnet sich aus 
 \begin{equation}
 	X[f]=FFT\{x[n]\}.
 \end{equation}
@@ -572,7 +572,7 @@ Der dazugehörige Frequenzvektor ist:
 	f=(0,\, df,\, 2df,\, ...\,, f_s-df)-\frac{f_s}{2}
 \end{equation}
 
-Das, in der Regel komplexe Spektrum $X[f]$ kann in Real- und Imaginärteil getrennt dargestellt werden. Üblicher ist jedoch eine Darstellung als einseitiges Amplitudenspektrum. Der, für das einseitige Amplitudenspektrum, nötige Frequenzvektor ist:
+Das, in der Regel komplexe, Spektrum $X[f]$ kann in Real- und Imaginärteil getrennt dargestellt werden. Üblicher ist jedoch eine Darstellung als einseitiges Amplitudenspektrum. Der, für das einseitige Amplitudenspektrum, nötige Frequenzvektor ist:
 \begin{equation}
 f=(0,\, df,\, 2df,\, ...\,, \frac{f_s}{2}-df)
 \end{equation}
@@ -637,18 +637,18 @@ Phasenrauschen wird nun üblicherweise als Einseitenbandphasenrauschen angegeben
 \begin{definition}
 	Einseitenbandphasenrauschen ist die Leistung, hervorgerufen durch Phasenfluktuationen, bezogen auf die Gesamtleistung.
 \end{definition}[$\mathscr{L}$]
-Da der Großteil der Leistung im Träger steckt, kann meist die Gesamtleistung mit der Trägerleistung gleichgesetzt werden. Damit wird $\mathscr{L}$ in Decibel:
+Da der Großteil der Leistung im Träger steckt, kann meist die Gesamtleistung mit der Trägerleistung gleichgesetzt werden. Damit wird $\mathscr{L}$ in Decibel berechnet mit:
 \begin{equation}
 	\mathscr{L}_{dBc}(f) = P_{n, dBm/Hz} - P_{s, dBm}
 \end{equation}
 
 \section{Jitter}
-Jitter ist definiert als:
+
 \begin{definition}[Jitter]
-	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkt eines Ereignisses. \cite{Kundert2012}
+	Jitter ist eine (unerwünschte) Störung oder Unsicherheit des Zeitpunkts eines Ereignisses. \cite{Kundert2012}
 \end{definition}
 
-Zur Quantifikation von Jitter sind mehrere Metriken gebräuchlich. Die einfachste Metrik ist der \textit{edge-to-edge}-Jitter $J_{ee}$. Damit wird die Standardabweichung der Differenzen zwischen einem Ereignis in einem Referenzsignal und einem Testsignal angegeben. Eine Korrelation von Jitter zwischen mehreren Ereignissen kann damit nicht erfasst werden.
+Zur Quantifikation von Jitter sind mehrere Metriken gebräuchlich. Die einfachste Metrik ist der \textit{edge-to-edge}-jitter $J_{ee}$. Damit wird die Standardabweichung der Differenzen zwischen einem Ereignis in einem Referenzsignal und einem Testsignal angegeben. Eine Korrelation von Jitter zwischen mehreren Ereignissen kann damit nicht erfasst werden.
 
 Der \textit{k-cycle Jitter}, auch \textit{long term jitter} $J_k$ misst die Variation der Länge von $k$ aufeinander folgenden Zyklen. Für $k=1$ wird diese Metrik auch als \textit{period jitter} bezeichnet.
 
@@ -685,7 +685,7 @@ Mit einem Oszilloskop kann Jitter direkt visuell abgelesen werden. Auch ein Auge
 
 \subsubsection{Im Frequenzbereich}
 Das Phasenrauschen eines Prüflings (DUT - device under test) kann im Frequenzbereich mit unterschiedlichen Verfahren ausgemessen werden: Die einfachste Vorgehensweise ist das Messen des Spektrums um die Trägerfrequenz mit einem Spektrumanalyzer (siehe \autoref{fig:phaseNoiseSA}).
-Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalyzers begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrausches nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalyzer über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
+Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalyzers begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrauschens nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalyzer über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
 
 \begin{figure}[H]
 	\centering
@@ -694,7 +694,7 @@ Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch
 	\label{fig:phaseNoiseSA}
 \end{figure}
 
-Ist eine Referenzquelle mit einer Frequenz gleich der Trägerfrequenz des Prüflings verfügbar, kann diese genutzt werden, um das Ausgangssignal des Prüflings auf $f=\SI{0}{\hertz}$ herunter zu mischen. Die spektralen Anteile bei der Summenfrequenz $f=f_{REF}+f_{DUT}$ werden durch einen Tiefpass abgetrennt. Das Träger-freie Phasenrauschsignal kann dann mit dem Spektrumanalyzer gemessen werden.
+Ist eine Referenzquelle mit einer Frequenz gleich der Trägerfrequenz des Prüflings verfügbar, kann diese genutzt werden, um das Ausgangssignal des Prüflings auf $f=\SI{0}{\hertz}$ herunter zu mischen. Die spektralen Anteile bei der Summenfrequenz $f=f_{REF}+f_{DUT}$ werden durch einen Tiefpass abgetrennt. Das trägerfreie Phasenrauschsignal kann dann mit dem Spektrumanalyzer gemessen werden.
 Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL verwendet werden, um die Frequenz der Referenzquelle der Trägerfrequenz des Prüflings nachzuführen (\autoref{fig:phaseNoiseMixer}).
 
 \begin{figure}[H]
@@ -710,7 +710,7 @@ Mit einem MRT erzeugte Schnittbilder der Transversalmagnetisierung von einem Kö
 Unabhängig vom Themenfeld der medizinischen (MR)-Bildgebung existieren in der digitalen Bildverarbeitung einige Qualitätsmetriken, mit denen die Qualität eines Bildes geschätzt werden kann, oder die Ähnlichkeit eines Bildes zu einem Referenzbild bewertet werden kann \cite{Wang2006}.
 
 \subsubsection{Qualitätsmetriken ohne Referenz}
-Metriken dieses Typs werden auch NR-Metriken (von eng. no reference) genannt. Dabei wird versucht einem Ausgangsbild eines Bildverarbeitungssystems eine Qualitätskennzahl zuzuordnen, ohne, dass das Originalbild vorliegt. Für Menschen ist diese Art der Bildbewertung recht einfach: Durch Vorwissen ist bekannt, dass "gute" Bilder einen hohen Kontrast aufweisen, scharf sind, etc. Aber auch der Inhalt kann in die Bewertung einbezogen werden. So würde ein Mensch ein Bild mit geringer Schärfentiefe nur dann als gut bewerten, wenn die relevanten Bildelemente im Fokus liegen. Für eine automatische Bewertung durch einen Algorithmus muss also auch Vorwissen (eine Heuristik) in Form einer Datenbank mit "guten" Bildern vorliegen, wenn eine Inhalts-bezogene Bewertung erreicht werden soll.
+Metriken dieses Typs werden auch NR-Metriken (von eng. no reference) genannt. Dabei wird versucht einem Ausgangsbild eines Bildverarbeitungssystems eine Qualitätskennzahl zuzuordnen, ohne, dass das Originalbild vorliegt. Für Menschen ist diese Art der Bildbewertung recht einfach: Durch Vorwissen ist bekannt, dass "gute" Bilder einen hohen Kontrast aufweisen, scharf sind, etc. Aber auch der Inhalt kann in die Bewertung einbezogen werden. So würde ein Mensch ein Bild mit geringer Schärfentiefe nur dann als gut bewerten, wenn die relevanten Bildelemente im Fokus liegen. Für eine automatische Bewertung durch einen Algorithmus muss also auch Vorwissen (eine Heuristik) in Form einer Datenbank mit "guten" Bildern vorliegen, wenn eine inhaltsbezogene Bewertung erreicht werden soll.
 
 Einige Artefakte in Bildern, die durch das Bildaufnahmesystem oder die Verarbeitung eingebracht werden, lassen sich jedoch auch ohne Vorwissen über Analysen im Frequenzbereich oder statistische Methoden detektieren und bewerten \cite[S.~86]{Wang2006}.
 
@@ -772,7 +772,7 @@ Im Gegensatz zu MSE und PSNR, die absolute Abweichungen bewerten, ist die Schät
 Abwandlungen und Erweiterungen der SSIM sind neben der \textit{M-SSIM}, bei der lediglich eine Mittelung/Glättung vorgenommen wird, zum Beispiel:
 
 \begin{itemize}
-	\item \textbf{CW-SSIM\cite{Gao2011}:} Bei der \textit{Complex Wavelet Structural Similarity} wird die SSIM dahingehend verbessert, dass sich einige Bildstörungen, die nur die Phase der komplexen Wavelet-Koeffizienten eines Bilder, nicht aber die Struktur ändern, weniger stark auf die Metrik auswirken.
+	\item \textbf{CW-SSIM\cite{Gao2011}:} Bei der \textit{Complex Wavelet Structural Similarity} wird die SSIM dahingehend verbessert, dass sich einige Bildstörungen, die nur die Phase der komplexen Wavelet-Koeffizienten eines Bildes, nicht aber die Struktur ändern, weniger stark auf die Metrik auswirken.
 	\item \textbf{MS-SSIM\cite{Wang2003}:} Die \textit{Multi Scale Structural Similarity} versucht der menschlichen Wahrnehmung noch näher zu kommen durch die Nutzung von unterschiedlich feinen Abtastungen der zu vergleichenden Bilder.
 	\item \textbf{IW-SSIM\cite{Wang2011}:} \textit{Information Content Weighted Structural Similarity Measure} ist eine SSIM Variante, in der zusätzlich Konzepte aus der Informationstheorie für die Erzeugung von Gewichtungsfaktoren genutzt werden.
 \end{itemize}
