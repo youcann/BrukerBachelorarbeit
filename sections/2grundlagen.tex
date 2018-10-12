@@ -36,10 +36,10 @@ In \cite{Damadian1971} zeigte der Mediziner \textsc{Raymond Damadian}($\ast$1936
 
 Paul Lauterbur und Peter Mansfield erhielten 2003 den Nobelpreis für Physiologie oder Medizin.
 
-\subsection{Quantenmechanische Theorie}
+\subsection{Quantenmechanische Grundlagen}
 \label{sec:theory}
 \label{sec:nmrTheory}
-Atomkerne weisen, ähnlich wie Elektronen, einen Spin auf. Das Spindrehmoment $\vec{S}$ ergibt sich mit dem Spinoperator $\vec{I}$ und dem reduzierten Planckschen Wirkungsquantum $\hbar$ zu:
+Atomkerne weisen, ähnlich wie Elektronen, einen Spin auf. Das Spindrehimpuls $\vec{S}$ ergibt sich mit dem Spinoperator $\vec{I}$ und dem reduzierten Planckschen Wirkungsquantum $\hbar$ zu:
 \begin{equation}
 	\vec{S}=\hbar \vec{I}
 \end{equation}
@@ -54,7 +54,7 @@ In einem statischen Magnetfeld $\vec{B}=(0,0,B_0)$ ergibt sich in einem makrosko
 	\vec{M} = \sum \vec{\mu} = (0,0,M_z), \quad \vec{\mu}=(0,0,\mu_z)
 \end{equation}
 
-Mit dem angelegten $B$-Feld ergibt sich die potentielle Energie des magnetischen Dipolmoments zu:
+Mit dem angelegten $B$-Feld ergibt sich die potentielle Energie $E$ des magnetischen Dipolmoments zu:
 \begin{equation}
 	E=-\vec{\mu} \cdot \vec{B} = -\mu_z B_0 = -\gamma S_z B_0 = -\gamma \hbar B_0 |\vec{I}|
 \end{equation}
@@ -403,9 +403,6 @@ Bei der Gradientenecho-Sequenz (GRE) wird kein 180\degree-RF-Puls zur Erzeugung 
 
 Durch die kleinen $TR$-Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der $T1$ Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
 
-
-Durch die kleinen TR Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der T1 Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
-
 Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht zu erhalten und diese für mehrere Echos zu nutzen. Die entsprechenden Pulssequenzen und ihre Weiterentwicklungen heißen \textit{GRASS} bzw. \textit{FIESTA} bei GE oder \textit{FISP} bzw. \textit{TrueFISP} bei Siemens.
 
 \begin{figure}[H]
@@ -546,7 +543,7 @@ Dadurch, dass $B_0$ linear und $T_{aq}$ mit $\sqrt{T_{aq}}$ in die Gleichung ein
 
 Neben den für die Bildqualität entscheidenden Faktoren sind in der präklinischen Bildgebung zusätzlich Handhabungssysteme zur Betäubung, zur konsistenten Positionierung und zum Wärmeerhalt der anästhesierten Tiere im Gerät nötig.
 
-\section{(Digitale) Signalverarbeitung}
+\section{Digitale Signalverarbeitung}
 Die RF-Sendesignale und die Spannungen an den Gradientenspulen in der MRT werden von einem sog. Sequenzer digital erzeugt und dann mit einem \gls{dac} in analoge Signale umgesetzt. Die Empfangssignale werden mit einem \gls{adc} wieder in digitale Signale gewandelt.
 
 \subsection{Signale im Frequenzbereich}
@@ -684,8 +681,8 @@ Jitter und Phasenrauschen können mit Standard-Messmitteln oder speziellen Analy
 Mit einem Oszilloskop kann Jitter direkt visuell abgelesen werden. Auch ein Augendiagramm kann genutzt werden. Damit lassen sich jedoch nur Spitze-zu-Spitze Werte des Jitters bestimmen. Um die Wahrscheinlichkeitsdichte des Jitters zu bestimmen, ist ein Oszilloskop mit Histogrammfunktion notwendig.
 
 \subsubsection{Im Frequenzbereich}
-Das Phasenrauschen eines Prüflings (DUT - device under test) kann im Frequenzbereich mit unterschiedlichen Verfahren ausgemessen werden: Die einfachste Vorgehensweise ist das Messen des Spektrums um die Trägerfrequenz mit einem Spektrumanalyzer (siehe \autoref{fig:phaseNoiseSA}).
-Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalyzers begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrauschens nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalyzer über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
+Das Phasenrauschen eines Prüflings (DUT - device under test) kann im Frequenzbereich mit unterschiedlichen Verfahren ausgemessen werden: Die einfachste Vorgehensweise ist das Messen des Spektrums um die Trägerfrequenz mit einem Spektrumanalysator (siehe \autoref{fig:phaseNoiseSA}).
+Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalysators begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrauschens nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalysator über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
 
 \begin{figure}[H]
 	\centering
@@ -700,7 +697,7 @@ Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL 
 \begin{figure}[H]
 	\centering
 	\resizebox{0.6\textwidth}{!}{\includegraphics[]{img/phaseNoiseMeasurement_Mixer.tikz}}
-	\caption[Mischer zur Phasenrauschmessung]{Mixer}
+	\caption[Mischer zur Phasenrauschmessung]{Mischer zur Phasenrauschbestimmung}
 	\label{fig:phaseNoiseMixer}
 \end{figure}
 
