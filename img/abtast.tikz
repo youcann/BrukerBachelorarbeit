@@ -63,29 +63,33 @@
 \draw[fill=white,draw=gray!50] (-0.4,1.62) circle (0.1);
 \end{scope}
 
-\node[anchor=south] (n) at (10,0) {$n$};
-\node[anchor=west] (xn) at (0,4) {$x[n]$};
+\node[anchor=south] (n) at (10,0) {$n,\,t$};
+\node[anchor=west] (xn) at (0,4) {$x[n],\,x(t)$};
 
 
 \draw[latex-latex] (0,-1) -- (0,-2) -- (10,-2);
 \begin{scope}[shift={(2,-2)}]
 \draw[densely dashed] (0,0) -- (0,2);
 \draw[] (-0.4,0) .. controls (-0.2,0.05) and (-0.2,0.5) .. (0,0.5) .. controls (0.2,0.5) and (0.2,0.05) .. (0.4,0);
+\node[anchor=north west] (n0) at (0,2) {$t_0$};
 \end{scope}
 \begin{scope}[shift={(4,-2)}]
 \draw[densely dashed] (0,0) -- (0,2);
 \draw[] (-0.4,0) .. controls (-0.2,0.05) and (-0.2,0.5) .. (0,0.5) .. controls (0.2,0.5) and (0.2,0.05) .. (0.4,0);
+\node[anchor=north west] (n1) at (0,2) {$t_1$};
 \end{scope}
 \begin{scope}[shift={(6,-2)}]
 \draw[densely dashed] (0,0) -- (0,2);
 \draw[] (-0.4,0) .. controls (-0.2,0.05) and (-0.2,0.5) .. (0,0.5) .. controls (0.2,0.5) and (0.2,0.05) .. (0.4,0);
+\node[anchor=north west] (n2) at (0,2) {$t_2$};
 \end{scope}
 \begin{scope}[shift={(8,-2)}]
 \draw[densely dashed] (0,0) -- (0,2);
 \draw[] (-0.4,0) .. controls (-0.2,0.05) and (-0.2,0.5) .. (0,0.5) .. controls (0.2,0.5) and (0.2,0.05) .. (0.4,0);
+\node[anchor=north west] (n3) at (0,2) {$t_3$};
 
 \end{scope}
 
-\node[anchor=west] (pdf) at (0,-1) {$PDF_{ADC,n}$};
+\node[anchor=west] (pdf) at (0,-1) {$f_{\Delta t,n}$};
 
 \end{tikzpicture}

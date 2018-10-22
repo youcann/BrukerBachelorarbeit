@@ -82,7 +82,9 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 	\end{tabular}
 \end{table}
 
-\section{Generierung von farbigem Phasenrauschen}
+\section{Einfluss von Phasenrauschen auf das MR-Empfangssignal}
+Aus der Erfahrung zeigt sich, dass Bildartefakte, wie sie durch Phasenrauschen des ADC-Taktsignals entstehen, sich stärker auf die subjektive Bildqualität auswirken, als zum Beispiel Amplitudenrauschen. Daher wird das MR-Empfangssignal mit verschiedenen Phasenrauschspektren beaufschlagt, um ein Phasenrauschen des ADC-Taktsignals nachzubilden.
+
 Das Spektrum des Phasenrauschens eines realen Oszillators ist nicht konstant (weiß), sondern die spektrale Leistungsdichte strebt für sehr kleine Werte der Offsetfrequenz $f_{offset}=f-f_c$ gegen die des Trägers:
 \begin{equation}
 P(f_{offset} \rightarrow 0) = P_c
@@ -92,8 +94,8 @@ Für große Frequenzen geht die Phasenrauschleistung gegen null. Es bleibt ein k
 	P(f_{offset} \rightarrow \infty) = N_0.
 \end{equation}
 
-\subsection{Grundsätzliche Vorgehensweise}
-Zur Simulation mehrerer Realisierungen $\xi_i$ des Phasenrauschprozesses müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
+\subsection{Generierung von Phasenrauschen}
+Zur Simulation mehrerer Realisierungen $\xi_i$ des Phasenrauschprozesses $y_\xi(t)$ müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
 
 \begin{figure}[H]
 	\centering
@@ -115,10 +117,10 @@ Zur Simulation von Phasenrauschen muss das Spektrum des weißen Gauß-Prozesses 
 
 Für beide grundsätzlichen Möglichkeiten gibt es mehrere Realisierungsmöglichkeiten. Die Umsetzung mit einem FIR- bzw. IIR-Filter und die punktweise Multiplikation der Spektren sind in den folgenden Abschnitten vorgestellt.
 
-\subsection{Multiplikation im Frequenzbereich}
+\subsubsection{Multiplikation im Frequenzbereich}
 Die gemessenen bzw. durch ein Datenblatt erhaltenen Phasenrauschspektren sind gegenüber der nötigen Abtastwerte für eine Simulation $N\approx512^2$ nur durch vergleichsweise wenige Punkte $M\approx10...100$ gegeben. Für eine Filterung durch eine punktweise Multiplikation muss daher das Filterspektrum von $M$ auf $N$ interpoliert werden.
 
-\subsection{Faltung im Zeitbereich (FIR/IIR Filter)}
+\subsubsection{Faltung im Zeitbereich (FIR/IIR Filter)}
 Ist die Impulsantwort für einen geeigneten Formfilter gegeben, kann diese im Zeitbereich für eine Filterung verwendet werden. Zur Generierung der Übertragungsfunktion und damit der Impulsantwort können die Filterentwurfswerkzeuge von MATLAB verwendet werden.
 
 \small{
@@ -148,7 +150,43 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 	\label{firIirPhasenoise}
 \end{figure}
 
-\section{Phasenrauschfunktion für MRiLab}
+\subsection{Interpretation des Phasenrauschens als Zeitverschiebung}
+Das Hinzufügen von Phasenrauschen zu einem abgetasteten Signal kann als eine Verschiebung der Abtastzeitpunkte aufgefasst werden. \autoref{fig:abtast} zeigt eine Funktion $x(t)$ und die abgetastete Funktion $x[n]$, die an den Stellen $n_0,\,n_1,\,\dots$ definiert ist. Jeder Abtastzeitpunkt wird um $\Delta t\,n$ verschoben. Die Wahrscheinlichkeitsdichtefunktion von jedem $Delta t,\,n$ ist dabei $f_{Delta t,\,n}$. In \autoref{fig:abtast} ist für jeden Abtastzeitpunkt $n$ eine Gauß-förmige Wahrscheinlichkeitsdichte gewählt. Mit dieser Methode können sinnvoll nur kurzzeitige Abweichungen simuliert werden. Zur Charakterisierung würden sich der edge-to-edge-Jitter oder der k-cycle-Jitter (für kleine $k$) eignen.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.5\textwidth]{img/abtast.tikz}}
+	\caption[Verschiebung der ADC Abtastzeitpunkte]{Verschiebung der ADC Abtastzeitpunkte mit einer Gauß-förmigen Wahrscheinlichkeitsverteilung für jeden Abtastzeitpunkt}
+	\label{fig:abtast}
+\end{figure}
+
+Zur Untersuchung der Einflüsse von größeren Abweichungen, wie sie insbesondere durch die Akkumulation von Phasenfehlern entstehen können, ist diese Vorgehensweise nicht ideal.
+
+Eine Zeitverschiebung um $\Delta t$ entspricht, mit der Frequenz der Grundschwingung $\nu_0$, einer Phasendrehung von
+\begin{equation}
+	\Delta \phi = 2 \pi \Delta t.
+\end{equation}
+
+Die Verschiebung der Abtastzeitpunkte lässt sich dann durch
+\begin{equation}
+	x_{Jitter}[n] = x[n] \quad exp(j \Delta \phi)
+\end{equation}
+beschreiben. Vorteil hierbei ist, dass neben Kurzzeit- auch Langzeit-Jitter problemlos simuliert werden kann.
+
+Zur Demonstration der Äquivalenz der beiden Verfahren wird ein Sinus-Signal $S[n]=S_x+j S_y$ der Länge $N$ betrachtet. Weiterhin wird ein Tiefpass-gefilterter Phasenrauschprozess $\Delta t$ bzw. $\Delta \phi$ erzeugt. Dieser besitzt eine Gauß-förmige Wahrscheinlichkeitsdichtefunktion und einen $1/f$-förmiges Spektrum.
+
+$S[n]$ wird zunächst zu $S[m]$ mit $M \gg N$ interpoliert. Danach können die ursprünglichen Abtastpunkte $n$ mit einem leichten Jitter ($\Delta t$) verschoben werden. Daraus entsteht $S[n_{Jitter}]$. Wird $S[n_{Jitter}]$ an den Stellen $n$ ausgewertet, entsteht $S_{Jitter}[n]$.
+
+Wenn die Originalfunktion $S[n]=S_x+j S_y$ mit $exp(j \Delta \phi)$ multipliziert wird, entsteht $S_{PhaseMod}[n]$. Wie \autoref{fig:abtastPlot} bestätigt, liefern beide Vorgehensweisen ähnliche Resultate. Durch die nötigen, mehrfachen Interpolationen und Dezimierungen sind die Ergebnisse nicht identisch. 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/abtastPlot.tikz}}
+	\caption[Verschiebung Abtastzeitpunkte]{Verschiebung der Abtastzeitpunkte im Vergleich zur Originalfunktion; dargestellt sind jeweils die Realteile der Funktionen}
+	\label{fig:abtastPlot}
+\end{figure}
+
+\subsection{Phasenrauschfunktion für MRiLab}
 Das erzeugte Phasenrauschen kann nun auf das, digital vorhandene, komplexe MR-Empfangssignal $S_{RF}[n]$ gegeben werden. In MRiLab werden statt $S_{RF}[n]$ die beiden Signale \texttt{VSig.Sx} und \texttt{VSig.Sy} verwendet. Daher wird die Operation in \autoref{lst:vsigAddphaseNoise} durchgeführt.
 \begin{listing}[H]
 	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
@@ -161,6 +199,32 @@ Das erzeugte Phasenrauschen kann nun auf das, digital vorhandene, komplexe MR-Em
 	\caption{Anwendung von Phasenrauschen auf das MR-Empfangssignal}
 	\label{lst:vsigAddphaseNoise}
 	\end{listing}
+	
+
+
+\subsection{Verschiedene Phasenrauschspektren}
+
+\subsubsection{LMK04821 Datenblatt}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkDatasheet.tikz}}
+	\caption[LMK08421 Phasenrauschspektrum]{LMK04821 Phasenrauschspektrum aus Datenblatt}
+	\label{fig:lmkDatasheetPhaseNoise}
+\end{figure}
+
+\subsubsection{LMK04821 in Ettlingen}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{nur $B_0$-Feld}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkOhneGradient.tikz}}
+	\\[4ex]
+	\subcaptionbox{$B_0$-Feld und laufende Pulssequenz ($f_{Grad} \approx \SI{15}{\kilo\hertz}$)}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkMitGradient.tikz}}
+	\caption{LMK04821 in BioSpec Tomograph}
+	\label{lmkEttlingenBioSpec}
+\end{figure}
+
+
 
 \section{Erstellung MRT Phantom}
 Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale MRT-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
