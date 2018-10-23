@@ -202,27 +202,56 @@ Das erzeugte Phasenrauschen kann nun auf das, digital vorhandene, komplexe MR-Em
 	
 
 
-\subsection{Verschiedene Phasenrauschspektren}
+\subsection{Gewinnung verschiedener Leistungsspektren}
 
-\subsubsection{LMK04821 Datenblatt}
+\subsubsection{LMK04821 unter Idealbedingungen}
+Im Datenblatt des Jitter-Cleaner Bausteins für Taktsignale \textit{LMK04821} von Texas Instruments \cite{lmkDatasheet} finden sich für verschiedene Betriebszustände gemessene Phasenrauschspektren. Dadurch, dass die Spektren als Screenshots des verwendeten Messgerätes abgebildet sind, ist zu erkennen, dass zur Messung ein Agilent Technologies (heute Keysight Technologies) \textit{E5052A Signal Source Analyzer} verwendet wurde. Dadurch, dass bei den Messungen die Option zur automatischen Konversion vom Phasenrauschspektrum zu Jitter genutzt wurde, können die Screenshots zur Validierung eigener Rechnungen verwendet werden. 
+
+In \autoref{fig:lmkDatasheetPhaseNoise} ist das Phasenrauschspektrum des LMK04821 für einen möglichen Betriebszustand dargestellt. In der Abbildung sind die Einzelwerte der tabellarischen Aufführung des Spektrums entnommen. Da der Baustein in diesem Fall unter idealen Laborbedingungen betrieben wurde, ergibt dieses Phasenrauschspektrum eine untere Abschätzung.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkDatasheet.tikz}}
-	\caption[LMK08421 Phasenrauschspektrum]{LMK04821 Phasenrauschspektrum aus Datenblatt}
+	\caption[LMK08421 Phasenrauschspektrum]{LMK04821 Phasenrauschspektrum \cite[S.~24, Figure 2]{lmkDatasheet}}
 	\label{fig:lmkDatasheetPhaseNoise}
 \end{figure}
 
-\subsubsection{LMK04821 in Ettlingen}
+
+\subsubsection{LMK04821 Realbedingungen und Worst-Case Abschätzung}
+Für eine Worst-Case Abschätzung wird ein LMK04821-Testboard\footnote{LMK04828BEVM \cite{lmkEvalboard}} im Inneren eines BioSpec MR-Tomographen platziert. Bedingt durch die Größe des Testboards kann es nicht in die Hochfrequenz Sende- und Empfangsspulen-Röhre geschoben werden. Daher wird diese im Gerät nach hinten verschoben, so dass das Testboard in die Öffnung des Gradientensystems passt (siehe \autoref{fig:lmkinBioSpecRender}). Mit Hilfe eines Keysight Technologies \textit{N9952A} Spektrumanalysators wird das Spektrum am Ausgang des LMK04821 gemessen. Der verwendete Tomograph nutzt eine supraleitende Spule zur Erzeugung des $B_0$-Feldes, wodurch dieses nicht ohne weiteres abgeschaltet werden kann. Es ist daher während allen Versuchen aktiv.
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{nur $B_0$-Feld}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkOhneGradient.tikz}}
-	\\[4ex]
-	\subcaptionbox{$B_0$-Feld und laufende Pulssequenz ($f_{Grad} \approx \SI{15}{\kilo\hertz}$)}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkMitGradient.tikz}}
-	\caption{LMK04821 in BioSpec Tomograph}
-	\label{lmkEttlingenBioSpec}
+	\resizebox{!}{!}{\includegraphics[width=0.6\textwidth]{img/lmkInBiospecCrop.png}}
+	\caption[LMK04821 Position in Tomograph]{Positionierung des LMK04828BEVM im MR-Tomograph (Schnittbild); blau: vordere Öffnung; grün: Gradientensystem; gelb: Sende- und Empfangsspulen (ins Gerät hinein geschoben)}
+	\label{fig:lmkinBioSpecRender}
 \end{figure}
+
+Zunächst wird der Einfluss des $B_0$-Feld untersucht. Dazu wird das Leistungsspektrum für eine Positionierung vor der MRT Öffnung und in der MRT Bohrung (wie in \autoref{fig:lmkinBioSpecRender} gezeigt) aufgenommen. Der Vergleich der beiden Spektren in \autoref{fig:lmkEttlingenBioSpecB0} zeigt, dass das $B_0$-Feld allein keine nachweisbaren Auswirkungen auf das Phasenrauschen hat.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecNurB0.tikz}}
+	\caption[]{Ausgangsspektrum des LMK04821 beim Betrieb in der Nähe des MRT und im MRT (ohne aktives Gradientensystem und ohne RF-Signale); Betrieb des Spektrumanalysators mit "Maximum Hold"}
+	\label{fig:lmkEttlingenBioSpecB0}
+\end{figure}
+
+Für die Nachbildung einer realen MRT Messung wird eine RARE MRT-Pulssequenz abgefahren. Dabei werden die Gradientenfelder mit der Repetitionszeit $TR$ geschaltet. Für zwei verschiedene Repetitionszeiten sind die Spektren in \autoref{fig:lmkEttlingenBioSpecGradients} dargestellt. Es sind dabei jeweils zwei Spektren mit unterschiedlichen Aufnahme-Modi des Spektrumanalysators gezeigt:
+\begin{itemize}
+	\item \textbf{Maximum Hold:} Bildet das Maximum über mehrere aufgenommene Spektren. Geeignet zum Festhalten kurzzeitig präsenter Anteile im Spektrum.
+	\item \textbf{Trace Averageing:} Bildet den Mittelwert über mehrere aufgenommene Spektren. Kurzzeitige Fluktuationen werden entfernt.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{$TR=\SI{2.4}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG1.tikz}}
+	\\[4ex]
+	\subcaptionbox{$TR=\SI{1.5}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG2.tikz}}
+	\caption{LMK04821 Betrieb in BioSpec MR-Tomograph bei aktiver Pulssequenz}
+	\label{fig:lmkEttlingenBioSpecGradients}
+\end{figure}
+
+\subsection{Umrechung in Phasenrauschleistungsspektren}
 
 
 
