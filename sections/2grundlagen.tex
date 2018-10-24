@@ -606,38 +606,60 @@ In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nich
 Ein Rauschprozess ist als stochastischer Prozess durch sein Leistungsdichtespektrum und die Wahrscheinlichkeitsdichtefunktion seiner Ausgangswerte gegeben.
 
 \section{Phasenrauschen}
-Nach \cite{IEEErandom} ist Phasenrauschen definiert als:
+Nach \cite{IEEErandom} ist Phasenrauschen qualitativ definiert als:
 \begin{definition}[Phasenrauschen]
 	Phasenrauschen beschreibt eine kurzzeitige Abweichungen der Phase von der Nenn-Phase im Frequenzbereich. 
 \end{definition}
 
-Für weitere Definitionen wird ein idealer Sinus-Oszillator betrachtet. Sein Ausgangssignal ist durch
+Zur quantitativen Betrachtung wird ein idealer Sinus-Oszillator betrachtet. Sein Ausgangssignal ist durch
 \begin{equation}
 \label{eq:sinIdeal}
 	x_{ideal}(t)=x_0 sin(2\pi \nu_0 t)
 \end{equation}
-gegeben. Die Phase $\Psi(t)$ ist in diesem Fall linear. Die Momentanfrequenz ist konstant.
+gegeben.
 
 Durch Störungen der Amplitude und der Phase des Oszillators ergibt sich:
 \begin{equation}
-	x_n(t)=[x_0 + e(t)] sin\left(2\pi \nu_0 t + \Phi(t)\right)
+	x(t)=[x_0 + e(t)] sin\left(2\pi \nu_0 t + \phi(t)\right)
 \end{equation}
 
-Das Spektrum von $x(t)$ ergibt sich mit der Fourier-Transformation zu:
+Das Spektrum von $x_{ideal}(t)$ ergibt sich mit der Fourier-Transformation zu:
 \begin{equation}
 	X(\nu)=\frac{1}{2 i} \left[ \delta(\nu-\nu_0) - \delta(\nu+\nu_0) \right]
 \end{equation}
 
-Durch die Einflüsse von $e(t)$ und $\Phi(t)$ verbreitern sich die Dirac-Impulse $\delta(\nu-\nu_0)$ und $\delta(\nu+\nu_0)$.
+Unter der sinnvollen Annahme $\phi(t)\ll1$ und Vernachlässigung des Amplitudenrauschen $e(t)$ kann $x(t)$ mit Hilfe des Additionstheorems $sin(A+B) = sin(A)cos(B) + cos(A)sin(B)$ vereinfacht werden:
+\begin{align}
+	x(t) =& sin\left(2\pi \nu_0 t \right) \underbrace{cos(\phi(t))}_{\approx 1} + cos\left(2\pi \nu_0 t \right) \underbrace{sin(\phi(t))}_{\approx \phi(t)} \\
+	=& sin\left(2\pi \nu_0 t \right) + \phi(t) \cdot cos\left(2\pi \nu_0 t \right)
+\end{align}
 
-Phasenrauschen wird nun üblicherweise als Einseitenbandphasenrauschen angegeben. Dies wird mit $\mathscr{L}(f)$ bezeichnet und ist definiert als:
-\begin{definition}
-	Einseitenbandphasenrauschen ist die Leistung, hervorgerufen durch Phasenfluktuationen, bezogen auf die Gesamtleistung.
-\end{definition}[$\mathscr{L}$]
-Da der Großteil der Leistung im Träger steckt, kann meist die Gesamtleistung mit der Trägerleistung gleichgesetzt werden. Damit wird $\mathscr{L}$ in Decibel berechnet mit:
+Aus der Modulationseigenschaft der Fouriertransformation folgt für das Spektrum:
+\begin{equation}
+	X(f) = \frac{1}{2 i} \left[ \delta(\nu-\nu_0) - \delta(\nu+\nu_0) \right] + \Phi(f) * \frac{1}{2} \left[ \delta(\nu-\nu_0) + \delta(\nu+\nu_0) \right]
+\end{equation}
+
+Charakteristisch für die Verbreiterung der Trägerlinien im Amplitudenspektrum $X(f)$ bzw. im Leistungsspektrum $|X(f)|^2=S_X$ ist demnach das Phasenrauschspektrum $\Phi(f)$. Üblicherweise wird (in der Hochfrequenztechnik) mit Leistungsspektren gearbeitet. Betrachtet wird daher meist $|\Phi(f)|^2=S_\Phi$. Auch wenn mit $S_X$ bzw. $S_\Phi$ Leistungs\textit{dichte}spektren bezeichnet werden, wird der Bezug auf die Messbandbreite $BW$ häufig nicht angegeben und implizit zu $BW=\SI{1}{\hertz}$ angenommen. Für andere Bandbreiten ergeben sich $S_X=|X(f)|^2/BW$ bzw. $S_\Phi=|\Phi(f)|^2/BW$.
+
+Phasenrauschen wurde früher üblicherweise definiert als:
+\begin{equation}
+\label{eq:Lalt}
+	\mathscr{L} = \frac{\text{Einseitenband-Rauschleistung in 1 Hz Bandbreite}}{\text{Trägerleistung } P_S}
+\end{equation}
+Diese Definition ist besonders dadurch problematisch, da Rauschanteile, die durch Amplitudenfluktuationen entstehen, nicht von Phasenrauschen unterschieden werden können \cite{Rubiola2008}. Daher definiert das IEEE in IEEE-1139 (\cite{IEEErandom}) $\mathscr{L}(f)$ seit einigen Jahren als:
+\begin{equation}
+\label{eq:Lneu}
+	\mathscr{L} = \frac{1}{2} \; S_\Phi(f)
+\end{equation}
+
+$\mathscr{L}(f)$ wird meist in $\SI{}{\dB c}$ angegeben. Ein Verhältnis in $\SI{}{\dB c}$ gibt dabei den Abstand zur Trägerleistung (eng. "carrier power") an.
+
+Wird $\mathscr{L}(f)$ mit der alten Definition in \autoref{eq:Lalt} berechnet, muss die Trägerleistung abgezogen werden.
+Da der Großteil der Leistung im Träger steckt, kann meist die Gesamtleistung in guter Näherung mit der Trägerleistung gleichgesetzt werden. Damit wird $\mathscr{L}$ berechnet mit:
 \begin{equation}
 	\mathscr{L}_{dBc}(f) = P_{n, dBm/Hz} - P_{s, dBm}
 \end{equation}
+Bei Messungen mit dem Spektrumanalysator wird die Frequenzachse so verschoben, dass die Frequenz des Trägers bei Null liegt. Die verschobene Achse wird manchmal zur Vermeidung von Unklarheiten mit $f_{Offset}$ beschriftet.
 
 \section{Jitter}
 
@@ -673,14 +695,45 @@ Alle Metriken sind in \autoref{eq:jitterDef} und \autoref{fig:jitterDefs} zusamm
 	\label{fig:jitterDefs}
 \end{figure}
 
+\subsection{Umrechnung von Phasenrauschen in Jitter}
+Die Performance von Oszillatoren wird häufig eher im Zeitbereich mit Hilfe des Jitters als skalarer Größe verglichen statt mit den Phasenrauschleistungsspektren. Das Spektrum von $\mathscr{L}(f)$ kann in den Period-Jitter $J_1$ umgerechnet werden \cite{Kester2008}, \cite{Maxim2004}. Dazu wird $\mathscr{L}(f)$ zwischen den, für die Applikation spezifischen Grenzen $f_1$ und $f_2$ integriert und daraus der Effektivwert der Phasenfluktuation und der Period-Jitter bestimmt.
 
-\subsection{Messverfahren}
+Das integrierte Phasenrauschleistungsspektrum in den Grenzen $[f_1, f_2]$ ist
+\begin{equation}
+\label{eq:intPhaseNoise}
+	A = \int_{f_1}^{f_2} \mathscr{L}(f) \; df.
+\end{equation}
+
+Damit ergibt sich der Effektivwert der Phasenfluktuation $\Phi_{total}$ (in rad) zu
+\begin{equation}
+	\Phi_{total} = \sqrt{2 \cdot 10^{A/10}}.
+\end{equation}
+
+Der Effektivwert des period-Jitter $J_1$ ergibt sich mit der Nominalfrequenz des Trägers $\nu_0$ zu:
+\begin{equation}
+	J_1 = \frac{1}{2 \pi \nu_0} \; \Phi_{total} = \frac{\sqrt{2 \cdot 10^{A/10}}}{2 \pi \nu_0}
+\end{equation}
+
+Die Berechnung der Fläche aus dem Spektrum ist in \autoref{fig:phaseNoiseInt} grafisch dargestellt.
+
+Durch die Bildung des Integrals ist die Konversion von Phasenrauschleistungsspektren zu Jitter nicht reversibel. Soll dennoch ein Spektrum aus $J_1$ generiert werden, muss die Form von $\mathscr{L}(f)$ bekannt sein. 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{0.8\textwidth}{!}{\includegraphics[]{img/phaseNoiseInt.tikz}}
+	\caption[Umrechnung Phasenrauschen zu Jitter]{Erläuterungen zu \autoref{eq:intPhaseNoise}}
+	\label{fig:phaseNoiseInt}
+\end{figure}
+
+
+
+\section{Messverfahren}
 Jitter und Phasenrauschen können mit Standard-Messmitteln oder speziellen Analysatoren gemessen werden.
 
-\subsubsection{Im Zeitbereich: Oszilloskop}
-Mit einem Oszilloskop kann Jitter direkt visuell abgelesen werden. Auch ein Augendiagramm kann genutzt werden. Damit lassen sich jedoch nur Spitze-zu-Spitze Werte des Jitters bestimmen. Um die Wahrscheinlichkeitsdichte des Jitters zu bestimmen, ist ein Oszilloskop mit Histogrammfunktion notwendig.
+\subsection{Im Zeitbereich: Oszilloskop}
+Mit einem Oszilloskop kann Jitter direkt visuell abgelesen werden. Auch ein Augendiagramm kann genutzt werden. Damit lassen sich jedoch nur Spitze-zu-Spitze-Werte des Jitters bestimmen. Um die Wahrscheinlichkeitsdichte des Jitters zu bestimmen, ist ein Oszilloskop mit Histogrammfunktion notwendig.
 
-\subsubsection{Im Frequenzbereich}
+\subsection{Im Frequenzbereich}
 Das Phasenrauschen eines Prüflings (DUT - device under test) kann im Frequenzbereich mit unterschiedlichen Verfahren ausgemessen werden: Die einfachste Vorgehensweise ist das Messen des Spektrums um die Trägerfrequenz mit einem Spektrumanalysator (siehe \autoref{fig:phaseNoiseSA}).
 Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch den Dynamikumfang des Spektrumanalysators begrenzt. Weiterhin muss für eine sinnvolle Messung des Phasenrauschens nahe der Trägerfrequenz das inhärente Phasenrauschen des Spektrumanalyzers an der betrachteten Offset-Frequenz erheblich kleiner sein, als das des Prüflings. Verfügt der Spektrumanalysator über keinen Phasenrauschmessmodus mit einer Amplitudenrauschunterdrückung, so enthält das gemessene Spektrum neben dem gesuchten Phasenrauschen auch Anteile durch Amplitudenrauschen. Dann muss sichergestellt sein, dass das Amplitudenrauschen gegenüber dem Phasenrauschen so klein ist, dass der Fehler vernachlässigt werden kann. 
 

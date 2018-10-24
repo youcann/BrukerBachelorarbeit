@@ -1,26 +1,26 @@
 \chapter{Methodik}
 In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignung als Simulationsumgebung untersucht wird, wie das MR-Signal mit Phasenrauschen gestört wird und wie Testsimulationen durchgeführt werden.
 
-\section{MRiLab}
+\section{Simulationsumgebung MRiLab}
 MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). Aufwendige Rechnungen in MRiLab (wie das Lösen der Blochgleichungen für die einzelnen Voxel) sind gut parallelisierbar. Je nachdem, ob eine geeignete Grafikkarte für CUDA vorhanden ist, wird diese genutzt, oder die Berechnungen werden mit dem regulären Prozessor und IPP durchgeführt.
 
 \autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirn-Phantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung, können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{img/mrilabScreenshot.png}
+	\includegraphics[width=0.9\textwidth]{img/mrilabScreenshot.png}
 	\caption[MRiLab Startbildschirm]{Startbildschirm von \textit{MRiLab} mit einem geladenen Gehirn Phantom und dem Simulationsergebnis einer Spinecho-Sequenz (unten rechts)}
 	\label{fig:mrilabscreenshot}
 \end{figure}
 
 \subsection{Bestimmung notwendiger Simulationsparameter}
-MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind mit der in MRiLab verwendeten Terminologie in \autoref{tab:mriLabParam} aufgeführt.
+MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind, mit der in MRiLab verwendeten Terminologie, in \autoref{tab:mriLabParam} aufgeführt.
 
 In Abstimmung mit der Applikationsentwicklung für die MRT können einige Werte bzw. Wertebereiche, wie sie typisch für die aktuelle Produktpalette der Bruker MRTs sind, angegeben werden (siehe \autoref{tab:brukerMRIparam}). 
 
 \begin{table}[H]
 	\centering
-	\caption[Bruker MRT Simulationsparameter]{Einige für die MRT Simulation in MRiLab relevante Parameter für Bruker MRTs}
+	\caption[Bruker MRT Simulationsparameter]{Einige für die MRT Simulation in MRiLab relevante Parameter für Bruker MRTs; zur Erklärung der Parameter siehe \autoref{tab:mriLabParam}}
 	\label{tab:brukerMRIparam}
 	\begin{tabularx}{\textwidth}{lX}
 		\toprule
@@ -82,19 +82,124 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 	\end{tabular}
 \end{table}
 
-\section{Einfluss von Phasenrauschen auf das MR-Empfangssignal}
-Aus der Erfahrung zeigt sich, dass Bildartefakte, wie sie durch Phasenrauschen des ADC-Taktsignals entstehen, sich stärker auf die subjektive Bildqualität auswirken, als zum Beispiel Amplitudenrauschen. Daher wird das MR-Empfangssignal mit verschiedenen Phasenrauschspektren beaufschlagt, um ein Phasenrauschen des ADC-Taktsignals nachzubilden.
+\subsection{Implementierung eines Phasenrauschmoduls}
+In MRiLab ist es möglich mit der skalaren, dimensionslosen Größe \texttt{noise level} vor der Rekonstruktion ein additives Rauschen zum MR-Empfangssignal hinzuzufügen. Damit kann z.B. der Einfluss eines sinkenden SNR qualitativ untersucht werden. Um auch Phasenrauschen hinzufügen zu können, ist eine Modifikation von MRiLab nötig.
 
+Ein Phasenrauschsignal (im Zeitbereich) kann auf das, digital vorhandene, komplexe MR-Empfangssignal $S_{RF}[n]$ gegeben werden. In MRiLab werden statt $S_{RF}[n]$ die beiden Signale \texttt{VSig.Sx} und \texttt{VSig.Sy} verwendet. Daher wird die Operation wie in \autoref{lst:vsigAddphaseNoise} gezeigt durchgeführt.
+\begin{listing}[H]
+	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
+	{Matlab}
+	S_rf = VSig.Sx + 1j*VSig.Sy;
+	S_rf = S_rf .* exp(-1j*phaseNoise)
+	VSig.Sx = real(S_rf);
+	VSig.Sy = imag(S_rf);
+	\end{minted}
+	\caption{Anwendung von Phasenrauschen auf das MR-Empfangssignal}
+	\label{lst:vsigAddphaseNoise}
+\end{listing}
+
+Vor der Rekonstruktion wird von MRiLab die Funktion \texttt{DoPostScan.m} aufgerufen, welche wiederum \texttt{DoAddNoise.m} aufruft. Da thematisch passend, wird das Phasenrauschen an dieser Stelle, wie in oben gezeigt, eingefügt.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Simulation von Phasenrauschen}
+Für die Simulation von Phasenrauschprozessen sind zunächst gemessene oder künstlich erzeugte Phasenrauschleistungsspektren nötig, welche das Leistungsdichtespektrum des Prozesses vorgeben. Unter Zuhilfenahme von (pseudo-) Zufallszahlen werden dann daraus zeitabhängige Phasenrauschsignale erzeugt.
+
+\subsection{Eingangsspektren}
+\label{subsec:Eingangsspektren}
+In vorhergehenden Arbeiten bei Bruker Biospin konnte gezeigt werden, dass sich der Baustein \textit{LMK04821} für zukünftige Entwicklungen im Bereich der MRT-Empfangselektronik eignet. Daher wird dieser hier für die Ermittlung von sinnvollen Phasenrauschleistungsspektren betrachtet.
+
+\subsubsection{LMK04821 unter Idealbedingungen}
+Im Datenblatt des Jitter-Cleaner Bausteins für Taktsignale LMK04821 von Texas Instruments \cite{lmkDatasheet} finden sich für verschiedene Betriebszustände gemessene Phasenrauschspektren. Dadurch, dass die Spektren als Screenshots des verwendeten Messgerätes abgebildet sind, ist zu erkennen, dass zur Messung ein Agilent Technologies (heute Keysight Technologies) \textit{E5052A Signal Source Analyzer} verwendet wurde. Dadurch, dass bei den Messungen die Option zur automatischen Konversion vom Phasenrauschspektrum zu Jitter genutzt wurde, können die Screenshots zur Validierung eigener Rechnungen verwendet werden. 
+
+In \autoref{fig:lmkDatasheetPhaseNoise} ist das Phasenrauschspektrum des LMK04821 für einen möglichen Betriebszustand dargestellt. In der Abbildung sind die Einzelwerte der tabellarischen Aufführung des Spektrums entnommen. Da der Baustein in diesem Fall unter idealen Laborbedingungen betrieben wurde, ergibt dieses Phasenrauschspektrum eine untere Abschätzung.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkDatasheet.tikz}}
+	\caption[LMK08421 Phasenrauschspektrum]{LMK04821 Phasenrauschspektrum \cite[S.~24, Figure 2]{lmkDatasheet}}
+	\label{fig:lmkDatasheetPhaseNoise}
+\end{figure}
+
+
+\subsubsection{LMK04821 Realbedingungen und Worst-Case Abschätzung}
+Für eine Worst-Case Abschätzung wird ein LMK04821-Testboard\footnote{LMK04828BEVM \cite{lmkEvalboard}} im Inneren eines BioSpec MR-Tomographen platziert. Bedingt durch die Größe des Testboards kann es nicht in die Hochfrequenz Sende- und Empfangsspulen-Röhre geschoben werden. Daher wird diese im Gerät nach hinten verschoben, so dass das Testboard in die Öffnung des Gradientensystems passt (siehe \autoref{fig:lmkinBioSpecRender}). Mit Hilfe eines Keysight Technologies \textit{N9952A} Spektrumanalysators wird das Spektrum am Ausgang des LMK04821 gemessen. Der verwendete Tomograph nutzt eine supraleitende Spule zur Erzeugung des $B_0$-Feldes, wodurch dieses nicht ohne weiteres abgeschaltet werden kann. Es ist daher während allen Versuchen aktiv.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.6\textwidth]{img/lmkInBiospecCrop.png}}
+	\caption[LMK04821 Position in Tomograph]{Positionierung des LMK04828BEVM im MR-Tomograph (Schnittbild); blau: vordere Öffnung; grün: Gradientensystem; gelb: Sende- und Empfangsspulen (ins Gerät hinein geschoben)}
+	\label{fig:lmkinBioSpecRender}
+\end{figure}
+
+Zunächst wird der Einfluss des $B_0$-Feld untersucht. Dazu wird das Leistungsspektrum für eine Positionierung vor der MRT Öffnung und in der MRT Bohrung (wie in \autoref{fig:lmkinBioSpecRender} gezeigt) aufgenommen. Der Vergleich der beiden Spektren in \autoref{fig:lmkEttlingenBioSpecB0} zeigt, dass das $B_0$-Feld allein keine nachweisbaren Auswirkungen auf das Phasenrauschen hat.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecNurB0.tikz}}
+	\caption[]{Ausgangsspektrum des LMK04821 beim Betrieb in der Nähe des MRT und im MRT (ohne aktives Gradientensystem und ohne RF-Signale); Betrieb des Spektrumanalysators mit "Maximum Hold"}
+	\label{fig:lmkEttlingenBioSpecB0}
+\end{figure}
+
+Für die Nachbildung einer realen MRT Messung wird eine RARE MRT-Pulssequenz abgefahren. Dabei werden die Gradientenfelder mit der Repetitionszeit $TR$ geschaltet. Für zwei verschiedene Repetitionszeiten sind die Spektren in \autoref{fig:lmkEttlingenBioSpecGradients} dargestellt. Es sind dabei jeweils zwei Spektren mit unterschiedlichen Aufnahme-Modi des Spektrumanalysators gezeigt:
+\begin{itemize}
+	\item \textbf{Maximum Hold:} Bildet das Maximum über mehrere aufgenommene Spektren. Geeignet zum Festhalten kurzzeitig präsenter Anteile im Spektrum.
+	\item \textbf{Trace Averageing:} Bildet den Mittelwert über mehrere aufgenommene Spektren. Kurzzeitige Fluktuationen werden entfernt.
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{$TR=\SI{2.4}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG1.tikz}}
+	\\[4ex]
+	\subcaptionbox{$TR=\SI{1.5}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG2.tikz}}
+	\caption{LMK04821 Betrieb in BioSpec MR-Tomograph bei aktiver Pulssequenz}
+	\label{fig:lmkEttlingenBioSpecGradients}
+\end{figure}
+
+Unter der Annahme, dass Amplitudenrauschen gegenüber dem Phasenrauschen zu vernachlässigen ist, können aus den Leistungsspektren in \autoref{fig:lmkEttlingenBioSpecB0} und \autoref{fig:lmkEttlingenBioSpecGradients} die Rauschleistungsspektren berechnet werden. Dazu wird das MATLAB-Skript in \autoref{lst:dBmTodBc} eingesetzt.
+
+\begin{listing}[H]
+	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
+	{Matlab}
+	%Eingangssignal f, P_dBm
+	[Pc,indexPc]=max(P_dBm);
+	fc=f(indexPc);
+	
+	foffset=f-fc;
+	P_dBc=P_dBm-Pc;
+	\end{minted}
+	\caption{Umrechnung eines Leistungsspektrums in ein Phasenrauschleistungsspektrum}
+	\label{lst:dBmTodBc}
+\end{listing}
+
+
+
+
+
+
+
+\subsection{Generierung von Phasenrauschen mit gegebenem Spektrum}
 Das Spektrum des Phasenrauschens eines realen Oszillators ist nicht konstant (weiß), sondern die spektrale Leistungsdichte strebt für sehr kleine Werte der Offsetfrequenz $f_{offset}=f-f_c$ gegen die des Trägers:
 \begin{equation}
 P(f_{offset} \rightarrow 0) = P_c
 \end{equation}
 Für große Frequenzen geht die Phasenrauschleistung gegen null. Es bleibt ein konstanter "noise floor" $N_0$:
 \begin{equation}
-	P(f_{offset} \rightarrow \infty) = N_0.
+P(f_{offset} \rightarrow \infty) = N_0.
 \end{equation}
 
-\subsection{Generierung von Phasenrauschen}
+Dies entspricht den aufgenommenen Spektren in \autoref{subsec:Eingangsspektren}.
+
 Zur Simulation mehrerer Realisierungen $\xi_i$ des Phasenrauschprozesses $y_\xi(t)$ müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
 
 \begin{figure}[H]
@@ -186,76 +291,24 @@ Wenn die Originalfunktion $S[n]=S_x+j S_y$ mit $exp(j \Delta \phi)$ multiplizier
 	\label{fig:abtastPlot}
 \end{figure}
 
-\subsection{Phasenrauschfunktion für MRiLab}
-Das erzeugte Phasenrauschen kann nun auf das, digital vorhandene, komplexe MR-Empfangssignal $S_{RF}[n]$ gegeben werden. In MRiLab werden statt $S_{RF}[n]$ die beiden Signale \texttt{VSig.Sx} und \texttt{VSig.Sy} verwendet. Daher wird die Operation in \autoref{lst:vsigAddphaseNoise} durchgeführt.
-\begin{listing}[H]
-	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
-	{Matlab}
-	S_rf = VSig.Sx + 1j*VSig.Sy;
-	S_rf = S_rf .* exp(-1j*phaseNoise)
-	VSig.Sx = real(S_rf);
-	VSig.Sy = imag(S_rf);
-	\end{minted}
-	\caption{Anwendung von Phasenrauschen auf das MR-Empfangssignal}
-	\label{lst:vsigAddphaseNoise}
-	\end{listing}
-	
-
-
-\subsection{Gewinnung verschiedener Leistungsspektren}
-
-\subsubsection{LMK04821 unter Idealbedingungen}
-Im Datenblatt des Jitter-Cleaner Bausteins für Taktsignale \textit{LMK04821} von Texas Instruments \cite{lmkDatasheet} finden sich für verschiedene Betriebszustände gemessene Phasenrauschspektren. Dadurch, dass die Spektren als Screenshots des verwendeten Messgerätes abgebildet sind, ist zu erkennen, dass zur Messung ein Agilent Technologies (heute Keysight Technologies) \textit{E5052A Signal Source Analyzer} verwendet wurde. Dadurch, dass bei den Messungen die Option zur automatischen Konversion vom Phasenrauschspektrum zu Jitter genutzt wurde, können die Screenshots zur Validierung eigener Rechnungen verwendet werden. 
-
-In \autoref{fig:lmkDatasheetPhaseNoise} ist das Phasenrauschspektrum des LMK04821 für einen möglichen Betriebszustand dargestellt. In der Abbildung sind die Einzelwerte der tabellarischen Aufführung des Spektrums entnommen. Da der Baustein in diesem Fall unter idealen Laborbedingungen betrieben wurde, ergibt dieses Phasenrauschspektrum eine untere Abschätzung.
-
-\begin{figure}[H]
-	\centering
-	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkDatasheet.tikz}}
-	\caption[LMK08421 Phasenrauschspektrum]{LMK04821 Phasenrauschspektrum \cite[S.~24, Figure 2]{lmkDatasheet}}
-	\label{fig:lmkDatasheetPhaseNoise}
-\end{figure}
-
-
-\subsubsection{LMK04821 Realbedingungen und Worst-Case Abschätzung}
-Für eine Worst-Case Abschätzung wird ein LMK04821-Testboard\footnote{LMK04828BEVM \cite{lmkEvalboard}} im Inneren eines BioSpec MR-Tomographen platziert. Bedingt durch die Größe des Testboards kann es nicht in die Hochfrequenz Sende- und Empfangsspulen-Röhre geschoben werden. Daher wird diese im Gerät nach hinten verschoben, so dass das Testboard in die Öffnung des Gradientensystems passt (siehe \autoref{fig:lmkinBioSpecRender}). Mit Hilfe eines Keysight Technologies \textit{N9952A} Spektrumanalysators wird das Spektrum am Ausgang des LMK04821 gemessen. Der verwendete Tomograph nutzt eine supraleitende Spule zur Erzeugung des $B_0$-Feldes, wodurch dieses nicht ohne weiteres abgeschaltet werden kann. Es ist daher während allen Versuchen aktiv.
-
-\begin{figure}[H]
-	\centering
-	\resizebox{!}{!}{\includegraphics[width=0.6\textwidth]{img/lmkInBiospecCrop.png}}
-	\caption[LMK04821 Position in Tomograph]{Positionierung des LMK04828BEVM im MR-Tomograph (Schnittbild); blau: vordere Öffnung; grün: Gradientensystem; gelb: Sende- und Empfangsspulen (ins Gerät hinein geschoben)}
-	\label{fig:lmkinBioSpecRender}
-\end{figure}
-
-Zunächst wird der Einfluss des $B_0$-Feld untersucht. Dazu wird das Leistungsspektrum für eine Positionierung vor der MRT Öffnung und in der MRT Bohrung (wie in \autoref{fig:lmkinBioSpecRender} gezeigt) aufgenommen. Der Vergleich der beiden Spektren in \autoref{fig:lmkEttlingenBioSpecB0} zeigt, dass das $B_0$-Feld allein keine nachweisbaren Auswirkungen auf das Phasenrauschen hat.
-
-\begin{figure}[H]
-	\centering
-	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecNurB0.tikz}}
-	\caption[]{Ausgangsspektrum des LMK04821 beim Betrieb in der Nähe des MRT und im MRT (ohne aktives Gradientensystem und ohne RF-Signale); Betrieb des Spektrumanalysators mit "Maximum Hold"}
-	\label{fig:lmkEttlingenBioSpecB0}
-\end{figure}
-
-Für die Nachbildung einer realen MRT Messung wird eine RARE MRT-Pulssequenz abgefahren. Dabei werden die Gradientenfelder mit der Repetitionszeit $TR$ geschaltet. Für zwei verschiedene Repetitionszeiten sind die Spektren in \autoref{fig:lmkEttlingenBioSpecGradients} dargestellt. Es sind dabei jeweils zwei Spektren mit unterschiedlichen Aufnahme-Modi des Spektrumanalysators gezeigt:
-\begin{itemize}
-	\item \textbf{Maximum Hold:} Bildet das Maximum über mehrere aufgenommene Spektren. Geeignet zum Festhalten kurzzeitig präsenter Anteile im Spektrum.
-	\item \textbf{Trace Averageing:} Bildet den Mittelwert über mehrere aufgenommene Spektren. Kurzzeitige Fluktuationen werden entfernt.
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{$TR=\SI{2.4}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG1.tikz}}
-	\\[4ex]
-	\subcaptionbox{$TR=\SI{1.5}{\milli\second}$}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecG2.tikz}}
-	\caption{LMK04821 Betrieb in BioSpec MR-Tomograph bei aktiver Pulssequenz}
-	\label{fig:lmkEttlingenBioSpecGradients}
-\end{figure}
-
-\subsection{Umrechung in Phasenrauschleistungsspektren}
 
 
 
-\section{Erstellung MRT Phantom}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Erstellung MRiLab MRT-Phantome}
 Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale MRT-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
 
 Für die kontinuierliche Qualitätsüberwachung in Kliniken und radiologischen Praxen bieten Händler für MRT-Zubehör verschiedene MRT-Phantome an. Diese bestehen meist aus flüssigkeitsgefüllten Kunststoffstrukturen, häufig PMMA. Im Inneren verfügen diese Phantome über verschiedene Einsätze, um bestimmte Eigenschaften eines MR-Tomographens zu bewerten. So lässt sich beispielsweise über ein regelmäßiges Gitter eine Aussage über geometrische Verzerrungen und durch eine Keilplatte eine Aussage über die Schichtdicke machen. Durch abgedichtete Einsätze können Flüssigkeiten mit abweichenden NMR-Eigenschaften als die Hauptflüssigkeit eingebracht werden. Eine Auswahl von kommerziell erhältlichen Phantomen ist in \autoref{tab:phantomsOverview} zusammengestellt.
@@ -341,7 +394,6 @@ mit:
 \end{with*}
 
 Der durch \autoref{eq:sumMatrix} beschriebene Algorithmus ist als MATLAB Skript in \autoref{lst:combinePhantomStacksIntoVoxelMatrix} zu finden.
-
 
 
 
