@@ -1,0 +1,11 @@
+\usetikzlibrary{arrows.meta}
+\begin{tikzpicture}[scale=1]
+
+
+\node (myfirstpic) at (0,0) {\includegraphics[width=6cm]{img/colormap_jet}};
+
+\draw (-3,-0.4) -- (-3,-0.5) -- (3,-0.5) -- (3,-0.4);
+\node[anchor=north] (0) at (-3,-0.5) {$0$};
+\node[anchor=north] (0) at (3,-0.5) {$255$};
+
+\end{tikzpicture}

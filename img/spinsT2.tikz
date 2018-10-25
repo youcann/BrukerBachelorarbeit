@@ -1,0 +1,81 @@
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{3d}
+\begin{tikzpicture}[scale=1,rotate around x=0, rotate around y=0, rotate around z=0,x={(-11.5:1cm)}, y={(90:1cm)}, z={(30:0.7cm)}]
+
+
+\begin{scope}[shift={(0,0)}]
+\begin{scope}[canvas is xy plane at z=0]
+  \draw[->] (0,-1.5) -- (0,1.5);
+\end{scope}
+\begin{scope}[canvas is xz plane at y=0]
+  % z-axis
+\draw[-latex,gray!50] (0,0) --(30:1);
+\draw[gray,->] (0,0) circle (1);
+\draw[-latex] (0,0) --(30:1);
+\draw[-latex] (0,0) --(28:1);
+\draw[-latex] (0,0) --(32:1);
+
+\end{scope}
+\end{scope}
+
+\begin{scope}[shift={(3,0.6)}]
+\begin{scope}[canvas is xy plane at z=0]
+  \draw[->] (0,-1.5) -- (0,1.5);
+\end{scope}
+\begin{scope}[canvas is xz plane at y=0]
+  % z-axis
+\draw[-latex,gray!50] (0,0) --(30:1);
+\draw[gray,->] (0,0) circle (1);
+\draw[-latex] (0,0) --(30:1);
+
+\draw[-latex] (0,0) --(40:1);
+\draw[-latex] (0,0) --(20:1);
+\draw[-latex] (0,0) --(50:1);
+\draw[-latex] (0,0) --(10:1);
+\draw[-latex] (0,0) --(60:1);
+\draw[-latex] (0,0) --(0:1);
+\end{scope}
+\end{scope}
+
+\begin{scope}[shift={(2*3,2*0.6)}]
+\begin{scope}[canvas is xy plane at z=0]
+  \draw[->] (0,-1.5) -- (0,1.5);
+\end{scope}
+\begin{scope}[canvas is xz plane at y=0]
+  % z-axis
+\draw[-latex,gray!50] (0,0) --(30:1);
+\draw[gray,->] (0,0) circle (1);
+
+\draw[-latex] (0,0) --(50:1);
+\draw[-latex] (0,0) --(10:1);
+\draw[-latex] (0,0) --(70:1);
+\draw[-latex] (0,0) --(-10:1);
+\draw[-latex] (0,0) --(90:1);
+\draw[-latex] (0,0) --(-30:1);
+\end{scope}
+\end{scope}
+
+\begin{scope}[shift={(3*3,3*0.6)}]
+\begin{scope}[canvas is xy plane at z=0]
+  \draw[->] (0,-1.5) -- (0,1.5);
+\end{scope}
+\begin{scope}[canvas is xz plane at y=0]
+  % z-axis
+\draw[-latex,gray!50] (0,0) --(30:1);
+\draw[gray,->] (0,0) circle (1);
+
+\draw[-latex] (0,0) --(70:1);
+\draw[-latex] (0,0) --(100:1);
+\draw[-latex] (0,0) --(130:1);
+\draw[-latex] (0,0) --(-10:1);
+\draw[-latex] (0,0) --(-40:1);
+\draw[-latex] (0,0) --(-70:1);
+\end{scope}
+\end{scope}
+
+
+\end{tikzpicture}
+
+
+
+
