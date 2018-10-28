@@ -4,7 +4,7 @@ In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignu
 \section{Simulationsumgebung MRiLab}
 MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). Aufwendige Rechnungen in MRiLab (wie das Lösen der Blochgleichungen für die einzelnen Voxel) sind gut parallelisierbar. Je nachdem, ob eine geeignete Grafikkarte für CUDA vorhanden ist, wird diese genutzt, oder die Berechnungen werden mit dem regulären Prozessor und IPP durchgeführt.
 
-\autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirn-Phantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung, können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
+\autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirnphantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung, können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
 
 \begin{figure}[H]
 	\centering
@@ -20,7 +20,7 @@ In Abstimmung mit der Applikationsentwicklung für die MRT können einige Werte 
 
 \begin{table}[H]
 	\centering
-	\caption[Bruker MRT Simulationsparameter]{Einige für die MRT Simulation in MRiLab relevante Parameter für Bruker MRTs; zur Erklärung der Parameter siehe \autoref{tab:mriLabParam}}
+	\caption[Bruker MRT Simulationsparameter]{Einige für die MRT-Simulation in MRiLab relevante Parameter für Bruker MRTs; zur Erklärung der Parameter siehe \autoref{tab:mriLabParam}}
 	\label{tab:brukerMRIparam}
 	\begin{tabularx}{\textwidth}{lX}
 		\toprule
@@ -48,7 +48,7 @@ Unter der Annahme, dass der Probenraum quadratisch ist und die Gradientenstärke
 	f_{max}=\frac{\gamma}{2\pi} (B_0+G\; x_{max})
 	\end{align}
 \end{subequations}
-mit:
+mit
 \begin{with}
 	\frac{\gamma}{2\pi} =\SI{42.577478}{\mega\hertz\per\tesla}& Gyromagnetisches Verhältnis für \ce{^{1}H}-Kerne \\
 	B_0 \text{~(in \SI{}{\tesla})} & Feldstärke statisches Magnetfeld \\
@@ -228,7 +228,6 @@ Die gemessenen bzw. durch ein Datenblatt erhaltenen Phasenrauschspektren sind ge
 \subsubsection{Faltung im Zeitbereich (FIR/IIR Filter)}
 Ist die Impulsantwort für einen geeigneten Formfilter gegeben, kann diese im Zeitbereich für eine Filterung verwendet werden. Zur Generierung der Übertragungsfunktion und damit der Impulsantwort können die Filterentwurfswerkzeuge von MATLAB verwendet werden.
 
-\small{
 \paragraph{Vorbemerkung:}\mbox{}\\
 MATLAB verwendet in den Filterdesign-Tools der "Signal Processing Toolbox" normierte Frequenzen:
 \begin{subequations}
@@ -239,7 +238,7 @@ MATLAB verwendet in den Filterdesign-Tools der "Signal Processing Toolbox" normi
 \end{subequations}
 Für Frequenzen im sinnvollen Bereich $f\in [0,f_S/2]$ ergibt sich damit der Wertebereich von
 $f_{norm}$ und $\omega_{norm}/\pi$ zu $\mathbb{W}_{f_{norm}}=\mathbb{W}_{\omega_{norm}/\pi}=[0,1]$.
-}
+
 
 Übliche (digitale) Filter, wie Tiefpässe, Hochpässe und Bandpässe/Bandsperren haben in der Regel einfach zu formulierende Designziele: Ein steiler Übergang von den Passbändern zu den Stoppbändern und eine jeweils kleine Welligkeit in den Bändern.
 Für das Design solcher Filter bietet die \textit{Signal Processing Toolbox} in MATLAB einige Werkzeuge, wie z.B. den \textit{FilterDesigner} an.
@@ -319,13 +318,13 @@ Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese P
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{"50ml-Phantom" (SNR und Auflösung)\label{fig:50mlPhantom}}{\includegraphics[width=0.45\textwidth]{img/phantoms/legoPhantom_scale.png}}
+	\subcaptionbox{"50~ml-Phantom" (SNR und Auflösung)\label{fig:50mlPhantom}}{\includegraphics[width=0.45\textwidth]{img/phantoms/legoPhantom_scale.png}}
 	\hfill
 	\subcaptionbox{"63mm-Phantom" (Auflösung, Schichtdicke, SNR)\label{fig:63mmPhantom}}{\includegraphics[width=0.45\textwidth]{img/phantoms/bkr60_scale.png}}
-	\caption{Zwei bei Bruker BioSpin MRI eingesetzte MRT Phantome (Rendering)}
+	\caption[Bruker Phantome]{Zwei bei Bruker BioSpin MRI eingesetzte MRT-Phantome (gerenderte 3D-Modelle)}
 \end{figure}
 
-Das Bruker 63mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu erzeugen, sind nachfolgend aufgezeigt.
+Das Bruker 63~mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu erzeugen, sind nachfolgend aufgezeigt.
 
 \subsection{Erstellung eines 3D-CAD Modells}
 Zunächst werden aus den zweidimensionalen Einzelteilzeichnungen 3D-Modelle erstellt. Da (mechanische) CAD-Modelle und Baugruppen verschiedener Softwarepakete in der Regel nicht kompatibel sind, werden die Modelle mit dem bei Bruker BioSpin verwendeten \textit{Siemens PLM Solid Edge} erstellt, um eine spätere Wiederverwendung in der Abteilung zu ermöglichen. Die Einzelteile werden anschließend, basierend auf der 2D-Übersichtszeichnung, zu einer Baugruppe zusammengesetzt. Das dabei entstehende Phantom-Modell ist noch luftgefüllt. Da in einer realen Messung die größten MR-Signale aus der Flüssigkeitsfüllung resultieren, kann die Füllung für die Simulation nicht vernachlässigt werden. Da Solid Edge keinen Assistent zur Füllung von Hohlräumen anbietet, muss die Füllung zunächst durch einen Vollzylinder angenähert werden. Von diesem werden dann durch eine Bool'sche Operation die inneren PMMA-Strukturen und die Flüssigkeiten der kleinen Hohlzylinder abgezogen. Es zeigt sich, dass in Solid Edge ST10 nicht gelingt eine Subtraktion von mehr als etwa sechs Einzelteilen durchzuführen.
@@ -348,9 +347,9 @@ Die CAD-Dateiformate IGES und STEP enthalten jeweils eine Beschreibung der CAD-D
 
 Eine Speicherung in STL ist daher in der Regel verlustbehaftet. Neben der genauen Geometriebeschreibung gehen beim Export aus SolidWorks in STL alle Informationen zu Features, Material etc. verloren. Daher wird das Phantom nicht als komplette Baugruppe exportiert, sondern es wird jedes Einzelteil separat exportiert. Um die Einzelteile in der STL Darstellung gegeneinander ausrichten zu können und Skalierungsproblemen beim Voxelisierungsprozess zu vermeiden, wird eine, das gesamte Phantom umspannende Referenzgeometrie eingeführt. Diese kann später ausgeblendet werden.
 
-Die STL Dateien der Einzelteile müssen nun in eine Voxeldarstellung gebracht werden. Dazu wird das Python Skript \textit{stl-to-voxel} \cite{stlToVox} verwendet. Beim Versuch, eine mit SolidWorks exportierte STL zu verarbeiten, bricht das Skript jedoch mit einer Fehlermeldung ab. Die Fehlerursache und eine mögliche Fehlerbehebung sind in \autoref{sec:stlToVoxFix} beschrieben.
+Die STL-Dateien der Einzelteile müssen nun in eine Voxeldarstellung gebracht werden. Dazu wird das Python Skript \textit{stl-to-voxel} \cite{stlToVox} verwendet. Beim Versuch, eine mit SolidWorks exportierte STL zu verarbeiten, bricht das Skript jedoch mit einer Fehlermeldung ab. Die Fehlerursache und eine mögliche Fehlerbehebung sind in \autoref{sec:stlToVoxFix} beschrieben.
 
-Stl-to-voxel kann nun eingesetzt werden, um \textbf{eine} STL Datei in einen Stack aus png Bildern zu zerlegen, die dann gestapelt die gesuchte Voxeldarstellung ergeben.
+Stl-to-voxel kann nun eingesetzt werden, um \textbf{eine} STL-Datei in einen Stack aus png Bildern zu zerlegen, die dann gestapelt die gesuchte Voxeldarstellung ergeben.
 Der Aufruf von stl-to-voxel erfolgt beispielsweise mit:
 \begin{listing}[H]
 	\begin{minted}[bgcolor=white,fontsize=\footnotesize,autogobble,escapeinside=||]
@@ -361,7 +360,7 @@ Der Aufruf von stl-to-voxel erfolgt beispielsweise mit:
 
 Im Beispiel entspricht die 256 der gewünschten Auflösung $N$ des png-Stacks. Da nur eine Auflösung angegeben werden kann, entstehen immer $N$ $(N\times N)$ große png Bilder. Die png-Bilder haben eine Samplingtiefe/Bittiefe von $1$-Bit. Daher gilt für jeden Pixelwert:
 \begin{equation}
-	I = I(x,y) , \quad I(x,y) \in \{0, 255\}
+	I = I[i,j] , \quad I[i,j] \in \{0, 255\}
 \end{equation}
 Ein Stapel aus unkomprimierten 1-Bit-Bitmaps hätte damit die Größe
 \begin{equation}
@@ -374,7 +373,7 @@ Der Vorgang wird für alle $M$ Einzelteile wiederholt.
 \subsection{Zusammenführen in eine .mat-Datei}
 Die Voxelrepräsentation des Phantoms besteht jetzt aus $M$ Ordnern für jedes Einzelteil, die jeweils $N$ $(N \times N)$ große png Bilder enthalten. Diese müssen nun zu einer MATLAB Matrix kombiniert werden.
 
-Zunächst werden die png Stacks jedes Einzelteils zu einer Matrix zusammengesetzt. Dazu werden die Bilder sequenziell in eine 2D-Matrix eingelesen. Die 2D-Matrizen werden dann aneinander gefügt, bis eine quadratische 3D-Matrix entstanden ist. Diese Einzelteilmatrizen werden dann in einer Matrix vereint.
+Zunächst werden die png-Stacks jedes Einzelteils zu einer Matrix zusammengesetzt. Dazu werden die Bilder sequenziell in eine 2D-Matrix eingelesen. Die 2D-Matrizen werden dann aneinander gefügt, bis eine quadratische 3D-Matrix entstanden ist. Diese Einzelteilmatrizen werden dann in einer Matrix vereint.
 
 Die Kombination der Einzelteile in einer Matrix kann zum Beispiel über eine Addition (der jeweils gleich großen Einzelmatrizen) erfolgen. Eine solche Operation wäre im Allgemeinen nicht umkehrbar. Da es sich aber bei den Einzelteilmatrizen um disjunkte Mengen handelt, können sie problemlos addiert werden.
 
@@ -383,14 +382,14 @@ Da Gewebe nicht nur eine, für die MRT relevante, Eigenschaft aufweist, ist eine
 Vor der Addition der Einzelteile zu einer dieser Matrizen wird daher jedes Einzelteil mit einer, für sein Material charakteristischen Konstante skaliert. Die Skalierungsfaktoren werden in Textdateien zusammen mit den png-Stacks in den Einzelteilordnern abgespeichert. Damit ergibt sich für eine Eigenschaftsmatrix:
 \begin{equation}
 \label{eq:sumMatrix}
-	A_e=\sum_{i=1}^{M} k_{i,e} \underbrace{\sum_{n=0}^{N} I_n(x,y)}_\text{Einzelteilmatrix}
+	A_e=\sum_{q=1}^{M} k_{q,e} \underbrace{\sum_{n=0}^{N} I_n[i,j]}_\text{Einzelteilmatrix}
 \end{equation}
 mit:
 \begin{with*}
-	A_E & Matrix der Eigenschaft $e$, mit $e \in \{PD,\, T1,\, T2,\, T2\text{*}\}$ \\
+	A_e & Matrix der Eigenschaft $e$, mit $e \in \{PD,\, T1,\, T2,\, T2\text{*}\}$ \\
 	M & Anzahl der Einzelteile \\
 	N & Auflösung der png Bilder und Anzahl der png Bilder \\
-	I_n(x,y) & n-tes png Bild \\
+	I_n[i,j] & n-tes png Bild \\
 \end{with*}
 
 Der durch \autoref{eq:sumMatrix} beschriebene Algorithmus ist als MATLAB Skript in \autoref{lst:combinePhantomStacksIntoVoxelMatrix} zu finden.

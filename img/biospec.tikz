@@ -5,7 +5,7 @@
 \node (myfirstpic) at (0,0) {\includegraphics[width=14cm]{img/biospec.png}};
 
 \draw[latex-,very thick,draw=white,double=black] (0.5,1) -- (4,2) -- (9.8,2);
-\node[anchor=west,align=left] (stat) at (4,2) {Spulen fuer statisches Magnetfeld,\\ Shimspulen, Kryostat};
+\node[anchor=west,align=left] (stat) at (4,2) {Spulen für statisches Magnetfeld,\\ Shimspulen, Kryostat};
 
 \draw[latex-,very thick,draw=white,double=black] (-0.8,0.4) -- (4,-2) -- (9.5,-2);
 \node[anchor=south west,align=left] (stat) at (4,-2) {RF-Sende- und Empfangsspulen};

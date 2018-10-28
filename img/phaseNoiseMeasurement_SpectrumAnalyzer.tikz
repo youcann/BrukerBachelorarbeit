@@ -7,7 +7,7 @@
   \end{scope}
 \node[] (DUT) at (0,1.2) {DUT};
 
-\node[draw,align=center,minimum height=2cm,minimum width=3cm] (SA) at (6,0) {Spectrum\\Analyzer};
+\node[draw,align=center,minimum height=2cm,minimum width=3cm] (SA) at (6,0) {Spektrum-\\analysator};
 
 \draw[-latex] (dut) -- (SA);
 

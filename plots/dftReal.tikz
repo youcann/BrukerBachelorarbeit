@@ -7,6 +7,9 @@
 \begin{tikzpicture}
 
 \begin{axis}[%
+extra y ticks       = 0,
+extra y tick labels = ,
+extra y tick style  = { grid = major },
 ymin=-1,
 ymax=1,
 axis background/.style={fill=white},

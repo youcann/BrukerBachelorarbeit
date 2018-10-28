@@ -42,9 +42,9 @@
 
 \draw[very thick] (0,1) -- (\a,1) -- (\a,1.5) .. controls (\a+0.2,1.05) .. (\a+1,1) -- (\c-1,1) .. controls (\c-0.2,1.05) .. (\c,1.5)  .. controls (\c+0.2,1.05) .. (\c+1,1) -- (9.8,1) ;
 
-\node[anchor=west] (90deg) at (\a,6) {$90deg$};
-\node[anchor=west] (180deg) at (\b,6) {$180deg$};
-\node[anchor=west] (180deg) at (\e,6) {$180deg$};
+\node[anchor=west] (90deg) at (\a,6) {$90\degree$};
+\node[anchor=west] (180deg) at (\b,6) {$180\degree$};
+\node[anchor=west] (180deg) at (\e,6) {$180\degree$};
 
 \draw[<->] (\a,0.5) -- (\c,0.5);
 \node[] (echozeit) at (\c-1.5,0.2) {Echozeit ($TE$)};

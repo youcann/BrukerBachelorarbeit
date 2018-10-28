@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half]{scrbook}
+\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half,numbers=noenddot]{scrbook}
 %install:
 %sudo apt install texlive texstudio texlive-lang-german texlive-math-extra texlive-latex-extra texlive-science texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-generic-extra python3-pygments biber
 %configure:
@@ -23,6 +23,13 @@
 \usepackage{gensymb}
 \usepackage{textcomp}
 \usepackage{mathrsfs}
+
+
+%Autoref
+%\usepackage[pdftex,breaklinks]{hyperref}
+\usepackage[hyphens]{url}
+\def\UrlBreaks{\do\/\do-}
+\usepackage[breaklinks]{hyperref}
 
 %equation variable descriptions
 %aligned:
@@ -49,9 +56,6 @@
 \usepackage[colorinlistoftodos,prependcaption,textsize=small]{todonotes}
 %a new command for inserting todos inline
 \newcommand{\todoin}[2][]{\todo[inline,#1]{#2}}
-
-%Autoref
-\usepackage{hyperref}
 
 %font
 %a current Times clone
@@ -81,9 +85,15 @@
 \captionsetup{labelsep=space}
 
 %Bibliography using Biber (biblatex DOES NOT use bibtex styles (.bst))
+%choose BibLaTex in TexStudio!
+%\usepackage[autostyle]{csquotes}
+%\usepackage[backend=biber,bibstyle=numeric,citestyle=nature,natbib=true,sorting=nty,sortlocale=de_DE,maxnames=3,isbn=true,url=true,doi=true]{biblatex}
+%\addbibresource{jabref.bib}
+
+%Bibliography using BibTex
+%choose BibTex in Texstudio!
 \usepackage[autostyle]{csquotes}
-\usepackage[backend=biber,bibstyle=numeric,citestyle=nature,natbib=true,sorting=nty,sortlocale=de_DE,maxnames=3,isbn=true,url=true,doi=true]{biblatex}
-\addbibresource{jabref.bib}
+%\usepackage{natbib}
 
 %Glossar
 \usepackage[nonumberlist]{glossaries}
@@ -152,6 +162,7 @@
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
 \newtheorem{definition}{Definition}[section]
 
+
 \begin{document}
 \shorthandoff{"} %"A, "S, ... normal
 
@@ -169,11 +180,11 @@
 \setcounter{page}{1}
 
 \mainmatter
-%\input{sections/1einleitung.tex}
-%\input{sections/2grundlagen.tex}
+\input{sections/1einleitung.tex}
+\input{sections/2grundlagen.tex}
 \input{sections/4Material_und_Methoden.tex}
-%\input{sections/5Ergebnisse.tex}
-%\input{sections/6Diskussion_und_Ausblick.tex}
+\input{sections/5Ergebnisse.tex}
+\input{sections/6Diskussion_und_Ausblick.tex}
 
 \appendix
 \input{sections/7Anhang.tex}
@@ -182,6 +193,13 @@
 \printglossary
 \listoffigures
 \listoftables
-\printbibliography
+%BibLatex
+%\printbibliography
+%BibTex
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\bibliography{jabref}
+\bibliographystyle{elsarticle-num}
 
 \end{document}
