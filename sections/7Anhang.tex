@@ -45,10 +45,10 @@ MRiLab besteht aus einem Hauptfenster (\texttt{SimuPanel}) und mehreren Zusatzfe
 
 Ein GUIDE Fenster besteht aus zwei Dateien: Die .fig Binärdatei kann nur mit GUIDE geöffnet werden und enthält eine Beschreibung des Layouts. GUIDE erzeugt aus dieser eine MATLAB .m-Datei. Diese enthält Coderümpfe, um auf die im Layout spezifizierten Elemente zuzugreifen.
 
-\subsubsection{Einbau eines neuen GUI Elements}
+\subsubsection{Einbau eines neuen GUI-Elements}
 Zum Einbau eines neuen GUI Elements in das MRiLab Hauptfenster wird GUIDE aus MATLAB heraus gestartet (\texttt{>>guide}) und die Datei \texttt{SimuPanel.fig} geöffnet. Nach dem Einfügen eines neuen Elements wird die Datei gespeichert. Die Datei \texttt{SimuPanel.m} wird dadurch im MATLAB Editor geöffnet und die "create"- bzw. "callback"-Funktion werden automatisch generiert.
 
-\subsubsection{Zugriff auf neue GUI Elemente}
+\subsubsection{Zugriff auf neue GUI-Elemente}
 GUIDE benutzt die Variable \texttt{handles}, um Daten zwischen GUI Elementen auszutauschen. Die Variable handles besteht aus einem Struct und kann auch für Benutzer-definierte globale Variablen benutzt werden. Dadurch ist der Zugriff aus allen GUI Teilen einfach möglich.
 
 Auch, wenn die Programmierung mit globalen Variablen einige Probleme mit sich bringt\footnote{Programmteile schwierig isoliert zu testen, Auftreten von Namenskonflikten, etc.}, wird die oben erläuterte Vorgehensweise dennoch verwendet, um konsistent mit dem bestehenden Code zu sein.
@@ -111,12 +111,12 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 		ResFreq & Auflösung in Richtung des Frequenzkodiergradienten & $\#Pixel/FOVFreq=\SI{}{\per\m}$\\
 		ResPhase & Auflösung in Richtung des Phasenkodiergradienten & $\#Pixel/FOVPhase=\SI{}{\per\m}$\\
 		SliceThick & Schichtdicke & \SI{}{\m}\\
-		SliceNum & Anzahl der (symmetrisch um die gewählte Schicht) aufzunehmenden Schichten & \\
-		ScanPlane & Orientierung der $xy$-Ebene (Axial, Sagittal, Coronal) & \\
+		SliceNum & Anzahl der (symmetrisch um die gewählte Schicht) aufzunehmenden Schichten & - \\
+		ScanPlane & Orientierung der $xy$-Ebene (Axial, Sagittal, Coronal) & - \\
 		TR,TE & Repetitionszeit und Echozeit & \SI{}{\s}\\
-		TEPerTR & Anzahl der aufzunehmenden Echos (aus verschiedenen Schichten, nur für Multiecho) & \\
+		TEPerTR & Anzahl der aufzunehmenden Echos (aus verschiedenen Schichten, nur für Multiecho) & - \\
 		Bandwidth & Bandbreite des Empfängers (entspricht dem inversen der Abtastrate $T_A$) & \SI{}{\hertz}\\
-		NEX & Anzahl der aufeinander folgenden Aufnahmen zur Rauschunterdrückung durch Mittelung & \\
+		NEX & Anzahl der aufeinander folgenden Aufnahmen zur Rauschunterdrückung durch Mittelung & - \\
 		MaxSlewRate & Maximale Slewrate für alle Gradientenspulen & \SI{}{\tesla\per\m\per\s}\\
 		MaxGrad & Maximale Stärke der Gradienten & \SI{}{\tesla\per\m}\\
 		B0 & Feldstärke des statischen Magnetfeldes & \SI{}{\tesla}\\
@@ -130,22 +130,22 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 \section{Kommerzielle MRT-Phantome}
 
 \begin{table}[H]
-	\caption{Auswahl einiger am Markt verfügbarer MRT Phantome (Stand August 2018)}
+	\caption[Kommerzielle MRT-Phantome]{Auswahl einiger am Markt verfügbarer MRT Phantome (Stand August 2018)}
 	\centering
-	\begin{tabularx}{\textwidth}{l X l}
+	\begin{tabularx}{\textwidth}{l X}
 		\toprule
-		\textbf{Abbildung} & \textbf{Beschreibung} & \textbf{günstigstes Angebot} \\
+		\textbf{Abbildung} & \textbf{Beschreibung} \\
 		\midrule \\[5pt]
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/allMRI.jpg} & \textbf{allMRI/\-Pro-MRI \newline180mm phantom} \newline Außendurchmesser: \SI{180}{\mm},\newline Höhe: \SI{150}{\mm} \newline \cite{allMRIphantom} & 1235€ \\
-		&&\\
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/MagIQ.jpg} & \textbf{Leeds MagIQ 142} \newline Außendurchmesser: \SI{142}{\mm},\newline Höhe: \SI{70}{\mm} \newline \cite{leeds} & 3250€ \\
-		&&\\
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/acr.jpg} & \textbf{ACR MRI Phantom} \newline Außendurchmesser: \SI{203}{\mm},\newline Höhe: \SI{173.4}{\mm} \newline \cite{acr}  & 1800€ \\
-		&&\\
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/Magphan.jpg} & \textbf{MAGPHAN CYLINDRICAL 170} \newline Außendurchmesser: \SI{200}{\mm} \newline \cite{mag170}  & - \\
-		&&\\
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/magphan121.jpg} & \textbf{MAGPHAN MR Distortion Phantom (ADNI) 121} \newline Außendurchmesser: \SI{200}{\mm} \newline \cite{mag121} & - \\
-		&&\\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/allMRI.jpg} & \textbf{allMRI/\-Pro-MRI \newline180mm phantom} \newline Außendurchmesser: \SI{180}{\mm},\newline Höhe: \SI{150}{\mm} \newline \cite{allMRIphantom} \\
+		&\\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/MagIQ.jpg} & \textbf{Leeds MagIQ 142} \newline Außendurchmesser: \SI{142}{\mm},\newline Höhe: \SI{70}{\mm} \newline \cite{leeds} \\
+		&\\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/acr.jpg} & \textbf{ACR MRI Phantom} \newline Außendurchmesser: \SI{203}{\mm},\newline Höhe: \SI{173.4}{\mm} \newline \cite{acr} \\
+		&\\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/Magphan.jpg} & \textbf{MAGPHAN CYLINDRICAL 170} \newline Außendurchmesser: \SI{200}{\mm} \newline \cite{mag170}  \\
+		&\\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/magphan121.jpg} & \textbf{MAGPHAN MR Distortion Phantom (ADNI) 121} \newline Außendurchmesser: \SI{200}{\mm} \newline \cite{mag121} \\
+		&\\
 		\bottomrule
 		\end{tabularx}
 		\label{tab:phantomsOverview}

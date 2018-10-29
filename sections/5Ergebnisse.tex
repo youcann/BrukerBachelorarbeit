@@ -1,91 +1,180 @@
 \chapter{Ergebnisse}
+In diesem Abschnitt werden exemplarisch für zwei Eingangs-Phasenrauschleistungsspektren Simulationsergebnisse aus MRiLab vorgestellt und bewertet.
 
-\section{Prinzipielle Auswirkungen von ADC Clock Phasenrauschen auf die MRT Bildqualität}
-In diesem Abschnitt wird zunächst qualitativ dargestellt, wie sich das Phasenrauschen des ADC Clock-Signals auf die Qualität eines rekonstruierten MRT Schichtbildes auswirkt.
+\section{Gewählte Simulationsparameter}
+Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker BioSpec Tomographen möglichst gut entsprechen (vgl. \autoref{tab:brukerMRIparam}). Einige Parameter, wie die Auflösungen müssen jedoch verkleinert werden, da größere Werte zu unvorhersehbaren Abstürzen von MRiLab führen. Die Größe des Aufnahmefelds (FOV) wird den Abmessungen des Phantoms angepasst. Die gewählten Parameter sind in \autoref{tab:mrilabparamSim} zusammengefasst.
 
-Als Referenz dient die Simulation in \autoref{fig:inputPhantom}. Die Aufnahme des Referenzbildes erfolgt mit einer Gradientenecho-Sequenz und einer Auflösung von 200x160 Pixeln. Die Schichtdicke beträgt \SI{6}{\mm}. Vor dem Rekonstruktionsschritt wird weder Amplituden- noch Phasenrauschen zum MR-Signal hinzugefügt.
+\begin{table}[H]
+	\centering
+	\caption[gewählte Simulationsparameter]{Für diesen Abschnitt gewählte Simulationsparameter}
+	\label{tab:mrilabparamSim}
+	\begin{tabularx}{0.5\textwidth}{lX}
+		\toprule
+		\textbf{Parameter} & \textbf{Werte}\\
+		\midrule
+		FOVFreq    & \SI{80}{\mm}\\
+		FOVPhase   & \SI{80}{\mm}\\
+		ResFreq    & 160\\
+		ResPhase   & 160\\
+		SliceThick & \SI{2}{\mm}\\
+		B0         & \SI{15}{\tesla} \\
+		\bottomrule
+		\end{tabularx}
+		\end{table}
+
+\section{Referenz-Schnittbild}
+Zum visuellen Vergleich und für die Nutzung der Bildqualitätsmetriken SSIM und MSE ist ein Referenzbild notwendig. Dazu wird eine Simulation (Spinecho-Sequenz) ohne Rauschen durchgeführt (siehe \autoref{fig:R}).
 
 \begin{figure}[H]
 	\centering
-	\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.25\width} {0.15\height}},clip]{img/results/input.png}
-	\caption[Referenz für die Simulation]{Referenzbild für die weiteren Betrachtungen, Gradientenecho-Sequenz, Auflösung 200x160px}
-	\label{fig:inputPhantom}
+	\resizebox{!}{!}{\includegraphics[width=0.47\textwidth]{img/results/Series13_REF_OUT.png}}
+	\caption[Referenzbild]{Referenzbild $R[i,j]$}
+	\label{fig:R}
 \end{figure}
 
-\subsection{Gradientenecho-Sequenz}
-Zunächst wird das MR-Signal, das durch die Simulation einer Gradientenecho-Pulssequenz gewonnen wird, mit einem weißen, Gauß-verteilten Phasenrauschen versehen:
+In den weiteren Unterabschnitten sind jeweils, zusätzlich zu den simulierten Schnittbildern, Differenzbilder abgebildet. Diese geben, in Falschfarben kodiert, die Abweichungen vom Referenzbild an. Das Differenzbild $D[i,j]$ berechnet sich dabei aus dem Referenzbild $R[i,j]$ und dem jeweils betrachteten Schnittbild $X[i,j]$ nach
 \begin{equation}
-	\label{eq:greWhite}
-	\Delta \Phi(t)=\Delta \Phi[n]=X_{\xi}[n], \quad X \sim N(0,1)
+	D[i,j]=\left| X[i,j]-R[i,j]\right|.
 \end{equation}
-Das rekonstruierte Bild und der Verlauf von $\Delta \Phi(t)$ sind in \autoref{fig:GREwhite} dargestellt.
 
+Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \texttt{Jet} (\autoref{fig:colorJet}) werden kleine Unterschiede deutlicher sichtbar, als bei einer Graustufen-Palette. Die simulierten Schnittbilder werden, wie in der MRT üblich, als Graustufenbilder dargestellt.
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.25\width} {0.15\height}},clip]{img/results/white.png}}
-	\hfill
-	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/white.tikz}}
-	
-	\caption{Weißes Phasenrauschen bei einer GRE-Sequenz}
-	\label{fig:GREwhite}	
+	\resizebox{!}{!}{\includegraphics[]{img/jetColormap.tikz}}
+	\caption[]{Farbpalette \texttt{Jet} in MATLAB}
+	\label{fig:colorJet}
 \end{figure}
 
-Wird das weiße Rauschen aus \autoref{eq:greWhite} integriert, entsteht $1/f$-Rauschen:
-\begin{equation}
-	\label{eq:brown}
-	\Delta \Phi(t)=\Delta \Phi[n]= \sum_{i=0}^{n} X_{\xi}[i], \quad X \sim N(0,1)
-\end{equation} 
 
-\autoref{fig:greRESULT} zeigt das dazugehörige rekonstruierte Bild zusammen mit dem Verlauf von $\Delta \Phi(t)$.
+\section{LMK04821}
+
+\subsection{Spinecho-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.25\width} {0.15\height}},clip]{img/results/oneOverF_weak.png}}
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_OUT.png}}
 	\hfill
-	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/oneOverF_weak.tikz}}
-	\caption{$1/f$-Phasenrauschen bei einer GRE-Sequenz}
-	\label{fig:greRESULT}	
-\end{figure}
-
-\subsection{Echo-Planar-Sequenz}
-
-Die Phasenrausch-Simulationen aus \autoref{eq:greWhite} und \autoref{eq:brown} werden mit einer EPI-Pulssequenz wiederholt. Die Ergebnisse zeigen \autoref{fig:epiWhite} und \autoref{fig:epiOneoverF}.
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.15\width} {0.15\height}},clip]{img/results/epiWhite.png}}
-	\hfill
-	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/white.tikz}}
-	
-	\caption{$1/f$-Phasenrauschen bei einer EPI-Sequenz}
-	\label{fig:epiWhite}	
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0057$, $SSIM=0.6111$}
+	\label{fig:resLMKse1}	
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.15\width} {0.15\height}},clip]{img/results/epiOneOverF.png}}
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_OUT.png}}
 	\hfill
-	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/epiOneOverF.tikz}}
-	
-	\caption{$1/f$-Phasenrauschen bei einer EPI-Sequenz}
-	\label{fig:epiOneoverF}	
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0074$, $SSIM=0.5616$}
+	\label{fig:resLMKse2}	
 \end{figure}
-
-\autoref{fig:epiSine} zeigt eine sinusförmige Modulation der Phase des MR-Signals. Die Modulation ist gegeben durch:
-\begin{equation}
-	\Delta \Phi(t)=\Delta \Phi[n]= \beta sin(2 \pi \nu_m t), \quad t=(0,\frac{1}{f_{receiver}},\frac{2}{f_{receiver}},...,\frac{N-1}{f_{receiver}})
-\end{equation}
-Im Beispiel in \autoref{fig:epiSine} wird als Modulationsfrequenz $\nu_m=\SI{10}{\kilo\hertz}$ und als Modulationsfaktor $\beta=0.1 \pi$ verwendet.
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\adjincludegraphics[width=0.45\textwidth,trim={{0.135\width} {0.1\height} {0.15\width} {0.15\height}},clip]{img/results/sine.png}}
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_OUT.png}}
 	\hfill
-	\subcaptionbox{Zeitverlauf von $\Delta \Phi(t)$}{\includegraphics[width=0.45\textwidth,height=0.4\textwidth]{img/results/sine.tikz}}
-	
-	\caption{Sinus-förmige Modulation der Phase bei einer EPI-Sequenz}
-	\label{fig:epiSine}	
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0086$, $SSIM=0.5813$}
+	\label{fig:resLMKse3}	
 \end{figure}
+
+\subsection{EPI-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0188$, $SSIM=0.5289$}
+	\label{fig:resLMKepi1}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0082$, $SSIM=0.5883$}
+	\label{fig:resLMKepi2}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_DIFF.png}}
+	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0085$, $SSIM=0.6552$}
+	\label{fig:resLMKepi3}	
+\end{figure}
+
+
+
+
+
+
+\section{($1/f$)-Phasenrauschen}
+
+\subsection{Spinecho-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0019$, $SSIM=0.8335$}
+	\label{fig:res1overFse1}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0037$, $SSIM=0.7465$}
+	\label{fig:res1overFse2}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0041$, $SSIM=0.7079$}
+	\label{fig:res1overFse3}	
+\end{figure}
+
+\subsection{EPI-Sequenz}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0060$, $SSIM=0.6875$}
+	\label{fig:res1overFepi1}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0541$, $SSIM=0.4756$}
+	\label{fig:res1overFepi2}	
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_OUT.png}}
+	\hfill
+	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_DIFF.png}}
+	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0220$, $SSIM=0.6010$}
+	\label{fig:res1overFepi3}	
+\end{figure}
+
+\section{Diskussion der Ergebnisse}
+
+
+
 
 
 
