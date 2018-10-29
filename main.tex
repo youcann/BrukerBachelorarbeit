@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half]{scrbook}
+\documentclass[11pt,a4paper,ngerman,oneside,listof=totoc,headsepline,footsepline,parskip=half,numbers=noenddot]{scrbook}
 %install:
 %sudo apt install texlive texstudio texlive-lang-german texlive-math-extra texlive-latex-extra texlive-science texlive-bibtex-extra texlive-fonts-recommended texlive-fonts-extra texlive-generic-extra python3-pygments biber
 %configure:
@@ -77,7 +77,7 @@
 %\usepackage{tocbibind}
 
 %no colon after "Abbildung 1.4"
-\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
 \captionsetup{labelsep=space}
 
 %Bibliography using Biber (biblatex DOES NOT use bibtex styles (.bst))
@@ -111,7 +111,7 @@
 \usepackage[fit,breakall]{truncate}
 
 \newcommand{\thesisauthor}{Marvin-Dennis Noll}
-\newcommand{\thesistopic}{Simulation von Störungen im Signalpfad eines Magnetresonanztomografen}
+\newcommand{\thesistopic}{Simulation von Störungen im Signalpfad eines Magnetresonanztomographen}
 \newcommand{\thesisentopic}{nix}
 \newcommand{\thesislongtopic}{}
 \newcommand{\thesisinstitute}{Institut für Prozessdatenverarbeitung\\ und Elektronik (IPE)}
@@ -170,8 +170,8 @@
 
 \mainmatter
 %\input{sections/1einleitung.tex}
-%\input{sections/2grundlagen.tex}
-\input{sections/4Material_und_Methoden.tex}
+\input{sections/2grundlagen.tex}
+%\input{sections/4Material_und_Methoden.tex}
 %\input{sections/5Ergebnisse.tex}
 %\input{sections/6Diskussion_und_Ausblick.tex}
 
