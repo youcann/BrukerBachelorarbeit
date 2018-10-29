@@ -18,25 +18,35 @@
 \node[fill=gray!50,minimum height=1cm,minimum width=3cm] (DWC) at (8,2.5) {Down conversion};
 \node[fill=gray!50,minimum height=1cm,minimum width=3cm] (PS) at (2,1) {Power Setting};
 \node[fill=gray!50,minimum height=1cm,minimum width=3cm] (RF) at (8,1) {RF Stage};
-\node[fill=gray!50!blue!50,minimum height=1cm,minimum width=9cm] (FPGA) at (5,5.5) {FPGA};
+\node[fill=gray!50!blue!50,minimum height=1cm,minimum width=9cm] (FPGA) at (5,5.5) {SoC};
 \node[fill=gray!50!green!50,minimum height=1cm,minimum width=1cm] (PLL) at (5,2.5) {PLL};
 
-\draw[<-] (PS.north) -- (UPC.south);
-\draw[<-] (UPC.north) -- (DAC.south);
-\draw[<-] (DAC.north) -- (FPGA.south -| DAC);
+\node[anchor=south ](Aquisitionsraum) at (0,-2) {Akquisitionsraum};
+\node[anchor=north ](Aquisitionsraum) at (0,-2) {Labor};
 
-\draw[->] (RF.north) -- (DWC.south);
-\draw[->] (DWC.north) -- (ADC.south);
-\draw[->] (ADC.north) -- (FPGA.south -| ADC);
+\draw[dashed] (-2,-2) -- (14,-2);
+\draw[white,line width=2mm ] (2,-3) -- (2,-1);
+\draw[white,line width=2mm ] (8,-3) -- (8,-1);
+\draw[white,line width=2mm ] (10.3,-3) -- (10.3,-1);
+\draw[white,line width=2mm ] (10.8,-3) -- (10.8,-1);
+\draw[white,line width=2mm ] (11.3,-3) -- (11.3,-1);
 
-\draw[->] (PLL) -- (DWC);
-\draw[->] (PLL) -- (UPC);
-\draw[->] (FPGA) -- (PLL);
+\draw[{Stealth[length=2mm,width=2mm]}-] (PS.north) -- (UPC.south);
+\draw[{Stealth[length=2mm,width=2mm]}-] (UPC.north) -- (DAC.south);
+\draw[{Stealth[length=2mm,width=2mm]}-] (DAC.north) -- (FPGA.south -| DAC);
+
+\draw[-{Stealth[length=2mm,width=2mm]}] (RF.north) -- (DWC.south);
+\draw[-{Stealth[length=2mm,width=2mm]}] (DWC.north) -- (ADC.south);
+\draw[-{Stealth[length=2mm,width=2mm]}] (ADC.north) -- (FPGA.south -| ADC);
+
+\draw[-{Stealth[length=2mm,width=2mm]}] (PLL) -- (DWC);
+\draw[-{Stealth[length=2mm,width=2mm]}] (PLL) -- (UPC);
+\draw[-{Stealth[length=2mm,width=2mm]}] (FPGA) -- (PLL);
 \draw[color=white,line width=2mm] (4,2) -- (4,3);
-\draw[->] (5,-0.5) |- (4,1) -- (4,5);
-\draw[<-] (2.5,-4.25) -| (2,-1) -- (PS);
+\draw[-{Stealth[length=2mm,width=2mm]}] (5,-0.5) |- (4,1) -- (4,5);
+\draw[{Stealth[length=2mm,width=2mm]}-] (2.5,-4.25) -| (2,-1) -- (PS);
 
-\draw[->,dashed] (PLL) .. controls (5.5,4) .. (ADC.west);
+\draw[-{Stealth[length=2mm,width=2mm]},dashed] (PLL) .. controls (5.5,4) .. (ADC.west);
 \node[] (clk) at (6.1,4.2) {\scriptsize$CLK$};
 
 \node(REFin) at (5.6,-0.5) {$REF_{in}$};
@@ -46,28 +56,28 @@
 
 \begin{scope}[shift={(0,-2)}]
 \draw (2.5,-2) -- (2.5,-2.5) -- (3,-2.25) -- cycle;
-\draw[->] (3,-2.25) -- (4,-2.25);
+\draw[-{Stealth[length=2mm,width=2mm]}] (3,-2.25) -- (4,-2.25);
 
 
 \begin{scope}[shift={(1.5,-0.5)}]
-	\draw[->] (4,-2.25) -- (7,-2.25);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (4,-2.25) -- (7,-2.25);
 	\draw (7,-2) -- (7,-2.5) -- (7.5,-2.25) -- cycle;
-	\draw[->] (7.5,-2.25) -| (9.8,4);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (7.5,-2.25) -| (9.8,4);
 \end{scope}
 \begin{scope}[shift={(1,0)}]
-	\draw[->] (4,-2.25) -- (7,-2.25);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (4,-2.25) -- (7,-2.25);
 	\draw (7,-2) -- (7,-2.5) -- (7.5,-2.25) -- cycle;
-	\draw[->] (7.5,-2.25) -| (9.8,3);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (7.5,-2.25) -| (9.8,3);
 \end{scope}
 \begin{scope}[shift={(0.5,0.5)}]
-	\draw[->] (4,-2.25) -- (7,-2.25);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (4,-2.25) -- (7,-2.25);
 	\draw (7,-2) -- (7,-2.5) -- (7.5,-2.25) -- cycle;
-	\draw[->] (7.5,-2.25) -| (9.8,2);
+	\draw[-{Stealth[length=2mm,width=2mm]}] (7.5,-2.25) -| (9.8,2);
 \end{scope}
 \begin{scope}[shift={(0,1)}]
 \draw (7,-2) -- (7,-2.5) -- (7.5,-2.25) -- cycle;
-\draw[->] (5,-2.25) -- (7,-2.25);
-\draw[->] (7.5,-2.25) -|(8,-1) -- (RF);
+\draw[-{Stealth[length=2mm,width=2mm]}] (5,-2.25) -- (7,-2.25);
+\draw[-{Stealth[length=2mm,width=2mm]}] (7.5,-2.25) -|(8,-1) -- (RF);
 \end{scope}
 
 \filldraw[fill=white] (4.4,-3.5) -- (5.6,-3.5) -- (5.8,-2) -- (4.2,-2) -- cycle;
@@ -80,15 +90,14 @@
 \end{scope}
 
 \node(TRX) at (3,8.2) {4x AV4 TRX1200};
-\draw[<->] (11.5,5.5) -- (13.5,5.5);
+\draw[{Stealth[length=2mm,width=2mm]}-{Stealth[length=2mm,width=2mm]}] (11.5,5.5) -- (13.5,5.5);
 \node[] (PCIe) at (12.9,5.7) {PCIe};
 
 \fill[fill=gray!90] (2,0) circle (0.2);\fill[fill=darkgray] (2,0) circle (0.1);
 \fill[fill=gray!90] (8,0) circle (0.2);\fill[fill=darkgray] (8,0) circle (0.1);
 \fill[fill=gray!90] (5,0) circle (0.2);\fill[fill=darkgray] (5,0) circle (0.1);
 
-\draw[dashed] (-2,-2) -- (14,-2);
-\node[anchor=south ](Aquisitionsraum) at (0,-2) {Akquisitionsraum};
-\node[anchor=north ](Aquisitionsraum) at (0,-2) {Labor};
+
+
 
 \end{tikzpicture}
