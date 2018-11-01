@@ -1,0 +1,8 @@
+Metric,Value
+SSIM,1
+SSIM-CW,1
+M-SSIM,1
+MS-SSIM,1
+IW-SSIM,1
+MSE,0
+PSNR,Inf
