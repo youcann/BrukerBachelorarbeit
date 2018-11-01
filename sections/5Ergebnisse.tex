@@ -20,14 +20,14 @@ Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker
 		B0         & \SI{15}{\tesla} \\
 		\bottomrule
 		\end{tabularx}
-		\end{table}
+\end{table}
 
 \section{Referenz-Schnittbild}
 Zum visuellen Vergleich und für die Nutzung der Bildqualitätsmetriken SSIM und MSE ist ein Referenzbild notwendig. Dazu wird eine Simulation (Spinecho-Sequenz) ohne Rauschen durchgeführt (siehe \autoref{fig:R}).
 
 \begin{figure}[H]
 	\centering
-	\resizebox{!}{!}{\includegraphics[width=0.47\textwidth]{img/results/Series13_REF_OUT.png}}
+	\resizebox{!}{!}{\includegraphics[width=0.47\textwidth]{img/results/new/Series68_REF_OUT.png}}
 	\caption[Referenzbild]{Referenzbild $R[i,j]$}
 	\label{fig:R}
 \end{figure}
@@ -37,7 +37,7 @@ In den weiteren Unterabschnitten sind jeweils, zusätzlich zu den simulierten Sc
 	D[i,j]=\left| X[i,j]-R[i,j]\right|.
 \end{equation}
 
-Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \texttt{Jet} (\autoref{fig:colorJet}) werden kleine Unterschiede deutlicher sichtbar, als bei einer Graustufen-Palette. Die simulierten Schnittbilder werden, wie in der MRT üblich, als Graustufenbilder dargestellt.
+Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \texttt{Jet} (\autoref{fig:colorJet}) werden kleine Unterschiede deutlicher sichtbar, als bei einer Graustufen-Darstellung. Die simulierten Schnittbilder werden, wie in der MR-Technik üblich, als Graustufenbilder dargestellt.
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/jetColormap.tikz}}
@@ -45,131 +45,230 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\label{fig:colorJet}
 \end{figure}
 
-
 \section{LMK04821}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phi.tikz}}
+	\caption[simulierte Phasenfluktuationen für $1/f$-Phasenrauschen]{simulierte Phasenfluktuationen für $1/f$-Phasenrauschen}
+	\label{fig:phiLMK}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phiCropped.tikz}}
+	\caption[simulierte Phasenfluktuationen für $1/f$-Phasenrauschen]{simulierte Phasenfluktuationen für $1/f$-Phasenrauschen}
+	\label{fig:phiLMKcropped}
+\end{figure}
+
 
 \subsection{Spinecho-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_OUT.png}}
+	\subcaptionbox{$X_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series87_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0057$, $SSIM=0.6111$}
-	\label{fig:resLMKse1}	
+	\subcaptionbox{$X_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series88_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series89_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series90_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series87_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series88_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series89_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series90_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0074$, $SSIM=0.5616$}
-	\label{fig:resLMKse2}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0086$, $SSIM=0.5813$}
-	\label{fig:resLMKse3}	
-\end{figure}
 
 \subsection{EPI-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_OUT.png}}
+	\subcaptionbox{$X_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series82_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0188$, $SSIM=0.5289$}
-	\label{fig:resLMKepi1}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_OUT.png}}
+	\subcaptionbox{$X_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series83_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0082$, $SSIM=0.5883$}
-	\label{fig:resLMKepi2}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_OUT.png}}
+	\subcaptionbox{$X_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series84_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_DIFF.png}}
-	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0085$, $SSIM=0.6552$}
-	\label{fig:resLMKepi3}	
+	\subcaptionbox{$X_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series85_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series82_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series83_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series84_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series85_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
-
-
-
 
 
 
 \section{($1/f$)-Phasenrauschen}
 
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/oneOverf/phi.tikz}}
+	\caption[simulierte Phasenfluktuationen für $1/f$-Phasenrauschen]{simulierte Phasenfluktuationen für $1/f$-Phasenrauschen}
+	\label{fig:phiOneOverF}
+\end{figure}
+
+
 \subsection{Spinecho-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_OUT.png}}
+	\subcaptionbox{$X_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series71_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0019$, $SSIM=0.8335$}
-	\label{fig:res1overFse1}	
+	\subcaptionbox{$X_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series72_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series73_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series74_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series71_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series72_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series73_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series74_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
+
+
+
+\subsection{EPI-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_OUT.png}}
+	\subcaptionbox{$X_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series77_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0037$, $SSIM=0.7465$}
-	\label{fig:res1overFse2}	
+	\subcaptionbox{$X_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series78_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series79_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series80_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series77_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series78_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series79_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series80_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
+
+\section{Sinus-förmige Phasenmodulation}
+
+\begin{table}[H]
+	\centering
+	\caption[]{sine mod}
+	\label{tab:sineMod}
+	\begin{tabularx}{0.5\textwidth}{lX}
+		\toprule
+		\textbf{Index $k$} & \textbf{Frequenz $\nu_{mod}$ (in \SI{}{\kilo\hertz})}\\
+		\midrule
+		1 & 0.1 \\
+		2 & 1 \\
+		3 & 10 \\
+		4 & 10.01 \\
+		5 & 10.02 \\
+		6 & 10.03 \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Spinecho-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_OUT.png}}
+	\subcaptionbox{$X_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series61_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0041$, $SSIM=0.7079$}
-	\label{fig:res1overFse3}	
+	\subcaptionbox{$X_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series62_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series63_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{SE,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series61_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series62_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series63_DIFF.png}}
+	\\[3ex]
+	
+	\subcaptionbox{$X_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series64_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series65_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{SE,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series66_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series64_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series65_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{SE,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series66_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
 
 \subsection{EPI-Sequenz}
 
 \begin{figure}[H]
 	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_OUT.png}}
+	\subcaptionbox{$X_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series53_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0060$, $SSIM=0.6875$}
-	\label{fig:res1overFepi1}	
+	\subcaptionbox{$X_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series54_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series55_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{EPI,1}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series53_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,2}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series54_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series55_DIFF.png}}
+	\\[3ex]
+	
+	\subcaptionbox{$X_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series56_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{EPI,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series57_OUT.png}}
+	\hfill
+	\subcaptionbox{$X_{EPI,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series58_OUT.png}}
+	\\[3ex]
+	\subcaptionbox{$D_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series56_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series57_DIFF.png}}
+	\hfill
+	\subcaptionbox{$D_{EPI,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series58_DIFF.png}}
+	\caption{}
+	\label{fig:}	
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0541$, $SSIM=0.4756$}
-	\label{fig:res1overFepi2}	
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_DIFF.png}}
-	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0220$, $SSIM=0.6010$}
-	\label{fig:res1overFepi3}	
-\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Diskussion der Ergebnisse}
 
