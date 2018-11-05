@@ -1,0 +1,37 @@
+\usetikzlibrary{matrix}
+\begin{tikzpicture}
+        \pgfplotsset{
+            scale only axis,
+            xmin=0.2,
+            xmax=6.8,
+        }
+        \begin{axis}[
+        axis y line*=left,
+        ybar,
+        xlabel={Index $k$},
+        ylabel={MSE},
+        xtick align=inside,
+xtick={1,2,3,4,5,6},
+bar width=0.3cm,
+ymin= 0.002, ymax=0.08,
+        ]
+        \addplot [fill=blue!60,xshift=-0.5*\pgfplotbarwidth] 
+coordinates {(1,0.020) (2,0.013) (3,0.049) (4,0.046) (5,0.027) (6,0.023)};
+		\label{pgfplot:MSE}
+        \end{axis}
+        \begin{axis} [
+        axis y line*=right,
+		ylabel near ticks, yticklabel pos=right,
+        hide x axis,
+        ybar,
+        ylabel={SSIM},
+ymin= 0.4, ymax=0.8,
+bar width=0.3cm,
+        ]
+        \addplot [fill=red!60,xshift=0.5*\pgfplotbarwidth] 
+coordinates {(1,0.612) (2,0.694) (3,0.466) (4,0.4452) (5,0.454) (6,0.485)};
+		\label{pgfplot:SSIM}
+        \end{axis}
+
+		
+        \end{tikzpicture}

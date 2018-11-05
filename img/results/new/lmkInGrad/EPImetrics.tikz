@@ -1,0 +1,49 @@
+\usetikzlibrary{matrix}
+\begin{tikzpicture}
+        \pgfplotsset{
+            scale only axis,
+            xmin=0.2,
+            xmax=4.8,
+        }
+        \begin{axis}[
+        axis y line*=left,
+        ybar,
+        xlabel={Index $k$},
+        ylabel={MSE},
+        xtick align=inside,
+bar width=0.3cm,
+xtick={1,2,3,4},
+ymin= 0.002, ymax=0.08,
+        ]
+        \addplot [fill=blue!60,xshift=-0.5*\pgfplotbarwidth] 
+coordinates {(1,0.025) (2,0.013) (3,0.009) (4,0.011)};
+		\label{pgfplot:MSE}
+        \end{axis}
+        \begin{axis} [
+        axis y line*=right,
+		ylabel near ticks, yticklabel pos=right,
+        hide x axis,
+        ybar,
+bar width=0.3cm,
+        ylabel={SSIM},
+ymin= 0.4, ymax=0.8,
+        ]
+        \addplot [fill=red!60,xshift=0.5*\pgfplotbarwidth] 
+coordinates {(1,0.569) (2,0.599) (3,0.639) (4,0.625)};
+		\label{pgfplot:SSIM}
+        \end{axis}
+
+		\matrix[
+    	matrix of nodes,
+    	anchor=north,
+    	draw,% Rahmen um Legende
+   	 	inner sep=0.2em,
+    	column 1/.style={nodes={anchor=center}},
+   	 	column 2/.style={nodes={anchor=west},font=\strut},
+		column 3/.style={nodes={anchor=center}},
+   	 	column 4/.style={nodes={anchor=west},font=\strut},
+    	draw
+  		]
+  		at([yshift=-1.5cm]current axis.south){
+    		\ref{pgfplot:MSE}& MSE & \ref{pgfplot:SSIM}& SSIM \\};
+        \end{tikzpicture}
