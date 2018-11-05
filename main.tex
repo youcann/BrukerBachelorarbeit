@@ -96,7 +96,7 @@
 %\usepackage{natbib}
 
 %Glossar
-\usepackage[nonumberlist]{glossaries}
+\usepackage[nonumberlist,nopostdot]{glossaries}
 % Definition eines eigenen Glossarstils
 \newglossarystyle{meinglossar}{%
 	\renewenvironment{theglossary}{\begin{labeling}{xxxxxxxxxx}}{\end{labeling}}%
@@ -154,6 +154,7 @@
 \usepackage{pgfplots}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{plotmarks}
+\usetikzlibrary{matrix}
 \pgfplotsset{compat=1.5.1}
 \usepackage[list=false]{subcaption}
 \usepackage[export]{adjustbox}
@@ -180,11 +181,11 @@
 \setcounter{page}{1}
 
 \mainmatter
-%\input{sections/1einleitung.tex}
-%\input{sections/2grundlagen.tex}
-%\input{sections/4Material_und_Methoden.tex}
+\input{sections/1einleitung.tex}
+\input{sections/2grundlagen.tex}
+\input{sections/4Material_und_Methoden.tex}
 \input{sections/5Ergebnisse.tex}
-%\input{sections/6Diskussion_und_Ausblick.tex}
+\input{sections/6Diskussion_und_Ausblick.tex}
 
 \appendix
 \input{sections/7Anhang.tex}

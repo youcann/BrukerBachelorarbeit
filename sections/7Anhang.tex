@@ -126,6 +126,66 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\label{tab:mriLabParam}
 \end{table}
 
+\section{MATLAB Funktion zum Erzeugen von Phasenrauschen im Zeitbereich}
+\label{sec:addPhaseNoise}
+
+\begin{longlisting}
+	\begin{minted}[fontsize=\footnotesize,linenos,autogobble,breaklines]
+	{Matlab}
+	function [Sout,phi] = addPhaseNoise(Sin, fs, f_offset, P_dBc)
+		[f_offset, k] = sort(f_offset);
+		P_dBc = P_dBc(k);
+		
+		if(f_offset(1) ~= 0)
+			f_offset = [0, f_offset]; 
+			P_dBc = [ 0, P_dBc ];
+		end
+		
+		N = length(Sin);
+		if rem(N,2)
+			M = (N+1)/2 + 1;
+		else
+			M = N/2 + 1;
+		end
+		
+		freq  = linspace(0, fs/2, M);	
+		df = fs/(2*M);
+			
+		% Perform interpolation of phase_noise_power in log-scale
+		% source: 
+		intrvlNum = length(f_offset);
+		logP = zeros(1, M);
+		for intrvlIndex = 1 : intrvlNum
+			leftBound = f_offset(intrvlIndex);
+			t1 = P_dBc(intrvlIndex);
+			if intrvlIndex == intrvlNum
+				rightBound = fs/2; 
+				t2 = P_dBc(end);
+				inside = find(freq>=leftBound & freq<=rightBound);  
+			else
+				rightBound = f_offset(intrvlIndex+1); 
+				t2 = P_dBc(intrvlIndex+1);
+				inside = find(freq>=leftBound & freq<rightBound);
+			end	
+			logP( inside ) = ...
+			t1 + ( log10( freq(inside) + realmin) - log10(leftBound+ realmin) ) / ( log10( rightBound + realmin) - log10( leftBound + realmin)) * (t2-t1);     	
+		end
+		
+		P = 10.^(real(logP)/10);	
+		n = (sqrt(0.5)*(randn(1, M) +1j*randn(1, M)));	
+		Phi = (2*M-2) * sqrt(df * P ) .* n; 	
+		Phi M + (1:M-2)) = fliplr(conj(Phi(2:end-1))); 	
+		Phi(1) = 0; 
+		
+		phi = real(ifft(Phi)); 	
+		phase = exp(1j * phi(1:N));
+			
+		Sout = Sin .* phase;
+	end
+	\end{minted}
+	\caption{Skript zur Kombination aller Einzelteile zu einem MRiLab Phantom}
+	\label{lst:addPhaseNoise}
+\end{longlisting}
 
 \section{Kommerzielle MRT-Phantome}
 
@@ -217,7 +277,7 @@ Zur Fehlerbehebung wird ein Filter eingesetzt, der leere Zeichenketten ausfilter
 	baseFolder='/home/ubuntu/matlabProjects/simulation/srcMyPhantom/out4';
 	
 	%desired file name for the phantom:
-	phantomName='bioSpinMri60mm2';
+	phantomName='brukerBioSpinMRI63mm';
 	
 	%get all subfolders in the base path
 	files = dir(baseFolder);
@@ -238,34 +298,34 @@ Zur Fehlerbehebung wird ein Filter eingesetzt, der leere Zeichenketten ausfilter
 	
 	%for loop over all sub folder containing all materials
 	for k=1:length(subFolders) 
-	currFolder=fullfile(subFolders(k).folder,subFolders(k).name);
-	
-	%get property scaling factors h_* for current material
-	properties=importdata(fullfile(currFolder,'properties.txt'));
-	keys=(properties.textdata);
-	if(~(strcmp(keys{1},'Rho') && strcmp(keys{2},'T1') && strcmp(keys{3},'T2') && strcmp(keys{4},'T2*')))
-	error('error in properties.txt')
-	end
-	h_Rho=properties.data(1);
-	h_T1=properties.data(2);
-	h_T2=properties.data(3);
-	h_T2star=properties.data(4);
-	
-	%get png files in the current folder
-	pngFolderInfo=dir(fullfile(currFolder, '*.png'));
-	pngPaths=fullfile({pngFolderInfo.folder},{pngFolderInfo.name});
-	if(isempty(pngPaths))
-	error(['No .png files found in input folder "', pathToInputFolder,'"']); 
-	end
-	
-	%loop over all the png images
-	for l=1:length(pngPaths)
-	disp([num2str(l),'/',num2str(length(pngPaths))]);
-	Rho(:,:,l)=Rho(:,:,l)+h_Rho*(imread(cell2mat(pngPaths(l)))/255);
-	T1(:,:,l)=T1(:,:,l)+h_T1*(imread(cell2mat(pngPaths(l)))/255);
-	T2(:,:,l)=T2(:,:,l)+h_T2*(imread(cell2mat(pngPaths(l)))/255);
-	T2star(:,:,l)=T2star(:,:,l)+h_T2star*(imread(cell2mat(pngPaths(l)))/255);
-	end
+		currFolder=fullfile(subFolders(k).folder,subFolders(k).name);
+		
+		%get property scaling factors h_* for current material
+		properties=importdata(fullfile(currFolder,'properties.txt'));
+		keys=(properties.textdata);
+		if(~(strcmp(keys{1},'Rho') && strcmp(keys{2},'T1') && strcmp(keys{3},'T2') && strcmp(keys{4},'T2*')))
+			error('error in properties.txt')
+		end
+		h_Rho=properties.data(1);
+		h_T1=properties.data(2);
+		h_T2=properties.data(3);
+		h_T2star=properties.data(4);
+		
+		%get png files in the current folder
+		pngFolderInfo=dir(fullfile(currFolder, '*.png'));
+		pngPaths=fullfile({pngFolderInfo.folder},{pngFolderInfo.name});
+		if(isempty(pngPaths))
+			error(['No .png files found in input folder "', pathToInputFolder,'"']); 
+		end
+		
+		%loop over all the png images
+		for l=1:length(pngPaths)
+			disp([num2str(l),'/',num2str(length(pngPaths))]);
+			Rho(:,:,l)=Rho(:,:,l)+h_Rho*(imread(cell2mat(pngPaths(l)))/255);
+			T1(:,:,l)=T1(:,:,l)+h_T1*(imread(cell2mat(pngPaths(l)))/255);
+			T2(:,:,l)=T2(:,:,l)+h_T2*(imread(cell2mat(pngPaths(l)))/255);
+			T2star(:,:,l)=T2star(:,:,l)+h_T2star*(imread(cell2mat(pngPaths(l)))/255);
+		end
 	end
 	
 	%create MRiLab VObj

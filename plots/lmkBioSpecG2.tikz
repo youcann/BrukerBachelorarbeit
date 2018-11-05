@@ -11,11 +11,11 @@ xmin=491.506,
 xmax=491.534,
 xtick distance=0.005,
 xlabel style={font=\color{white!15!black}},
-xlabel={Frequenz [MHz]},
+xlabel={Frequenz (in MHz)},
 ymin=-100,
 ymax=0,
 ylabel style={font=\color{white!15!black}},
-ylabel={Leistung [dBm]},
+ylabel={Leistung (in dBm)},
 axis background/.style={fill=white},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]

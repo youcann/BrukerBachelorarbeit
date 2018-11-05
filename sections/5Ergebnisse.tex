@@ -1,14 +1,16 @@
 \chapter{Ergebnisse}
-In diesem Abschnitt werden exemplarisch für zwei Eingangs-Phasenrauschleistungsspektren Simulationsergebnisse aus MRiLab vorgestellt und bewertet.
+\label{chap:ergb}
+In diesem Abschnitt werden Simulationsergebnisse aus MRiLab vorgestellt und bewertet.
+
 
 \section{Gewählte Simulationsparameter}
-Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker BioSpec Tomographen möglichst gut entsprechen (vgl. \autoref{tab:brukerMRIparam}). Einige Parameter, wie die Auflösungen müssen jedoch verkleinert werden, da größere Werte zu unvorhersehbaren Abstürzen von MRiLab führen. Die Größe des Aufnahmefelds (FOV) wird den Abmessungen des Phantoms angepasst. Die gewählten Parameter sind in \autoref{tab:mrilabparamSim} zusammengefasst.
+Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker BioSpec Tomographen möglichst gut entsprechen (vgl. \autoref{tab:brukerMRIparam}). Einige Parameter, wie die Auflösungen, müssen jedoch verkleinert werden, da größere Werte zu unvorhersehbaren Abstürzen von MRiLab führen. Die Größe des Aufnahmefelds (FOV) wird den Abmessungen des Phantoms angepasst. Die gewählten Parameter sind in \autoref{tab:mrilabparamSim} zusammengefasst.
 
 \begin{table}[H]
 	\centering
 	\caption[gewählte Simulationsparameter]{Für diesen Abschnitt gewählte Simulationsparameter}
 	\label{tab:mrilabparamSim}
-	\begin{tabularx}{0.5\textwidth}{lX}
+	\begin{tabularx}{0.3\textwidth}{lX}
 		\toprule
 		\textbf{Parameter} & \textbf{Werte}\\
 		\midrule
@@ -27,7 +29,7 @@ Zum visuellen Vergleich und für die Nutzung der Bildqualitätsmetriken SSIM und
 
 \begin{figure}[H]
 	\centering
-	\resizebox{!}{!}{\includegraphics[width=0.47\textwidth]{img/results/new/Series68_REF_OUT.png}}
+	\resizebox{!}{!}{\includegraphics[width=0.8\textwidth]{img/results/new/Series68_REF_OUT.png}}
 	\caption[Referenzbild]{Referenzbild $R[i,j]$}
 	\label{fig:R}
 \end{figure}
@@ -45,7 +47,16 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\label{fig:colorJet}
 \end{figure}
 
+
+
+
+
+
+\clearpage
 \section{LMK04821}
+Dieser Abschnitt zeigt die Simulationsergebnisse mit dem Eingangs-Phasen\-rausch\-leistungs\-spektrum in \autoref{fig:lmkEttlingenBioSpecGradients}.
+
+In \autoref{fig:phiLMK} ist der gesamten zeitliche Verlauf der Phasenfluktuationen dargestellt. Da diese Darstellung wenig aussagekräftig ist, sind in \autoref{fig:phiLMKcropped} nur die ersten 1000 Werte dargestellt, wodurch die Tiefpasscharakteristik von $\phi_k[n]$ deutlicher wird.
 
 \begin{figure}[H]
 	\centering
@@ -57,12 +68,12 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phiCropped.tikz}}
-	\caption[simulierte Phasenfluktuationen für $1/f$-Phasenrauschen]{simulierte Phasenfluktuationen für $1/f$-Phasenrauschen}
+	\caption[simulierte Phasenfluktuationen für $1/f$-Phasenrauschen (Vergrößerung)]{simulierte Phasenfluktuationen für $1/f$-Phasenrauschen (Ausschnittvergrößerung)}
 	\label{fig:phiLMKcropped}
 \end{figure}
 
-
 \subsection{Spinecho-Sequenz}
+In \autoref{fig:lmkSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit Spinecho-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiLMK} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -81,12 +92,12 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series89_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/SE/Series90_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[LMK04821 Phasenrauschen (Spinecho-Sequenz)]{Simulierte Aufnahmen einer Spinecho-Sequenz mit Phasenrauschen nach \autoref{fig:phiLMK}}
+	\label{fig:lmkSE}	
 \end{figure}
 
-
 \subsection{EPI-Sequenz}
+In \autoref{fig:lmkEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit EPI-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiLMK} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -105,12 +116,19 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series84_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/lmkInGrad/EPI/Series85_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[LMK04821 Phasenrauschen (EPI-Sequenz)]{Simulierte Aufnahmen einer EPI-Sequenz mit Phasenrauschen nach \autoref{fig:phiLMK}}
+	\label{fig:lmkEPI}	
 \end{figure}
 
 
 
+
+
+
+
+
+
+\clearpage
 \section{($1/f$)-Phasenrauschen}
 
 \begin{figure}[H]
@@ -122,6 +140,7 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 
 
 \subsection{Spinecho-Sequenz}
+In \autoref{fig:oneOverfSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit Spinecho-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiOneOverF} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -140,13 +159,12 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{SE,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series73_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{SE,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/SE/Series74_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[($1/f$)-Rauschen (Spinecho-Sequenz)]{Simulierten Aufnahmen einer Spinecho-Sequenz mit Phasenrauschen nach \autoref{fig:phiOneOverF}}
+	\label{fig:oneOverfSE}	
 \end{figure}
 
-
-
 \subsection{EPI-Sequenz}
+In \autoref{fig:oneOverfEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit EPI-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiOneOverF} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -165,23 +183,47 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{EPI,3}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series79_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{EPI,4}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/oneOverf/EPI/Series80_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[($1/f$)-Rauschen (EPI-Sequenz)]{Simulierten Aufnahmen einer EPI-Sequenz mit Phasenrauschen nach \autoref{fig:phiOneOverF}}
+	\label{fig:oneOverfEPI}	
 \end{figure}
 
+
+
+
+
+\clearpage
 \section{Sinus-förmige Phasenmodulation}
+In diesem Abschnitt wird eine Simulation mit einem deterministischen, Sinus-förmigen Phasenfluktuationsverlauf d.h. einer Sinus-Phasenmodulation durchgeführt.
+
+Zunächst wird der Zeitvektor $t$ aus der Bandbreite des Empfängers $BW=f_S$ und der Länge des Empfangssignals $N$ nach
+\begin{equation}
+	t=\left\{0,\,\frac{1}{f_S},\,\frac{2}{f_S},\,\frac{3}{f_S},\,\dots,\,\frac{N}{f_S}\right\}
+\end{equation}
+berechnet\footnote{Es wird vereinfachend die Schreibweise $t$ statt $\vec{t}$ verwendet.}.
+
+Damit ergibt sich der Zeitverlauf der Phasenmodulation zu
+\begin{equation}
+	\phi(t) = \beta\, sin(2\pi \nu_{mod} t).
+\end{equation}
+
+Mit Einführung der diskreten Zeit $n = t/T = f_S \cdot t$ ergibt sich
+\begin{equation}
+	\phi[n] = \beta\, sin(2\pi \nu_{mod} \frac{n}{f_S}).
+\end{equation}
+
+Für die Simulation werden die Modulationsfrequenzen $\nu_{mod,k}$ in \autoref{tab:sineMod} verwendet.
 
 \begin{table}[H]
 	\centering
-	\caption[]{sine mod}
+	\caption[]{Für die Simulation einer Sinus-förmigen Phasenmodulation verwendete Modulationsfrequenzen}
 	\label{tab:sineMod}
-	\begin{tabularx}{0.5\textwidth}{lX}
+	\begin{tabularx}{0.5\textwidth}{lS[table-format=3.2]}
 		\toprule
-		\textbf{Index $k$} & \textbf{Frequenz $\nu_{mod}$ (in \SI{}{\kilo\hertz})}\\
+		\textbf{Index $k$} & \textbf{Frequenz $\nu_{mod,k}$ (in \SI{}{\kilo\hertz})}\\
 		\midrule
 		1 & 0.1 \\
-		2 & 1 \\
-		3 & 10 \\
+		2 & 1.0 \\
+		3 & 10.0 \\
 		4 & 10.01 \\
 		5 & 10.02 \\
 		6 & 10.03 \\
@@ -189,7 +231,15 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\end{tabularx}
 \end{table}
 
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/sine/phi.tikz}}
+	\caption[]{Für die Sinus-förmige Phasenmodulation genutzte Sinusfunktionen in Abhängigkeit der Modulationsfrequenz $\nu_{mod}$}
+	\label{fig:sineModphi}
+\end{figure}
+
 \subsection{Spinecho-Sequenz}
+In \autoref{fig:sinemodSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit Spinecho-Sequenzen und Phasenmodulationen des MR-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -217,11 +267,12 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{SE,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series65_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{SE,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/SE/Series66_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[Phasenmodulation (Spinecho-Sequenz)]{Simulierte Aufnahmen einer Spinecho-Sequenz mit Sinus-förmiger Phasenmodulation des MR-Signals}
+	\label{fig:sinemodSE}	
 \end{figure}
 
 \subsection{EPI-Sequenz}
+In \autoref{fig:sinemodEPI} sind die rekonstruierten Schnittbilder $X_{EPI,k}$ und die Differenzbilder $D_{EPI,k}$ aus Simulationen mit EPI-Sequenzen und Phasenmodulationen des MR-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -249,8 +300,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\subcaptionbox{$D_{EPI,5}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series57_DIFF.png}}
 	\hfill
 	\subcaptionbox{$D_{EPI,6}[i,j]$}{\includegraphics[width=0.24\textwidth]{img/results/new/sine/EPI/Series58_DIFF.png}}
-	\caption{}
-	\label{fig:}	
+	\caption[Phasenmodulation (EPI-Sequenz)]{Simulierte Aufnahmen einer EPI-Sequenz mit Sinus-förmiger Phasenmodulation des MR-Signals}
+	\label{fig:sinemodEPI}	
 \end{figure}
 
 
@@ -258,19 +309,41 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 
 
 
+\clearpage
+\section{Bildqualitätsmetriken und Diskussion}
 
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Spinecho-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.42\textwidth]{img/results/new/lmkInGrad/SEmetrics.tikz}}
+	\hfill
+	\subcaptionbox{EPI-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.42\textwidth]{img/results/new/lmkInGrad/EPImetrics.tikz}}
+	\caption[Bildqualitätsmetriken LMK04821]{Bildqualitätsmetriken für die Bilder in \autoref{fig:lmkSE} und \autoref{fig:lmkEPI} (LMK04821 in Gradientenspulen)}
+	\label{fig:metrikenLMK}	
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Spinecho-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.33\textwidth]{img/results/new/oneOverf/SEmetrics.tikz}}
+	\hfill
+	\subcaptionbox{EPI-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.33\textwidth]{img/results/new/oneOverf/EPImetrics.tikz}}
+	\caption[Bildqualitätsmetriken ($1/f$)-Phasenrauschen]{Bildqualitätsmetriken für die Bilder in \autoref{fig:oneOverfSE} und \autoref{fig:oneOverfEPI} (reines $(1/f)$-Phasenrauschen)}
+	\label{fig:metrikenOneOverf}	
+\end{figure}
 
+\begin{figure}[H]
+	\centering
+	\subcaptionbox{Spinecho-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.33\textwidth]{img/results/new/sine/SEmetrics.tikz}}
+	\hfill
+	\subcaptionbox{EPI-Sequenz}{\includegraphics[width=0.47\textwidth,height=0.33\textwidth]{img/results/new/sine/EPImetrics.tikz}}
+	\caption[Bildqualitätsmetriken Phasenmodulation]{Bildqualitätsmetriken für die Bilder in \autoref{fig:sinemodSE} und \autoref{fig:sinemodEPI} (Sinus-förmige Phasenmodulation)}
+	\label{fig:metrikenSine}	
+\end{figure}
 
+Die Abbildungen \ref{fig:metrikenLMK}, \ref{fig:metrikenOneOverf} und \ref{fig:metrikenSine} zeigen die Bildqualitätsmetriken $MSE$ und $SSIM$ für alle rekonstruierten Schnittbilder.
 
+In allen drei Fällen zeigt sich, dass die EPI-Sequenz empfindlicher auf Phasenrauschen reagiert. Besonders eine stark rauschende Phase bei niedrigen Frequenzen führt dazu, dass lange Akquisitionsvorgänge gestört werden. Daher sind erwartungsgemäß die Bildfehler bei der EPI-Sequenz und reinem ($1/f$)-Rauschen groß. Da die Länge der zusammenhängenden k-Raum Trajektorie bei Spinecho-Sequenzen wesentlich kürzer ist, reagiert diese weniger empfindlich auf das ($1/f$)-Phasenrauschen. Deterministische Phasenmodulationen führen bei beiden betrachteten Sequenzen zu starken Geisterbildern.
 
-
-
-
-
-
-
-\section{Diskussion der Ergebnisse}
+\autoref{fig:phiOneOverF} und die große Varianz der Bildqualitätsmetriken in \autoref{fig:metrikenOneOverf} zeigen ein grundlegendes Problem von Simulationen mit stochastischen Prozessen: Eine einzige Simulation entspricht einer Realisierung $\xi$ des stochastischen Prozesses. Insbesondere wenn dieser Prozess nicht stationär ist, wie im Fall des ($1/f$)-Rauschens, sind eine oder wenige Realisierungen nicht repräsentativ für den Prozess. Es sind daher zahlreiche Simulationen nötig, um eine Aussage über das mittlere Verhalten des Prozesses zu treffen. 
 
 
 

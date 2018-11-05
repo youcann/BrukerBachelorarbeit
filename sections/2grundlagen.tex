@@ -2,9 +2,9 @@
 In diesem Kapitel werden einige Grundlagen erläutert, die für den weiteren Verlauf der Arbeit relevant sind.
 
 \section{(Präklinische-) Magnetresonanztomographie}
-Die MRT\footnote{Auch \textit{MRI} (eng. magnetic resonance imaging)}) ist ein bildgebendes Verfahren, das den physikalischen Effekt der Kernspinresonanz (englisch: nuclear magnetic resonance (NMR)) nutzt.
+Die MRT\footnote{Auch \textit{MRI} (eng. magnetic resonance imaging)} ist ein bildgebendes Verfahren, das den physikalischen Effekt der Kernspinresonanz (englisch: nuclear magnetic resonance (NMR)) nutzt.
 
-Als \textit{Tomografie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben}-Verfahren ermöglicht es die MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) über\-lagerungs\-frei.
+Als \textit{Tomographie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben; auch als \textit{Tomografie} geschrieben}-Verfahren ermöglicht es die MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) über\-lagerungs\-frei.
 
 Im Gegensatz zur \textit{Computertomographie} (CT), einem weiteren sehr verbreitetem Tomographieverfahren, kommt bei einer MRT-Untersuchung keine ionisierende Strahlung zum Einsatz.
 
@@ -118,7 +118,7 @@ wodurch $\vec{M}$ aus dem thermischen Gleichgewicht abgelenkt wird. $\vec{M}$ pr
 	\vec{M_{eq}} = (0,0,M_{z,eq}).
 \end{equation}
  
-RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. Pulse, die eine Drehung der Spins um 180\degree verursachen, werden als \textit{180\degree-Pulse} bezeichnet und finden zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE}) Anwendung. Anregungspulse für Gradientenecho-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
+RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. Pulse, die eine Drehung der Spins um 180\degree verursachen, werden als \textit{180\degree-Pulse} bezeichnet und finden zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE}) Anwendung. Anregungspulse für Gradienten\-echo-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
 
 Nach einer Anregung mit einem RF-Puls setzen zwei, voneinander unabhängige Relaxationsphänomene ein \cite{Nishimura1996}:
 \begin{itemize}
@@ -456,7 +456,7 @@ Für die Verhältnisse $\frac{TR}{T1}$ und $\frac{TE}{T2}$ können vier Fälle u
 	\item \textbf{$TR/T1\gg1$ und $TE/T2\ll1$}: PD-Gewichtung
 	\item (\textbf{$TR/T1\ll1$ und $TE/T2\gg1$}: Einfluss von sowohl T1 und T2, praktisch keine Bedeutung)
 \end{enumerate}
-Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die Fälle 1), 2) und 3) ist in \autoref{fig:Bildgewichtungen} dargestellt. Aus der Abbildung kann zum Beispiel abgelesen werden, dass sich mit einer T1-Gewichtung ein besserer Bildkontrast zwischen grauer und weißer Hirnmasse erreichen lässt, als mit einer PD gewichteten Aufnahme.
+Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die Fälle 1), 2) und 3) sind in \autoref{fig:Bildgewichtungen} dargestellt. Aus der Abbildung kann zum Beispiel abgelesen werden, dass sich mit einer T1-Gewichtung ein besserer Bildkontrast zwischen grauer und weißer Hirnmasse erreichen lässt, als mit einer PD gewichteten Aufnahme.
 
 \begin{figure}[H]
 	\centering
@@ -489,7 +489,7 @@ Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die F
 \subsection{MRT-Artefakte}
 Zahlreiche Effekte können zu Artefakten in MRT-Aufnahmen führen. Welche Artefakte dominieren und ob die Bildqualität wesentlich verschlechtert wird, hängt stark von der Anwendung ab.
 
-Im Wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomographen.
+Im wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomographen.
 
 \subsubsection{Gewebeartefakte}
 Eine häufige Ursache für Bildartefakte ist die \textit{chemische Verschiebung} ("chemical shift"). Da die Larmorfrequenz eines Kerns von der lokalen magnetischen Feldstärke am Ort des Kerns $B_{lokal}$ und nicht der mittleren Feldstärke über der Probe ($B$) abhängt, kann es durch molekulare Abschirmeffekte zu einer Änderung der Feldstärke $\Delta B$ kommen. Die lokal auf den Kern wirkende Feldstärke ist dann:
@@ -620,7 +620,7 @@ Ein Rauschprozess ist als stochastischer Prozess durch sein Leistungsdichtespekt
 \section{Phasenrauschen}
 Nach \cite{IEEErandom} ist Phasenrauschen qualitativ definiert als:
 \begin{quote}
-		\textit{Phasenrauschen beschreibt eine kurzzeitige Abweichungen der Phase von der Nenn-Phase im Frequenzbereich.} 
+		\textit{Phasenrauschen beschreibt kurzzeitige Abweichungen der Phase von der Nenn-Phase im Frequenzbereich.} 
 \end{quote}
 
 Zur quantitativen Betrachtung wird ein idealer Sinus-Oszillator betrachtet. Sein Ausgangssignal ist durch
@@ -658,7 +658,7 @@ Phasenrauschen wurde früher üblicherweise über das Phasenrauschleistungsspekt
 \label{eq:Lalt}
 	\mathscr{L} = \frac{\text{Einseitenband-Rauschleistung in 1 Hz Bandbreite}}{\text{Trägerleistung } P_S}
 \end{equation}
-Diese Definition ist besonders dadurch problematisch, da Rauschanteile die durch Amplitudenfluktuationen entstehen nicht vom Phasenrauschen unterschieden werden können \cite{Rubiola2008}. Daher definiert das IEEE in IEEE-1139 (\cite{IEEErandom}) $\mathscr{L}(f)$ seit einigen Jahren als:
+Diese Definition ist besonders dadurch problematisch, dass Rauschanteile die durch Amplitudenfluktuationen entstehen nicht vom Phasenrauschen unterschieden werden können \cite{Rubiola2008}. Daher definiert das IEEE in IEEE-1139 (\cite{IEEErandom}) $\mathscr{L}(f)$ seit einigen Jahren als:
 \begin{equation}
 \label{eq:Lneu}
 	\mathscr{L} \coloneqq \frac{1}{2} \; S_\Phi(f)
@@ -708,7 +708,7 @@ Alle Metriken sind in \autoref{eq:jitterDef} und \autoref{fig:jitterDefs} zusamm
 \end{figure}
 
 \subsection{Umrechnung von Phasenrauschen in Jitter}
-Die Qualität von Oszillatoren wird häufig eher im Zeitbereich mit Hilfe des Jitters als skalarer Größe verglichen statt mit den Phasenrauschleistungsspektren, wenn kleine Abweichungen der Phase betrachtet werden. Das Spektrum von $\mathscr{L}(f)$ kann in den Period-Jitter $J_1$ umgerechnet werden \cite{Kester2008}, \cite{Maxim2004}. Dazu wird $\mathscr{L}(f)$ zwischen den, für die Applikation spezifischen Grenzen $f_1$ und $f_2$ integriert und daraus der Effektivwert der Phasenfluktuation und der Period-Jitter bestimmt.
+Die Qualität von Oszillatoren wird häufig eher im Zeitbereich mit Hilfe des Jitters als skalarer Größe verglichen statt mit den Phasenrauschleistungsspektren, wenn kleine Abweichungen der Phase betrachtet werden. Das Spektrum von $\mathscr{L}(f)$ kann in den Period-Jitter $J_1$ umgerechnet werden \cite{Kester2008}, \cite{Maxim2004}. Dazu wird $\mathscr{L}(f)$ zwischen den, für die Applikation spezifischen, Grenzen $f_1$ und $f_2$ integriert und daraus der Effektivwert der Phasenfluktuation und der Period-Jitter bestimmt.
 
 Das integrierte Phasenrauschleistungsspektrum in den Grenzen $[f_1, f_2]$ ist
 \begin{equation}
@@ -737,10 +737,47 @@ Durch die Bildung des Integrals ist die Konversion von Phasenrauschleistungsspek
 	\label{fig:phaseNoiseInt}
 \end{figure}
 
+\subsection{Interpretation des Phasenrauschens als Zeitverschiebung}
+Das Hinzufügen von Phasenrauschen zu einem abgetasteten Signal kann als eine Verschiebung der Abtastzeitpunkte aufgefasst werden. \autoref{fig:abtast} zeigt eine Funktion $x(t)$ und die abgetastete Funktion $x[n]$, die an den Stellen $n_0,\,n_1,\,\dots$ definiert ist. Jeder Abtastzeitpunkt wird um $\Delta t\,n$ verschoben. Die Wahrscheinlichkeitsdichtefunktion von jedem $\Delta t,\,n$ ist dabei $f_{\Delta t,\,n}$. In \autoref{fig:abtast} ist für jeden Abtastzeitpunkt $n$ eine Gauß-förmige Wahrscheinlichkeitsdichte gewählt. Mit dieser Methode können sinnvoll nur kurzzeitige Abweichungen simuliert werden. Zur Charakterisierung würden sich der edge-to-edge-Jitter oder der k-cycle-Jitter (für kleine $k$) eignen.
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=0.5\textwidth]{img/abtast.tikz}}
+	\caption[Verschiebung der ADC Abtastzeitpunkte]{Verschiebung der ADC Abtastzeitpunkte mit einer Gauß-förmigen Wahrscheinlichkeitsverteilung für jeden Abtastzeitpunkt}
+	\label{fig:abtast}
+\end{figure}
+
+Zur Untersuchung der Einflüsse von größeren Abweichungen, wie sie insbesondere durch die Akkumulation von Phasenfehlern entstehen können, ist diese Vorgehensweise nicht ideal.
+
+Eine Zeitverschiebung um $\Delta t$ entspricht, mit der Frequenz der Grundschwingung $\nu_0$, einer Phasendrehung von
+\begin{equation}
+\Delta \phi = 2 \pi \Delta t.
+\end{equation}
+
+Die Verschiebung der Abtastzeitpunkte lässt sich dann durch
+\begin{equation}
+x_{Jitter}[n] = x[n] \quad exp(j \Delta \phi)
+\end{equation}
+beschreiben. Vorteil hierbei ist, dass neben Kurzzeit- auch Langzeit-Jitter problemlos simuliert werden kann.
+
+Zur Demonstration der Äquivalenz der beiden Verfahren wird ein Sinus-Signal $S[n]=S_x+j S_y$ der Länge $N$ betrachtet. Weiterhin wird ein Tiefpass-gefilterter Phasenrauschprozess $\Delta t$ bzw. $\Delta \phi$ erzeugt. Dieser besitzt eine Gauß-förmige Wahrscheinlichkeitsdichtefunktion und einen $1/f$-förmiges Spektrum.
+
+$S[n]$ wird zunächst zu $S[m]$ mit $M \gg N$ interpoliert. Danach können die ursprünglichen Abtastpunkte $n$ mit einem leichten Jitter ($\Delta t$) verschoben werden. Daraus entsteht $S[n_{Jitter}]$. Wird $S[n_{Jitter}]$ an den Stellen $n$ ausgewertet, entsteht $S_{Jitter}[n]$.
+
+Wenn die Originalfunktion $S[n]=S_x+j S_y$ mit $exp(j \Delta \phi)$ multipliziert wird, entsteht $S_{PhaseMod}[n]$. Wie \autoref{fig:abtastPlot} bestätigt, liefern beide Vorgehensweisen ähnliche Resultate. Durch die nötigen, mehrfachen Interpolationen und Dezimierungen sind die Ergebnisse nicht identisch. 
+
+\begin{figure}[H]
+	\centering
+	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/abtastPlot.tikz}}
+	\caption[Verschiebung Abtastzeitpunkte]{Verschiebung der Abtastzeitpunkte im Vergleich zur Originalfunktion; dargestellt sind jeweils die Realteile der Funktionen}
+	\label{fig:abtastPlot}
+\end{figure}
+
+
 
 
 \section{Messverfahren}
-Jitter und Phasenrauschen können mit einfachen Messgeräten, wie Oszilloskopen oder Spektrumanalysatoren gemessen werden. Für die Bewertung von hoch-genauen Oszillatoren werden in der Regel spezielle Phasenrauschmessplätze verwendet.
+Jitter und Phasenrauschen können mit einfachen Messgeräten, wie Oszilloskopen oder Spektrumanalysatoren, gemessen werden. Für die Bewertung von hoch-genauen Oszillatoren werden in der Regel spezielle Phasenrauschmessplätze verwendet.
 
 \subsection{Im Zeitbereich: Oszilloskop}
 Mit einem Oszilloskop kann Jitter direkt visuell abgelesen werden. Auch ein Augendiagramm kann genutzt werden. Damit lassen sich jedoch nur Spitze-zu-Spitze-Werte des Jitters bestimmen. Um die Wahrscheinlichkeitsdichte des Jitters zu bestimmen, ist ein Oszilloskop mit Histogrammfunktion notwendig. Für Phasenfluktuationen auf großen Zeitskalen eignen sich Oszilloskope nicht zur Jittermessung. Der interne Speicher wirkt als Begrenzung für die maximale Messdauer.
@@ -888,7 +925,7 @@ Exemplarisch sind die verschiedenen SSIM-Qualitätsmetriken in \autoref{fig:verg
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/metrics/ssimComp2.eps}
-	\caption[Vergleich verschiedener SSIM Varianten]{Vergleich verschiedener SSIM Varianten, Daten aus \autoref{tab:metriken}}
+	\caption[Vergleich verschiedener SSIM-Varianten]{Vergleich verschiedener SSIM-Varianten, Daten aus \autoref{tab:metriken}}
 	\label{fig:vergleichSSIM}
 \end{figure}
 
