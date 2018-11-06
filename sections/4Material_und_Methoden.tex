@@ -1,10 +1,10 @@
 \chapter{Methodik}
-In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignung als Simulationsumgebung untersucht wird, wie das MR-Signal mit Phasenrauschen gestört wird und wie Testsimulationen durchgeführt werden.
+In diesem Abschnitt wird die Vorgehensweise erläutert, mit der MRiLab auf Eignung als Simulationsumgebung untersucht wird, wie das \gls{mr}-Signal mit Phasenrauschen gestört wird und wie Testsimulationen durchgeführt werden.
 
 \section{Simulationsumgebung MRiLab}
-MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (siehe \autoref{sec:usedPC}). Aufwendige Rechnungen in MRiLab (wie das Lösen der Blochgleichungen für die einzelnen Voxel) sind gut parallelisierbar. Je nachdem, ob eine geeignete Grafikkarte für CUDA\footnote{früher Abkürzung für \textit{Compute Unified Device Architecture}: eine Programmier-Technik von NVIDIA für parallelisierte Programmabläufe auf Grafikprozessoren} vorhanden ist, wird diese genutzt, oder die Berechnungen werden mit dem regulären Prozessor und Intel IPP\footnote{Intel Integrated Performance Primitives: Programmroutinen für parallelisierte Abläufe auf Intel Prozessoren (CPUs)} durchgeführt.
+MRiLab wird auf einem PC mit einer High-End Consumer-Grafikkarte installiert (siehe \autoref{sec:usedPC}). Aufwendige Rechnungen in MRiLab, wie das Lösen der Blochgleichungen (vgl. \autoref{sec:blocheq}) für die einzelnen Voxel, sind gut parallelisierbar. Je nachdem, ob eine geeignete Grafikkarte für CUDA\footnote{früher Abkürzung für \textit{Compute Unified Device Architecture}: eine Programmier-Technik von NVIDIA für parallelisierte Programmabläufe auf Grafikprozessoren} vorhanden ist, wird diese genutzt, oder die Berechnungen werden mit dem regulären Prozessor und Intel IPP\footnote{Intel Integrated Performance Primitives: Programmroutinen für parallelisierte Abläufe auf Intel Prozessoren (CPUs)} durchgeführt.
 
-\autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirnphantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung und der Bildfeldgröße, können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
+\autoref{fig:mrilabscreenshot} zeigt das Startfenster von MRiLab mit einem geladenen Gehirnphantom (mitgeliefert). Dieses wird über \texttt{Load>Phantom} ausgewählt und mit \texttt{Localize} in die mittleren drei Fenster geladen, welche die drei möglichen Schnittebenen durch einen Körper zeigen. Nach dem Einstellen grundlegender Parameter, wie der gewünschten Auflösung und der Bildfeldgröße (\gls{fov}), können diese mit \texttt{Update} übernommen werden. Nach der Auswahl einer Pulssequenz über \texttt{Sequence}\footnote{Im Dialogfeld wird die Pulssequenz mit einem Doppelklick ausgewählt!} wird nach Betätigen von \texttt{Update} und \texttt{Scan} eine Simulation gestartet.
 
 \begin{figure}[H]
 	\centering
@@ -14,13 +14,13 @@ MRiLab wird auf einem PC mit einer High-End Consumer Grafikkarte installiert (si
 \end{figure}
 
 \subsection{Bestimmung notwendiger Simulationsparameter}
-MRiLab verwendet einige Standardparameter für die MRT-Simulation, die sich an einem GE MRT für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches MRT von Bruker gefunden werden. Die gesuchten Größen sind, mit der in MRiLab verwendeten Terminologie, in \autoref{tab:mriLabParam} aufgeführt.
+MRiLab verwendet einige Standardparameter für die \gls{mrt}-Simulation, die sich an einem GE-\gls{mrt} für die Humanmedizin orientieren. Für diese Größen müssen die äquivalenten Werte für ein präklinisches \gls{mrt} von Bruker gefunden werden. Die gesuchten Größen sind, mit der in MRiLab verwendeten Terminologie, in \autoref{tab:mriLabParam} aufgeführt.
 
-In Abstimmung mit der Applikationsentwicklung für die MRT können einige Werte bzw. Wertebereiche, wie sie typisch für die aktuelle Produktpalette der Bruker MRTs sind, angegeben werden (siehe \autoref{tab:brukerMRIparam}). 
+In Abstimmung mit der Applikationsentwicklung für die \gls{mrt} können einige Werte bzw. Wertebereiche, wie sie typisch für die aktuelle Produktpalette der Bruker-Tomographen sind, angegeben werden (siehe \autoref{tab:brukerMRIparam}). 
 
 \begin{table}[H]
 	\centering
-	\caption[Simulationsparameter für Bruker MRTs]{Einige für die MRT-Simulation in MRiLab relevante Parameter für Bruker MRTs; zur Erklärung der Parameter siehe \autoref{tab:mriLabParam}}
+	\caption[Simulationsparameter für Bruker MRTs]{Einige für die MRT-Simulation in MRiLab relevante Parameter für Bruker \gls{mrt}s; zur Erklärung der Parameter siehe \autoref{tab:mriLabParam}}
 	\label{tab:brukerMRIparam}
 	\begin{tabularx}{\textwidth}{lX}
 		\toprule
@@ -65,11 +65,11 @@ Da die Länge $x_{max}-x_{min}$ der Größe des $FOV$ in der betrachteten Richtu
 \Delta f(G, FOV) = G \cdot FOV
 \end{equation}
 
-Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärke und das FOV werden einige Empfängerbandbreiten berechnet (\autoref{tab:empfBandbreite}).
+Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärke und das \gls{fov} werden einige Empfängerbandbreiten berechnet (\autoref{tab:empfBandbreite}).
 
 \begin{table}[H]
 	\centering
-	\caption[Berechnung Empfängerbandbreite]{Notwendige Empfängerbandbreiten in Abhängigkeit des Field of View (FOV) und der Gradientenstärke}
+	\caption[Berechnung Empfängerbandbreite]{Notwendige Empfängerbandbreiten in Abhängigkeit des \gls{fov} und der Gradientenstärke}
 	\label{tab:empfBandbreite}
 	\begin{tabular}{llll}
 		\toprule
@@ -85,9 +85,9 @@ Mit Hilfe von \autoref{eq:deltaF} und typischen Werten für die Gradientenstärk
 
 
 \subsection{Implementierung eines Phasenrauschmoduls}
-In MRiLab ist es möglich mit der skalaren, dimensionslosen Größe \texttt{noise level} vor der Rekonstruktion ein additives Rauschen zum MR-Empfangssignal hinzuzufügen. Damit kann z.B. der Einfluss eines sinkenden \gls{snr} qualitativ untersucht werden. Um auch Phasenrauschen hinzufügen zu können, ist eine Modifikation von MRiLab nötig.
+In MRiLab ist es möglich mit der skalaren, dimensionslosen Größe \texttt{noise level} vor der Rekonstruktion ein additives Rauschen zum \gls{mr}-Empfangssignal hinzuzufügen. Damit kann z.B. der Einfluss eines sinkenden \gls{snr} qualitativ untersucht werden. Um auch Phasenrauschen hinzufügen zu können, ist eine Modifikation von MRiLab nötig.
 
-Ein Phasenrauschsignal (im Zeitbereich) kann auf das, digital vorhandene, komplexe MR-Empfangssignal $S_{RF}[n]$ gegeben werden. In MRiLab werden statt $S_{RF}[n]$ die beiden Signale \texttt{VSig.Sx} und \texttt{VSig.Sy} verwendet. Daher wird die Operation wie in \autoref{lst:vsigAddphaseNoise} gezeigt durchgeführt.
+Ein Phasenrauschsignal (im Zeitbereich) kann auf das, digital vorhandene, komplexe \gls{mr}-Empfangssignal $S_{RF}[n]$ gegeben werden. In MRiLab werden statt $S_{RF}[n]$ die beiden Signale \texttt{VSig.Sx} und \texttt{VSig.Sy} verwendet. Daher wird die Operation wie in \autoref{lst:vsigAddphaseNoise} gezeigt durchgeführt.
 \begin{listing}[H]
 	\begin{minted}[bgcolor=bg,fontsize=\footnotesize,linenos,autogobble]
 	{Matlab}
@@ -96,11 +96,11 @@ Ein Phasenrauschsignal (im Zeitbereich) kann auf das, digital vorhandene, komple
 	VSig.Sx = real(S_rf);
 	VSig.Sy = imag(S_rf);
 	\end{minted}
-	\caption{Anwendung von Phasenrauschen auf das MR-Empfangssignal}
+	\caption{Anwendung von Phasenrauschen auf das \gls{mr}-Empfangssignal}
 	\label{lst:vsigAddphaseNoise}
 \end{listing}
 
-Vor der Rekonstruktion wird von MRiLab die Funktion \texttt{DoPostScan.m} aufgerufen, welche wiederum \texttt{DoAddNoise.m} aufruft. Da thematisch passend, wird das Phasenrauschen an dieser Stelle, wie in \autoref{lst:vsigAddphaseNoise} gezeigt, eingefügt.
+Vor der Rekonstruktion wird von MRiLab die Funktion \texttt{DoPostScan.m} aufgerufen, welche wiederum \texttt{DoAddNoise.m} aufruft. Das Phasenrauschen wird an dieser Stelle, wie in \autoref{lst:vsigAddphaseNoise} gezeigt, eingefügt.
 
 
 
@@ -116,7 +116,7 @@ Für die Simulation von Phasenrauschprozessen sind zunächst gemessene oder kün
 
 \subsection{Eingangsspektren}
 \label{subsec:Eingangsspektren}
-In vorhergehenden Arbeiten bei Bruker BioSpin konnte gezeigt werden, dass sich der Baustein \textit{LMK04821} für zukünftige Entwicklungen im Bereich der MRT-Empfangselektronik eignet. Daher wird dieser hier für die Ermittlung von sinnvollen Phasenrauschleistungsspektren betrachtet.
+In vorhergehenden Arbeiten bei Bruker BioSpin konnte gezeigt werden, dass sich der Baustein \textit{LMK04821} für zukünftige Entwicklungen im Bereich der \gls{mrt}-Empfangselektronik eignet. Daher wird dieser hier für die Ermittlung von sinnvollen Phasenrauschleistungsspektren betrachtet.
 
 \subsubsection{LMK04821 unter Idealbedingungen}
 Im Datenblatt des Jitter-Cleaner Bausteins für Taktsignale LMK04821 von Texas Instruments \cite{lmkDatasheet} finden sich für verschiedene Betriebszustände gemessene Phasenrauschspektren\footnote{Dadurch, dass die Spektren als Screenshots des verwendeten Messgerätes abgebildet sind, ist zu erkennen, dass zur Messung ein Agilent Technologies (heute Keysight Technologies) \textit{E5052A Signal Source Analyzer} verwendet wurde. Da bei den Messungen die Option zur automatischen Konversion vom Phasenrauschspektrum zu Jitter genutzt wurde, können die Screenshots zur Validierung eigener Umrechnungen verwendet werden.}.  
@@ -131,7 +131,7 @@ In \autoref{fig:lmkDatasheetPhaseNoise} ist das Phasenrauschspektrum des LMK0482
 \end{figure}
 
 
-\subsubsection{LMK04821 Realbedingungen und Worst-Case Abschätzung}
+\subsubsection{LMK04821 Worst-Case Abschätzung}
 Für eine Worst-Case Abschätzung wird ein LMK04821-Testboard\footnote{LMK04828BEVM \cite{lmkEvalboard}} im Inneren eines BioSpec MR-Tomographen platziert. Bedingt durch die Größe des Testboards kann es nicht in die Hochfrequenz Sende- und Empfangsspulen-Röhre geschoben werden. Daher wird diese im Gerät nach hinten verschoben, so dass das Testboard in die Öffnung des Gradientensystems passt (siehe \autoref{fig:lmkinBioSpecRender}). Mit Hilfe eines Keysight Technologies \textit{N9952A} Spektrumanalysators wird das Spektrum am Ausgang des LMK04821 gemessen. Der verwendete Tomograph nutzt eine supraleitende Spule zur Erzeugung des $B_0$-Feldes, wodurch dieses nicht ohne weiteres abgeschaltet werden kann. Es ist daher während allen Versuchen aktiv.
 
 \begin{figure}[H]
@@ -141,16 +141,16 @@ Für eine Worst-Case Abschätzung wird ein LMK04821-Testboard\footnote{LMK04828B
 	\label{fig:lmkinBioSpecRender}
 \end{figure}
 
-Zunächst wird der Einfluss dieses $B_0$-Feldes untersucht. Dazu wird das Leistungsspektrum für eine Positionierung vor der MRT-Öffnung und in der MRT-Bohrung (wie in \autoref{fig:lmkinBioSpecRender} gezeigt) aufgenommen. Der Vergleich der beiden Spektren in \autoref{fig:lmkEttlingenBioSpecB0} zeigt, dass das $B_0$-Feld allein keine nachweisbaren Auswirkungen auf das Phasenrauschen hat.
+Zunächst wird der Einfluss dieses $B_0$-Feldes untersucht. Dazu wird das Leistungsspektrum für eine Positionierung vor der \gls{mrt}-Öffnung und in der \gls{mrt}-Bohrung (wie in \autoref{fig:lmkinBioSpecRender} gezeigt) aufgenommen. Der Vergleich der beiden Spektren in \autoref{fig:lmkEttlingenBioSpecB0} zeigt, dass das $B_0$-Feld allein keine nachweisbaren Auswirkungen auf das Phasenrauschen hat.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[width=1\textwidth,height=0.4\textwidth]{plots/lmkBioSpecNurB0.tikz}}
-	\caption[]{Ausgangsspektrum des LMK04821 beim Betrieb in der Nähe des MRT und im MRT (ohne aktives Gradientensystem und ohne RF-Signale); Betrieb des Spektrumanalysators mit "Maximum Hold"}
+	\caption[]{Ausgangsspektrum des LMK04821 beim Betrieb in der Nähe des \gls{mrt} und im \gls{mrt} (ohne aktives Gradientensystem und ohne \gls{rf}-Signale); Betrieb des Spektrumanalysators mit "Maximum Hold"}
 	\label{fig:lmkEttlingenBioSpecB0}
 \end{figure}
 
-Für die Nachbildung einer realen MRT-Messung wird eine RARE MRT-Pulssequenz abgefahren. Dabei werden die Gradientenfelder mit der Repetitionszeit $TR$ geschaltet. Für zwei verschiedene Repetitionszeiten sind die Spektren in \autoref{fig:lmkEttlingenBioSpecGradients} dargestellt. Es sind dabei jeweils zwei Spektren mit unterschiedlichen Aufnahme-Modi des Spektrumanalysators gezeigt:
+Für die Nachbildung einer realen \gls{mrt}-Messung wird eine RARE \gls{mrt}-Pulssequenz abgefahren. Dabei werden die Gradientenfelder mit der Repetitionszeit $TR$ geschaltet. Für zwei verschiedene Repetitionszeiten sind die Spektren in \autoref{fig:lmkEttlingenBioSpecGradients} dargestellt. Es sind dabei jeweils zwei Spektren mit unterschiedlichen Aufnahme-Modi des Spektrumanalysators gezeigt:
 \begin{itemize}
 	\item \textbf{Maximum Hold:} Bildet das Maximum über mehrere aufgenommene Spektren. Geeignet zum Festhalten kurzzeitig präsenter Anteile im Spektrum.
 	\item \textbf{Trace Averaging:} Bildet den Mittelwert über mehrere aufgenommene Spektren. Kurzzeitige Fluktuationen werden entfernt.
@@ -208,7 +208,7 @@ P(f_{offset} \rightarrow \infty) = N_0.
 
 Dies entspricht den aufgenommenen Spektren in \autoref{subsec:Eingangsspektren}.
 
-Zur Simulation mehrerer Realisierungen $\xi_i$ des Phasenrauschprozesses $y_\xi(t)$ müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
+Zur Simulation mehrerer Realisierungen $\xi_v$ des Phasenrauschprozesses $\phi_\xi(t)$ müssen Zufallszahlen verwendet werden. Fast alle Numerik-Pakete, so auch MATLAB, bieten eine Funktion zur Generierung von (pseudo) zufälligem weißen gaußschem Rauschen. "Weiß" bedeutet dabei, dass das Spektrum, in Anlehnung an die spektrale Bestrahlungsstärke einer weißen Lichtquelle, alle Frequenzen enthält. "Gauß" bedeutet, dass die Wahrscheinlichkeitsdichtefunktion der Funktionswerte eine Gaußkurve ist. Diese beiden Eigenschaften sind in \autoref{fig:randn} visualisiert.
 
 \begin{figure}[H]
 	\centering
@@ -228,10 +228,14 @@ Zur Simulation von Phasenrauschen muss das Spektrum des weißen Gauß-Prozesses 
 	\label{fig:faerben}
 \end{figure}
 
-Für beide grundsätzlichen Möglichkeiten gibt es mehrere Realisierungsmöglichkeiten. Die Umsetzung mit einem FIR- bzw. IIR-Filter und die punktweise Multiplikation der Spektren sind in den folgenden Abschnitten vorgestellt.
+Für beide grundsätzlichen Möglichkeiten gibt es mehrere Realisierungsmöglichkeiten. Die Umsetzung mit einem FIR- bzw. IIR-Filter im Zeitbereich und die punktweise Multiplikation der Spektren sind in den folgenden Abschnitten vorgestellt.
 
 \subsubsection{Multiplikation im Frequenzbereich}
-Die gemessenen bzw. durch ein Datenblatt erhaltenen Phasenrauschspektren sind gegenüber der nötigen Abtastwerte für eine Simulation $N\approx512^2$ nur durch vergleichsweise wenige Punkte $M\approx10...100$ gegeben. Für eine Filterung durch eine punktweise Multiplikation muss daher das Filterspektrum von $M$ auf $N$ interpoliert werden.
+Die gemessenen bzw. durch ein Datenblatt erhaltenen Phasenrauschspektren sind gegenüber der nötigen Abtastwerte für eine Simulation $N\approx512^2$ nur durch vergleichsweise wenige Punkte $M\approx10 \dots 100$ gegeben. Für eine Filterung durch eine punktweise Multiplikation muss daher das Filterspektrum von $M$ auf $N$ interpoliert werden.
+
+Dieses Verfahren ist zwar numerisch stabil umsetzbar, jedoch ist eine sehr große Frequenzauflösung, gegeben durch einen kleinen Frequenzabstand $df=\frac{f_S}{2 N}$ nötig, um kleine Offsetfrequenzen im Bereich von einigen Hertz abzubilden. Dem gegenüber steht der Frequenzbereich des Phasenrauschleistungsdichtespektrum, der sich meist über einige Kilohertz erstreckt. 
+
+Daher muss entweder $N$ sehr groß gewählt werden, oder der Einfluss von großen bzw. kleinen Offsetfrequenzen vernachlässigt werden.
 
 \subsubsection{Faltung im Zeitbereich (FIR/IIR Filter)}
 Ist die Impulsantwort für einen geeigneten Formfilter gegeben, kann diese im Zeitbereich für eine Filterung verwendet werden. Zur Generierung der Übertragungsfunktion und damit der Impulsantwort können die Filterentwurfswerkzeuge von MATLAB verwendet werden.
@@ -267,7 +271,7 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 Wie \autoref{firIirPhasenoise} zeigt, sind zur Nachbildung eines gegebenen, realistischen Phasenrauschspektrums sehr hohe Filterordnungen nötig.
 
 \subsection{Auswahl einer Filtermethode und Implementierung}
-Die Filterung im Zeitbereich mit einem FIR- oder IIR-Filter benötigt hohe Filterordnungen und ist daher rechenaufwändig. Zudem konvergiert der Algorithmus für die Filtersynthese der MATLAB Filterdesign-Tools nicht für jedes denkbare Phasenrauschspektrum. Daher wird für die Implementierung eine Filterung im Frequenzbereich gewählt.
+Die Filterung im Zeitbereich mit einem FIR- oder IIR-Filter benötigt sehr hohe Filterordnungen und ist daher rechenaufwändig. Zudem konvergiert der Algorithmus für die Filtersynthese der MATLAB Filterdesign-Tools nicht für jedes denkbare (und sinnvolle) Phasenrauschleistungsspektrum. Daher wird für die Implementierung eine Filterung im Frequenzbereich gewählt.
 
 Das Erzeugen des Phasenrauschens \texttt{phaseNoise} und die Anwendung auf das Signal \texttt{S\_rf} werden in der Funktion \texttt{addPhaseNoise()} zusammengefasst:
 \begin{listing}[H]
@@ -296,7 +300,7 @@ Die Implementierung von \texttt{addPhaseNoise()} ist in \autoref{lst:addPhaseNoi
 	VSig.Sx = real(S_rf);
 	VSig.Sy = imag(S_rf);
 	\end{minted}
-	\caption{Anwendung von Phasenrauschen auf das MR-Empfangssignal mit der neuen Funktion \texttt{addPhaseNoise}}
+	\caption{Anwendung von Phasenrauschen auf das \gls{mr}-Empfangssignal mit der neuen Funktion \texttt{addPhaseNoise}}
 	\label{lst:vsigAddphaseNoiseNew}
 \end{listing}
 
@@ -310,13 +314,13 @@ Die Implementierung von \texttt{addPhaseNoise()} ist in \autoref{lst:addPhaseNoi
 
 
 \section{Erstellung von MRiLab MRT-Phantomen}
-Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale MRT-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
+Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale \gls{mrt}-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
 
-Für die kontinuierliche Qualitätsüberwachung in Kliniken und radiologischen Praxen bieten Händler für MRT-Zubehör verschiedene MRT-Phantome an. Diese bestehen meist aus flüssigkeitsgefüllten Kunststoffstrukturen, häufig PMMA. Im Inneren verfügen diese Phantome über verschiedene Einsätze, um bestimmte Eigenschaften eines MR-Tomographens zu bewerten. So lässt sich beispielsweise über ein regelmäßiges Gitter eine Aussage über geometrische Verzerrungen und durch eine Keilplatte eine Aussage über die Schichtdicke machen. Durch abgedichtete Einsätze können Flüssigkeiten mit abweichenden NMR-Eigenschaften als die Hauptflüssigkeit eingebracht werden. Eine Auswahl von kommerziell erhältlichen Phantomen ist in \autoref{tab:phantomsOverview} zusammengestellt.
+Für die kontinuierliche Qualitätsüberwachung in Kliniken und radiologischen Praxen bieten Händler für \gls{mrt}-Zubehör verschiedene \gls{mrt}-Phantome an. Diese bestehen meist aus flüssigkeitsgefüllten Kunststoffstrukturen, häufig PMMA (Polymethylmethacrylat\footnote{Auch als \textit{Plexiglas} bezeichnet; ein Markenname von Evonik Röhm GmbH}). Im Inneren verfügen diese Phantome über verschiedene Einsätze, um bestimmte Eigenschaften eines \gls{mr}-Tomographens zu bewerten. So lässt sich beispielsweise über ein regelmäßiges Gitter eine Aussage über geometrische Verzerrungen und durch eine Keilplatte eine Aussage über die Schichtdicke machen. Durch abgedichtete Einsätze können Flüssigkeiten mit abweichenden \gls{nmr}-Eigenschaften als die Hauptflüssigkeit eingebracht werden. Eine Auswahl von kommerziell erhältlichen Phantomen ist in \autoref{tab:phantomsOverview} zusammengestellt.
 
-Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese Phantome jedoch entweder deutlich zu groß, oder bieten ein schlechtes Preis/Leistungsverhältnis. In der Vergangenheit wurde daher von der internen Konstruktionsabteilung bei Bruker BioSpin ein Phantom mit \SI{63}{\mm} Außendurchmesser entwickelt und von der Mechanikwerkstatt am Standort Rheinstetten gefertigt (siehe \autoref{fig:63mmPhantom}). Es besteht aus mehreren PMMA-Kunststoffelementen in einem PMMA-Hohlzylinder. Das große Hohlvolumen des Zylinders und die Hohlvolumina der kleinen Hohlzylinder-Einsätze können unabhängig voneinander mit Flüssigkeiten gefüllt werden. Meist werden verschieden stark konzentrierte Salzlösungen verwendet, deren NMR-Eigenschaften bekannt sind. Dadurch bietet dieses Phantom alle nötigen Merkmale und wird deshalb im weiteren Verlauf dieser Arbeit verwendet.
+Aufgrund des kleineren freien Innendurchmessers präklinischer \gls{mrt}s sind diese Phantome jedoch entweder deutlich zu groß, oder bieten ein schlechtes Preis/Leistungsverhältnis. In der Vergangenheit wurde daher von der internen Konstruktionsabteilung bei Bruker BioSpin ein Phantom mit \SI{63}{\mm} Außendurchmesser entwickelt und von der Mechanikwerkstatt am Standort Rheinstetten gefertigt (siehe \autoref{fig:63mmPhantom}). Es besteht aus mehreren PMMA-Kunststoffelementen in einem PMMA-Hohlzylinder. Das große Hohlvolumen des Zylinders und die Hohlvolumina der kleinen Hohlzylinder-Einsätze können unabhängig voneinander mit Flüssigkeiten gefüllt werden. Meist werden verschieden stark konzentrierte Salzlösungen verwendet, deren \gls{nmr}-Eigenschaften bekannt sind. Dadurch bietet dieses Phantom alle nötigen Merkmale und wird deshalb im weiteren Verlauf dieser Arbeit verwendet.
 
- Da der Fertigungsaufwand für einen solchen Kunststoffkörper aus mehr als 20 Einzelteilen sehr hoch ist, lohnt sich die Auslieferung solcher Phantome zum Kunden der MR-Tomographen nicht. Für eine Demonstration der Gerätefunktionalitäten nach der Montage vor Ort und für die Evaluierung grundlegender Qualitätsanforderungen an den Tomograph wird das "50~ml-Phantom" (siehe \autoref{fig:50mlPhantom}) eingesetzt. Es besteht aus einem \SI{50}{\milli\liter} Zentrifugenröhrchen (vgl. Datenblatt des Herstellers in \cite{corningCentriStar}) gefüllt mit einem Kupfer(II)-sulfat enthaltenden Gel. Darin eingebettet ist ein 2x4-LEGO Stein aus ABS. Durch die engen Fertigungstoleranzen, bekannten Maße und den günstigen Preis eignen sich LEGO-Steine gut als Referenzelemente.
+ Da der Fertigungsaufwand für einen solchen Kunststoffkörper aus mehr als 20 Einzelteilen sehr hoch ist, lohnt sich die Auslieferung solcher Phantome zum Kunden der \gls{mr}-Tomographen nicht. Für eine Demonstration der Gerätefunktionalitäten nach der Montage vor Ort und für die Evaluierung grundlegender Qualitätsanforderungen an den Tomograph wird das "50~ml-Phantom" (siehe \autoref{fig:50mlPhantom}) eingesetzt. Es besteht aus einem \SI{50}{\milli\liter} Zentrifugenröhrchen (vgl. Datenblatt des Herstellers in \cite{corningCentriStar}) gefüllt mit einem Kupfer(II)-sulfat enthaltenden Gel. Darin eingebettet ist ein 2x4-LEGO Stein aus ABS (Acrylnitril-Butadien-Styrol-Copolymer, ein Kunststoff). Durch die engen Fertigungstoleranzen, bekannten Maße und den günstigen Preis eignen sich LEGO-Steine gut als Referenzelemente.
 
 \begin{figure}[H]
 	\centering
@@ -329,7 +333,7 @@ Aufgrund des kleineren freien Innendurchmessers präklinischer MRTs sind diese P
 Das Bruker 63~mm-Phantom liegt zunächst nur in Form einer 2D Baugruppenzeichnung und der dazugehörigen (2D\footnote{Dateiformat: AutoCAD .dwg}) Einzelteilzeichnungen vor. Die nötigen Schritte, um daraus eine MRiLab \texttt{VObj*.mat} Phantom-Datei zu erzeugen, sind nachfolgend aufgezeigt.
 
 \subsection{Erstellung eines 3D-CAD Modells}
-Zunächst werden aus den zweidimensionalen Einzelteilzeichnungen 3D-Modelle erstellt. Da (mechanische) CAD-Modelle und Baugruppen verschiedener Softwarepakete in der Regel nicht kompatibel sind, werden die Modelle mit dem bei Bruker BioSpin verwendeten \textit{Siemens PLM Solid Edge} erstellt, um eine spätere Wiederverwendung in der Abteilung zu ermöglichen. Die Einzelteile werden anschließend, basierend auf der 2D-Übersichtszeichnung, zu einer Baugruppe zusammengesetzt. Das dabei entstehende Phantom-Modell ist noch luftgefüllt. Da in einer realen Messung die größten MR-Signale aus der Flüssigkeitsfüllung resultieren, kann die Füllung für die Simulation nicht vernachlässigt werden. Da Solid Edge keinen Assistent zur Füllung von Hohlräumen anbietet, muss die Füllung zunächst durch einen Vollzylinder angenähert werden. Von diesem werden dann durch eine Bool'sche Operation die inneren PMMA-Strukturen und die Flüssigkeiten der kleinen Hohlzylinder abgezogen. Es zeigt sich, dass in Solid Edge ST10 nicht gelingt eine Subtraktion von mehr als etwa sechs Einzelteilen durchzuführen.
+Zunächst werden aus den zweidimensionalen Einzelteilzeichnungen 3D-Modelle erstellt. Da (mechanische) \gls{cad}-Modelle und Baugruppen verschiedener Softwarepakete in der Regel nicht kompatibel sind, werden die Modelle mit dem bei Bruker BioSpin verwendeten \textit{Siemens PLM Solid Edge} erstellt, um eine spätere Wiederverwendung in der Abteilung zu ermöglichen. Die Einzelteile werden anschließend, basierend auf der 2D-Übersichtszeichnung, zu einer Baugruppe zusammengesetzt. Das dabei entstehende Phantom-Modell ist noch luftgefüllt. Da in einer realen Messung die größten MR-Signale aus der Flüssigkeitsfüllung resultieren, kann die Füllung für die Simulation nicht vernachlässigt werden. Da Solid Edge keinen Assistent zur Füllung von Hohlräumen anbietet, muss die Füllung zunächst durch einen Vollzylinder angenähert werden. Von diesem werden dann durch eine Bool'sche Operation die inneren PMMA-Strukturen und die Flüssigkeiten der kleinen Hohlzylinder abgezogen. Es zeigt sich, dass in Solid Edge ST10 nicht gelingt eine Subtraktion von mehr als etwa sechs Einzelteilen durchzuführen.
 
 Zur Lösung dieses Problems wird die Baugruppe mit allen Einzelteilen in \textit{SolidWorks 2014} (von der Dassault Systèmes SolidWorks Corp.) importiert. Da beim Import lediglich die Geometrien geladen werden und die einzelnen Features verloren gehen, wird der "Recognize Features"-Assistent eingesetzt, um aus dem importieren Körpern wieder ein vollständiges CAD-Modell zu erhalten. Vor Anwenden der Subtraktionsoperation auf den Flüssigkeitskörper müssen am Modell kleinere Änderungen vorgenommen werden, um sog. "zero-thickness geometries"\footnote{Die deutsche Bezeichnung "Geometrie der Dicke Null" ist nicht gebräuchlich} zu vermeiden. Zero thickness (auch  "non-manifold") Geometrien entstehen, wenn Kanten oder Eckpunkte einer Geometrie nicht richtig mit angrenzenden Geometrien verbunden werden können. Per Definition muss jede Kante genau zwei angrenzende Flächen haben. Wird diese Bedingung verletzt, kann es zu Problemen mit der Repräsentation der 3D-Geometrie im Modellierungskern der CAD-Software kommen.
 
@@ -342,7 +346,7 @@ Zur Lösung dieses Problems wird die Baugruppe mit allen Einzelteilen in \textit
 
 Für die Positionierung der geraden Einsätze im Phantom relativ zu den dünnen Stäben kann daher keine Tangential-Beziehung verwendet werden. Durch Einfügen eines kleinen Abstandes wird die Entstehung von zero thickness geometry vermieden.
 
-Nach der Behebung der zero thickness Probleme können alle Einsätze vom Flüssigkeitszylinder subtrahiert werden. Die Einzelteile und die Baugruppe werden im proprietären SolidWorks Format .SLDPRT bzw. .SLDASM und zusätzlich in den herstellerneutralen CAD-Austauschformat .IGES und .STEP abgespeichert.
+Nach der Behebung der zero thickness Probleme können alle Einsätze vom Flüssigkeitszylinder subtrahiert werden. Die Einzelteile und die Baugruppe werden im proprietären SolidWorks Format .SLDPRT bzw. .SLDASM und zusätzlich in den herstellerneutralen \gls{cad}-Austauschformat .IGES und .STEP abgespeichert.
 
 \subsection{Konvertierung in eine 3D-Voxel-Matrix}
 Die CAD-Dateiformate IGES und STEP enthalten jeweils eine Beschreibung der CAD-Daten in Form von Geometrieprimitiven und Features. Damit ist ein verlustfreier Ex- und Import zwischen verschiedenen Anwendungen möglich. Für die Konvertierung in eine Voxeldarstellung sind diese Formate jedoch ungeeignet, weil die Geometrien vor einer Rasterung zunächst aus der analytischen Darstellung in eine numerische gebracht werden müssen. Eine Möglichkeit ist der Export in eine .STL Datei. In (ASCII) STL Dateien wird eine Geometrie durch eine Vielzahl von, im Raum orientierter, Dreiecke angenähert (siehe \autoref{lst:STLspec}).
@@ -379,7 +383,7 @@ Zunächst werden die png-Stacks jedes Einzelteils zu einer Matrix zusammengesetz
 
 Die Kombination der Einzelteile in einer Matrix kann zum Beispiel über eine Addition (der jeweils gleich großen Einzelmatrizen) erfolgen. Eine solche Operation wäre im Allgemeinen nicht umkehrbar. Da es sich aber bei den Einzelteilmatrizen um disjunkte Mengen handelt, können sie problemlos addiert werden.
 
-Da Gewebe nicht nur eine, für die MRT relevante, Eigenschaft aufweist, ist eine Matrix zur vollständigen Beschreibung nicht ausreichend. MRiLab verwendet daher vier Eigenschafts-Matrizen $A_e$: Je eine für die Protonendichte (PD) und die Relaxationszeiten (T1, T2 und T2*).
+Da Gewebe nicht nur eine, für die \gls{mrt} relevante, Eigenschaft aufweist, ist eine Matrix zur vollständigen Beschreibung nicht ausreichend. MRiLab verwendet daher vier Eigenschafts-Matrizen $A_e$: Je eine für die Protonendichte (PD) und die Relaxationszeiten (T1, T2 und T2*).
 
 Vor der Addition der Einzelteile zu einer dieser Matrizen wird daher jedes Einzelteil mit einer, für sein Material charakteristischen Konstante skaliert. Die Skalierungsfaktoren werden in Textdateien zusammen mit den png-Stacks in den Einzelteilordnern abgespeichert. Damit ergibt sich für eine Eigenschaftsmatrix:
 \begin{equation}
@@ -397,7 +401,7 @@ mit:
 Der durch \autoref{eq:sumMatrix} beschriebene Algorithmus ist als MATLAB Skript in \autoref{lst:combinePhantomStacksIntoVoxelMatrix} zu finden.
 
 \section{Durchführen von Simulationen}
-Mit den in \autoref{subsec:Eingangsspektren} vorgestellten Eingangsspektren werden nun Simulationen mit MRiLab durchgeführt. Da davon auszugehen ist, dass verschiedene Simulationsdurchläufe zu leicht unterschiedlichen Ergebnissen führen, werden jeweils mehrere Wiederholungen durchgeführt. Für jedes der gewählten Eingangsspektren wird je ein Satz Simulationen mit einer Spinecho-Sequenz und ein Satz mit einer EPI-Sequenz durchgeführt.
+Mit den in \autoref{subsec:Eingangsspektren} vorgestellten Eingangsspektren werden nun Simulationen mit MRiLab durchgeführt. Da davon auszugehen ist, dass verschiedene Simulationsdurchläufe zu leicht unterschiedlichen Ergebnissen führen, werden jeweils mehrere Wiederholungen durchgeführt. Für jedes der gewählten Eingangsspektren wird je ein Satz Simulationen mit einer Spinecho-Sequenz und ein Satz mit einer \gls{epi}-Sequenz durchgeführt.
 
 Die Ergebnisse sind in \autoref{chap:ergb} als Schnittbilder und Verläufe der Phasenfluktuationen dargestellt.
 

@@ -17,7 +17,7 @@ Präklinische Abbildungssysteme werden meist in der Forschung oder bei der Entwi
 
 Im Segment der präklinischen Bildgebung ist die (mikro) \gls{mrt} die wichtigste Modalität. Bruker BioSpin ist auf dem Markt der präklinischen Bildgebungssysteme Marktführer. Die wichtigsten Mitbewerber sind \textit{Aspect Imaging} und \textit{MR Solutions}.
  
-\section{Ausgangssituation und Aufgabenstellung}
+\section{Ausgangssituation}
 In einer typischen Konfiguration eines Bruker \gls{mr}-Tomographens werden ein Hochfrequenz-Sendekanal ("\gls{rf}") und mehrere Hochfrequenz-Empfangskanäle verwendet. Übliche \gls{mrt}-Prozeduren in der präklinischen Bildgebung nutzen vier oder mehr Empfangsspulen. In der \gls{nmr}-Spektrometrie wird eine gleiche Anzahl an Sende- und Empfangsspulen eingesetzt.
 
 Aktuell teilen sich die Bruker \gls{nmr}-Spektrometer der \textit{AVANCE NEO} Generation und \gls{mr}-Tomographen der \textit{BioSpec}-Linie große Teile der Hochfrequenz-Elektronik. Sende- und Empfangselektronik für die in der Magnetresonanztechnik notwendigen \gls{rf}-Pulse mit Frequenzen von \SI{40}{\mega\hertz} bis einigen hundert \SI{}{\mega\hertz} sind auf Steckkarten für modulare Chassis-Systeme untergebracht. Dabei besteht eine Steckkarte (TRX1200, siehe \autoref{fig:trx12004er}) immer aus einem Sendepfad mit allen nötigen Wandlern und Verstärkern und einem Empfangspfad mit Eingangsverstärkern und den Analog-Digital-Umsetzern (\gls{adc}).
@@ -31,6 +31,8 @@ Aktuell teilen sich die Bruker \gls{nmr}-Spektrometer der \textit{AVANCE NEO} Ge
 
 Kommt eine solche Anordnung in der \gls{mrt} zum Einsatz, ergibt sich eine Situation wie in \autoref{fig:trx12004er} angedeutet. Bei vier notwendigen Karten wird lediglich eine der Karten vollständig ausgenutzt. Bei den restlichen TRX1200 Karten bleibt die Sendeelektronik ungenutzt.
 
+
+\section{Aufgabenstellung}
 Für zukünftige Produktentwicklungen sollen vorab in einem Technologie\-projekt Möglich\-keiten zur Optimierung der Signalkette evaluiert werden. Dabei spielen neben technischen Optimierungsmöglichkeiten auch wirtschaftliche Aspekte eine Rolle.
 Durch die unterschiedlichen Qualitätsanforderungen an die Sende- und Empfangselektroniken in der \gls{nmr} und der \gls{mrt} ergibt sich ein Einsparpotential: Da in der \gls{nmr} Spektren über die Fouriertransformation des \gls{fid} gemessen werden, ist zum Erreichen einer hohen spektralen Auflösung aufgrund der Reziprozität von Zeit- zu Frequenzbereich eine lange Messzeit von bis zu mehreren Stunden notwendig. An das Taktsignal des, zur Digitalisierung des \gls{fid}s, genutzten \gls{adc} werden daher hohe Stabilitätsanforderungen gestellt. In der \gls{mrt} dauert die Aufnahme eines Empfangssignals (in der Regel kein \gls{fid}, sondern ein Echo) meist nur wenige Millisekunden. Die Zeitdauern sind bei der klassischen \gls{mrt} zur morphologischen Bildgebung durch die verschiedenen eingesetzten Pulssequenzen, die gewünschte Ortsauflösung, etc. bestimmt.
 Durch die kürzere Akquisitionszeit einer \gls{mrt}-Aufnahme im Vergleich zu einem \gls{nmr}-Spektrum werden weniger strenge Anforderungen bezüglich der zeitlichen Langzeitstabilität an den Referenzoszillator gestellt.

@@ -1,43 +1,42 @@
 \chapter{Grundlagen}
-In diesem Kapitel werden einige Grundlagen erläutert, die für den weiteren Verlauf der Arbeit relevant sind.
+In diesem Kapitel werden Grundlagen erläutert, die für den weiteren Verlauf der Arbeit relevant sind.
 
 \section{(Präklinische-) Magnetresonanztomographie}
 Die MRT\footnote{Auch \textit{MRI} (eng. magnetic resonance imaging)} ist ein bildgebendes Verfahren, das den physikalischen Effekt der Kernspinresonanz (englisch: nuclear magnetic resonance (NMR)) nutzt.
 
 Als \textit{Tomographie}\footnote{von altgriechisch tome, Schnitt und graphein, schreiben; auch als \textit{Tomografie} geschrieben}-Verfahren ermöglicht es die MRT, dreidimensionale Strukturen als Schnittbilder aufzunehmen und diese zusammengesetzt wieder in 3D darzustellen. Die Schnittbilder geben die innere Struktur eines Objektes dabei so wieder, als wäre das Objekt tatsächlich in der betrachteten Ebene geschnitten. Insbesondere sind die Bilder im Vergleich zu Projektionsverfahren (wie z.B. der klassischen Röntgenaufnahme) über\-lagerungs\-frei.
 
-Im Gegensatz zur \textit{Computertomographie} (CT), einem weiteren sehr verbreitetem Tomographieverfahren, kommt bei einer MRT-Untersuchung keine ionisierende Strahlung zum Einsatz.
+Im Gegensatz zur \gls{ct}, einem weiteren sehr verbreitetem Tomographieverfahren, kommt bei einer \gls{mrt} -Untersuchung keine ionisierende Strahlung zum Einsatz.
 
-Die folgenden Abschnitte beschreiben den NMR-Effekt und die weiteren Techniken, die zur Bildentstehung in einem MRT-Gerät nötig sind. Im letzten Abschnitt wird auf die Besonderheiten der präklinischen Bildgebung eingegangen.
+Die folgenden Abschnitte beschreiben den \gls{nmr}-Effekt und die weiteren Techniken, die zur Bildentstehung in einem \gls{mrt}-Gerät nötig sind. Im letzten Abschnitt wird auf die Besonderheiten der präklinischen Bildgebung eingegangen.
 
 \subsection{Vom NMR-Effekt zur MRT}
-Die Entwicklung der Magnetresonanzbildgebung wurde erst durch die Entdeckung der Kernspinresonanz möglich. Der physikalische Effekt wird auch außerhalb englischsprachiger Länder meist \textit{nuclear magnetic resonance}, kurz NMR, genannt.
+Die Entwicklung der Magnetresonanzbildgebung wurde erst durch die Entdeckung der Kernspinresonanz möglich. Der physikalische Effekt wird auch außerhalb englischsprachiger Länder meist \textit{nuclear magnetic resonance}, kurz \gls{nmr}, genannt.
 
 1922 zeigten Otto Stern und Walther Gerlach im nach ihnen benannten Stern-Gerlach-Experiment die Quantelung von (Eigen-)Drehimpulsen: Silberatome werden aus einem Ofen heraus durch ein inhomogenes Magnetfeld auf eine Glasplatte beschleunigt. Klassisch wäre durch die Ablenkung des Magnetfeldes eine kontinuierliche Intensitäts-Verteilung um $0\degree$ auf der Platte zu erwarten. Stattdessen entstehen durch die quantisierten Spins zwei diskrete Punkte \cite{Gerlach1922}.
 
-Im Jahr 1938 konnte die Kernspinresonanz erstmals von Isidor Isaac Rabi durch eine Erweiterung des Stern-Gerlach-Versuchs nachgewiesen werden: Dazu wird die Anordnung des Stern-Gerlach-Versuchs um ein weiteres inhomogenes Magnetfeld dahinter ergänzt. Dieses ist umgekehrt gepolt und ansonsten identisch zum ersten Feld. Das erste Feld wirkt daher de-fokussierend auf die Atome, das zweite re-fokussierend. Wird ein homogenes Wechselmagnetfeld zwischen den beiden inhomogenen Feldern erzeugt, sinkt die gemessene Detektorintensität hinter der Anordnung bei einer bestimmten Frequenz. Bei dieser Frequenz $\omega_0$ wird die Resonanzbedingungen zwischen zwei Übergängen erreicht. $\omega_0$ heißt daher Resonanzfrequenz. Damit ist es möglich, die benötigte Energie zu bestimmen, um ein atomares, magnetisches Moment anzuregen. Für seine Arbeiten erhielt Rabi 1944 den Nobelpreis für Physik. \cite{Rabi1938}
+Im Jahr 1938 konnte die Kernspinresonanz erstmals von Isidor Isaac Rabi durch eine Erweiterung des Stern-Gerlach-Versuchs nachgewiesen werden: Dazu wird die Anordnung des Stern-Gerlach-Versuchs um ein weiteres inhomogenes Magnetfeld dahinter ergänzt. Dieses ist umgekehrt gepolt und ansonsten identisch zum ersten Feld. Das erste Feld wirkt daher de-fokussierend auf die Atome, das zweite re-fokussierend. Wird ein homogenes Wechselmagnetfeld zwischen den beiden inhomogenen Feldern erzeugt, sinkt die gemessene Detektorintensität hinter der Anordnung bei einer bestimmten Frequenz. Bei dieser Frequenz $\omega_0$ wird die Resonanzbedingungen zwischen zwei Übergängen erreicht. $\omega_0$ heißt daher Resonanzfrequenz. Damit ist es möglich, die benötigte Energie zu bestimmen, um ein atomares, magnetisches Moment anzuregen. Für seine Arbeiten erhielt Rabi 1944 den Nobelpreis für Physik \cite{Rabi1938}.
 
-Weitere Pionierarbeit auf dem Gebiet der NMR leisteten der Schweizer Physiker Felix Bloch und der US-Amerikaner Edward Mills Purcell: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander den NMR-Effekt in Flüssigkeiten bzw. Feststoffen. Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
+Weitere Pionierarbeit auf dem Gebiet der \gls{nmr} leisteten der Schweizer Physiker Felix Bloch und der US-Amerikaner Edward Mills Purcell: Mit unterschiedlichen Versuchsaufbauten entdeckten die Physiker in den 1940er Jahren fast zeitgleich und unabhängig voneinander den \gls{nmr}-Effekt in Flüssigkeiten bzw. Feststoffen (vgl. \cite{Bloch1946} und \cite{Purcell1946}). Bloch und Purcell wurde 1952 gemeinsam der Nobelpreis für Physik verliehen.
 
-Paul Lauterbur gelang 1973 die erste Aufnahme eines MR-Bildes: Ein dünnes, mit Wasser gefülltes Röhrchen ist in einem \SI{1.4}{\tesla} starken Magnetfeld platziert. Durch Anlegen von, jeweils um \SI{45}{\degree} weiter rotierten, Feldgradienten wurden Projektionen des Transversalmagnetfeldes der Probe erzeugt. Aus diesen konnten dann mit der, aus der Computertomographie bekannten, Methode der Rückprojektion das Originalbild gewonnen werden \cite{LAUTERBUR1973}.
+Paul Lauterbur gelang 1973 die erste Aufnahme eines \gls{mr}-Bildes: Ein dünnes, mit Wasser gefülltes Röhrchen ist in einem \SI{1.4}{\tesla} starken Magnetfeld platziert. Durch Anlegen von, jeweils um \SI{45}{\degree} weiter rotierten, Feldgradienten wurden Projektionen des Transversalmagnetfeldes der Probe erzeugt. Aus diesen konnten dann mit der, aus der Computertomographie bekannten, Methode der Rückprojektion das Originalbild gewonnen werden \cite{LAUTERBUR1973}.
 
-Sowohl das Team um Richard R. Ernst, als auch Peter Mansfield verbesserten die, zu der Zeit noch als \textit{Zeugmatography} oder \textit{NMR Imaging} bekannte, Technik durch die Verwendung von eingestrahlten RF-Pulsen und Ausnutzung der, zur damaligen Zeit noch recht neuen, schnellen Fourier Transformation (FFT) zur Rekonstruktion \cite{Kumar1975}, \cite{Mansfield1977}.
+Sowohl das Team um Richard R. Ernst, als auch Peter Mansfield verbesserten die, zu der Zeit noch als \textit{Zeugmatography} oder \textit{NMR Imaging} bekannte, Technik durch die Verwendung von eingestrahlten \gls{rf}-Pulsen und Ausnutzung der, zur damaligen Zeit noch recht neuen, \gls{fft} zur Rekonstruktion \cite{Kumar1975}, \cite{Mansfield1977}.
 
-Als die erste medizinische MRT-Aufnahme gilt die Darstellung in \autoref{fig:mansfieldFinger}.
+Als die erste medizinische \gls{mrt}-Aufnahme gilt die Darstellung in \autoref{fig:mansfieldFinger}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/ext/mansfieldFinger.png}
-	\caption[Erste MRT-Aufnahme von Mansfield]{Erste veröffentlichte MRT-Aufnahme (um 1976), Finger mit sichtbarem Knochen; Die Farbskala kodiert die Signalstärke \cite{Mansfield1977a}}
+	\caption[Erste MRT-Aufnahme von Mansfield]{Erste veröffentlichte MRT-Aufnahme (um 1976); gezeigt ist ein Finger mit sichtbarem Knochen; Die Farbskala kodiert die Signalstärke \cite{Mansfield1977a}}
 	\label{fig:mansfieldFinger}
 \end{figure}
 
-In \cite{Damadian1971} zeigte der Mediziner Raymond Damadian mit Hilfe von NMR Spektren, dass sich gesundes Gewebe und Tumorgewebe in den Relaxationszeiten T1 und T2 (siehe \autoref{sec:theory}) unterscheiden: Krebszellen weisen typisch höhere T1 und T2 Zeiten auf als das umliegende Gewebe \cite{Damadian1971}. Damit war abzusehen, dass die MRT einen hohen Nutzen in Forschung und Diagnostik haben wird. Damadian meldete 1977 den ersten Ganzkörper-MR-Tomographen zum Patent an.
+In \cite{Damadian1971} zeigte der Mediziner Raymond Damadian mit Hilfe von \gls{nmr}-Spektren, dass sich gesundes Gewebe und Tumorgewebe in den Relaxationszeiten T1 und T2 (siehe \autoref{sec:nmrTheory}) unterscheiden: Krebszellen weisen typisch höhere T1 und T2 Zeiten auf als das umliegende Gewebe \cite{Damadian1971}. Auch wenn dieses Ergebnis nicht unumstritten ist, war damit abzusehen, dass die \gls{mrt} einen hohen Nutzen in Forschung und Diagnostik haben wird. Damadian meldete 1977 den ersten Ganzkörper-\gls{mr}-Tomographen zum Patent an.
 
 Paul Lauterbur und Peter Mansfield erhielten 2003 den Nobelpreis für Physiologie oder Medizin.
 
 \subsection{Quantenmechanische Grundlagen}
-\label{sec:theory}
 \label{sec:nmrTheory}
 Atomkerne weisen, ähnlich wie Elektronen, einen Spin auf. Der Spindrehimpuls $\vec{S}$ ergibt sich mit dem Spinoperator $\vec{I}$ und dem reduzierten Planckschen Wirkungsquantum $\hbar$ zu \cite[S.~55]{Nishimura1996}:
 \begin{equation}
@@ -92,7 +91,7 @@ bzw. einer Frequenz $f_0$ von
 	f_0=\frac{\gamma}{2\pi} |\vec{B}| = \frac{\gamma}{2\pi} B_z
 \end{equation}
 
-In der MRT werden fast ausschließlich Wasserstoffprotonen für die Visualisierung genutzt. In der MR-Spektroskopie werden neben den \ce{^{1}H}-Kernen noch andere Atomkerne, wie zum Beispiel \ce{^{31}P} oder \ce{^{13}C} genutzt \cite{Andrade2014}. Für die hier erwähnten Atomkerne sind die gyromagnetischen Verhältnisse (geteilt durch $2\pi$) in \autoref{tab:gyroV} angegeben.
+In der \gls{mrt} werden fast ausschließlich Wasserstoffprotonen für die Visualisierung genutzt. In der \gls{mr}-Spektroskopie werden neben den \ce{^{1}H}-Kernen noch andere Atomkerne, wie zum Beispiel \ce{^{31}P} oder \ce{^{13}C} genutzt \cite{Andrade2014}. Für die hier erwähnten Atomkerne sind die gyromagnetischen Verhältnisse (geteilt durch $2\pi$) in \autoref{tab:gyroV} angegeben.
 
 \begin{table}[H]
 	\centering
@@ -109,18 +108,18 @@ In der MRT werden fast ausschließlich Wasserstoffprotonen für die Visualisieru
 	\end{tabular}
 \end{table}
 
-Wird mit einem Mikrowellensender ein RF-Puls der Energie $E=\gamma \hbar B_0$ so eingestrahlt, dass ein Magnetfeld $B_1$ senkrecht zu $B_0$ entsteht, resultiert daraus
+Wird mit einem Mikrowellensender ein \gls{rf}-Puls der Energie $E=\gamma \hbar B_0$ so eingestrahlt, dass ein Magnetfeld $B_1$ senkrecht zu $B_0$ entsteht, resultiert daraus
 \begin{equation}
 	\vec{B}=\vec{B_0}+\vec{B_1}
 \end{equation}
-wodurch $\vec{M}$ aus dem thermischen Gleichgewicht abgelenkt wird. $\vec{M}$ präzediert daraufhin, wie in \autoref{eq:Mdgl} beschrieben. Je nach Dauer des RF-Pulses kann damit ein beliebiger Winkel $\alpha$ zwischen $\vec{M}$ und $\vec{M_{eq}}$ eingestellt werden. $\vec{M_{eq}}$ entspricht dabei der Magnetisierung im thermischen Gleichgewicht
+wodurch $\vec{M}$ aus dem thermischen Gleichgewicht abgelenkt wird. $\vec{M}$ präzediert daraufhin, wie in \autoref{eq:Mdgl} beschrieben. Je nach Dauer des \gls{rf}-Pulses kann damit ein beliebiger Winkel $\alpha$ zwischen $\vec{M}$ und $\vec{M_{eq}}$ eingestellt werden. $\vec{M_{eq}}$ entspricht dabei der Magnetisierung im thermischen Gleichgewicht
 \begin{equation}
 	\vec{M_{eq}} = (0,0,M_{z,eq}).
 \end{equation}
- 
-RF-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. Pulse, die eine Drehung der Spins um 180\degree verursachen, werden als \textit{180\degree-Pulse} bezeichnet und finden zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE}) Anwendung. Anregungspulse für Gradienten\-echo-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
 
-Nach einer Anregung mit einem RF-Puls setzen zwei, voneinander unabhängige Relaxationsphänomene ein \cite{Nishimura1996}:
+\gls{rf}-Pulse, die zu einem "Umklappen" von $\vec{M}$ von der $z$-Achse in die $xy$-Ebene führen, werden als \textit{90\degree-Pulse} bezeichnet. Pulse, die eine Drehung der Spins um 180\degree verursachen, werden demnach als \textit{180\degree-Pulse} bezeichnet und finden zum Beispiel bei Spinecho- oder Inversion-Recovery-Sequenzen (siehe \autoref{sec:SE}) Anwendung. Anregungspulse für Gradienten\-echo-Sequenzen (siehe \autoref{sec:GRE}) werden häufig so gewählt, dass die Magnetisierung nicht vollständig in die $xy$-Ebene klappt. Diese Pulse werden dann allgemein als \textit{$\alpha$-Puls}\footnote{In diesem Fall gilt meist: $\alpha<\SI{90}{\degree}$} bezeichnet.
+
+Nach einer Anregung mit einem \gls{rf}-Puls setzen zwei, voneinander unabhängige Relaxationsphänomene ein \cite{Nishimura1996}:
 \begin{itemize}
 	\item \textbf{Longitudinale Relaxation:} Mit einer Zeitkonstanten $T1$ wird die Magnetisierung $\vec{M}$ zum thermischen Gleichgewicht $M_{eq}$ zurückkehren. Die Differentialgleichung für die Relaxation der $M_z$-Komponente ist:
 	\begin{equation}
@@ -148,6 +147,7 @@ Nach einer Anregung mit einem RF-Puls setzen zwei, voneinander unabhängige Rela
 Präzession und die beiden Relaxationsphänomene können in den \textit{Blochgleichungen} zusammengefasst dargestellt werden.
 
 \subsection{Blochgleichungen}
+\label{sec:blocheq}
 Die Blochgleichungen (1946 von Felix Bloch in \cite{Bloch1946} vorgestellt) gelten in Flüssigkeiten und eingeschränkt auch in Festkörpern. 
 Ohne Relaxation lauten sie (zusammengefasst in vektorieller Schreibweise):
 \begin{equation}
@@ -177,7 +177,7 @@ Oder zusammengefasst in vektorieller Schreibweise \cite[S.~61]{Nishimura1996}:
 \end{equation}
 
 Gleichungen \ref{eq:bloch1}, \ref{eq:bloch2} und \ref{eq:bloch3} beschreiben die Spins in einem ruhenden Koordinatensystem (auch "Laborsystem" genannt).
-In der Praxis wird das MR Empfangssignal meist mit einem Quadraturmischer mit einer Kreisfrequenz $\omega_T \approx \omega_0$ herunter gemischt. Dies entspricht einer Koordinatentransformation vom ruhenden System $(x,y,z)$ in ein rotierendes Koordinatensystem $(x',y',z')$.
+In der Praxis wird das \gls{mr}-Empfangssignal meist mit einem Quadraturmischer mit einer Kreisfrequenz $\omega_T \approx \omega_0$ herunter gemischt. Dies entspricht einer Koordinatentransformation vom ruhenden System $(x,y,z)$ in ein rotierendes Koordinatensystem $(x',y',z')$.
 Es ergeben sich die Blochgleichungen im rotierenden System \cite[S.~313]{Doessel2016}:
 \begin{subequations}
 	\label{eq:blochRot}
@@ -198,7 +198,7 @@ mit
 
 
 \subsection{Mit NMR/MRT detektierbare Eigenschaften von Gewebe}
-Als bildgebendes Verfahren ist es das Ziel eines Tomographen, Gewebearten zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem MRT Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren NMR-Eigenschaften hinreichend unterscheiden, so dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1-gewichteten MRT Aufnahme gut nachweisen lässt, da sich die T1-Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
+Als bildgebendes Verfahren ist es das Ziel eines Tomographen, Gewebearten zu identifizieren und von benachbartem Gewebe zu unterscheiden. Um also zwei Gewebearten in einem \gls{mrt}-Schnittbild unterscheiden zu können, ist es notwendig, dass sich die Gewebe in ihren \gls{nmr}-Eigenschaften hinreichend unterscheiden, so dass dieser Unterschied auch vom Gerät erfasst werden kann. Ein Vergleich einiger Gewebearten zeigt \autoref{tab:gewebe}. Es wird deutlich, dass sich beispielsweise eine Metastase in der Leber mit einer T1-gewichteten \gls{mrt}-Aufnahme gut nachweisen lässt, da sich die T1-Zeiten von gesundem Lebergewebe und der Metastase deutlich unterscheiden.
 
 Mit einem MR-Tomographen werden üblicherweise die folgenden Größen visualisiert:
 \begin{itemize}
@@ -210,7 +210,7 @@ Die chemische Verschiebung kann ebenfalls ortsaufgelöst gemessen werden. Dies w
 
 \begin{table}[H]
 	\centering
-	\caption[MRT relevante Eigenschaften ausgewählter Gewebe]{MRT relevante Eigenschaften von einigen ausgewählten Gewebearten bei einer Feldstärke von \SI{1.5}{\tesla} (in Anlehnung an \cite[S.~16]{Weishaupt2014} und \cite[S.~17]{Reiser2008})}
+	\caption[MRT relevante Eigenschaften ausgewählter Gewebe]{\gls{mrt} relevante Eigenschaften von einigen ausgewählten Gewebearten bei einer Feldstärke von \SI{1.5}{\tesla} (in Anlehnung an \cite[S.~16]{Weishaupt2014} und \cite[S.~17]{Reiser2008})}
 	\label{tab:gewebe}
 	\begin{tabular}{llll}
 		\toprule
@@ -232,24 +232,24 @@ Die chemische Verschiebung kann ebenfalls ortsaufgelöst gemessen werden. Dies w
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{img/ext/metastase.png}
-	\caption[Lebermetastase]{Darstellung einer Lebermetastase mit einem MRT; Gezeigt ist ein axialer Schnitt durch den Körper; Die Aufnahme entstammt einer T1-gewichteten "spoiled gradient"-Aufnahme mit Fettunterdrückung; Es wurde kein Kontrastmittel verwendet \cite[S.~872]{Reiser2008}}
+	\caption[Lebermetastase]{Darstellung einer Lebermetastase mit einem \gls{mrt}; Gezeigt ist ein axialer Schnitt durch den Körper; Die Aufnahme entstammt einer T1-gewichteten "spoiled gradient"-Aufnahme mit Fettunterdrückung; Es wurde kein Kontrastmittel verwendet \cite[S.~872]{Reiser2008}}
 	\label{fig:metastase}
 \end{figure}
 
-Wie sich die Gewichtung bei einer MRT-Aufnahme einstellen lässt, ist in \autoref{sec:gewichtung} gezeigt.
+Wie sich die Gewichtung bei einer \gls{mrt}-Aufnahme einstellen lässt, ist in \autoref{sec:gewichtung} gezeigt.
 
 \subsection{Aufbau eines MR-Tomographen}
-Der Aufbau eines MR-Tomograpen ist in \autoref{fig:biospecAnot} schematisch dargestellt.
+Der Aufbau eines \gls{mr}-Tomograpen ist in \autoref{fig:biospecAnot} schematisch dargestellt.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{\textwidth}{!}{\includegraphics[]{img/biospec.tikz}}
-	\caption[Aufbau MR-Tomographen]{Aufbau eines MRT (ohne Stromversorgung, Steuerungssysteme, Kühlsysteme und Bedienpanel)}
+	\caption[Aufbau MR-Tomographen]{Aufbau eines \gls{mrt} (ohne Stromversorgung, Steuerungssysteme, Kühlsysteme und Bedienpanel)}
 	\label{fig:biospecAnot}
 \end{figure}
 
 \subsubsection{Statisches Magnetfeld}
-Das statische Magnetfeld, auch $B_0$-Feld genannt, wird durch einen Magneten erzeugt. Dieser muss über eine ausreichend dimensionierte Öffnung verfügen, so dass der zu untersuchende Körper und andere Spulensysteme des Tomographen darin Platz finden. Mit Feldstärken im Bereich von \SI{0.3}{\tesla} (bei klinischen MRT Systemen) bis hin zu \SI{15}{\tesla} im Bereich der präklinischen MRTs ist das $B_0$-Feld verglichen mit dem Erdmagnetfeld\footnote{etwa \SI{50}{\micro\tesla} \cite{Enc1994}} oder einem Kühlschrankmagneten\footnote{etwa \SI{0.1}{\tesla} \cite{LHC2018}} ein sehr starkes Magnetfeld.
+Das statische Magnetfeld, auch $B_0$-Feld genannt, wird durch einen Magneten erzeugt. Dieser muss über eine ausreichend dimensionierte Öffnung verfügen, so dass der zu untersuchende Körper und andere Spulensysteme des Tomographen darin Platz finden. Mit Feldstärken im Bereich von \SI{0.3}{\tesla} (bei klinischen \gls{mrt} Systemen) bis hin zu \SI{15}{\tesla} im Bereich der präklinischen \gls{mrt} ist das $B_0$-Feld verglichen mit dem Erdmagnetfeld\footnote{etwa \SI{50}{\micro\tesla} \cite{Enc1994}} oder einem Kühlschrankmagneten\footnote{etwa \SI{0.1}{\tesla} \cite{LHC2018}} ein sehr starkes Magnetfeld.
 Erzeugt wird das $B_0$-Feld entweder mit einem Permanentmagneten oder einem Elektromagneten. 
 
 Auch wenn sich \textit{Permanentmagnet}-Systeme durch ihren einfachen Aufbau und einen kostengünstigen, wartungsfreien Betrieb auszeichnen, sind sie weniger verbreitet. Die mit Permanentmagneten erzielbaren Feldstärken von etwa einem Tesla sind für die Forderung nach hohen Signal-Rausch-Verhältnissen oft zu gering.
@@ -268,25 +268,25 @@ Um diese auszugleichen, wird Shimming (von eng. \textit{shim}, Keil) betrieben. 
 \end{itemize}
 
 \subsubsection{Gradientenspulen}
-Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken statischen Feld schwächere, zeitlich variable Felder überlagern. Im Gegensatz zum $B_0$-Feld, sind diese Felder \textit{in}homogen. Ihre Feldstärke variiert linear mit dem Ort. Diese lineare Feldänderung wird als Gradient bezeichnet und ist meist in x, y oder z-Richtung ausgeprägt. Da diese Felder schnell umgeschaltet werden müssen, können sie nicht als supraleitende Spulen ausgeprägt werden, sondern sind resistiver Art. Das schnelle Umschalten erfordert leistungsstarke elektrische Verstärker.
+Das Gradientensystem besteht aus mehreren Spulenanordnungen, die dem starken statischen Feld schwächere, zeitlich variable Felder überlagern. Im Gegensatz zum $B_0$-Feld, sind diese Felder \textit{in}homogen. Ihre Feldstärke variiert linear mit dem Ort. Diese lineare Feldänderung wird als Gradient bezeichnet und ist meist in x, y oder z-Richtung ausgeprägt. Da diese Felder schnell umgeschaltet werden müssen, können sie nicht als supraleitende Spulen ausgeprägt werden, sondern sind resistiver Art. Das schnelle Umschalten erfordert leistungsstarke elektrische Verstärker. Relevante Kenngrößen für das gesamte Gradientensystem sind die maximale Gradientenstärke und die sog. "Slew-rate". Die maximale Gradientstärke ist eine wichtige Größe für die erreichbare Bildauflösung. Sie beträgt einige \SI{10}{\milli\tesla\per\meter} bis \SI{1000}{\milli\tesla\per\meter}. Die Slew-rate gibt die Anstiegsgeschwindigkeit für die Gradientenfelder an und ist damit eine begrenzende Zeit für schnelle Aufnahmesequenzen. Sie beträgt etwa $\SI{50}{\tesla\per\meter\per\second} \dots \SI{10000}{\tesla\per\meter\per\second}$.
 
 \subsubsection{Hochfrequenz Sende- und Empfangsspulen}
-Das Hochfrequenzsignal wird über die sog. RF Spulen eingestrahlt. Entweder über die gleiche Spule, oder über separate Empfangsspulen wird das entstehende MR-Signal empfangen. Einige moderne Tomographen setzen Helium-gekühlte Hochfrequenz-Spulensysteme ein.
+Das Hochfrequenzsignal wird über die sog. \gls{rf}-Spulen eingestrahlt. Entweder über die gleiche Spule, oder über separate Empfangsspulen wird das entstehende \gls{mr}-Signal empfangen. Einige moderne Tomographen setzen Helium-gekühlte Hochfrequenz-Spulensysteme ein.
 
 \subsubsection{Abschirmung}
-Zum Schutz des MRT vor externer Störstrahlung und zum Schutz der Umgebung (Menschen und andere Geräte) sind Abschirmungen nötig.
+Zum Schutz des \gls{mrt} vor externer Störstrahlung und zum Schutz der Umgebung (Menschen und andere Geräte) sind Abschirmungen nötig.
 Der Magnet für das statische Magnetfeld erzeugt nicht nur das nutzbare $B_0$-Feld, sondern auch magnetische Streufelder. Diese können passiv, z.B. durch Stahlplatten oder aktiv durch zusätzliche Spulen abgeschirmt werden.
 
-Von den Gradientenspulen erzeugte Streufelder, welche durch Wirbelströme entstehen, können auf ähnliche Art und Weise unterdrückt werden.
+Von den Gradientenspulen erzeugte Streufelder, welche durch Wirbelströme entstehen, können auf ähnliche Art und Weise unterdrückt werden. Die Felder der Gradientensysteme können sich auch störend auf benachbarte Elektronik-Komponenten auswirken, da Abschirmungen aufwendig und teuer sind.
 
-Eine RF-Abschirmung des Raumes, in dem der MR-Tomograph betrieben wird, ist notwendig, damit das MRT-Gerät keine Störstrahlung nach Außen emittiert und damit keine externen Störsignale die Bildaufnahme stören können.
-Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist \cite{Weibler1993}. Problematisch ist die ausreichende Abschirmung der Eingangstür. Durch Materialverschleiß treten dort besonders häufig RF-Lecks auf.
+Eine \gls{rf}-Abschirmung des Raumes, in dem der \gls{mr}-Tomograph betrieben wird, ist notwendig, damit das \gls{mrt}-Gerät keine Störstrahlung nach Außen emittiert und damit keine externen Störsignale die Bildaufnahme stören können.
+Dazu ist es zum Beispiel möglich, den kompletten Raum mit einem Metall auszukleiden, um einen Faradayschen Käfig zu bilden. Kupfer ist dafür gut geeignet, da aufgrund seiner geringen Skin-Tiefe im Megahertz-Bereich eine dünne Folie ausreichend ist \cite{Weibler1993}. Problematisch ist die ausreichende Abschirmung der Eingangstür. Durch Materialverschleiß treten dort besonders häufig \gls{rf}-Lecks auf.
 
 \subsection{Bildentstehung im MR-Tomographen}
-Zur Rekonstruktion eines Körpers in einem MRT müssen die Signale, welche die Empfangsspulen erreichen, so beschaffen sein, dass daraus auf ihren Ursprungsort geschlossen werden kann. Für diese Kodierung werden die Gradientenspulen eingesetzt. Zunächst wird parallel zur $xy$-Ebene eine Schicht im Körper ausgewählt. Dann werden die Pixel in diesem Schichtbild so kodiert, dass ihre Position in $x$- und $y$-Richtung bestimmt ist.
+Zur Rekonstruktion eines Körpers in einem \gls{mrt} müssen die Signale, welche die Empfangsspulen erreichen, so beschaffen sein, dass daraus auf ihren Ursprungsort geschlossen werden kann. Für diese Kodierung werden die Gradientenspulen eingesetzt. Zunächst wird parallel zur $xy$-Ebene eine Schicht im Körper ausgewählt. Dann werden die Pixel in diesem Schichtbild so kodiert, dass ihre Position in $x$- und $y$-Richtung bestimmt ist.
 
 \subsubsection{Selektive Anregung/Schichtwahl}
-Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des HF-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
+Zur Auswahl einer Schicht parallel zur z-Ebene wird während der Einstrahlung des \gls{rf}-Pulses ein Gradient in z-Richtung, $G_z=\frac{\partial B_z}{\partial z}$ eingeschaltet.
 
 Die Amplitudenfunktion $B_T(t)$, mit der das HF-Signal moduliert wird, ist so gewählt, dass eine möglichst scharf begrenzte Schicht in z-Richtung selektiert wird (\autoref{fig:rfForm}).
 
@@ -299,9 +299,9 @@ Die Amplitudenfunktion $B_T(t)$, mit der das HF-Signal moduliert wird, ist so ge
 
 Daher wird meist
 \begin{equation}
-	B_T(t) \simeq \frac{sin(x)}{x}
+	B_T(t) \sim \frac{sin(x)}{x}
 \end{equation}
-als Amplitudenfunktion gewählt (siehe \autoref{fig:rfForm}), da die Fourier-Transformierte der (zeitlich unendlich langen) sinc-Funktion ein Rechteck-Puls ist. Da sich ein unendlich langer sinc-Puls nicht realisieren lässt, sind perfekt scharfe Schichtselektionen und beliebig dünne Schichten nicht möglich.
+als Amplitudenfunktion gewählt (siehe \autoref{fig:rfForm}), da die Fourier-Transformierte der (zeitlich unendlich langen) sinc-Funktion ein Rechteck-Puls ist. Da sich ein unendlich langer sinc-Puls nicht realisieren lässt, sind perfekt scharfe Schichtselektionen nicht möglich.
 
 \subsubsection{Phasenkodierung}
 Zur Lokalisierung in der $xy$-Ebene wird zunächst ein Phasenkodiergradient (z.B. $\vec{G_y}$ in $y$-Richtung) angelegt. Dieser wird nur kurz für eine konstante Zeit $T_y$, aber mit variabler Amplitude $G_y$ eingeschaltet. Dadurch wird die Präzessionsfrequenz für alle Spins entlang der $y$-Achse kurzzeitig geändert. Nach Abschalten von $\vec{G_y}$ präzedieren alle Spins wieder mit $\omega_0$, aber mit unterschiedlicher Phase. Die nun vorhandene örtliche lineare Zunahme der Phase entspricht einer Ortsfrequenz. Je nach Amplitude des Phasenkodiergradienten wird eine andere Ortsfrequenz in $y$-Richtung eingestellt. Je nachdem, ob die gerade eingestellte Amplitude (und damit Ortsfrequenz) zu einer in $y$-Richtung vorhandenen Ortsfrequenz passt, entsteht ein mehr oder weniger großes MR-Empfangssignal \cite{Bushong2014}, \cite{Edelstein1980}.
@@ -327,9 +327,10 @@ eingeführt werden \cite[S.~333]{Doessel2016}, da für die Ortsfrequenzen nicht 
 	\label{fig:kSpace}
 \end{figure} 
 
-Die verschiedenen MRT-Pulssequenzen fahren mit den Gradientenspulen Trajektorien in k-Raum ab, um diesen abzutasten.
+Die verschiedenen \gls{mrt}-Pulssequenzen fahren mit den Gradientenspulen Trajektorien in k-Raum ab, um diesen abzutasten.
 
 \subsubsection{k-Raum-Trajektorien}
+\label{sec:ktraj}
 Die \textit{k-Raum-Trajektorie} in einer zuvor selektierten Schicht ist eine zweidimensionale Parameterkurve mit der Zeit als Parameter:
 \begin{equation}
 \vec{s_k}(t)=\begin{pmatrix}k_x(t) \\ k_y(t)\end{pmatrix}
@@ -363,7 +364,7 @@ Schnelle Pulssequenzen wie die Echo-Planar-Sequenz (EPI, echo planar imaging) we
 \end{figure} 
 
 \subsection{MRT-Pulssequenzen}
-Die zeitliche Abfolge der Gradientenfelder (Schichtwahl, Phasenkodierung und Frequenzkodierung) und der Hochfrequenz-Anregungssignale wird als MRT Pulssequenz bezeichnet.
+Die zeitliche Abfolge der Gradientenfelder (Schichtwahl, Phasenkodierung und Frequenzkodierung) und der Hochfrequenz-Anregungssignale wird als \gls{mrt}-Pulssequenz bezeichnet.
 Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 \begin{itemize}
 	\item \textbf{SE}: Spinecho-Sequenz
@@ -371,7 +372,7 @@ Drei wichtige, so genannte Basispulssequenzen sind \cite[S. 999]{Weishaupt2014}:
 	\item \textbf{GRE}: Gradientenecho-Sequenz
 \end{itemize}
 
-Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel für spezielle Aufnahmemodi, wie die Diffusionsbildgebung, nötig sind oder die Aufnahmezeit stark verkürzen. Zwei Beispiele für die "schnellen" Sequenzen sind \textit{Turbo-Spinecho} und \textit{Echo Planar Imaging}.
+Darüber hinaus gibt es heute zahlreiche weitere Sequenzen, die zum Beispiel für spezielle Aufnahmemodi, wie die Diffusionsbildgebung, nötig sind oder die Aufnahmezeit stark verkürzen. Zwei Beispiele für die "schnellen" Sequenzen sind \textit{Turbo-Spinecho (TSE)} und \textit{Echo Planar Imaging (EPI)}.
 
 
 \subsubsection{Spinecho-Sequenz}
@@ -380,25 +381,24 @@ Bei der Spinecho-Sequenz, abgekürzt mit \textit{SE}, erfolgt zunächst eine Anr
 
 Nach der Repetitionszeit $TR$ wird die Sequenz wiederholt. Durch Variation des Phasenkodiergradienten $G_{ph}$ wird bei jeder Wiederholung eine andere Zeile des k-Raums ausgewählt, die dann mit dem Frequenzkodiergradienten $G_f$ pixelweise ausgelesen wird.
 
-
 Die SE-Sequenz hat den Vorteil, dass statische Feldinhomogenitäten vollständig ausgeglichen werden. Durch die einstellbaren Zeiten $TE$ und $TR$ kann eine T1, T2 oder PD gewichtete Aufnahme erzeugt werden.
-Der sehr guten Bildqualität steht die lange Aufnahmezeit gegenüber.
+Der sehr guten Bildqualität steht die lange Aufnahmezeit gegenüber \cite[S.~257]{Bushong2014}.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/SE.tikz}}
-	\caption[Spinecho-Sequenz]{Zeitverlauf der Signale im MRT bei einer Spinecho-Sequenz}
+	\caption[Spinecho-Sequenz]{Zeitverlauf der Signale im \gls{mrt} bei einer Spinecho-Sequenz}
 	\label{fig:SE}
 \end{figure}
 
 \subsubsection{Inversion-Recovery-Sequenz}
 \label{sec:IR}
-Eine Variation der Spinecho-Sequenz ist die Inversion-Recovery-Sequenz, kurz IR-Sequenz. Dabei wird vor dem 90\degree-RF-Anregungspuls ein 180\degree-RF-Puls eingestrahlt. Die Zeit zwischen dem 180\degree-RF-Puls (dem sog. Inversionspuls) und dem Anregungspuls wird als Inversionszeit $TI$ (time of inversion) bezeichnet. Durch die einstellbare Inversionszeit kann das Signal einiger Gewebetypen unterdrückt werden oder es können stark T1-gewichtete Bilder erzeugt werden (\autoref{fig:IR}).
+Eine Variation der Spinecho-Sequenz ist die Inversion-Recovery-Sequenz, kurz IR-Sequenz. Dabei wird vor dem 90\degree-RF-Anregungspuls ein 180\degree-RF-Puls eingestrahlt. Die Zeit zwischen dem 180\degree-RF-Puls (dem sog. Inversionspuls) und dem Anregungspuls wird als Inversionszeit $TI$ (time of inversion) bezeichnet. Durch die einstellbare Inversionszeit kann das Signal einiger Gewebetypen unterdrückt werden oder es können stark T1-gewichtete Bilder erzeugt werden (\autoref{fig:IR}) \cite[S.~244]{Bushong2014}.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/IRE.tikz}}
-	\caption[Inversion-Recovery-Sequenz]{Zeitverlauf der Signale im MRT bei einer Inversion-Recovery-Sequenz}
+	\caption[Inversion-Recovery-Sequenz]{Zeitverlauf der Signale im \gls{mrt} bei einer Inversion-Recovery-Sequenz}
 	\label{fig:IR}
 \end{figure}
 
@@ -410,9 +410,9 @@ FLAIR Sequenzen werden zur Unterdrückung von Flüssigkeiten, wie zum Beispiel d
 \label{sec:GRE}
 Bei der Gradientenecho-Sequenz (GRE) wird kein 180\degree-RF-Puls zur Erzeugung eines Echos, sondern ein Polaritätswechsel des Frequenzkodiergradientens genutzt. Dadurch, dass der 180\degree-Puls eingespart werden kann, sind viel kürzere Repetitionszeiten $TR$ möglich. Da bei einer kleinen Repetitionszeit auch nur wenig Zeit für eine vollständige $T1$-Relaxation zur Verfügung steht, werden häufig Anregungswinkel von $\alpha<90\degree$ verwendet (\autoref{fig:GRE}).
 
-Durch die kleinen $TR$-Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der $T1$-Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient").
+Durch die kleinen $TR$-Zeiten ist es möglich, dass beim Auslesen noch ein Restsignal von der vorherigen Anregung vorhanden ist. Da sich dadurch der $T1$-Kontrast verschlechtert, wird das Restsignal häufig durch eine gezielte Dephasierung der Spins zerstört. Dies wird als \textit{Spoiling} bezeichnet. Pulssequenzen, die Spoiling einsetzen heißen zum Beispiel \textit{FLASH} ("fast low angle shot", Bezeichnung von Siemens) oder allgemeiner \textit{SPGR} ("spoiled gradient") \cite[S.~287]{Bushong2014}.
 
-Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht zu erhalten und diese für mehrere Echos zu nutzen. Die entsprechenden Pulssequenzen und ihre Weiterentwicklungen heißen \textit{GRASS} bzw. \textit{FIESTA} bei GE oder \textit{FISP} bzw. \textit{TrueFISP} bei Siemens.
+Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht zu erhalten und diese für mehrere Echos zu nutzen. Die entsprechenden Pulssequenzen und ihre Weiterentwicklungen heißen \textit{\gls{grass}} bzw. \textit{\gls{fiesta}} bei GE oder \textit{\gls{fisp}} bzw. \textit{TrueFISP} bei Siemens.
 
 \begin{figure}[H]
 	\centering
@@ -425,12 +425,12 @@ Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht z
 Eine modifizierte, schnellere Variante der Spinecho-Sequenz ist die Turbo-Spinecho-Sequenz. Je nach Hersteller des Tomographens wird sie auch als FSE (Fast Spin Echo, z.B. von GE verwendet) oder RARE (Rapid Acquisition with Refocused Echoes, z.B. von Bruker verwendet) bezeichnet.
 
 \subsubsection{Echoplanar-Sequenz}
-Echoplanar-Sequenzen, abgekürzt EPI (von Echo planar imaging), ermöglichen sehr kurze Aufnahmezeiten, da der gesamte k-Raum nach nur einem RF-Anregungspuls gefüllt wird. Heute verbreitet ist die sog. blipped EPI-Sequenz. Bei dieser wird der Phasenkodiergradient im Gegensatz zu der 1977 von Mansfield vorgestellten EPI Variante nicht konstant eingeschaltet, sondern mit kleinen Impulsen (eng. blips) geschaltet (vgl. \cite[S.~299]{Bushong2014}).
+\gls{epi}-Sequenzen ermöglichen sehr kurze Aufnahmezeiten, da der gesamte k-Raum nach nur einem \gls{rf}-Anregungspuls gefüllt wird. Heute verbreitet ist die sog. blipped-\gls{epi}-Sequenz. Bei dieser wird der Phasenkodiergradient im Gegensatz zu der 1977 von Mansfield vorgestellten EPI Variante nicht konstant eingeschaltet, sondern mit kleinen Impulsen (eng. blips) geschaltet (vgl. \cite[S.~299]{Bushong2014}).
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[]{img/EPI.tikz}}
-	\caption[Echoplanar Sequenz]{Zeitverlauf der Signale im MRT bei einer (blipped) EPI-Sequenz}
+	\caption[Echoplanar Sequenz]{Zeitverlauf der Signale im \gls{mrt} bei einer (blipped)-\gls{epi}-Sequenz}
 	\label{fig:EPIseq}
 \end{figure}
 
@@ -456,7 +456,7 @@ Für die Verhältnisse $\frac{TR}{T1}$ und $\frac{TE}{T2}$ können vier Fälle u
 	\item \textbf{$TR/T1\gg1$ und $TE/T2\ll1$}: PD-Gewichtung
 	\item (\textbf{$TR/T1\ll1$ und $TE/T2\gg1$}: Einfluss von sowohl T1 und T2, praktisch keine Bedeutung)
 \end{enumerate}
-Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die Fälle 1), 2) und 3) sind in \autoref{fig:Bildgewichtungen} dargestellt. Aus der Abbildung kann zum Beispiel abgelesen werden, dass sich mit einer T1-Gewichtung ein besserer Bildkontrast zwischen grauer und weißer Hirnmasse erreichen lässt, als mit einer PD gewichteten Aufnahme.
+Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die Fälle 1), 2) und 3) sind in \autoref{fig:Bildgewichtungen} dargestellt. Aus der Abbildung kann zum Beispiel abgelesen werden, dass sich mit einer T1-Gewichtung ein besserer Bildkontrast zwischen grauer und weißer Hirnmasse erreichen lässt, als mit einer PD-gewichteten Aufnahme.
 
 \begin{figure}[H]
 	\centering
@@ -487,7 +487,7 @@ Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die F
 
 
 \subsection{MRT-Artefakte}
-Zahlreiche Effekte können zu Artefakten in MRT-Aufnahmen führen. Welche Artefakte dominieren und ob die Bildqualität wesentlich verschlechtert wird, hängt stark von der Anwendung ab.
+Zahlreiche Effekte können zu Artefakten in \gls{mrt}-Aufnahmen führen. Welche Artefakte dominieren und ob die Bildqualität wesentlich verschlechtert wird, hängt stark von der Anwendung ab.
 
 Im wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomographen.
 
@@ -532,41 +532,40 @@ Zu den Suszeptibilitätsartefakte zählen Effekte, die ihre Ursache in Störunge
 Durch das Einbringen von ferromagnetischem Material in den Tomograph werden die Feldlinien lokal verzerrt, was einer Änderung der Larmorfrequenzen entspricht. Dadurch entstehen Verzerrungen im Bild oder es erscheinen dunkle Bereiche durch einen Signalverlust in den betreffenden Gebieten.
 
 \subsubsection{Phase Wrapping}
-Phase Wrapping, auch als "fold-over" oder "phase wrap-around" bezeichnet führt dazu, dass Strukturen, die außerhalb des gewählten Bildausschnitts liegen, in das Bild hinein gefaltet werden. Der Effekt tritt vor allem durch Aliasing in der Phasenkodierrichtung auf. Eine absolut eingestellte Phase ist nur innerhalb von $2\pi=360\degree$ eindeutig. So kann nicht unterschieden werden, ob eine Phase von z.B. $370\degree$ oder $10\degree$ vorliegt. Die Struktur des rechten Rands mit $\phi=370\degree$ wird daher am Ort von $\phi=10\degree$ abgebildet. Dagegen kann das FOV so vergrößert werden, dass die Orte, die ins Bild gefaltet würden außerhalb vom Körper liegen und daher kein Signal liefern. Auch bietet es sich manchmal an, Frequenzkodier- und Phasenkodierrichtung zu tauschen, da der Effekt in Frequenzkodierrichtung nicht auftaucht, weil dort durch Überabtastung kein Aliasing entsteht \cite{Pusey1988}, \cite{Heiland2008}.
+Phase Wrapping, auch als "fold-over" oder "phase wrap-around" bezeichnet führt dazu, dass Strukturen, die außerhalb des gewählten Bildausschnitts liegen, in das Bild hinein gefaltet werden. Der Effekt tritt vor allem durch Aliasing in der Phasenkodierrichtung auf. Eine absolut eingestellte Phase ist nur innerhalb von $2\pi = 360\degree$ eindeutig. So kann nicht unterschieden werden, ob eine Phase von z.B. $370\degree$ oder $10\degree$ vorliegt. Die Struktur des rechten Rands mit $\phi = 370\degree$ wird daher am Ort von $\phi = 10\degree$ abgebildet. Dagegen kann das \gls{fov} so vergrößert werden, dass die Orte, die ins Bild gefaltet würden außerhalb vom Körper liegen und daher kein Signal liefern. Auch bietet es sich manchmal an, Frequenzkodier- und Phasenkodierrichtung zu tauschen, da der Effekt in Frequenzkodierrichtung nicht auftaucht, weil dort durch Überabtastung kein Aliasing entsteht \cite{Pusey1988}, \cite{Heiland2008}.
 
 \subsubsection{Geisterbilder bei EPI-Sequenzen}
-Durch die Zickzack-Trajektorien bei EPI Sequenzen ist es notwendig, jede zweite akquirierte Zeile zu spiegeln, bevor sie in den k-Raum eingetragen wird. Dabei kann es zu Ausrichtungsfehlern kommen, die sich als Geister im rekonstruierten Bild bemerkbar machen \cite{Ianni2018}.
+Durch die Mäander-Trajektorien bei \gls{epi} Sequenzen ist es notwendig, jede zweite akquirierte Zeile zu spiegeln, bevor sie in den k-Raum eingetragen wird. Dabei kann es zu Ausrichtungsfehlern kommen, die sich als Geister im rekonstruierten Bild bemerkbar machen \cite{Ianni2018}.
 
 \subsection{Besonderheiten präklinischer MRT Systeme}
-MRTs für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Da Mäuse, Ratten und andere Nagetiere häufig als Modellorganismen in der Forschung eingesetzt werden, ist das Marktvolumen präklinischer Bildgebungssysteme für diese Tiere am größten. \cite{GBanimalStat} Die Magnetöffnung eines präklinischen MRTs ist daher kleiner als die eines vergleichbaren Gerätes in der Humanmedizin. Während jedoch bei klinischen Tomographen der Durchmesser der Magnetöffnung in etwa den maximalen Patientenabmaßen entspricht, ist die Bohrung eines präklinischen MRTs etwas größer als die Breite der zu untersuchenden Tiere: Da bei den meisten präklinischen MRTs das Gradientensystem und die Empfangsspulen wechselbar ausgeführt sind, muss für diese zusätzlicher Platz in der Bohrung vorgesehen werden. Zur Maximierung der Bildqualität wird der Abstand von Tier zu den Spulensystemen möglichst klein gewählt.
+\gls{mrt}s für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Da Mäuse, Ratten und andere Nagetiere häufig als Modellorganismen in der Forschung eingesetzt werden, ist das Marktvolumen präklinischer Bildgebungssysteme für diese Tiere am größten. \cite{GBanimalStat} Die Magnetöffnung eines präklinischen \gls{mrt}s ist daher kleiner als die eines vergleichbaren Gerätes in der Humanmedizin. Während jedoch bei klinischen Tomographen der Durchmesser der Magnetöffnung in etwa den maximalen Patientenabmaßen entspricht, ist die Bohrung eines präklinischen \gls{mrt}s etwas größer als die Breite der zu untersuchenden Tiere: Da bei den meisten präklinischen \gls{mrt}s das Gradientensystem und die Empfangsspulen wechselbar ausgeführt sind, muss für diese zusätzlicher Platz in der Bohrung vorgesehen werden. Zur Maximierung der Bildqualität wird der Abstand von Tier zu den Spulensystemen möglichst klein gewählt.
 
-Die Feldstärke des statischen Magnetfeldes ist bei präklinischen MRTs in der Regel höher als bei klinischen: Durch die, im Vergleich zum Menschen, kleineren geometrischen Abmessungen der Tierorgane werden für die präklinische Bildgebung kleinere Voxelgrößen gefordert. Diese führen zu kleineren Signalstärke pro Voxel und damit bei gleichbleibendem Rauschen zu einem reduzierten SNR.
+Die Feldstärke des statischen Magnetfeldes ist bei präklinischen \gls{mrt}s in der Regel höher als bei klinischen: Durch die, im Vergleich zum Menschen, kleineren geometrischen Abmessungen der Tierorgane werden für die präklinische Bildgebung kleinere Voxelgrößen gefordert. Diese führen zu kleineren Signalstärke pro Voxel und damit bei gleichbleibendem Rauschen zu einem reduzierten \gls{snr}.
 
-Das relative SNR kann aus der Protonendichte $\rho$, der Stärke des Spinmoments $\mu$, dem Durchmesser der Empfangsspule $d$, dem Voxelvolumen $V_{vox}$ und der Aufnahmezeit $T_{aq}$ abgeschätzt werden \cite[S.~161]{Kiessling2017}:
+Das relative \gls{snr} kann aus der Protonendichte $\rho$, der Stärke des Spinmoments $\mu$, dem Durchmesser der Empfangsspule $d$, dem Voxelvolumen $V_{vox}$ und der Aufnahmezeit $T_{aq}$ abgeschätzt werden \cite[S.~161]{Kiessling2017}:
 \begin{equation}
 \label{eq:SNR}
 	SNR \sim \rho \cdot \mu \cdot B_0 \cdot d^{-1} \cdot V_{vox} \cdot \sqrt{T_{aq}}
 \end{equation}
+
 Aus \autoref{eq:SNR} wird ersichtlich, dass bei gleichbleibenden Eigenschaften des Gewebes ($\rho$ und $\mu$) $B_0$ groß gewählt werden muss, wenn $V_{vox}$ klein ist.
 Dadurch, dass $B_0$ linear und $T_{aq}$ mit $\sqrt{T_{aq}}$ in die Gleichung eingeht, muss zur Erhaltung eines gegebenen SNRs bei Halbierung der Voxelgröße entweder die Aufnahmezeit vervierfacht werden\footnote{Die Aufnahmezeit ist nach oben durch die maximale Anästhesiezeit der Tiere begrenzt. Für Mäuse beträgt diese etwa eine bis drei Stunden \cite{Kiessling2017}}, oder ein MRT mit doppelter Feldstärke $B_0$ verwendet werden.
 
 Neben den für die Bildqualität entscheidenden Faktoren sind in der präklinischen Bildgebung zusätzlich Handhabungssysteme zur Betäubung, zur konsistenten Positionierung und zum Wärmeerhalt der anästhesierten Tiere im Gerät nötig.
 
 
-
-
 \section{Digitale Signalverarbeitung}
-Die RF-Sendesignale und die Spannungen an den Gradientenspulen in der MRT werden von einem sog. Sequenzer digital erzeugt und dann mit einem Digital-Analog-Umsetzer in analoge Signale umgewandelt. Die Empfangssignale werden mit einem Analog-Digital-Umsetzer wieder in digitale Signale gewandelt.
+Die \gls{rf}-Sendesignale und die Spannungen an den Gradientenspulen in der \gls{mrt} werden von einem sog. Sequenzer digital erzeugt und dann mit einem Digital-Analog-Umsetzer in analoge Signale umgewandelt. Die Empfangssignale werden mit einem Analog-Digital-Umsetzer (\gls{adc}) wieder in digitale Signale gewandelt.
 
 \subsection{Signale im Frequenzbereich}
-Ein zeitdiskretes Signal $x[n]$ entsteht aus einem zeitkontinuierlichen, analogen Signal $x(t)$ durch Abtastung mit der Abtastfrequenz $f_s$. Vor der Abtastung muss der Frequenzgehalt des Signals $x(t)$ durch eine Tiefpassfilterung auf den Bereich $0...\frac{f_s}{2}$ beschränkt werden (Nyquist–Shannon Theorem \cite{Shannon1949}).
+Ein zeit-diskretes Signal $x[n]$, mit der diskreten Zeit $n$, entsteht aus einem zeit-kontinuierlichen, analogen Signal $x(t)$ durch Abtastung mit der Abtastfrequenz $f_s$. Vor der Abtastung muss der Frequenzgehalt des Signals $x(t)$ durch eine Tiefpassfilterung auf den Bereich $0 \dots \frac{f_s}{2}$ beschränkt werden (Nyquist–Shannon Theorem \cite{Shannon1949}).
 Für quasi-kontinuierliche Simulationen, bei denen sehr hohe Abtastraten verwendet werden, wird oft $x[t]$ statt $x[n]$ geschrieben. Das abgetastete Signal der Länge $N$ ist dann an den diskreten Zeitpunkten
 \begin{equation}
-	t=0,\,\frac{1}{f_s},\,\frac{2}{f_s},\,...\,,\frac{N-1}{f_s}
+	t=0,\,\frac{1}{f_s},\,\frac{2}{f_s},\, \dots \,,\frac{N-1}{f_s}
 \end{equation}
 definiert.
 
-Für eine Darstellung im Frequenzbereich wird die \textit{diskrete Fouriertransformation (DFT)} verwendet. Statt DFT wird häufig der Begriff FFT (Fast Fourier Transform) verwendet. Die FFT ist dabei lediglich eine schnelle Implementierung der DFT.
+Für eine Darstellung im Frequenzbereich wird die \textit{diskrete Fouriertransformation (DFT)} verwendet. Statt \gls{dft} wird häufig der Begriff \gls{fft} verwendet. Die \gls{fft} ist dabei lediglich eine schnelle Implementierung der \gls{dft}.
 Das Spektrum hat die Frequenzauflösung $df=f_s/N$, die gleiche Länge wie $x[t]$ ($N$) und berechnet sich aus 
 \begin{equation}
 	X[f]=FFT\{x[n]\}.
@@ -578,12 +577,12 @@ X_{norm}[f]=\frac{1}{N} FFT\{x[n]\}.
 
 Der dazugehörige Frequenzvektor ist:
 \begin{equation}
-	f=(0,\, df,\, 2df,\, ...\,, f_s-df)-\frac{f_s}{2}
+	f=(0,\, df,\, 2df,\, \dots \,, f_s-df)-\frac{f_s}{2}
 \end{equation}
 
 Das, in der Regel komplexe, Spektrum $X[f]$ kann in Real- und Imaginärteil getrennt dargestellt werden. Üblicher ist jedoch eine Darstellung als einseitiges Amplitudenspektrum. Der für das einseitige Amplitudenspektrum, benötigte Frequenzvektor ist:
 \begin{equation}
-f=(0,\, df,\, 2df,\, ...\,, \frac{f_s}{2}-df)
+f=(0,\, df,\, 2df,\, \dots \,, \frac{f_s}{2}-df)
 \end{equation}
 Das normierte, einseitige Amplitudenspektrum ist:
 \begin{equation}
@@ -610,12 +609,12 @@ FIR-Filter (eng. finite impulse response filter, Filter mit endlicher Impulsantw
 Stochastische Prozesse sind ein hilfreiches Mittel zur Beschreibung von Rauschprozessen.
 
 \subsection{Definition und Kenngrößen}
-Ein stochastischer Prozess $x(t,\xi)$ besteht aus einem Zufallsexperiment und einer Zuordnung von Musterfunktionen zu den Elementarereignissen $\xi_\nu$ des Zufallsexperiments \cite[S.~243]{Leon2015}. Der Prozess $x(t,\xi)$ ist eine Funktion von zwei Variablen. Für einen festen Zeitpunkt $t=t_0$ kann $x(t=t_0,\xi)=x_{t_0}(\xi)$ als Zufallsvariable aufgefasst werden. Hingegen wird aus dem Prozess eine gewöhnliche, zeitabhängige Funktion, wenn $\xi=\xi_\nu$ konstant gehalten wird. Da in diesem Fall $x(t,\xi=\xi_\nu)=x_{\xi_\nu}(t)$ keinen Zufallscharakter mehr aufweist, ist $x_{\xi_\nu}(t)$ eine deterministische Musterfunktion.
+Ein stochastischer Prozess $x(t,\xi)$ besteht aus einem Zufallsexperiment und einer Zuordnung von Musterfunktionen zu den Elementarereignissen $\xi_v$ des Zufallsexperiments \cite[S.~243]{Leon2015}. Der Prozess $x(t,\xi)$ ist eine Funktion von zwei Variablen. Für einen festen Zeitpunkt $t=t_0$ kann $x(t=t_0,\xi)=x_{t_0}(\xi)$ als Zufallsvariable aufgefasst werden. Hingegen wird aus dem Prozess eine gewöhnliche, zeitabhängige Funktion, wenn $\xi=\xi_v$ konstant gehalten wird. Da in diesem Fall $x(t,\xi=\xi_v)=x_{\xi_v}(t)$ keinen Zufallscharakter mehr aufweist, ist $x_{\xi_v}(t)$ eine deterministische Musterfunktion.
 
 \subsection{Rauschprozesse}
 In der Elektronik bezeichnet \textit{Rauschen} eine, zumeist unerwünschte, nicht-\-deterministische Störung eines elektrischen Signals \cite{Heuermann2018}.
 
-Ein Rauschprozess ist als stochastischer Prozess durch sein Leistungsdichtespektrum und die Wahrscheinlichkeitsdichtefunktion seiner Ausgangswerte gegeben.
+Ein Rauschprozess ist als stochastischer Prozess $x(t,\xi)$ durch sein Leistungsdichtespektrum und die Wahrscheinlichkeitsdichtefunktion seiner Ausgangswerte gegeben.
 
 \section{Phasenrauschen}
 Nach \cite{IEEErandom} ist Phasenrauschen qualitativ definiert als:
@@ -774,8 +773,6 @@ Wenn die Originalfunktion $S[n]=S_x+j S_y$ mit $exp(j \Delta \phi)$ multiplizier
 \end{figure}
 
 
-
-
 \section{Messverfahren}
 Jitter und Phasenrauschen können mit einfachen Messgeräten, wie Oszilloskopen oder Spektrumanalysatoren, gemessen werden. Für die Bewertung von hoch-genauen Oszillatoren werden in der Regel spezielle Phasenrauschmessplätze verwendet.
 
@@ -794,7 +791,7 @@ Da hierbei der Träger nicht entfernt wird, ist die Messung hauptsächlich durch
 \end{figure}
 
 Ist eine Referenzquelle mit einer Frequenz gleich der Trägerfrequenz des Prüflings verfügbar, kann diese genutzt werden, um das Ausgangssignal des Prüflings auf $f=\SI{0}{\hertz}$ herunter zu mischen. Die spektralen Anteile bei der Summenfrequenz $f=f_{REF}+f_{DUT}$ werden durch einen Tiefpass abgetrennt. Das trägerfreie Phasenrauschsignal kann dann mit dem Spektrumanalyzer gemessen werden.
-Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL verwendet werden, um die Frequenz der Referenzquelle der Trägerfrequenz des Prüflings nachzuführen (\autoref{fig:phaseNoiseMixer}).
+Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL (Phase-locked loop, Phasenregelschleife) verwendet werden, um die Frequenz der Referenzquelle der Trägerfrequenz des Prüflings nachzuführen (\autoref{fig:phaseNoiseMixer}).
 
 \begin{figure}[H]
 	\centering
@@ -804,9 +801,10 @@ Gegen Drifts und Phasenrauschen bei sehr kleinen Offsetfrequenzen kann eine PLL 
 \end{figure}
 
 \section{Bildqualitätsmetriken}
-Mit einem MRT erzeugte Schnittbilder der Transversalmagnetisierung von einem Körper sollen helfen, eine Fragestellung in der Diagnostik bzw. Forschung zu beantworten. Neben der Unterscheidung in morphologische und funktionelle Bildgebung, muss auch unterschieden werden, welche Strukturgrößen aufgelöst werden sollen, wie groß der Kontrast benachbarter Gewebetypen sein muss, wie groß das Signal-zu-Rausch-Verhältnis sein darf usw. Außerdem ist für Studien, die über einen längeren Zeitraum durchgeführt werden, die Wiederholgenauigkeit wichtig.
+\label{sec:metrics}
+Mit einem \gls{mrt} erzeugte Schnittbilder der Transversalmagnetisierung von einem Körper sollen helfen, eine Fragestellung in der Diagnostik bzw. Forschung zu beantworten. Neben der Unterscheidung in morphologische und funktionelle Bildgebung, muss auch unterschieden werden, welche Strukturgrößen aufgelöst werden sollen, wie groß der Kontrast benachbarter Gewebetypen sein muss, wie groß das Signal-zu-Rausch-Verhältnis sein darf usw. Außerdem ist für Studien, die über einen längeren Zeitraum durchgeführt werden, die Wiederholgenauigkeit wichtig.
 
-Unabhängig vom Themenfeld der medizinischen (MR)-Bildgebung existieren in der digitalen Bildverarbeitung einige Qualitätsmetriken, mit denen die Qualität eines Bildes geschätzt werden oder die Ähnlichkeit eines Bildes zu einem Referenzbild bewertet werden kann \cite{Wang2006}.
+Unabhängig vom Themenfeld der medizinischen (\gls{mr})-Bildgebung existieren in der digitalen Bildverarbeitung einige Qualitätsmetriken, mit denen die Qualität eines Bildes geschätzt werden oder die Ähnlichkeit eines Bildes zu einem Referenzbild bewertet werden kann \cite{Wang2006}.
 
 \subsubsection{Qualitätsmetriken ohne Referenz}
 Metriken dieses Typs werden auch NR-Metriken (von eng. no reference) genannt. Dabei wird versucht einem Ausgangsbild eines Bildverarbeitungssystems eine Qualitätskennzahl zuzuordnen, ohne, dass das Originalbild vorliegt. Für Menschen ist diese Art der Bildbewertung recht einfach: Durch Vorwissen ist bekannt, dass "gute" Bilder einen hohen Kontrast aufweisen, scharf sind, etc. Aber auch der Inhalt kann in die Bewertung einbezogen werden. So würde ein Mensch ein Bild mit geringer Schärfentiefe nur dann als gut bewerten, wenn die relevanten Bildelemente im Fokus liegen. Für eine automatische Bewertung durch einen Algorithmus muss also auch Vorwissen (eine Heuristik) in Form einer Datenbank mit "guten" Bildern vorliegen, wenn eine inhaltsbezogene Bewertung erreicht werden soll.

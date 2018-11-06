@@ -3,7 +3,7 @@
 In diesem Abschnitt werden Simulationsergebnisse aus MRiLab vorgestellt und bewertet.
 
 \section{Gewählte Simulationsparameter}
-Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker BioSpec Tomographen möglichst gut entsprechen (vgl. \autoref{tab:brukerMRIparam}). Einige Parameter, wie die Auflösungen, müssen jedoch verkleinert werden, da größere Werte zu unvorhersehbaren Abstürzen von MRiLab führen. Die Größe des Aufnahmefelds (FOV) wird den Abmessungen des Phantoms angepasst. Die gewählten Parameter sind in \autoref{tab:mrilabparamSim} zusammengefasst.
+Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker BioSpec Tomographen möglichst gut entsprechen (vgl. \autoref{tab:brukerMRIparam}). Einige Parameter, wie die Auflösungen, müssen jedoch verkleinert werden, da größere Werte zu unvorhersehbaren Abstürzen von MRiLab führen. Die Größe des Aufnahmefelds (\gls{fov}) wird den Abmessungen des Phantoms angepasst. Die gewählten Parameter sind in \autoref{tab:mrilabparamSim} zusammengefasst.
 
 \begin{table}[H]
 	\centering
@@ -39,7 +39,7 @@ In den weiteren Unterabschnitten sind jeweils, zusätzlich zu den simulierten Sc
 	D[i,j]=\left| X[i,j]-R[i,j]\right|.
 \end{equation}
 
-Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \texttt{Jet} (\autoref{fig:colorJet}) werden kleine Unterschiede deutlicher sichtbar, als bei einer Graustufen-Darstellung. Die simulierten Schnittbilder werden, wie in der MR-Technik üblich, als Graustufenbilder dargestellt.
+Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \texttt{Jet} (\autoref{fig:colorJet}) werden kleine Unterschiede deutlicher sichtbar, als bei einer Graustufen-Darstellung. Die simulierten Schnittbilder werden, wie in der \gls{mr}-Technik üblich, als Graustufenbilder dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -57,21 +57,21 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \section{LMK04821 Jittercleaner Baustein}
 Dieser Abschnitt zeigt die Simulationsergebnisse mit dem Eingangs-Phasen\-rausch\-leistungs\-spektrum in \autoref{fig:lmkEttlingenBioSpecGradients}.
 
-Es werden $M=4$ Durchläufe simuliert. Diese werden mit $k=1,\,2,\,3,\,4$ indiziert. Das Phasenrauschen für jeden Durchgang ist dann $\phi_k[n]$, was einer Realisierung $\xi_v$ eines stochastischen Prozesses entspricht. Die Bilder eines Durchlaufes $k$ sind mit $X_{SE,k}$ bzw. $D_{SE,k}$ bei Spinecho-Sequenzen und mit $X_{EPI,k}$ bzw. $D_{EPI,k}$ bei EPI-Sequenzen bezeichnet.
+Es werden $M=4$ Durchläufe simuliert. Diese werden mit $k=1,\,2,\,3,\,4$ indiziert. Das Phasenrauschen für jeden Durchgang ist dann $\phi_k[n]$, was einer Realisierung $\xi_v$ eines stochastischen Prozesses entspricht. Die Bilder eines Durchlaufes $k$ sind mit $X_{SE,k}$ bzw. $D_{SE,k}$ bei Spinecho-Sequenzen und mit $X_{EPI,k}$ bzw. $D_{EPI,k}$ bei \gls{epi}-Sequenzen bezeichnet.
 
 In \autoref{fig:phiLMK} ist der gesamte zeitliche Verlauf der Phasenfluktuationen dargestellt. Da diese Darstellung wenig aussagekräftig ist, sind in \autoref{fig:phiLMKcropped} nur die ersten 1000 Werte dargestellt, wodurch die Tiefpasscharakteristik von $\phi_k[n]$ deutlicher wird.
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phi.tikz}}
-	\caption[simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld)]{simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld}
+	\caption[Simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld)]{Simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld}
 	\label{fig:phiLMK}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phiCropped.tikz}}
-	\caption[simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld) (Vergrößerung)]{simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld (Ausschnittvergrößerung)}
+	\caption[Simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld) (Vergrößerung)]{Simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld (Ausschnittvergrößerung)}
 	\label{fig:phiLMKcropped}
 \end{figure}
 
@@ -102,7 +102,7 @@ In \autoref{fig:lmkSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die
 
 \clearpage
 \subsection{EPI-Sequenz}
-In \autoref{fig:lmkEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit EPI-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiLMK} dargestellt.
+In \autoref{fig:lmkEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit \gls{epi}-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiLMK} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -137,7 +137,7 @@ In \autoref{fig:lmkEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und di
 \section{($1/f$)-Phasenrauschen}
 In diesem Abschnitt werden die Auswirkungen von reinem $(1/f)$-Phasenrauschen simuliert.
 
-Es werden $M=4$ Durchläufe simuliert. Diese werden mit $k=1,\,2,\,3,\,4$ indiziert. Das Phasenrauschen für jeden Durchgang ist dann $\phi_k[n]$, was einer Realisierung $\xi_v$ eines stochastischen Prozesses entspricht (siehe \autoref{fig:phiOneOverF}). Die Bilder eines Durchlaufes $k$ sind mit $X_{SE,k}$ bzw. $D_{SE,k}$ bei Spinecho-Sequenzen und mit $X_{EPI,k}$ bzw. $D_{EPI,k}$ bei EPI-Sequenzen bezeichnet.
+Es werden $M=4$ Durchläufe simuliert. Diese werden mit $k=1,\,2,\,3,\,4$ indiziert. Das Phasenrauschen für jeden Durchgang ist dann $\phi_k[n]$, was einer Realisierung $\xi_v$ eines stochastischen Prozesses entspricht (siehe \autoref{fig:phiOneOverF}). Die Bilder eines Durchlaufes $k$ sind mit $X_{SE,k}$ bzw. $D_{SE,k}$ bei Spinecho-Sequenzen und mit $X_{EPI,k}$ bzw. $D_{EPI,k}$ bei \gls{epi}-Sequenzen bezeichnet.
 
 \begin{figure}[H]
 	\centering
@@ -173,7 +173,7 @@ In \autoref{fig:oneOverfSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ un
 
 \clearpage
 \subsection{EPI-Sequenz}
-In \autoref{fig:oneOverfEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit EPI-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiOneOverF} dargestellt.
+In \autoref{fig:oneOverfEPI} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit \gls{epi}-Sequenzen und Phasenrauschen gemäß \autoref{fig:phiOneOverF} dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -224,7 +224,7 @@ Mit Einführung der diskreten Zeit $n = t/T = f_S \cdot t$ ergibt sich
 
 Für die Simulation werden die Modulationsfrequenzen $\nu_{mod,k}$ in \autoref{tab:sineMod} verwendet. Der Phasenhub wird zu $\beta=0.01$ gesetzt.
 
-Mit den sechs Modulationsfrequenzen $\nu_{mod,k}$ und den zwei simulierten Pulssequenzen, Spinecho- und EPI-Sequenz, ergeben sich die 12 Schnittbilder $X_{SE,k}$ bzw. $X_{EPI,k}$ und die 12 Differenzbilder $D_{SE,k}$ bzw. $D_{EPI,k}$
+Mit den sechs Modulationsfrequenzen $\nu_{mod,k}$ und den zwei simulierten Pulssequenzen, Spinecho- und \gls{epi}-Sequenz, ergeben sich die 12 Schnittbilder $X_{SE,k}$ bzw. $X_{EPI,k}$ und die 12 Differenzbilder $D_{SE,k}$ bzw. $D_{EPI,k}$
 
 \begin{table}[H]
 	\centering
@@ -253,7 +253,7 @@ Mit den sechs Modulationsfrequenzen $\nu_{mod,k}$ und den zwei simulierten Pulss
 
 \clearpage
 \subsection{Spinecho-Sequenz}
-In \autoref{fig:sinemodSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit Spinecho-Sequenzen und Phasenmodulationen des MR-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
+In \autoref{fig:sinemodSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und die Differenzbilder $D_{SE,k}$ aus Simulationen mit Spinecho-Sequenzen und Phasenmodulationen des \gls{mr}-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -287,7 +287,7 @@ In \autoref{fig:sinemodSE} sind die rekonstruierten Schnittbilder $X_{SE,k}$ und
 
 \clearpage
 \subsection{EPI-Sequenz}
-In \autoref{fig:sinemodEPI} sind die rekonstruierten Schnittbilder $X_{EPI,k}$ und die Differenzbilder $D_{EPI,k}$ aus Simulationen mit EPI-Sequenzen und Phasenmodulationen des MR-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
+In \autoref{fig:sinemodEPI} sind die rekonstruierten Schnittbilder $X_{EPI,k}$ und die Differenzbilder $D_{EPI,k}$ aus Simulationen mit EPI-Sequenzen und Phasenmodulationen des \gls{mr}-Signals mit den Modulationsfrequenzen $\nu_{mod,k}$ (siehe \autoref{tab:sineMod}) dargestellt.
 
 \begin{figure}[H]
 	\centering
@@ -328,9 +328,9 @@ In \autoref{fig:sinemodEPI} sind die rekonstruierten Schnittbilder $X_{EPI,k}$ u
 \section{Bildqualitätsmetriken und Diskussion}
 Die Abbildungen \ref{fig:metrikenLMK}, \ref{fig:metrikenOneOverf} und \ref{fig:metrikenSine} zeigen die Bildqualitätsmetriken $MSE$ und $SSIM$ für alle rekonstruierten Schnittbilder.
 
-In allen drei Fällen zeigt sich, dass die EPI-Sequenz empfindlicher auf Phasenrauschen reagiert. Besonders eine stark rauschende Phase bei niedrigen Frequenzen führt dazu, dass lange Akquisitionsvorgänge gestört werden. Daher sind erwartungsgemäß die Bildfehler bei der EPI-Sequenz und reinem ($1/f$)-Rauschen groß. Da die Länge der zusammenhängenden k-Raum Trajektorie bei Spinecho-Sequenzen wesentlich kürzer ist, reagiert diese weniger empfindlich auf das ($1/f$)-Phasenrauschen. Deterministische Phasenmodulationen führen bei beiden betrachteten Sequenzen zu starken Geisterbildern.
+In allen drei Fällen zeigt sich, dass die \gls{epi}-Sequenz empfindlicher auf Phasenrauschen reagiert. Besonders eine stark rauschende Phase bei niedrigen Frequenzen führt dazu, dass lange Akquisitionsvorgänge gestört werden. Daher sind erwartungsgemäß die Bildfehler bei der \gls{epi}-Sequenz und reinem ($1/f$)-Rauschen groß. Da die Länge der zusammenhängenden k-Raum Trajektorie bei Spinecho-Sequenzen wesentlich kürzer ist (vgl. \autoref{sec:ktraj}), reagiert diese weniger empfindlich auf das ($1/f$)-Phasenrauschen. Deterministische Phasenmodulationen führen bei beiden betrachteten Sequenzen zu starken Geisterbildern.
 
-\autoref{fig:phiOneOverF} und die große Varianz der Bildqualitätsmetriken in \autoref{fig:metrikenOneOverf} zeigen ein grundlegendes Problem von Simulationen mit stochastischen Prozessen: Eine einzige Simulation entspricht einer Realisierung $\xi$ des stochastischen Prozesses. Insbesondere wenn dieser Prozess nicht stationär ist, wie im Fall des ($1/f$)-Rauschens, sind eine oder wenige Realisierungen nicht repräsentativ für den Prozess. Es sind daher zahlreiche Simulationen nötig, um eine Aussage über das mittlere Verhalten des Prozesses zu treffen. 
+\autoref{fig:phiOneOverF} und die große Varianz der Bildqualitätsmetriken (siehe auch den Vergleich in \autoref{sec:metrics}) in \autoref{fig:metrikenOneOverf} zeigen ein grundlegendes Problem von Simulationen mit stochastischen Prozessen: Eine einzige Simulation entspricht einer Realisierung $\xi_v$ des stochastischen Prozesses. Insbesondere wenn dieser Prozess nicht stationär ist, wie im Fall des ($1/f$)-Rauschens, sind eine oder wenige Realisierungen nicht repräsentativ für den Prozess. Es sind daher zahlreiche Simulationen nötig, um eine Aussage über das mittlere Verhalten des Prozesses zu treffen. 
 
 \clearpage
 
