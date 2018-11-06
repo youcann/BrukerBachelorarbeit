@@ -23,7 +23,7 @@ Die MRiLab-Simulationsparameter werden so gewählt, dass sie einem realen Bruker
 		\end{table}
 
 \section{Referenz-Schnittbild}
-Zum visuellen Vergleich und für die Nutzung der Bildqualitätsmetriken SSIM und MSE ist ein Referenzbild notwendig. Dazu wird eine Simulation (Spinecho-Sequenz) ohne Rauschen durchgeführt (siehe \autoref{fig:R}).
+Zum visuellen Vergleich und für die Nutzung der Bildqualitätsmetriken SSIM und MSE ist ein Referenzbild notwendig. Dazu wird eine Simulation mit einer Spinecho-Sequenz ohne Rauschen durchgeführt (siehe \autoref{fig:R}).
 
 \begin{figure}[H]
 	\centering
@@ -54,7 +54,7 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_DIFF.png}}
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series15_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0057$, $SSIM=0.6111$}
 	\label{fig:resLMKse1}	
 \end{figure}
@@ -63,7 +63,7 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_DIFF.png}}
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series16_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0074$, $SSIM=0.5616$}
 	\label{fig:resLMKse2}	
 \end{figure}
@@ -72,7 +72,7 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_OUT.png}}
 	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_DIFF.png}}
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/SE/Series17_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (SE) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (Spinecho-Sequenz); $MSE=0.0086$, $SSIM=0.5813$}
 	\label{fig:resLMKse3}	
 \end{figure}
@@ -82,8 +82,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series18_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (1)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0188$, $SSIM=0.5289$}
 	\label{fig:resLMKepi1}	
 \end{figure}
@@ -91,8 +91,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series19_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (2)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0082$, $SSIM=0.5883$}
 	\label{fig:resLMKepi2}	
 \end{figure}
@@ -100,8 +100,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/lmk/EPI/Series25_DIFF.png}}
 	\caption[LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI) (3)]{Simulationsergebnis LMK04821 in MR-Tomograph mit aktivem Gradientensystem (EPI-Sequenz); $MSE=0.0085$, $SSIM=0.6552$}
 	\label{fig:resLMKepi3}	
 \end{figure}
@@ -118,8 +118,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series21_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0019$, $SSIM=0.8335$}
 	\label{fig:res1overFse1}	
 \end{figure}
@@ -127,8 +127,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series22_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0037$, $SSIM=0.7465$}
 	\label{fig:res1overFse2}	
 \end{figure}
@@ -136,8 +136,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/SE/Series23_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (SE) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (Spinecho-Sequenz); $MSE=0.0041$, $SSIM=0.7079$}
 	\label{fig:res1overFse3}	
 \end{figure}
@@ -147,8 +147,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series26_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (1)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0060$, $SSIM=0.6875$}
 	\label{fig:res1overFepi1}	
 \end{figure}
@@ -156,8 +156,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series28_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (2)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0541$, $SSIM=0.4756$}
 	\label{fig:res1overFepi2}	
 \end{figure}
@@ -165,8 +165,8 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{Rekonstruiertes Schnittbild}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_OUT.png}}
-	\hfill
-	\subcaptionbox{Differenz zur Referenz}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_DIFF.png}}
+	\
+	\subcaptionbox{Differenzbild $D[i,j]$}{\includegraphics[width=0.47\textwidth]{img/results/cumsum/EPI/Series30_DIFF.png}}
 	\caption[Simulationsergebnis reines $1/f$-Phasenrauschen (EPI) (3)]{Simulationsergebnis reines $1/f$-Phasenrauschen (EPI-Sequenz); $MSE=0.0220$, $SSIM=0.6010$}
 	\label{fig:res1overFepi3}	
 \end{figure}
