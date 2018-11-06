@@ -37,6 +37,7 @@ Andere getestete Konfigurationen:
 	
 \end{enumerate}
 
+\clearpage
 \section{Modifikationen MRiLab GUI}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Für die, in dieser Arbeit vorgenommenen, Erweiterungen von MRiLab ist es von Vorteil, Simulationsparameter unkompliziert über die GUI anpassen zu können. Dazu müssen die gewünschten Bedienelemente in die bestehende GUI eingefügt werden.
 
@@ -97,6 +98,7 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\label{lst:doPostscansimuh}
 \end{listing}
 
+\clearpage
 \section{MRiLab Parameter}
 
 \begin{table}[H]
@@ -126,6 +128,7 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\label{tab:mriLabParam}
 \end{table}
 
+\clearpage
 \section{MATLAB Funktion zum Erzeugen von Phasenrauschen im Zeitbereich}
 \label{sec:addPhaseNoise}
 
@@ -188,6 +191,7 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 	\label{lst:addPhaseNoise}
 \end{longlisting}
 
+\clearpage
 \section{Kommerzielle MRT-Phantome}
 
 \begin{table}[H]
@@ -211,7 +215,8 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 		\end{tabularx}
 		\label{tab:phantomsOverview}
 \end{table}
-		
+
+\clearpage		
 \section{Fehlerbehebung in \texttt{stl-to-voxel}}
 \label{sec:stlToVoxFix}
 Untersuchungen zeigen, dass sich die Formatierung der von SolidWorks exportierten STL-Dateien (\autoref{lst:STLsw}) leicht von der im STL-Standard (\autoref{lst:STLspec}) unterscheidet: Zwischen den Koordinaten der Eckpunkten (Vertices) sind  zwei bzw. drei, statt ein Leerzeichen gesetzt. Dadurch scheitert der (Positions-basierte) Lesevorgang der Koordinaten in \texttt{stl\_reader.py}.
@@ -268,6 +273,7 @@ Zur Fehlerbehebung wird ein Filter eingesetzt, der leere Zeichenketten ausfilter
 	\label{lst:stlToVoxFix}
 \end{listing}
 
+\clearpage
 \section{MATLAB Skript zum Erzeugen einer MRiLab Phantomdatei}
 
 \begin{longlisting}
