@@ -25,11 +25,11 @@ Aktuell teilen sich die Bruker \gls{nmr}-Spektrometer der \textit{AVANCE NEO} Ge
 \begin{figure}[H]
 	\centering
 	\resizebox{0.8\textwidth}{!}{\includegraphics[]{img/trx1200mult.tikz}}
-	\caption[Bruker Avance Neo TRX1200 Karte]{AV4 TRX1200 (verwendet in Bruker Avance Neo \gls{nmr} Spektrometer und einigen \gls{mr}-Tomographen)}
+	\caption[Bruker Avance Neo TRX1200 Karte]{AV4 TRX1200 (verwendet in Bruker Avance Neo \gls{nmr}-Spektrometer und einigen \gls{mr}-Tomographen)}
 	\label{fig:trx12004er}
 \end{figure}
 
-Kommt eine solche Anordnung in der \gls{mrt} zum Einsatz, ergibt sich eine Situation wie in \autoref{fig:trx12004er} angedeutet. Bei vier notwendigen Karten wird lediglich eine der Karten vollständig ausgenutzt. Bei den restlichen TRX1200 Karten bleibt die Sendeelektronik ungenutzt.
+Kommt eine solche Anordnung in der \gls{mrt} zum Einsatz, ergibt sich eine Situation wie in \autoref{fig:trx12004er} angedeutet. Bei vier notwendigen Karten wird lediglich eine der Karten vollständig ausgenutzt. Bei den restlichen TRX1200-Karten bleibt die Sendeelektronik ungenutzt.
 
 
 \section{Aufgabenstellung}
@@ -39,7 +39,7 @@ Durch die kürzere Akquisitionszeit einer \gls{mrt}-Aufnahme im Vergleich zu ein
 
 Zur Charakterisierung der Einflüsse eines weniger stabilen Oszillators und anderer potenziell negativer Einflüsse auf die \gls{mr}-Signale soll eine Simulation eingesetzt werden. Statt die komplette Signalkette auf der Ebene der einzelnen elektronischen Baugruppen durchzurechnen, wird zunächst auf einer höheren Abstraktionsebene angesetzt. In einer Simulation, beginnend von einer dreidimensionalen Eingangsmatrix, werden Schichtbilder simuliert, wie sie auch ein \gls{mr}-Tomograph erzeugen würde. Dazu müssen die Vorgänge, wie sie im echten Gerät ablaufen, nur in soweit modelliert werden, wie sie für die zu untersuchende Störung relevant sind. Da in dieser Arbeit der Einfluss des Phasenrauschens des Referenzoszillators und damit des \gls{adc}-Taktsignals in Abhängigkeit verschiedener \gls{mrt}-Pulssequenzen untersucht werden soll, ist es für die Simulation erforderlich, verschiedene Pulssequenzen abfahren zu können und das \gls{rf}-Empfangssignal gezielt zu manipulieren.
 
-Für numerische Simulationen in den Natur- und Ingenieurwissenschaften ist das Programmpaket \textit{MATLAB}\cite{matlab} von \textit{The MathWorks} weit verbreitet. Es existieren einige Ver\-öffent\-lichungen zu \gls{mrt}-Simulationen in MATLAB\footnote{zum Beispiel \cite{Kern2012}}, in denen sich die Autoren meist auf die Simulation bestimmter Teilaspekte der \gls{mrt} beschränken. Mehr auf eine vollständige Simulation ausgerichtet ist das Programm \textit{\gls{mr}iLab}\cite{Liu2017} (siehe \autoref{fig:mrilabscreenshot}).
+Für numerische Simulationen in den Natur- und Ingenieurwissenschaften ist das Programmpaket \textit{MATLAB}\cite{matlab} von \textit{The MathWorks} weit verbreitet. Es existieren einige Ver\-öffent\-lichungen zu \gls{mrt}-Simulationen in MATLAB\footnote{zum Beispiel \cite{Kern2012}}, in denen sich die Autoren meist auf die Simulation bestimmter Teilaspekte der \gls{mrt} beschränken. Mehr auf eine vollständige Simulation ausgerichtet ist das Programm \textit{MRiLab}\cite{Liu2017} (siehe \autoref{fig:mrilabscreenshot}).
 
 In dieser Arbeit soll unter anderem MRiLab auf die Eignung als Simulationsumgebung für kommende Entwicklungstätigkeiten in der MR-Technik untersucht werden. Im weiteren Verlauf der Arbeit wird das Phasenrauschen aus theoretischen Überlegungen, Datenblättern und realen Messungen simuliert und die Einflüsse von diesem auf die Bildqualität der rekonstruierten MR-Bilder untersucht.
 

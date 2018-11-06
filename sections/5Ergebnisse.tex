@@ -51,11 +51,11 @@ Durch die Verwendung der Falschfarben-Darstellung mit der MATLAB-Farbpalette \te
 
 
 
-
-
 \clearpage
 \section{LMK04821 Jittercleaner Baustein}
-Dieser Abschnitt zeigt die Simulationsergebnisse mit dem Eingangs-Phasen\-rausch\-leistungs\-spektrum in \autoref{fig:lmkEttlingenBioSpecGradients}.
+Vorausgehende Simulationen zeigen, dass sich die Auswirkungen des Phasenrauschens vom LMK04821 unter Idealbedingungen (siehe \autoref{fig:lmkDatasheetPhaseNoise}) mit den gewählten Simulationsparametern nicht darstellen lassen. Dieser Betriebsfall wird nicht weiter untersucht.
+
+Dieser Abschnitt zeigt daher die Simulationsergebnisse mit dem Eingangs-Phasen\-rausch\-leistungs\-spektrum in \autoref{fig:lmkEttlingenBioSpecGradients}. Dabei wird der LMK04821 in einem aktiven MRT-Gradientensystem betrieben.
 
 Es werden $M=4$ Durchläufe simuliert. Diese werden mit $k=1,\,2,\,3,\,4$ indiziert. Das Phasenrauschen für jeden Durchgang ist dann $\phi_k[n]$, was einer Realisierung $\xi_v$ eines stochastischen Prozesses entspricht. Die Bilder eines Durchlaufes $k$ sind mit $X_{SE,k}$ bzw. $D_{SE,k}$ bei Spinecho-Sequenzen und mit $X_{EPI,k}$ bzw. $D_{EPI,k}$ bei \gls{epi}-Sequenzen bezeichnet.
 
@@ -63,14 +63,14 @@ In \autoref{fig:phiLMK} ist der gesamte zeitliche Verlauf der Phasenfluktuatione
 
 \begin{figure}[H]
 	\centering
-	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phi.tikz}}
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.42\textwidth]{img/results/new/lmkInGrad/phi.tikz}}
 	\caption[Simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld)]{Simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld}
 	\label{fig:phiLMK}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.5\textwidth]{img/results/new/lmkInGrad/phiCropped.tikz}}
+	\resizebox{!}{!}{\includegraphics[width=\textwidth,height=0.42\textwidth]{img/results/new/lmkInGrad/phiCropped.tikz}}
 	\caption[Simulierte Phasenfluktuationen (LMK04821 in Gradientenfeld) (Vergrößerung)]{Simulierte Phasenfluktuationen für den LMK04821 im Gradientenfeld (Ausschnittvergrößerung)}
 	\label{fig:phiLMKcropped}
 \end{figure}

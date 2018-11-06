@@ -5,8 +5,8 @@
 \draw[very thick](7,2.5) circle (2);
 \draw[very thick] (0,5) rectangle (-2,7);
 
-\draw[red,{Latex[red,length=5mm,width=2mm]}-] (0,5) -- (1,6) -- (2,6);
-\draw[red,{Latex[red,length=5mm,width=2mm]}-] (5,2.5) -- (4,3.5) -- (3,3.5);
+\draw[red!50,{Latex[red,length=5mm,width=2mm]}-] (0,5) -- (1,6) -- (2,6);
+\draw[red!50,{Latex[red,length=5mm,width=2mm]}-] (5,2.5) -- (4,3.5) -- (3,3.5);
 \node[red,anchor=south] (1) at (1.8,6) {(1)};
 \node[red,anchor=south] (2) at (3.3,3.5) {(2)};
 

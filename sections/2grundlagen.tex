@@ -141,7 +141,7 @@ Nach einer Anregung mit einem \gls{rf}-Puls setzen zwei, voneinander unabhängig
 	\begin{equation}
 		M_{xy}=M_{z,eq} e^{-t/T2}
 	\end{equation}
-	beschrieben werden. Dabei wird angenommen, dass eine 90\degree-Anregung stattgefunden hat, die $M_{z,equ}$ vollständig von der $z$-Achse in die $xy$-Ebene geklappt hat.
+	beschrieben werden. Dabei wird angenommen, dass eine 90\degree-Anregung stattgefunden hat, die $M_{z,eq}$ vollständig von der $z$-Achse in die $xy$-Ebene geklappt hat.
 \end{itemize}
 
 Präzession und die beiden Relaxationsphänomene können in den \textit{Blochgleichungen} zusammengefasst dargestellt werden.
@@ -206,7 +206,7 @@ Mit einem MR-Tomographen werden üblicherweise die folgenden Größen visualisie
 	\item \textbf{Protonendichte PD:} Manchmal auch mit \textbf{$\rho$} bezeichnet. Eine relative Größe, die darauf schließen lässt, wie viele (mobile) (Wasserstoff-) Protonen ein Gewebevoxel enthält. Die Protonendichte ist zum Beispiel in Knochen viel geringer als in Blut. Sie lässt sich ebenfalls durch eine geeignete Gewichtung messen.  
 \end{itemize}
 
-Die chemische Verschiebung kann ebenfalls ortsaufgelöst gemessen werden. Dies wird als \textit{Chemical Shift Imaging (CSI)} bezeichnet \cite{Keevil2006}.
+Die chemische Verschiebung führt meist zu Bildartefakten (vgl.  \autoref{sec:gewebeArtefakte}), kann aber auch zur Bilderzeugung genutzt werden. Dazu wird sie ortsaufgelöst gemessen. Dies wird als \textit{Chemical Shift Imaging (CSI)} bezeichnet \cite{Keevil2006}.
 
 \begin{table}[H]
 	\centering
@@ -422,7 +422,7 @@ Eine andere Strategie ist es, die transversale Magnetisierung bewusst aufrecht z
 \end{figure}
 
 \subsubsection{Turbo-Spinecho-Sequenz}
-Eine modifizierte, schnellere Variante der Spinecho-Sequenz ist die Turbo-Spinecho-Sequenz. Je nach Hersteller des Tomographens wird sie auch als FSE (Fast Spin Echo, z.B. von GE verwendet) oder RARE (Rapid Acquisition with Refocused Echoes, z.B. von Bruker verwendet) bezeichnet.
+Eine modifizierte, schnellere Variante der Spinecho-Sequenz ist die Turbo-Spinecho-Sequenz. Je nach Hersteller des Tomographens wird sie auch als \textit{FSE} (\textit{Fast Spin Echo}, z.B. von GE verwendet) oder \textit{RARE} (\textit{Rapid Acquisition with Refocused Echoes}, z.B. von Bruker verwendet) bezeichnet.
 
 \subsubsection{Echoplanar-Sequenz}
 \gls{epi}-Sequenzen ermöglichen sehr kurze Aufnahmezeiten, da der gesamte k-Raum nach nur einem \gls{rf}-Anregungspuls gefüllt wird. Heute verbreitet ist die sog. blipped-\gls{epi}-Sequenz. Bei dieser wird der Phasenkodiergradient im Gegensatz zu der 1977 von Mansfield vorgestellten EPI Variante nicht konstant eingeschaltet, sondern mit kleinen Impulsen (eng. blips) geschaltet (vgl. \cite[S.~299]{Bushong2014}).
@@ -465,7 +465,7 @@ Die Zeitverläufe der longitudinalen und transversalen Magnetisierung für die F
 	\subcaptionbox{T2-Gewichtung}{\includegraphics[width=0.8\textwidth]{img/ext/T2W.png}}
 	\\
 	\subcaptionbox{PD-Gewichtung}{\includegraphics[width=0.8\textwidth]{img/ext/PDW.png}}
-	\caption[Bildgewichtung bei Spinecho-Sequenzen]{Wahl der Echozeit $TE$ und Repetitionszeit $TR$ zur Beeinflussung der Bildgewichtung bei Spinecho-Sequenzen (Fat: Fett, Gray: graue Hirnmasse, White: weiße Hirnmasse, CSF: Cerebrospinal fluid (Gehirn-Rückenmarks-Flüssigkeit)); Die roten Markierungen zeigen jeweils Zeitpunkte von $TR$ bzw. $TE$ mit denen minimale/maximale Abhängigkeiten von $T1$/$T2$ erzeugt werden können. \cite[S.~424ff]{Bushberg2011}}
+	\caption[Bildgewichtung bei Spinecho-Sequenzen]{Wahl der Echozeit $TE$ und Repetitionszeit $TR$ zur Beeinflussung der Bildgewichtung bei Spinecho-Sequenzen (Fat: Fett, Gray: graue Hirnmasse, White: weiße Hirnmasse, CSF: Cerebrospinal fluid (Gehirn-Rückenmarks-Flüssigkeit)); Die roten Markierungen zeigen jeweils Zeiten von $TR$ bzw. $TE$ mit denen minimale/maximale Abhängigkeiten von $T1$/$T2$ erzeugt werden können. \cite[S.~424ff]{Bushberg2011}}
 	\label{fig:Bildgewichtungen}
 \end{figure}
 
@@ -492,6 +492,7 @@ Zahlreiche Effekte können zu Artefakten in \gls{mrt}-Aufnahmen führen. Welche 
 Im wesentliche können die Artefakt-Ursachen in drei Kategorien eingeteilt werden: Gewebeartefakte, Bewegungsartefakte und Artefakte durch die Technik des Tomographen.
 
 \subsubsection{Gewebeartefakte}
+\label{sec:gewebeArtefakte}
 Eine häufige Ursache für Bildartefakte ist die \textit{chemische Verschiebung} ("chemical shift"). Da die Larmorfrequenz eines Kerns von der lokalen magnetischen Feldstärke am Ort des Kerns $B_{lokal}$ und nicht der mittleren Feldstärke über der Probe ($B$) abhängt, kann es durch molekulare Abschirmeffekte zu einer Änderung der Feldstärke $\Delta B$ kommen. Die lokal auf den Kern wirkende Feldstärke ist dann:
 \begin{equation}
 	B_{lokal}=B+\Delta B
@@ -540,7 +541,7 @@ Durch die Mäander-Trajektorien bei \gls{epi} Sequenzen ist es notwendig, jede z
 \subsection{Besonderheiten präklinischer MRT Systeme}
 \gls{mrt}s für die präklinische Bildgebung sind in Bezug auf wirtschaftliche und technische Faktoren auf die Abbildung von Kleintieren optimiert. Da Mäuse, Ratten und andere Nagetiere häufig als Modellorganismen in der Forschung eingesetzt werden, ist das Marktvolumen präklinischer Bildgebungssysteme für diese Tiere am größten. \cite{GBanimalStat} Die Magnetöffnung eines präklinischen \gls{mrt}s ist daher kleiner als die eines vergleichbaren Gerätes in der Humanmedizin. Während jedoch bei klinischen Tomographen der Durchmesser der Magnetöffnung in etwa den maximalen Patientenabmaßen entspricht, ist die Bohrung eines präklinischen \gls{mrt}s etwas größer als die Breite der zu untersuchenden Tiere: Da bei den meisten präklinischen \gls{mrt}s das Gradientensystem und die Empfangsspulen wechselbar ausgeführt sind, muss für diese zusätzlicher Platz in der Bohrung vorgesehen werden. Zur Maximierung der Bildqualität wird der Abstand von Tier zu den Spulensystemen möglichst klein gewählt.
 
-Die Feldstärke des statischen Magnetfeldes ist bei präklinischen \gls{mrt}s in der Regel höher als bei klinischen: Durch die, im Vergleich zum Menschen, kleineren geometrischen Abmessungen der Tierorgane werden für die präklinische Bildgebung kleinere Voxelgrößen gefordert. Diese führen zu kleineren Signalstärke pro Voxel und damit bei gleichbleibendem Rauschen zu einem reduzierten \gls{snr}.
+Die Feldstärke des statischen Magnetfeldes ist bei präklinischen \gls{mrt}s in der Regel höher als bei klinischen: Durch die, im Vergleich zum Menschen, kleineren geometrischen Abmessungen der Tierorgane werden für die präklinische Bildgebung kleinere Voxelgrößen gefordert. Diese führen zu kleineren Signalstärke pro Voxel und damit bei gleichbleibendem Rauschen zu einem reduzierten Signal-zu-Rausch-Verhältnis (\gls{snr}).
 
 Das relative \gls{snr} kann aus der Protonendichte $\rho$, der Stärke des Spinmoments $\mu$, dem Durchmesser der Empfangsspule $d$, dem Voxelvolumen $V_{vox}$ und der Aufnahmezeit $T_{aq}$ abgeschätzt werden \cite[S.~161]{Kiessling2017}:
 \begin{equation}
@@ -565,7 +566,7 @@ Für quasi-kontinuierliche Simulationen, bei denen sehr hohe Abtastraten verwend
 \end{equation}
 definiert.
 
-Für eine Darstellung im Frequenzbereich wird die \textit{diskrete Fouriertransformation (DFT)} verwendet. Statt \gls{dft} wird häufig der Begriff \gls{fft} verwendet. Die \gls{fft} ist dabei lediglich eine schnelle Implementierung der \gls{dft}.
+Für eine Darstellung im Frequenzbereich wird die \textit{\gls{dft}} verwendet. Statt \gls{dft} wird häufig der Begriff \gls{fft} verwendet. Die \gls{fft} ist dabei lediglich eine schnelle Implementierung der \gls{dft}.
 Das Spektrum hat die Frequenzauflösung $df=f_s/N$, die gleiche Länge wie $x[t]$ ($N$) und berechnet sich aus 
 \begin{equation}
 	X[f]=FFT\{x[n]\}.
@@ -597,7 +598,7 @@ Beispielspektren für eine Sinus-Funktion sind in \autoref{fig:spectra} dargeste
 	\hfill
 	\subcaptionbox{$\Im(X[f])$}{\includegraphics[width=0.3\textwidth,height=0.3\textwidth]{plots/dftImag.tikz}}
 	\hfill
-	\subcaptionbox{$|X[f]|$}{\includegraphics[width=0.3\textwidth,height=0.3\textwidth]{plots/dftAbs.tikz}}
+	\subcaptionbox{$|X_{norm}[f]|$}{\includegraphics[width=0.3\textwidth,height=0.3\textwidth]{plots/dftAbs.tikz}}
 	\caption[Spektrum Sinusfunktion]{Beispielspektren für eine Sinusfunktion der Frequenz \SI{10}{\hertz}; $f_s=\SI{32}{\hertz}, N=16$}
 	\label{fig:spectra}
 \end{figure}
@@ -737,7 +738,7 @@ Durch die Bildung des Integrals ist die Konversion von Phasenrauschleistungsspek
 \end{figure}
 
 \subsection{Interpretation des Phasenrauschens als Zeitverschiebung}
-Das Hinzufügen von Phasenrauschen zu einem abgetasteten Signal kann als eine Verschiebung der Abtastzeitpunkte aufgefasst werden. \autoref{fig:abtast} zeigt eine Funktion $x(t)$ und die abgetastete Funktion $x[n]$, die an den Stellen $n_0,\,n_1,\,\dots$ definiert ist. Jeder Abtastzeitpunkt wird um $\Delta t\,n$ verschoben. Die Wahrscheinlichkeitsdichtefunktion von jedem $\Delta t,\,n$ ist dabei $f_{\Delta t,\,n}$. In \autoref{fig:abtast} ist für jeden Abtastzeitpunkt $n$ eine Gauß-förmige Wahrscheinlichkeitsdichte gewählt. Mit dieser Methode können sinnvoll nur kurzzeitige Abweichungen simuliert werden. Zur Charakterisierung würden sich der edge-to-edge-Jitter oder der k-cycle-Jitter (für kleine $k$) eignen.
+Das Hinzufügen von Phasenrauschen zu einem abgetasteten Signal kann als eine Verschiebung der Abtastzeitpunkte aufgefasst werden. \autoref{fig:abtast} zeigt eine Funktion $x(t)$ und die abgetastete Funktion $x[n]$, die an den Stellen $n_0,\,n_1,\,\dots$ definiert ist. Jeder Abtastzeitpunkt wird um $\Delta t,\,n$ verschoben. Die Wahrscheinlichkeitsdichtefunktion von jedem $\Delta t,\,n$ ist dabei $f_{\Delta t,\,n}$. In \autoref{fig:abtast} ist für jeden Abtastzeitpunkt $n$ eine Gauß-förmige Wahrscheinlichkeitsdichte gewählt. Mit dieser Methode können sinnvoll nur kurzzeitige Abweichungen simuliert werden. Zur Charakterisierung würden sich der edge-to-edge-Jitter oder der k-cycle-Jitter (für kleine $k$) eignen.
 
 \begin{figure}[H]
 	\centering
@@ -759,7 +760,13 @@ x_{Jitter}[n] = x[n] \quad exp(j \Delta \phi)
 \end{equation}
 beschreiben. Vorteil hierbei ist, dass neben Kurzzeit- auch Langzeit-Jitter problemlos simuliert werden kann.
 
-Zur Demonstration der Äquivalenz der beiden Verfahren wird ein Sinus-Signal $S[n]=S_x+j S_y$ der Länge $N$ betrachtet. Weiterhin wird ein Tiefpass-gefilterter Phasenrauschprozess $\Delta t$ bzw. $\Delta \phi$ erzeugt. Dieser besitzt eine Gauß-förmige Wahrscheinlichkeitsdichtefunktion und einen $1/f$-förmiges Spektrum.
+Zur Demonstration der Äquivalenz der beiden Verfahren wird ein komplexes Signal $S[n]$ der Länge $N$ betrachtet. $S[n]$ ergibt sich dabei mit $S_x=S_x[n]=cos(2\pi \nu_0 t)$ und $S_y=S_y[n]=sin(2\pi \nu_0 t)$ zu
+
+\begin{equation}
+	S[n]=S_x+j S_y.
+\end{equation}
+
+Weiterhin wird ein Tiefpass-gefilterter Phasenrauschprozess $\Delta t$ bzw. $\Delta \phi$ erzeugt. Dieser besitzt eine Gauß-förmige Wahrscheinlichkeitsdichtefunktion und einen $1/f$-förmiges Spektrum.
 
 $S[n]$ wird zunächst zu $S[m]$ mit $M \gg N$ interpoliert. Danach können die ursprünglichen Abtastpunkte $n$ mit einem leichten Jitter ($\Delta t$) verschoben werden. Daraus entsteht $S[n_{Jitter}]$. Wird $S[n_{Jitter}]$ an den Stellen $n$ ausgewertet, entsteht $S_{Jitter}[n]$.
 
@@ -816,7 +823,7 @@ Beispiele für NR-Metriken sind der \textit{Naturalness Image Quality Evaluator 
 \subsubsection{Qualitätsmetriken mit Referenz}
 Bildqualitätsmetriken mit Referenz, auch als FR-Metriken (von eng. full reference) bezeichnet, setzen ein vorhandenes, ideales Originalbild voraus. Diese Metriken fordern in der Regel kein Vorwissen über den Bildinhalt, oder die Klasse von Bildern, die bewertet werden sollen. Statt einer absoluten Qualitätskennzahl wird ein Ähnlichkeitsmaß zwischen untersuchtem Bild und Referenzbild bestimmt \cite[S.~43]{Wang2006}.
 
-Eine einfache Möglichkeit für eine FR-Metrik ist die (zweidimensionale) \textit{mittlere quadratische Abweichung}, auch MSE (für eng. \textit{mean squared error}) genannt. Definiert ist der MSE zwischen einem $N \times M$ großen Bild $X$ und einem ebenso großen Referenzbild $R$ als \cite{Tan2013}:
+Eine einfache Möglichkeit für eine FR-Metrik ist die (zweidimensionale) \textit{mittlere quadratische Abweichung}, auch MSE (für eng. \textit{mean squared error}) genannt. Definiert ist das MSE zwischen einem $N \times M$ großen Bild $X$ und einem ebenso großen Referenzbild $R$ als \cite{Tan2013}:
 
 \begin{equation}
 	MSE_R(X)=\frac{1}{M N} \sum_{n=1}^{N} \sum_{m=1}^{M} [X(n,m) - R(n,m)]^2
