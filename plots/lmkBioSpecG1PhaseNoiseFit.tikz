@@ -1,0 +1,22 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}
+[
+xlabel={Offsetfrequenz $f_{Offset}$ (in \SI{}{\kilo\hertz})},
+ylabel={Phasenrauschleistung $\mathscr{L}$ (in \SI{}{\dB c})},
+ymin=-100,
+ymax=0,
+xmin=0,
+ylabel style={font=\color{white!15!black}},
+axis background/.style={fill=white},
+legend style={legend cell align=left, align=left, draw=white!15!black}
+]
+\addplot [color=black,mark=o,smooth] coordinates {(0,0) (2,-50) (7,-60) (12,-65) (20,-70) (30,-80)};
+\end{axis}
+\end{tikzpicture}%

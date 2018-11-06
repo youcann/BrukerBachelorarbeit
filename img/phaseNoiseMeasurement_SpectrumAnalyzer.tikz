@@ -9,6 +9,6 @@
 
 \node[draw,align=center,minimum height=2cm,minimum width=3cm] (SA) at (6,0) {Spektrum-\\analysator};
 
-\draw[-latex] (dut) -- (SA);
+\draw[-{Latex[length=3mm,width=3mm]}] (dut) -- (SA);
 
 \end{tikzpicture}

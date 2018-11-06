@@ -1,0 +1,27 @@
+EPI:
+53:100 sine mod
+54:1000 sine mod
+55:10000 sine mod
+56:10010 sine mod
+57:10020 sine mod
+58:10030 sine mod
+59:10040 sine mod
+
+SE:
+61:100 sine mod
+62:1000 sine mod
+63:10000 sine mod
+64:10010 sine mod
+65:10020 sine mod
+66:10030 sine mod
+67:10040 sine mod
+
+68:REF
+
+1/f:
+SE: 71,72,73,74,75
+EPI: 77,78,79,80,81
+
+LMK grad:
+EPI: 82,83,84,85,86
+SE: 87,88,89,90,91

@@ -11,11 +11,11 @@ xmin=491.47,
 xmax=491.57,
 xtick distance=0.02,
 xlabel style={font=\color{white!15!black}},
-xlabel={Frequenz [MHz]},
+xlabel={Frequenz (in MHz)},
 ymin=-100,
 ymax=0,
 ylabel style={font=\color{white!15!black}},
-ylabel={Leistung [dBm]},
+ylabel={Leistung (in dBm)},
 axis background/.style={fill=white},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]
@@ -422,7 +422,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 491.56975	-92.0763702392578\\
 491.57	-90.5121383666992\\
 };
-\addlegendentry{22cm vor Öffnung}
+\addlegendentry{22 cm vor Öffnung}
 
 \addplot [color=red]
   table[row sep=crcr]{%
@@ -827,7 +827,7 @@ legend style={legend cell align=left, align=left, draw=white!15!black}
 491.56975	-92.3569183349609\\
 491.57	-92.3910827636719\\
 };
-\addlegendentry{50cm hinter Öffnung}
+\addlegendentry{50 cm hinter Öffnung}
 
 \end{axis}
 \end{tikzpicture}%

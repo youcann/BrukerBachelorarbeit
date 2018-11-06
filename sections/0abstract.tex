@@ -1,4 +1,5 @@
 \chapter*{Abstract}
+\thispagestyle{empty}
 Magnetic resonance imaging (MRI) is used to measure cross sections through a living creature or to get answers in research studies.
 
 Increasing technical and economical requirements push the development of new electronic sub systems in the signal path of a MRI. The technological relationship between MRIs and NMR (nuclear magnetic resonance) spectrometers, which both use the NMR effect, was used in the past by Bruker BioSpin to share common parts among them.
@@ -7,11 +8,12 @@ Due to the higher stability requirements of the (reference) oscillators in NMR, 
 To optimize the signal path electronics and to develop a MRI exclusive acquisition electronic, it is necessary to assess influences on the quality of the reconstructed MRI image. A computer simulation can be used to get results fast and cost effective. By how much the image quality is allowed to deteriorate is currently only evaluated visually by the MRI application engineers.
 
 In this work, \textit{MRiLab}, a MRI simulation framework based on MATLAB, is assessed. First the required simulation parameters are fitted to the needs of the Bruker product line up. Then a digital representation of an existing MRI phantom (a liquid-filled test body made from plastic) is created. It allows to verify the simulation results in the future using a real MRI machine.
-Simulating some, for real oscillators typical, phase noise stochastic processes shows how different phase noise spectra affect image quality. To assess image quality degradation, common full reference image quality metrics, like MSE or SSIM are studied. Additionally some non-reference quality metrics, like NIQE are evaluated for comparison.
+Simulating some phase noise stochastic processes typical for real oscillators shows how different phase noise spectra affect image quality. To assess image quality degradation, common full reference image quality metrics, like MSE (mean squared error) or SSIM (structural similarity), are studied. Additionally some non-reference quality metrics, like NIQE (Naturalness Image Quality Evaluator) are evaluated for comparison.
 
 The work shows that MRiLab is a capable tool for qualitative MRI simulations and can be used to aid the ongoing development process for new acquisition electronics. However, due to minor bugs and inaccuracies in the program, results have to be considered with care. Since different image errors and artifacts are not evaluated separately, existing image quality metrics are not fully suited for MRI quality assessment.
 
 \chapter*{Kurzfassung}
+\thispagestyle{empty}
 Mit Magnetresonanztomographen (MRT) werden Schnittbilder von lebendigen Körpern erzeugt, um eine Diagnose zu stellen, oder Fragestellungen aus der Forschung zu beantworten.
 
 Gestiegene technische und ökonomische Anforderungen an kommerzielle Magnetresonanz-Abbildungssysteme treiben die Entwicklung neuer elektronischer Baugruppen im Signalpfad der Geräte voran. Durch die technologische Verwandtschaft von MRTs und NMR (Nuclear Magnetic Resonance)-Spektrometern, die beide den Effekt der Kernspinresonanz ausnutzen, war es in der Vergangenheit bei Bruker BioSpin naheliegend, Entwicklungen aus dem Bereich der NMR auch in der MRT einzusetzen. Durch die höheren Stabilitätsanforderungen an die (Referenz-) Oszillatoren in der NMR hat dies zu keinerlei technischen Schwierigkeiten in der MRT geführt, ist jedoch unter der Berücksichtigung wirtschaftlicher Gesichtspunkte nicht optimal.

@@ -12,11 +12,11 @@ xmin=0.001,
 xmax=100,
 xminorticks=true,
 xlabel style={font=\color{white!15!black}},
-xlabel={Frequenz [MHz]},
+xlabel={Offsetfrequenz $f_{Offset}$ (in \SI{}{\mega\hertz})},
 ymin=-165,
 ymax=-125,
 ylabel style={font=\color{white!15!black}},
-ylabel={Phasenrauschleistung [dBc]},
+ylabel={Phasenrauschleistung $\mathscr{L}$ (in \SI{}{\dB c})},
 axis background/.style={fill=white},
 legend style={legend cell align=left, align=left, draw=white!15!black}
 ]

@@ -96,7 +96,7 @@
 %\usepackage{natbib}
 
 %Glossar
-\usepackage[nonumberlist]{glossaries}
+\usepackage[nonumberlist,nopostdot]{glossaries}
 % Definition eines eigenen Glossarstils
 \newglossarystyle{meinglossar}{%
 	\renewenvironment{theglossary}{\begin{labeling}{xxxxxxxxxx}}{\end{labeling}}%
@@ -131,7 +131,7 @@
 \newcommand{\thesisadvisortwo}{}
 \newcommand{\thesistimestart}{15.08.2018} % on titlepage
 \newcommand{\thesistimeend}{30.10.2018} % on titlepage
-\newcommand{\thesistimehandin}{31.10.2018} % on second page 'preamble'
+\newcommand{\thesistimehandin}{07.11.2018} % on second page 'preamble'
 \newcommand{\thesispagehead}{Bachelorarbeit: \thesisentopic} % page heading 
 \newcommand{\changefont}[3]{\fontfamily{#1} \fontseries{#2}%
 	\fontshape{#3} \selectfont}
@@ -154,6 +154,7 @@
 \usepackage{pgfplots}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{plotmarks}
+\usetikzlibrary{matrix}
 \pgfplotsset{compat=1.5.1}
 \usepackage[list=false]{subcaption}
 \usepackage[export]{adjustbox}
