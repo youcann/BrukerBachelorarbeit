@@ -259,6 +259,8 @@ Für das Design solcher Filter bietet die \textit{Signal Processing Toolbox} in 
 
 Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen werden. Stattdessen eignet sich beispielsweise die Funktion \texttt{fir2()}, um die Filterkoeffizienten für einen FIR-Filter mit beliebigem Amplitudengang zu ermitteln\footnote{\texttt{cfirpm()} und \texttt{firpm()} sind weitere Möglichkeiten, einen FIR-Filter mit der "equiripple"- bzw. "Parks-McClellan"-Methode zu erzeugen.}. Ein IIR-Filter kann mit Hilfe der modifizierten Yule-Walker-Gleichungen und eines Least-Square-Fits durch die Funktion \texttt{yulewalk()} generiert werden.
 
+Wie \autoref{firIirPhasenoise} zeigt, sind zur Nachbildung eines gegebenen, realistischen Phasenrauschspektrums sehr hohe Filterordnungen nötig.
+
 \begin{figure}[H]
 	\centering
 	\subcaptionbox{FIR-Filter, Ordnung $n=1000$}{\includegraphics[width=0.45\textwidth,height=0.5\textwidth]{plots/fir.tikz}}
@@ -268,8 +270,7 @@ Filter mit beliebigem Amplituden- bzw. Phasengang können damit nicht entworfen 
 	\label{firIirPhasenoise}
 \end{figure}
 
-Wie \autoref{firIirPhasenoise} zeigt, sind zur Nachbildung eines gegebenen, realistischen Phasenrauschspektrums sehr hohe Filterordnungen nötig.
-
+\clearpage
 \subsection{Auswahl einer Filtermethode und Implementierung}
 Die Filterung im Zeitbereich mit einem FIR- oder IIR-Filter benötigt sehr hohe Filterordnungen und ist daher rechenaufwändig. Zudem konvergiert der Algorithmus für die Filtersynthese der MATLAB Filterdesign-Tools nicht für jedes denkbare (und sinnvolle) Phasenrauschleistungsspektrum. Daher wird für die Implementierung eine Filterung im Frequenzbereich gewählt.
 
@@ -304,15 +305,27 @@ Die Implementierung von \texttt{addPhaseNoise()} ist in \autoref{lst:addPhaseNoi
 	\label{lst:vsigAddphaseNoiseNew}
 \end{listing}
 
+\clearpage
+\paragraph{GUI-Panel zur Steuerung des Phasenrauschens}\mbox{}\\
+MRiLab wird um ein eigenes Panel auf der Benutzeroberfläche (\gls{gui}) erweitert, mit dem sich das Hinzufügen von Phasenrauschen steuern lässt. Es werden zwei Kontrollelemente verwendet:
+\begin{itemize}
+	\item \textbf{Kontrollkästchen: \texttt{add phase noise?}} Ermöglicht es, das Phasenrauschen komplett zu deaktivieren. Dies ist zum Beispiel für die Erzeugung von rauschfreien Referenzbildern nötig.
+	\item \textbf{Eingabefeld: \texttt{phasenoise scale [dB]}} Ermöglicht es, das Eingangs-Phasen\-rausch\-leistungs\-spektrum zu skalieren. Damit kann das erzeugte Phasenrauschen verstärkt oder abgeschwächt werden.  
+\end{itemize}
+
+Der Einbau der Kontrollelemente ist in \autoref{sec:guiMod} beschrieben. Das hinzugefügte Panel zeigt \autoref{fig:gui}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[]{img/brukerPanel.png}
+	\caption[Neues GUI-Panel]{GUI-Panel zur Steuerung des Phasenrauschens}
+	\label{fig:gui}
+\end{figure}
 
 
 
 
-
-
-
-
-
+\clearpage
 \section{Erstellung von MRiLab MRT-Phantomen}
 Für die Simulationen mit MRiLab sind Eingangsobjekte nötig. Diese können zum Beispiel reale \gls{mrt}-Aufnahmen von Lebewesen oder Prüfkörpern (genannt Phantome) sein, oder rein digital erzeugt sein. Da es für die Zukunft wünschenswert ist, Simulationsergebnisse mit realen Messungen zu verifizieren, bietet sich die Nutzung einer digitalen Abbildung eines real existierenden Phantoms an.
 

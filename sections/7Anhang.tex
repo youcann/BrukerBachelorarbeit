@@ -38,11 +38,12 @@ Andere getestete Konfigurationen:
 \end{enumerate}
 
 \clearpage
-\section{Modifikationen MRiLab GUI}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Für die, in dieser Arbeit vorgenommenen, Erweiterungen von MRiLab ist es von Vorteil, Simulationsparameter unkompliziert über die GUI anpassen zu können. Dazu müssen die gewünschten Bedienelemente in die bestehende GUI eingefügt werden.
+\section{Modifikationen MRiLab-GUI}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:guiMod}
+Für die, in dieser Arbeit vorgenommenen, Erweiterungen von MRiLab ist es von Vorteil, Simulationsparameter unkompliziert über die \gls{gui} anpassen zu können. Dazu müssen die gewünschten Bedienelemente in die bestehende \gls{gui} eingefügt werden.
 
-\subsection{Struktur der MRiLab GUI}
-MRiLab besteht aus einem Hauptfenster (\texttt{SimuPanel}) und mehreren Zusatzfenstern, den sog. "Design Panels". Das Haupt- und die Zusatzfenster sind jeweils mit dem MATLAB GUI Layout Editor \textit{GUIDE} (GUI development environment) erzeugt worden.
+\subsection{Struktur der MRiLab-GUI}
+MRiLab besteht aus einem Hauptfenster (\texttt{SimuPanel}) und mehreren Zusatzfenstern, den sog. "Design Panels". Das Haupt- und die Zusatzfenster sind jeweils mit dem MATLAB-GUI-Layout Editor \textit{GUIDE} (GUI development environment) erzeugt worden.
 
 Ein GUIDE Fenster besteht aus zwei Dateien: Die .fig Binärdatei kann nur mit GUIDE geöffnet werden und enthält eine Beschreibung des Layouts. GUIDE erzeugt aus dieser eine MATLAB .m-Datei. Diese enthält Coderümpfe, um auf die im Layout spezifizierten Elemente zuzugreifen.
 
@@ -201,7 +202,7 @@ Ist die Definition von \texttt{DoAddNoise.m} um das "handles" Struct erweitert (
 		\toprule
 		\textbf{Abbildung} & \textbf{Beschreibung} \\
 		\midrule \\[5pt]
-		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/allMRI.jpg} & \textbf{allMRI/\-Pro-MRI \newline180mm phantom} \newline Außendurchmesser: \SI{180}{\mm},\newline Höhe: \SI{150}{\mm} \newline \cite{allMRIphantom} \\
+		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/allMRI.jpg} & \textbf{allMRI/\-Pro-MRI 180mm phantom} \newline Außendurchmesser: \SI{180}{\mm},\newline Höhe: \SI{150}{\mm} \newline \cite{allMRIphantom} \\
 		&\\
 		\includegraphics[width=0.25\textwidth,valign=t]{img/phantoms/MagIQ.jpg} & \textbf{Leeds MagIQ 142} \newline Außendurchmesser: \SI{142}{\mm},\newline Höhe: \SI{70}{\mm} \newline \cite{leeds} \\
 		&\\

@@ -24,7 +24,7 @@ ylabel={$\text{Phasenfluktuationen }\phi_k[n]$ (in rad)},
 axis background/.style={fill=white},
 axis x line*=bottom,
 axis y line*=left,
-legend style={at={(0.5,-0.25)}, anchor=north, legend columns=5, legend cell align=left, align=left, draw=white!15!black}
+legend style={at={(0.5,-0.35)}, anchor=north, legend columns=5, legend cell align=left, align=left, draw=white!15!black}
 ]
 \addplot [color=mycolor1]
   table[row sep=crcr]{%
